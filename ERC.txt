@@ -1,0 +1,23 @@
+   What Is ERC-20?
+-> ERC-20 is the technical standard for fungible tokens created using the Ethereum blockchain. A fungible token is one that is exchangeable 
+   with another token, whereas the well-known ERC-721 non-fungible tokens (NFTs) are not.
+-> The ERC-20 standard has a vital role within the blockchain; it defines a standard list of rules that Ethereum tokens using smart contracts 
+   must adhere to. Some of these rules include how the tokens can be transferred, how transactions are approved, how users can access data 
+   about a token, and the total supply of tokens
+
+   What is a Non-Fungible Token?
+-> A Non-Fungible Token (NFT) is used to identify something or someone in a unique way. This type of Token is perfect to be used on platforms 
+   that offer collectible items, access keys, lottery tickets, numbered seats for concerts and sports matches, etc. This special type of Token 
+   has amazing possibilities so it deserves a proper Standard, the ERC-721 came to solve that!
+
+   What is ERC-721?
+-> The ERC-721 introduces a standard for NFT, in other words, this type of Token is unique and can have different value than another Token 
+   from the same Smart Contract, maybe due to its age, rarity or even something else like its visual. Wait, visual?
+
+-> ERC-165 
+   Standarad Interface Detection
+
+-> EIP - 191
+   Signatures and Verifications
+
+-> EIP - 4844 - proto dank sharding

@@ -1,0 +1,21 @@
+why link token is erc677
+what are semi fungible token - erc-1155
+how to convert to address from various types of types in solidity
+If we call a contract with some function that was not defined will the fallback function triggered ?
+What is Universal Upgradable smart contracts
+What is EOA smart contract ?
+why address is only 20 bytes 
+if we deploy AA code in one chain , do we need to deploy in all other chains like L2s to achieve this
+difference between console and console2
+solidity optmimizer - lower deployment cost ? lower execution cost
+what happend if there is a bug in one of the Ethereum client like GETH
+what is , snark the whole chain ?
+if L2 breaks how user can easily escape the funds from L2 to L1 ( withdrawsls in escape hatch mode)
+How to create a smart contract using another smart contract
+How self Destruct can able to delete a immutablel smart contract code , what does it actually do 
+How arrays storage slot looks like
+How to decode a abi.encodePacked data types
+Why optocodes deals with storage has more gas cost than memory or stack , what does it actually do or how does it differs internally
+
+
+

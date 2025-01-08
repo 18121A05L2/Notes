@@ -1,0 +1,15 @@
+-> use cases - dead man swith - we can add something like if after 50 years transfer this owernship to the new owner ( family) . this can be transferred after one year of account inactive
+-> pay gas with any ERC20 token
+-> wihtrawing tokens from tornado cash with a new account we can pay gas with the withdrawng token , instead of sending token to the new account for gas
+-> Multiple transactions at a time
+-> delayed operations
+
+
+
+
+----- NATIVE ANSTRACTION -------
+
+-> each operation will be sub divided into individual frame for faster execution
+-> Each block builder can run independently on the same state and the overall block execution will be done once all individaul transactions are completed to check any transactions are invalid 
+-> we need to send Transaction type as 113 for account abstraction in Zksync
+-> just like the Entrypoint contract in Ethereum , we have bootloader system contract in ZKsync for native AA

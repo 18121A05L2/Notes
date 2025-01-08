@@ -1,0 +1,24 @@
+--> Roll ups 
+  - executes the transactions, compress the data and rolls it up to the Main chain in a single batch  
+  - https://www.youtube.com/watch?v=7pWxCklcNsU 
+    1) optimistic rollups ( they use dispute resolution system for  fraud proofs ) - Ex: arbitrum and optimism
+      - half of the penalized money will be burned and other half will be given to who have challenged and found the frad blocks
+    2) zero knowledge rollups ( validity proofs ) - Ex: zksync and polygon zk evm , loopring
+    3) how does the state be consistant when we are running transactions in off chain and what if the user tries to do the transaction
+       at two places the at same time ?
+    4) what is zkporter
+    5) EIP-4844 introduces new kind of transaction which accepts blobs of data to be persisted in the beacon node for a short amount of time
+       -> BLOB is represented as Binary Large Objects
+       -> blobs are 4096 fields elements of 32 bytes each
+       -> what is proto danksharding ? - scalable data , availability data
+       -> initially , Dencun is targeting 6 blobs per block 4096*32*6 = 0.75Mb per block
+       -> blobs are short lived and pruned after around 2 weeks
+       -> unlike calldata blobs are not available in EVM
+       -> blobs are persistant on the beacon nodes ( consensus layer ) but not on the execution layer
+       -> if we have a smart contract function that is deployed to onchain , if we want to try to access the blob data , we cannot access it directly 
+         , but we can access the a hash of the data with the new BLOBHASH code
+       -> whar are kzg commitments ? - hash of the blob data
+       -> blocks contains Regular transactions and Data transactions ( does everything a regular transaction does ) , Data transaction may contains the hash of the blobs too as an extra than Regular
+       -> blobs are breaked into tiny pieces to stored as distrubuted with the help of the bittorrent
+
+--> possible scalability solutions  - sharding , roll ups , proto Danksharding , lightening network , Plasma and state channels

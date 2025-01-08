@@ -1,0 +1,3 @@
+-> snapshot - an example for off chain decentralized voting , storing signed transaction in IPFS and executing all at once when needed
+-> Aragon - we can create a dao using their Website
+-> some one can flash loan and use that to flood the voting process and then return it to the DEFI after the voting signature is made , so we need to use some checkpoint

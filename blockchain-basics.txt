@@ -1,0 +1,50 @@
+# Block Chain ( decentralized, permissionless, censorship-resistant )
+
+A blockchain is a database of transactions that is updated and shared across many computers in a network. Every time a new set of transactions 
+is added, its called a “block” - hence the name blockchain. Public blockchains like Ethereum allow anyone to add, but not remove, data. 
+If someone wanted to alter any of the information or cheat the system, they’d need to do so on the majority of computers on the network. 
+That is a lot! This makes decentralized blockchains like Ethereum highly secure.
+
+A blockchain is a public database that is updated and shared across many computers in a network
+
+—> Elliptic curve digital signature algorithm
+—> ETH Classic 51% Attack
+—> sharding , arbitrum , optimism 
+—> we only spend gas when we change the state of the block chain 
+→ https://solidity-by-example.org/
+—> https://docs.chain.link/data-feeds/getting-started#examine-the-sample-contract
+—> Ethers.js and web3.js
+—> Reentrancy attack in smart contracts
+—> Smart contract Attacks 
+     1 ) Gas griefing
+     2 ) Replay Signature Attack ( introduction of chain id , this was mitigated )
+     3 ) Meata transactions ( chain id wont mitigate the inner transaction that bounded in with the outer transaction 
+     4 ) MEV ( front running ) 
+
+—> Yearn Finance ( auto bot trading ) 
+—> solidity library ( openzepplin ) 
+—> The base fee can increase a maximum of 12.5 % per block when the block is utilized with more than 50% ( in ETH)
+—> consensus can be of two types 1)chain selection and 2) Sybil resistance
+→ sybil attack and 51% attack 
+—> sharding and rollups are scalability solutions
+—> chainlink VRF ( Verifiable Randomness Function ) 
+—> How IPFS runs ( Architecture ) 
+—> How EVM works internally ( what is geth )
+—> the assignment of a value to **`names[0x5B38Da6a701c568545dCfcB03FcB875f56beddC4]`** outside of a function or constructor is not allowed in Solidity
+—> constants and the immutable variables are present in the byte code of the contract itself , those doesn’t take storage slot in the blockchain
+—> EIP : Ethereum Imporvement Proposal
+—> ERC : Ethereum Request for Comments
+—> selfdestruct operation to delete the contract code and state
+—> beginning with “0x” simply means the value is in hexadecimal format
+—> In short, what *“PUSH1 0x60 PUSH1 0x40 MSTORE”* is doing is allocating 96 bytes of memory and moving the pointer to the beginning of the 64th byte. We now have 64 bytes for scratch space and 32 bytes for temporary memory storage.
+—> In the EVM, there are 3 places to store data. Firstly, in the stack. We’ve just used the “PUSH” opcode to store data there as per the example above. Secondly in the memory (RAM) where we use the “MSTORE” opcode and lastly, in the disk storage where we use “SSTORE” to store the data. The gas required to store data to storage is the most expensive and storing data to stack is the cheapest.
+—> maximum contract size limit imposed by the Ethereum blockchain, which is 24 KB (24,576 bytes)
+—> Libraries do not count towards the 24KB limit of the contract that uses them
+
+--Contract-to-Contract Call--
+
+- When one contract (let's call it `CurrentContract`) calls a function on another contract (`ExternalContract`), `msg.sender` in `ExternalContract` will be the address of `CurrentContract`, not the original user who initiated the transaction.
+- Call Data: Read-only
+- Memory: Read-write
+
+-> ChainID was introduced in EIP-155 to prevent replay attacks between the main ETH and ETC chains, which both have a networkID of 1

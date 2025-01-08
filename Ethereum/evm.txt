@@ -1,0 +1,10 @@
+--> What Does "Offset in Memory" Mean?
+An offset in memory refers to a specific position or "address" (in bytes) in the memory where some data begins. For example:
+
+If you store a uint256 (32 bytes) at memory location 0, then its offset is 0.
+If you store another uint256 immediately after that, its offset is 32.
+
+--> What is a "byte offset"?
+A byte offset refers to the specific position (in bytes) of a piece of data within the calldata.
+Think of calldata as a continuous sequence of bytes. Each piece of information (function selector, arguments, etc.) is stored at a specific byte position. The offset tells you how far into the calldata a certain piece of data is located.
+

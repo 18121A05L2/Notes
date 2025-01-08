@@ -1,0 +1,5 @@
+→ Bitcoin Core requires a one-time download of about 600GB of data plus a further 5-10GB per month
+—> Every 2016 blocks, or roughly every two weeks, the Bitcoin protocol adjusts the target used in Bitcoin mining  
+    - if more blocks were created in that 2016 blocks - 2 weeks time frame , then the difficulty  is increased and if less 
+      blocks were created in 2 weeks time frame , then the difficulty is decreased
+—> Lightning Network and Rootstock aim to bring smart contract functionality to Bitcoin , how?

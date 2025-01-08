@@ -1,0 +1,5 @@
+→ packing of variables in solidity
+
+→ need to try try catch in the place of whole transaction revertion
+
+→ account abstraction , oracle manipulation , blobs

@@ -1,0 +1,39 @@
+-> Ethereum smart contract so special from other languages - it cannt be stopped (becuaser of decentralized nodes) , hacked ( cyrptography ) and modified ( immutable )
+-> smart contracts are deterministic in nature
+-> solidity is statically type language - Javascript is dynamically typed language
+-> is solidiy compiled or intrepeted language - compiled , js is just in time compiled langauge
+-> default visibility of state variables - private
+-> what are two container type in solidity - arrays and mappings
+-> what are the two artifacts produced by solidity when compiling smart contract - ABI , ByteCode
+-> internal and private functions wont be included in ABI as they are only intended to use inside of the smart contract
+-> How to call a external function inside the same Smart contract - Functions marked external can only be called from outside the contract (via transactions or calls) or using this.functionName within the contract
+-> what are the two 2 APIs used to interact with smart contract - EX : eth_sendTransaction , eth_call
+-> what is gas - an abstract unit to measure the transaction cost
+    - a unint of resource consumption in a blocchain
+-> how to retrive the current time stamp in solidity - block.timestamp
+-> custom data structure in solidity - struct ( like an object ) and enum ( a varient of same data) , enum StatusEnum { Waiting, InProgress, Finished }
+-> Solidity only allows state variable initialization directly with constant values or in the constructor and state modification only inside of a function
+-> Arrays 
+    - uint256[3] public variables; // fixed size array - we can't push to a fixed size array , can only update using indexing
+    - uint256[] public variables; // dynamic size array - we can push to a dynamic size array
+    - uint256[] public variables = new uint256[](3); // dynamic size array with predefined size - we can push to a dynamic size array ( if we push a new element size becomes 4 )
+-> is it necessary to make an address payable to transfer ERC-20 token - no , because payable is only required to transfer Ether
+-> Why Not Directly Add string.length?
+    - Strings are complex: A string's length in bytes is not always equivalent to the number of visible characters, especially for UTF-8 encoded strings where some characters take up multiple bytes.
+    - If .length were directly available on strings, developers might mistakenly assume it represents the number of characters, while it would actually represent the number of bytes.
+    - UTF-8 character -  string memory myString = "Hello 🌍";
+-> How to cancel a transaction - send another transaction with same nounce and higher gas price
+-> random number in solidity - uint(keccak256(abi.encodePacked(block.timestamp, block.difficulty, msg.sender)))
+-> how to chek if a given address is a contract or EOA 
+    -    function isContract(address addr) public view returns (bool) {
+            uint256 size;
+            assembly {
+                size := extcodesize(addr)
+            }
+            return size > 0;
+        }
+-> why can we define all types of arrays in memory location but not mappings in solidity
+
+
+
+

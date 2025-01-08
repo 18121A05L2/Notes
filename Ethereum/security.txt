@@ -1,0 +1,6 @@
+-> static analysis - slitner , aderyn and mythril
+-> formal verification - symbolic execution - 
+-> cloc - to calculate the no of lines of code
+-> solidity-code-metrics - Analyse the whole smart contract code
+-> Notes - Vs Notes
+-> certora and halmos - former verification tool

@@ -1,0 +1,3 @@
+-> Synstem contracts - Difference between Zksync and Ethereum Mainnet
+-> foundryup-zksync
+-> forge build --zksync

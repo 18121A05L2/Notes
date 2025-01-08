@@ -1,0 +1,48 @@
+-> (variable_name).slot - .slot keyword is used to access the storage slot of a contract's state variable.
+-> mapping storage location -       bytes32 storedLoc = keccak256(abi.encode(key,slot));
+-> array storage location - ( assembly ) - let arrayStart := keccak256(0x0, 0x20) - let elementLocation := add(arrayStart, index)
+                                                                      ( slot , slot length)
+-> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pragma solidity ^0.8.0;
+
+contract StorageArrayExample {
+    uint256[] public storageArray;
+
+    function addElement(uint256 value) public {
+        storageArray.push(value);
+    }
+
+    function getStorageElement(uint256 index) public view returns (uint256) {
+        uint256 element;
+        assembly {
+            // Calculate the storage slot for the array
+            let slot := storageArray.slot
+            // Hash the slot to get the base location of the array
+            let arrayStart := keccak256(0x0, 0x20)
+            // Calculate the location of the specific element
+            let elementLocation := add(arrayStart, index)
+            // Load the element from storage
+            element := sload(elementLocation)
+        }
+        return element;
+    }
+}
