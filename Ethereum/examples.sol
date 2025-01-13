@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 contract Examples {
-    // ------------- Decoding an encode packed data tyes -----------
+    // --------------------- Decoding an encode packed data tyes -----------
     function returnData() public pure returns (bytes memory) {
         return abi.encodePacked(uint256(1), uint8(255), "hello");
     }
@@ -27,7 +27,7 @@ contract Examples {
         return (firstValue, secondValue, thirdValue);
     }
 
-    // ------------ Array storage slot ---------------------------
+    // --------------------- Array storage slot ---------------------------
 
     uint256[] public storageArray;
 
@@ -57,4 +57,46 @@ contract Examples {
         }
         return slot;
     }
+}
+
+// -------------------------------- Proxy contracts ( Inherited contract ) -----------------------------
+contract A {
+    uint256 a = 2;
+}
+
+contract B {
+    uint256 b = 3;
+}
+
+contract BaseContract is A, B {
+    uint256 c = 4;
+    address public add = 0xE959A2c1c3F108697c244b98C71803b6DcD77764;
+
+    function getVariable(uint256 _temp) public view returns (address) {
+        address d;
+        assembly {
+            d := sload(_temp)
+        }
+        return d;
+    }
+}
+// For base Contract , Store slot at 0 will be allocated to a and for Storage slot at 1 will be allocated to b
+
+//-----------------------------------------BitMask--------------------------------
+//--> The easiest way is to take a uint256 variable and use all 256 bits of it to represent individual booleans. To get an individual boolean from a uint256 , use this function:
+contract BitMask {
+    function getBoolean(uint256 _packedBools, uint256 _boolNumber) public view returns (bool) {
+        uint256 flag = (_packedBools >> _boolNumber) & uint256(1);
+        return (flag == 1 ? true : false);
+    }
+    //To set or clear a bool, use:
+
+    function setBoolean(uint256 _packedBools, uint256 _boolNumber, bool _value) public view returns (uint256) {
+        if (_value) {
+            return _packedBools | uint256(1) << _boolNumber;
+        } else {
+            return _packedBools & ~(uint256(1) << _boolNumber);
+        }
+    }
+    // With this technique, you can store 256 booleans in one storage slot. If you try to pack bool normally (like in a struct) then you will only be able to fit 32 bools in one slot. Use this only when you want to store more than 32 booleans.
 }

@@ -4,33 +4,28 @@
 —> stack is the local variable ( cheapest of all variables )
 —> calldata was the temp variable that can't be modified, memory was the temp variable that can be modified in the function execution 
 -> Data location can only be specified for arrays ,structs or mappings ( a string is an array or bytes )
-—> we can't add state variable in libraries
+—> we can't add state variables in libraries
 —> new address[](size) - dynamic arrays in Solidity are initialised with default values ( here zero addresses )
 —> Solidity is a synchronous language
-—> for an external call always has calldata ( which stores parameters )
-—> internal functions can only have references , it wont need callldata or memory
-—> function modifiers can be inefficient ( repetitive code copy )
--> safemath and libraries , what are checked and unchecked
+-> safemath and libraries , what are checked and unchecked ( overflow or underflow checks are default in over 0.8 version , unchecked can be used to reduce the gas by explicitily specifying do not check for any overflow underflow for a specific expression )
 -> in Solidity in order to send native blockchain tokens like etherem , you can only work with payable address to do that 
--> enums , events , try catch , function selectors , abi encode and decode , hashing and assembly
--> what does it mean by data is empy with respective to receive and fallback
--> bash scription ( basic knowledge)
+-> enums , events , try catch , function selectors , abi encode and decode , hashing and assembly --> The try keyword has to be followed by an expression representing an external function call or a contract creation (new ContractName())
 -> Ether in Solidity has 18 decimal places
 --> Public: Accessible everywhere; includes an automatic getter for variables.
     Private: Accessible only within the contract where it is defined; not visible to derived contracts.
     Internal: Accessible within the contract and by derived contracts; not visible externally.
     External: Functions accessible only from outside the contract; variables cannot have external visibility.
--> Enums in Solidity are simply a way to give names to a set of integer values, and these names are internally mapped to unsigned integers starting from 0.
+-> Enums in Solidity are a simply way to give names to a set of integer values, and these names are internally mapped to unsigned integers starting from 0.
 -> enum: User-defined types for creating a set of named constants
 -> different Data types : value types - uint, int, bool ,address ,enum, bytes , and reference types - strings, arrays, mappings, structs
 -> address: Holds a 20 byte value (size of an Ethereum address).
--> function (<parameter types>) {internal|external} [pure|view|payable] [returns (<return types>)]
+-> function (<parameter types>) {internal|external|public|private} [pure|view|payable] [returns (<return types>)]
 -> Data location : memory (whose lifetime is limited to an external function call), storage (the location where the state variables are stored, where the lifetime is limited to the lifetime of a contract) or calldata (special data location that contains the function arguments).
--> Data location can only be specified for array, struct or mapping types.
--> type(int256).min , type(I).interfaceId , bytes1 a = 0xb5; //  [10110101] , 
+-> type(int256).min , InterfaceIdentifier - type(<InterfaceName>).interfaceId , bytes1 a = 0xb5; //  [10110101]
 -> EIP-165 is a standard that enables smart contracts to declare the interfaces they implement. The interface identifier for an interface like IERC20 is derived by XORing all of the function selectors in that interface. This identifier is stored as type(IERC20).interfaceId and helps other contracts verify that a given contract implements IERC20 without needing to know the implementation details
+-> This EIP-165 standards was decided by the developer whether they are accepting or not , but it does not really checks and compare all of the functions init to the ERC20 functions
 -> For example, if a function is defined as function transfer(address to, uint256 amount), its signature is "transfer(address,uint256)". The function selector is then the first 4 bytes of the Keccak-256 hash of this signature
--> In Solidity, when you define a public state variable of a struct type, the compiler automatically generates a "getter" function for you. However, if your struct contains dynamic arrays (such as address[], uint256[], etc.), the default getter cannot provide a complete representation of the struct - why we have this exception in solidity as reading data from blockchain is free
+-> In Solidity, when you define a public state variable of a struct type, the compiler automatically generates a "getter" function for you. However, if your struct contains dynamic arrays (such as address[], uint256[], etc.) and mappings, the default getter cannot provide a complete representation of the struct - why we have this exception in solidity as reading data from blockchain is free --> Dynamic arrays can be arbitrarily large. For example, if you store a struct with a dynamic array containing thousands of elements, returning the entire array in one call would consume a significant amount of gas during the computation of the response.
 -> Mappings are not iterable because keys are not stored in a specific order or as a list
 -> mappings are implemented in Solidity—they are not iterable or copyable since their data structure resides only in storage and not in memory.
 -> Member "push" is not available in address[] memory outside of storage ? - In Solidity, the push method is only available for dynamic storage arrays. It is not available for arrays declared in memory because memory arrays are fixed in size when they are created, even if they are declared as dynamic. This is a key design of Solidity to optimize performance and avoid dynamic memory allocation during execution
@@ -43,43 +38,48 @@
      - Events emitted during the transaction are also discarded.
      - The transaction is effectively as if it never happened.
 -> in Upgradable smart contracts ( in implementation contracts we can add new varialbles but can't reorder the existing storage variables)
--> EIP - 2535 Diamond proxy pattern
+-> EIP - 2535 Diamond proxy pattern ( static router (less expensive) , dynamic router ( more expensive))
 -> Proxy patterns ( https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies)
      - Unstructured Storage Proxies
      - Beacon contract address in EIP-1967 ( Beacon Proxy pattern ) - It simplifies the upgrade process for multiple proxies by centralizing the management of the implementation contract address
      - Storage Collisions between Proxy and Implementation Contracts - above EIP is the solution
      - Storage Collisions Between Implementation Versions - need to adapt to previos implementation Contracts
 -> for stack too deep error in solidity , try to add variables into a struct
--> Multuply first and then to division 
+-> Multuply first and then to division with this there will be no precesion loss
 -> By default, Solidity does not return 0 for non-existent indices in arrays; it throws an out-of-bounds error.
 -> Event logs come with a timestamp, so there is no need to add another timestamp variable in it.
--> Bitmask for storing boolean storage variables
+-> Bitmask for storing boolean storage variables - packing of variables
 -> central logging mechanism like logs needs to be emitted by only one main contract
 -> if we want to generate addresses using number that number type must be a uint160
 -> we can write custom erros and free functions outside of the smart contract too
 -> with call function we can able to call functions in other smart contracts
 -> keccack hash collision 
-     - this will happen only when we have two dynamic data types next to each other ( string , string )
+     - (not 100% sure ) this will happen only when we have two dynamic data types next to each other ( string , string )
 -> selfdesctruct is deprecated now - but previously it has a capability to force send the Ehter if the caller contract does not have any payable fallback function which is capable of receiving ether
--> Generating Bytecode of a contract - abi.encodePacked(type(ContractName).creationCode) , if it has any constants or immutable data types we need to add those to the encodePacked
--> witht the hlep of create2 deployment method we can precompile the address of the smart contract as we are the person who is going to provide salt bytes to create a contract
+-> Generating Bytecode of a contract - abi.encodePacked(type(ContractName).creationCode) , (not 100% sure ) if it has any constants or immutable data types we need to add those to the encodePacked
+-> witht the help of create2 deployment method we can precompile the address of the smart contract as we are the person who is going to provide salt bytes to create a contract
 -> abi.encodeWithSignature('functionName(uint256)',200)
    abi.encodeWithSelector(this.functionName.selector,200)
    abi.encodeWithSelector(bytes4(keccak256(bytes('functionName(uint256)'))))
 -> this.functionName is the function pointer
 -> multi call - we can do it with call or staticCall
--> staticcall - Invoking a view or pure function in another contract to read state or perform computations without modifying the blockchain state , where as call function is used when we want to change the state of the blockchain
--> we can call any function in solidity with 
+-> staticcall - Invoking a view or pure function in another contract to read state or perform computations without modifying the blockchain state , where as call function is used when we want to change the state of the blockchain 
 -> abi.encodePacked("hello") and bytes("hello") gives the same output
 -> bytes(string) costs roughly 445 less Gas -  The first is copying the memory, the second is just casting the pointer type.
--> to decode an encodePacked we need to seperate all the different data types and need to type cast with that respective data type and there is not other decoding strategy for this 
+-> (complicated) to decode an encodePacked we need to seperate all the different data types and need to type cast with that respective data type and there is not other decoding strategy for this 
 -> For reference types (e.g., arrays, mappings, structs): delete resets the reference itself but retains the data in storage for arrays and mappings
 -> updateValue(uint256) is the function signature and the hash generated with this is function selector
 -> the hex code data which we send from our wallet ( metamask ) is call data which contains function selector at the first four bytes
 -> difference between vyper and solidity is free memory pointer ( dynamic memory allocation ) , vyper does not have this feature
 -> for every function written in lowlevel language we must have stop optcode at the end of the function ( if we have return which halts the execution stop is not required )
--> precompiled contracts
 -> byte offset refers to the starting from nth byte in the memory or storage or stack
+-> transparent proxy pattern - A transparent proxy will decide which calls are delegated to the underlying logic contract based on the caller address
+-> need to have a grip on type conversions and type casting
+-> Solidity does not allow implicit widening or narrowing between signed and unsigned types unless the bit-widths match exactly ( EX: Conversion from uint160 to int184 )
+-> typeconvertions from string to bytes and bytes to string will work , but not between string and bytes32 as there is a possibility of data loss
+-> When defining array literals ([1,2]) inside a function, Solidity infers the type of the array based on the smallest data type needed to represent the values in the array -->     uint256[] memory tempArr = [1,2];  --> TypeError: Type uint8[2] memory is not implicitly convertible to expected type uint256[] memory.
+-> Limitations for memory arrays that we usually define inside of a function 
+
 
 
 

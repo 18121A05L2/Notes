@@ -9,7 +9,7 @@
 -> How to call a external function inside the same Smart contract - Functions marked external can only be called from outside the contract (via transactions or calls) or using this.functionName within the contract
 -> what are the two 2 APIs used to interact with smart contract - EX : eth_sendTransaction , eth_call
 -> what is gas - an abstract unit to measure the transaction cost
-    - a unint of resource consumption in a blocchain
+    - a unit of resource consumption in a blocchain
 -> how to retrive the current time stamp in solidity - block.timestamp
 -> custom data structure in solidity - struct ( like an object ) and enum ( a varient of same data) , enum StatusEnum { Waiting, InProgress, Finished }
 -> Solidity only allows state variable initialization directly with constant values or in the constructor and state modification only inside of a function

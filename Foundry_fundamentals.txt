@@ -28,4 +28,5 @@
 --> security audit analysis - python3 -m pip install slither-analyzer 
 --> Solidity's integer division truncates. Thus, performing division before multiplication can lead to precision loss.
 --> forge test --fork-url $MAINNET_RPC_URL --fork-block-number $BLOCK_NUMBER
+--> 0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38 - default sender of foundry
 

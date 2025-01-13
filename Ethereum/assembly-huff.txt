@@ -1,6 +1,6 @@
 -> byteCode - huffc <FilenName> -b
 -> function dispatching - extracting the function selector from the calldata provided to the contract and dispatching our function call to the respective funtion 
--> bytecode contains - contract creation byte code , runtime bytecode and metadata seperated with INVALID opcode ; may be only runtime code stays on onchain
+-> bytecode contains - contract creation byte code , runtime bytecode and metadata seperated with INVALID opcode - may be only runtime code stays on onchain
 -> PUSH1 optcode will push hex values into the stack , ADD optocde will pull those and add those and push the result back to the stack
 -> cast --to-base 0xF0102 bin -- will give 0b11110000000100000010
 -> hex , bin , dec 

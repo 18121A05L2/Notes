@@ -21,3 +21,7 @@
    Signatures and Verifications
 
 -> EIP - 4844 - proto dank sharding
+
+-> EIP - 2535 - Diamond proxy pattern
+
+-> EIP - 1967 - Proxy storage slots
