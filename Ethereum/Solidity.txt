@@ -79,6 +79,7 @@
 -> typeconvertions from string to bytes and bytes to string will work , but not between string and bytes32 as there is a possibility of data loss
 -> When defining array literals ([1,2]) inside a function, Solidity infers the type of the array based on the smallest data type needed to represent the values in the array -->     uint256[] memory tempArr = [1,2];  --> TypeError: Type uint8[2] memory is not implicitly convertible to expected type uint256[] memory.
 -> Limitations for memory arrays that we usually define inside of a function 
+-> bytes memory empty = hex"";
 
 
 

@@ -25,3 +25,5 @@
 -> EIP - 2535 - Diamond proxy pattern
 
 -> EIP - 1967 - Proxy storage slots
+
+-> EIP - 191 - Standardizing Signatures , 712 - Making Signatures Readable - https://www.cyfrin.io/blog/understanding-ethereum-signature-standards-eip-191-eip-712

@@ -21,6 +21,8 @@ Where does metamask store the private key ?
 How metamask new account creation works
 How a social recovery wallet works end to end
 why dont we aumtoically define the Data location for Reference type as it always be memory 
+what is signature malleability or replay attacks - https://www.cyfrin.io/blog/replay-attack-in-ethereum#prerequisites-to-understand-replay-attacks
+Need to check when destructing from a direct struct and a function returning a struct
 
 
 
