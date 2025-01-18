@@ -31,5 +31,12 @@
 --> 0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38 - default sender of foundry
 --> For vm.sign() the address we have passed need to be unlocked
 --> console2 has uptp 5 arguments where as for console we have only upto 3 arguments
+--> ZKSYNC - forge create --zksync --rpc-url ${ZKSYNC_SEPOLIA_RPC} --private-key ${PRIVATE_KEY} src/Counter.sol:Counter
+--> For example, the verbosity levels of the EVM are:
+        - 2 (-vv): Print logs for all tests.
+        - 3 (-vvv): Print execution traces for failing tests.
+        - 4 (-vvvv): Print execution traces for all tests, and setup traces for failing tests.
+        - 5 (-vvvvv): Print execution and setup traces for all tests, including storage changes.
+--> Foundry wallets are store in this location - ~/.foundry/keystores/
 --> 
 

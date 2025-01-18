@@ -80,6 +80,10 @@
 -> When defining array literals ([1,2]) inside a function, Solidity infers the type of the array based on the smallest data type needed to represent the values in the array -->     uint256[] memory tempArr = [1,2];  --> TypeError: Type uint8[2] memory is not implicitly convertible to expected type uint256[] memory.
 -> Limitations for memory arrays that we usually define inside of a function 
 -> bytes memory empty = hex"";
+-> Ethereum uses RLP encoding ( v , R and S values) of signatures and Bitcoin uses DER encoding ( R and S values) - https://ethereum.stackexchange.com/questions/64380/understanding-ethereum-signatures/64398#64398
+-> why when creating a signature we need to send values as r,s and v instead of v , r and s - due to historical conventions and how cryptographic libraries (like elliptic and secp256k1) and Ethereum itself have chosen to serialize and handle signatures and bitcoin itself doesnot have a v which is only used by ethereum
+-> type of privatekey when using in tests - uint256  , its real format is hex
+-> in Solidity, any executable statements must be placed inside functions, constructors, or modifiers—not directly in the contract body
 
 
 
