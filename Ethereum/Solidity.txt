@@ -84,6 +84,10 @@
 -> why when creating a signature we need to send values as r,s and v instead of v , r and s - due to historical conventions and how cryptographic libraries (like elliptic and secp256k1) and Ethereum itself have chosen to serialize and handle signatures and bitcoin itself doesnot have a v which is only used by ethereum
 -> type of privatekey when using in tests - uint256  , its real format is hex
 -> in Solidity, any executable statements must be placed inside functions, constructors, or modifiers—not directly in the contract body
+-> In a function - Checks , Effects and Intereactions
+-> soldeer - solidity package manager build along with foundry
+-> Member "push" is not available in struct TokenPool.ChainUpdate[] memory outside of storage.solidity(4994)
+
 
 
 

@@ -26,7 +26,8 @@ Need to check when destructing from a direct struct and a function returning a s
 -> what is bootloader in zksync
 -> how oracle price manipulation works
 -> What is chain Abstraction
--> 
+-> how 5 level security of Chain link works
+-> How to use soldeer - solidity package manager build along with foundry
 
 
 
