@@ -3,6 +3,8 @@
 -> wihtrawing tokens from tornado cash with a new account we can pay gas with the withdrawng token , instead of sending token to the new account for gas
 -> Multiple transactions at a time
 -> delayed operations
+-> Every single account on zksync is a smart contract account which follows DefaultAccount.sol era-contract
+-> UserOperations -> altmem pool -> handleOps( Entrypoint.sol) -> ValidateUserOp (AA.sol)
 
 
 

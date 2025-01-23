@@ -8,3 +8,5 @@
 -> Merkle Patricia Trie Structure - Merkle proofs are powerful tools for enabling light clients to verify data in a blockchain. By recalculating the path from a specific piece of data (e.g., an account balance) to the state root using intermediate hashes in the proof
 -> Rando Reveal 
 -> Patricia Merkle Trie vs Verkle tree
+-> sign a transaction using ECDSA and recover
+-> 
