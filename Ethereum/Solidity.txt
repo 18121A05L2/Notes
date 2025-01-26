@@ -87,6 +87,7 @@
 -> In a function - Checks , Effects and Intereactions
 -> soldeer - solidity package manager build along with foundry
 -> Member "push" is not available in struct TokenPool.ChainUpdate[] memory outside of storage.solidity(4994)
+-> Only constants of value type and byte array type are implemented.solidity(9259) - using constant for bytes32[] is n
 
 
 

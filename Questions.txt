@@ -28,6 +28,9 @@ Need to check when destructing from a direct struct and a function returning a s
 -> What is chain Abstraction
 -> how 5 level security of Chain link works
 -> How to use soldeer - solidity package manager build along with foundry
+-> chain abstraction is risk abstraction
+-> centralized sequencer in L2s
+-> How tornado uses zksnarks and how mixing will be done 
 
 
 
