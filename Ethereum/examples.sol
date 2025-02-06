@@ -28,6 +28,7 @@ contract Examples {
     }
 
     // --------------------- Array storage slot ---------------------------
+    // This pattern is for only dynamic arrays
 
     uint256[] public storageArray;
 
@@ -38,9 +39,10 @@ contract Examples {
     function getStorageElement(uint256 index) public view returns (uint256) {
         uint256 element;
         assembly {
-            let slot := storageArray.slot
-            let arrayStart := keccak256(0x0, 0x20)
+            let slot := storageArray.slot // here first slot - 0x0
+            let arrayStart := keccak256(slot, 0x20)
             let elementLocation := add(arrayStart, index)
+            //  elementLocation := add(storageArray.slot, index) - for fix size arrays
             element := sload(elementLocation)
         }
         return element;

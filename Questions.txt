@@ -31,6 +31,8 @@ Need to check when destructing from a direct struct and a function returning a s
 -> chain abstraction is risk abstraction
 -> centralized sequencer in L2s
 -> How tornado uses zksnarks and how mixing will be done 
+-> How to approve a erc20 token from a transaction initiated from a contract
+-> 
 
 
 

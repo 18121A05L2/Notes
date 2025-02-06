@@ -1,0 +1,115 @@
+--> we only spend gas , when we only make a transaction by modify the block chain state.
+
+--> Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs can be useful
+ for storing structured data in your contract, kind of like a database.
+
+--> We're also providing instructions about where the _name variable should be stored- in memory.
+This is required for all reference types such as arrays, structs, mappings, and strings.
+
+--> by default the variable is assigned with 0
+
+--> call data and memory will only exist temporarily
+
+--> storage is permanent variable that can be modified
+
+--> calldata and memory exists temporarily  during only the respective function called, where as storage variables exists outside of the function
+
+--> if there is any data change or reassign is there we need to use call data, to make it mutable we can use storage
+
+--> all normal variables we define are by default storage variables                   
+
+--> calldata variables are the temp variables that cannot be changed
+
+--> in all EVM compatible blockchains we can deploy our solidity code
+
+--> view and pure functions don't modify the state of the blockchain
+
+--> Pure function declares that no state variable will be changed or read. the view tells us that by running the function, no data will be saved/changed.
+ pure tells us that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain
+
+--> for functions we need to specify view to make not able to change state , for public variables there is default getter function
+
+--> the ability for the contracts to seamlessly interact with each other is known as composability
+
+--> inorder for u to interact with any contract we need two -- Address , ABI ( Application binary Interface )
+
+--> inorder for a function to be overridable , we need to specify it with virtual ( like as in our simpleStorage.sol )
+
+--> Reverting -- undo any action before , and send remaining gas back
+
+--> https://data.chain.link/ethereum/mainnet/crypto-usd/eth-usd
+
+--> libraries cant have the state variables and also they cant send ether and also all the functions in the libraries are internal
+
+--> receive() will trigger any time when we send a transaction to the contract 
+
+--> the size of each chunks in the merkle , must be cosntant
+
+--> in merkle tree ( binary tree ) we need to have even number of nodes , if there is odd num of nodes then the last node will be replicated
+
+--> There is no concept of "undefined" or "null" in solidity
+
+--> Solidity variable names are case-sensitive. For example, Name and name are two different variables.
+
+--> Enums restrict a variable to have one of only a few predefined values
+
+--> Mapping can only have type of storage and are generally used for state variables
+
+--> Mapping can be marked public. Solidity automatically create getter for it
+
+--> We can explicitly convert a data type to another using constructor syntax.
+
+--> ethers.Contractfactory ( abi , binary , wallet )
+
+--> Actually, interacting with any function that costs Gas will generate a txn receipt
+
+--> when we call the function on the contract we will get transactionResponse
+
+--> when we wait for the transaction response to finish we will get transactionReceipt
+
+--> history -c to clear the history
+
+--> all the new multiple accounts that we created in metamask shares same mnemonic or seed Phrase ,
+ but can have different private keys respective to that multiple account . Only the importing ones has newer seed Phrase
+
+--> README.md  here md means mark down 
+
+--> abi -- application binary interface
+
+--> window.ethereum and window.solana will only exists when there like metamask and phanstom extentions
+
+--> require doesnt work in the frontend javascript , it only works with nodejs
+
+--> array.push() returns a uint of the new length of the array 
+
+--> A blockchain is a shared, distributed, and permanent database shared among multiple nodes on a computer network
+
+--> external functions are cheaper than public functions
+
+--> virtual in a function means its expecting to be override
+
+--> yarn dev in nextjs , just like as npm start in react
+
+--> yarn add react react-dom moralis react-moralis
+
+
+
+
+LINKS
+
+--> https://www.youtube.com/watch?v=gyMwXuJrbJQ
+
+--> Ethereun data feeds ( link ) -- https://docs.chain.link/docs/ethereum-addresses/#:~:text=Data%20feeds%20reside%20in%20the,stability%20of%20the%20broader%20ecosystem
+
+--> https://learnweb3.io/courses/9a3fafe4-b5eb-4329-bdef-97b2aa6aacc1/lessons/aceca450-119b-4ba5-b086-f1d0bcec010b
+
+--> https://docs.ethers.io/v5/single-page/
+
+--> https://hardhat.org/
+
+--> https://www.youtube.com/watch?v=pdsYCkUWrgQ
+
+--> by default , the visibility for variables is internal and default values for all is 0
+
+
+
