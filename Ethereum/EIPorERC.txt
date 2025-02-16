@@ -40,4 +40,6 @@
 
 -> ERC - 7715 Grant permissions for Wallets
 
+-> erc-1155 -  what are semi fungible token
+
 -> Chian Abstraction ?

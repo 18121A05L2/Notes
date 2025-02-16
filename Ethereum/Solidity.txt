@@ -103,10 +103,24 @@
 -> if we want to send Ether to EOA using a contract , then we must need to mark that address as payable for ony send and transfer and for call we dont need the EOA to be marked as payable as it will by pass that check
 -> assert(condition) -  Consumes all remaining gas if the condition fails (unlike require and revert) - for below 0.8 versions of solidity
 -> assembly { invalid() } - Consumes all of the gas
-
-
-
-
+-> Always specify a fixed gas stipend for low-level calls to prevent denial-of-service (DoS) attacks
+-> When making an external call in Solidity using call, delegatecall, or staticcall, the EVM enforces a 63/64 gas forwarding rule
+-> EIP-161 (State Trie Clearing) introduced a rule that contract accounts are initialized with nonce = 1, instead of nonce = 0 - This applies only to externally created contract accounts, not user accounts
+-> if we deploy AA code in one chain , we need to deploy in all other chains like L2s to achieve this in that specific chain
+-> Solidity Optimizer - runs is not how many times the optimizer will run but how many times you expect to call functions in that smart contract. If the smart contract is only of one-time use as a smart contract for vesting or locking of tokens, you can set the runs value to 1 so that the compiler will produce the smallest possible bytecode but it may cost slightly more gas to call the function(s). If you are deploying a contract that will be used a lot (like an ERC20 token), you should set the runs to a high number like 1337 so that initial bytecode will be slightly larger but calls made to that contract will be cheaper. Commonly used functions like transfer will be cheaper
+-> for Lower deployment const runs is 1 and for lower execution cost runs is 200 or much higher
+-> Zero-knowledge proofs (ZKPs) are cryptographic protocols that allow one party (the prover) to convince another party (the verifier) that a statement is true without revealing any information beyond the validity of the statement itself
+-> How to create a smart contract using another smart contract - using new ( standard deployment), using create and create2 ( low level deployment )
+-> if L2 breaks how user can easily escape the funds from L2 to L1 ( withdrawsls in escape hatch mode)
+-> selfdestruct removes a contract's bytecode and storage but does not erase its address , but after dencun update it wont remove the bytecode if we wont call the selfdestruct in the same transaction
+-> Why optocodes deals with storage has more gas cost than memory or stack , what does it actually do or how does it differs internally
+  --Changing a value in storage requires:
+    Fetching the existing value from the Ethereum State Trie (SLOAD).
+    Computing the new value.
+    Updating the trie structure, which may involve multiple hash computations (Keccak256).
+    Propagating the changes across all full nodes.
+    Compare this with stack operations, which are just pushing/popping values within a single transaction’s execution (cheap and immediate).
+-> 
 
 
 
