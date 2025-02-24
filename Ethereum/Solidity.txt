@@ -120,8 +120,32 @@
     Updating the trie structure, which may involve multiple hash computations (Keccak256).
     Propagating the changes across all full nodes.
     Compare this with stack operations, which are just pushing/popping values within a single transaction’s execution (cheap and immediate).
--> 
+-> 1) When you create a new wallet:
 
+   2) MetaMask generates a 12/24-word seed phrase (BIP-39).
+   It derives the master private key using the BIP-32 standard.
+   From this master key, it generates child keys (Ethereum private keys).
+   MetaMask encrypts the private key with a key derived from your password.
+
+   3) The encrypted data is stored in IndexedDB.
+
+-> However, data location applies only to reference types (e.g., arrays, structs, strings). For value types like uint256, int, bool, and address, Solidity does not require a data location because they are always stored in memory and passed by value
+-> You must explicitly define memory for reference types because Solidity needs to know if you are modifying storage or working with a temporary copy
+-> The Ethereum blockchain consists of: Whole ( 600 GB )
+   State Trie (accounts, storage, balances) → ~250GB
+   Transaction History (including logs in receipts) → ~350GB
+   Blocks, Headers, and Other Data → Remaining size
+   Logs are stored in the transaction history but are not part of the state trie.
+   Pruned nodes (like archive nodes vs. full nodes) may discard older logs to save space. 
+-> CREATE2 allows deploying a contract at a predictable address, even before it's deployed.
+-> Self-Destruct & Contract Resurrection - Deleting a contract and deploying a new version at the same address
+-> EIP-2612: Gasless Transactions (Permit) - This allows token approvals without needing a transaction
+-> CMD + E - to get into the end of the Line in Remix inputs
+-> Refunds cannot exceed 1/5 (20%) of the gas used in a transaction, due to the EIP-3529 update
+-> New Storage slot - 20k gas , Overwrite a storage slot - 5k , delete a variable in a storage slot 5k and 4.8k gas refund
+-> Why Gas Token Exploits Existed and How They Worked - Before EIP-3529, Ethereum allowed unlimited gas refunds, which enabled gas token exploits. Gas tokens like Chi Gas Token (Chi) and GasToken (GST2) were created to abuse storage refunds and store cheap data during low gas prices, then delete it when gas prices were high to reduce costs
+-> Before - EIP-3529 : Users stored garbage data cheaply when gas prices were low and deleted it to artificially reduce transaction costs when gas prices were high
+-> Use structs to reduce memory allocations when returning multiple values
 
 
 

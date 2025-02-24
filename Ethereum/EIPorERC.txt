@@ -42,4 +42,6 @@
 
 -> erc-1155 -  what are semi fungible token
 
+-> EIP-3529: Reduction in refunds
+
 -> Chian Abstraction ?
