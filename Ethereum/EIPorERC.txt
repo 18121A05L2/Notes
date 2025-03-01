@@ -44,4 +44,6 @@
 
 -> EIP-3529: Reduction in refunds
 
+-> EIP-4444: Bound Historical Data in Execution Clients
+
 -> Chian Abstraction ?
