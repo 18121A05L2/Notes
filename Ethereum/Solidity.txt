@@ -83,12 +83,13 @@
 -> Ethereum uses RLP encoding ( v , R and S values) of signatures and Bitcoin uses DER encoding ( R and S values) - https://ethereum.stackexchange.com/questions/64380/understanding-ethereum-signatures/64398#64398
 -> why when creating a signature we need to send values as r,s and v instead of v , r and s - due to historical conventions and how cryptographic libraries (like elliptic and secp256k1) and Ethereum itself have chosen to serialize and handle signatures and bitcoin itself doesnot have a v which is only used by ethereum
 -> type of privatekey when using in tests - uint256  , its real format is hex
--> in Solidity, any executable statements must be placed inside functions, constructors, or modifiers—not directly in the contract body
+-> in Solidity, any executable statements must be placed inside functions, constructors or modifiers — not directly in the contract body
 -> In a function - Checks , Effects and Intereactions
--> soldeer - solidity package manager build along with foundry
+-> soldeer - solidity package manager build along with foundry ( In Rust )
 -> Member "push" is not available in struct TokenPool.ChainUpdate[] memory outside of storage.solidity(4994)
+   - memory arrays in Solidity are fixed size and do not support push()
 -> Only constants of value type and byte array type are implemented.solidity(9259) - using constant for bytes32[] is n
--> However, there is no way to stop an attacker from sending ether to a contract by self destroying. Hence, it is important not to count on the invariant address(this).balance == 0 for any contract logic.
+-> However, there is no way to stop an attacker from sending ether to a contract by self destroying. Hence, it is important to not count on the invariant address(this).balance == 0 for any contract logic.
 -> we can only ready Private variables data using off chain - await web3.eth.getStorageAt(contractAddress, 0);
 -> storage Calculation for element location in arrays
    - Fixed-Size Arrays: Use data.slot + index directly.
@@ -97,19 +98,23 @@
 -> address to bytes8 conversion - bytes8(uint64(uint160(address)))
 -> tx.origin - Represents the externally owned account (EOA) that initiated the entire transaction chain.
 -> in an hex code , 2 letters represent 1 byte
--> if we call another contract in a contructor , current contracts codesize is zero when the constructor transaction is executing in the anoter contract , because the current contract is still not deployed
--> s ^ key = max ( we will bet below byt applying xor with s on both the sides and a ^ a ^ b = b)
+-> if we call another contract in a contructor , current contracts codesize is zero when the constructor transaction is executing in the another contract , because the current contract is still not deployed
+-> s ^ key = max ( we will get below by applying xor with s on both the sides and a ^ a ^ b = b)
    key = s ^ max 
 -> if we want to send Ether to EOA using a contract , then we must need to mark that address as payable for ony send and transfer and for call we dont need the EOA to be marked as payable as it will by pass that check
 -> assert(condition) -  Consumes all remaining gas if the condition fails (unlike require and revert) - for below 0.8 versions of solidity
 -> assembly { invalid() } - Consumes all of the gas
 -> Always specify a fixed gas stipend for low-level calls to prevent denial-of-service (DoS) attacks
+   - A gas stipend is a fixed amount of gas that you allocate to a low-level call. This ensures that the external contract being called does not consume excessive gas and potentially disrupt execution
 -> When making an external call in Solidity using call, delegatecall, or staticcall, the EVM enforces a 63/64 gas forwarding rule
--> EIP-161 (State Trie Clearing) introduced a rule that contract accounts are initialized with nonce = 1, instead of nonce = 0 - This applies only to externally created contract accounts, not user accounts
+-> EIP-161 (State Trie Clearing) introduced a rule that contract created accounts are initialized with nonce = 1, instead of nonce = 0
+   - new contract accounts (created by CREATE or CREATE2) are initialized with nonce = 1 instead of 0
+   - Externally Owned Accounts (EOAs) are NOT affected , their nonce still starts at 0.
 -> if we deploy AA code in one chain , we need to deploy in all other chains like L2s to achieve this in that specific chain
 -> Solidity Optimizer - runs is not how many times the optimizer will run but how many times you expect to call functions in that smart contract. If the smart contract is only of one-time use as a smart contract for vesting or locking of tokens, you can set the runs value to 1 so that the compiler will produce the smallest possible bytecode but it may cost slightly more gas to call the function(s). If you are deploying a contract that will be used a lot (like an ERC20 token), you should set the runs to a high number like 1337 so that initial bytecode will be slightly larger but calls made to that contract will be cheaper. Commonly used functions like transfer will be cheaper
 -> for Lower deployment const runs is 1 and for lower execution cost runs is 200 or much higher
 -> Zero-knowledge proofs (ZKPs) are cryptographic protocols that allow one party (the prover) to convince another party (the verifier) that a statement is true without revealing any information beyond the validity of the statement itself
+   - Groth 16
 -> How to create a smart contract using another smart contract - using new ( standard deployment), using create and create2 ( low level deployment )
 -> if L2 breaks how user can easily escape the funds from L2 to L1 ( withdrawsls in escape hatch mode)
 -> selfdestruct removes a contract's bytecode and storage but does not erase its address , but after dencun update it wont remove the bytecode if we wont call the selfdestruct in the same transaction
@@ -119,24 +124,17 @@
     Computing the new value.
     Updating the trie structure, which may involve multiple hash computations (Keccak256).
     Propagating the changes across all full nodes.
-    Compare this with stack operations, which are just pushing/popping values within a single transaction’s execution (cheap and immediate).
+    Compare this with stack operations, which are just pushing/popping values within a single transaction's execution (cheap and immediate).
 -> 1) When you create a new wallet:
-
    2) MetaMask generates a 12/24-word seed phrase (BIP-39).
    It derives the master private key using the BIP-32 standard.
    From this master key, it generates child keys (Ethereum private keys).
    MetaMask encrypts the private key with a key derived from your password.
-
    3) The encrypted data is stored in IndexedDB.
-
+     - windows -   C:\Users\USER_NAME\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings\nkbihfbeogaeaoehlefnkodbefgpgknn
+     - mac os -                  ~/Library/Application Support/Google/Chrome/Default/Local Extension Settings/nkbihfbeogaeaoehlefnkodbefgpgknn
 -> However, data location applies only to reference types (e.g., arrays, structs, strings). For value types like uint256, int, bool, and address, Solidity does not require a data location because they are always stored in memory and passed by value
 -> You must explicitly define memory for reference types because Solidity needs to know if you are modifying storage or working with a temporary copy
--> The Ethereum blockchain consists of: Whole ( 600 GB )
-   State Trie (accounts, storage, balances) → ~250GB
-   Transaction History (including logs in receipts) → ~350GB
-   Blocks, Headers, and Other Data → Remaining size
-   Logs are stored in the transaction history but are not part of the state trie.
-   Pruned nodes (like archive nodes vs. full nodes) may discard older logs to save space. 
 -> CREATE2 allows deploying a contract at a predictable address, even before it's deployed.
 -> Self-Destruct & Contract Resurrection - Deleting a contract and deploying a new version at the same address
 -> EIP-2612: Gasless Transactions (Permit) - This allows token approvals without needing a transaction
@@ -145,7 +143,7 @@
 -> New Storage slot - 20k gas , Overwrite a storage slot - 5k , delete a variable in a storage slot 5k and 4.8k gas refund
 -> Why Gas Token Exploits Existed and How They Worked - Before EIP-3529, Ethereum allowed unlimited gas refunds, which enabled gas token exploits. Gas tokens like Chi Gas Token (Chi) and GasToken (GST2) were created to abuse storage refunds and store cheap data during low gas prices, then delete it when gas prices were high to reduce costs
 -> Before - EIP-3529 : Users stored garbage data cheaply when gas prices were low and deleted it to artificially reduce transaction costs when gas prices were high
--> Use structs to reduce memory allocations when returning multiple values
+# -> Use structs to reduce memory allocations when returning multiple values
 -> Try can only be used with external function calls and contract creation calls
 -> If multiple parent contracts define the same function, you must specify all parent contracts using override(A, B)
 -> which factors of overriding things can be changed - Research suggests visibility can change from external to public, but otherwise must stay the same; mutability can be made more restrictive, like from view to pure -- An unexpected detail is that changing visibility from external to public makes the function more accessible, allowing internal calls, which might not align with the base contract's intent but is explicitly allowed
