@@ -28,6 +28,7 @@ contract Examples {
     }
 
     // --------------------- Array storage slot ---------------------------
+    // This pattern is for only dynamic arrays
 
     uint256[] public storageArray;
 
@@ -38,9 +39,11 @@ contract Examples {
     function getStorageElement(uint256 index) public view returns (uint256) {
         uint256 element;
         assembly {
-            let slot := storageArray.slot
-            let arrayStart := keccak256(0x0, 0x20)
+            let slot := storageArray.slot // here first slot - 0x0
+            let arrayStart := keccak256(slot, 0x20)
             let elementLocation := add(arrayStart, index)
+            //  elementLocation := add(storageArray.slot, index) - for fixed size arrays
+            // Fixes size arrays : This is because these data will be in the slots and wont be in the dynamic locations
             element := sload(elementLocation)
         }
         return element;
@@ -100,3 +103,26 @@ contract BitMask {
     }
     // With this technique, you can store 256 booleans in one storage slot. If you try to pack bool normally (like in a struct) then you will only be able to fit 32 bools in one slot. Use this only when you want to store more than 32 booleans.
 }
+
+// ------------------------------- Returning a struct instead of multiple values ( Optimized way ) -------------------
+
+contract ExampleOptimized {
+    struct UserData {
+        uint256 age;
+        uint256 balance;
+        address wallet;
+    }
+
+    uint256 public age;
+    uint256 public balance;
+    address public wallet;
+
+    function getUserData() external view returns (UserData memory) {
+        return UserData(age, balance, wallet);
+    }
+}
+// Solidity packs all values into a single memory slot instead of allocating separate memory slots for each variable.
+// Instead of multiple memory allocations, it creates only one memory slot for the struct.
+// Lower stack-to-memory conversion overhead.
+
+// ----------------------------------------------------------------------------------------------

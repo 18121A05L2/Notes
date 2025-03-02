@@ -20,8 +20,30 @@
 -> EIP - 191
    Signatures and Verifications
 
+-> ERC - 4334 - Account Abstraction
+
 -> EIP - 4844 - proto dank sharding
 
 -> EIP - 2535 - Diamond proxy pattern
 
 -> EIP - 1967 - Proxy storage slots
+
+-> EIP - 191 - Standardizing Signatures , 712 - Making Signatures Readable - https://www.cyfrin.io/blog/understanding-ethereum-signature-standards-eip-191-eip-712
+
+-> ERC - 5792 - Wallet Call Api Methods ( APPS calls to the Wallets to know Info about what our Account is capable of )
+
+-> ERC - 7677 Pay master web service capabilities
+
+-> ERC - 7579 Minimal Modular Smart Accounts
+
+-> Wallet Prepare Calls API
+
+-> ERC - 7715 Grant permissions for Wallets
+
+-> erc-1155 -  what are semi fungible token
+
+-> EIP-3529: Reduction in refunds
+
+-> EIP-4444: Bound Historical Data in Execution Clients
+
+-> Chian Abstraction ?

@@ -33,6 +33,8 @@
             return size > 0;
         }
 -> why can we define all types of arrays in memory location but not mappings in solidity
+-> Experience with zk rollups like Scroll, Taiko, zkSync
+-> ZK libraries such as Plonky3, halo2, circom, Groth16, sp1, r1cs
 
 
 

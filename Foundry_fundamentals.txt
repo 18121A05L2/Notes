@@ -8,8 +8,8 @@
 --> forge coverage
 --> forge coverage --report debug > coverage.txt
 --> forge test --debug <TestFunctionName>
---> forge test -mt <TestFunctionName>
---> cast call 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9 "retrieve()"
+--> forge test --match-test <TestFunctionName>
+--> cast call 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9 "retrieve()" ( Only to Read Information from blockchain )
     - 0x0000000000000000000000000000000000000000000000000000000000000159
 --> cast --to-base 0x0000000000000000000000000000000000000000000000000000000000000159 dec
     - 345
@@ -29,4 +29,16 @@
 --> Solidity's integer division truncates. Thus, performing division before multiplication can lead to precision loss.
 --> forge test --fork-url $MAINNET_RPC_URL --fork-block-number $BLOCK_NUMBER
 --> 0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38 - default sender of foundry
+--> For vm.sign() the address we have passed need to be unlocked
+--> console2 has upto 5 arguments where as for console we have only upto 3 arguments
+--> ZKSYNC - forge create --zksync --rpc-url ${ZKSYNC_SEPOLIA_RPC} --private-key ${PRIVATE_KEY} src/Counter.sol:Counter
+--> For example, the verbosity levels of the EVM are:
+        - 2 (-vv): Print logs for all tests.
+        - 3 (-vvv): Print execution traces for failing tests.
+        - 4 (-vvvv): Print execution traces for all tests, and setup traces for failing tests.
+        - 5 (-vvvvv): Print execution and setup traces for all tests, including storage changes.
+--> Foundry wallets are store in this location - ~/.foundry/keystores/
+--> makePersistant- Each fork (createFork) has its own independent storage, which is also replaced when another fork is selected (selectFork). 
+    By default, only the test contract account and the caller are persistent across forks, which means that changes to the state of the test 
+    contract (variables) are preserved when different forks are selected. This way data can be shared by storing it in the contract’s variables
 

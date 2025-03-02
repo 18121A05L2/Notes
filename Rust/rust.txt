@@ -1,0 +1,9 @@
+-> Rust is a systems programming languge that is fast and efficient, and it is also memory safe. It is a statically typed language, which means that the type of a variable is known at compile time.
+-> Default variable type will be i32 
+-> bool , char , i32 , i128 , f64 
+-> dynamic variable data will be store in heap , where as the memory address of that variable will be stored in stack
+-> Dangling Pointer - two memory addresses are pointing to the same location in the heap
+-> borrowing will not have ownership nor it wont copy the data to heap
+-> In Rust, &str and String both represent text, but they have important differences in ownership, mutability, and memory allocation
+-> Collections - vec , hashmap , hashset , vecdeque , linkedlist ( double linkedlist )
+-> You can use impl to define methods for a struct

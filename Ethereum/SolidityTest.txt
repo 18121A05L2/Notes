@@ -3,6 +3,6 @@
 -> Stateful Fuzz Testing : Where the final state of the previous run is the starting state of the next run
 -> In an individaul test follow these steps -> Arrange , Act and Assert
 -> (Stateless) Fuzz test - random data for a single function
--> (Stateful) Invarient tests - Random data and random function calls to many function ( function name should be invariant_* )
+-> (Stateful) Invarient tests - Random data and random function calls to many functions ( function name should be invariant_* )
 -> vm.prank only pranks for the next call 
 -> 

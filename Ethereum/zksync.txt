@@ -1,5 +1,35 @@
--> System contracts - Difference between Zksync and Ethereum Mainnet
+-> System contracts - Difference between Zksync and Ethereum Mainnet 
+-> system contract call - SystemContractsCaller.systemCallWithPropagatedRevert
 -> foundryup-zksync
 -> forge build --zksync
 -> Contracts with a large number of instructions will not compile on ZKsync due to the 65535 addressable space limitation imposed by zksolc
 -> The zksolc compiler enforces a limit on the number of instructions a contract can have, capped at 2^16 instructions. If a contract exceeds this limit, the compilation will fail.
+-> Sequencer responsibilities
+     - Accept user transactions. 
+     - Order and execute transactions. 
+     - Batch transactions for submission to Ethereum L1.
+     - Provide fast but non-final confirmations.
+-> zero knowledge proofs - the ability to prove honest computation without revealing the inputs 
+-> circum and snarkjs - DSL for zksnarks
+-> when we have 4 inputs in a merkle tree - Proof 1 = Hash 2 , Proof 2 = Hash 3-4 ( These are the proofs that we are going to provide for the first input as an aarray of proofs)
+->                                            Merkle Root
+                                               H0
+                            ___________________|___________________
+                           |                                       |
+                          H1                                       H2
+                ___________|__________                  ___________|__________
+               |                      |                |                      |
+              H3                     H4              H5                     H6
+         ______|______         ______|______     ______|______         ______|______
+        |             |       |             |   |             |       |             |
+       H7            H8      H9           H10  H11          H12      H13          H14
+      / \           / \     / \          / \   / \          / \      / \          / \
+    L0  L1       L2  L3   L4  L5      L6  L7 L8  L9     L10  L11  L12  L13    L14  L15
+     |___ Single Node Layer for Remaining Nodes |      L16   L17  L18   L19
+
+-> Leaf Node to Verify: L0
+   Merkle Proof: The following sibling hashes are required to reconstruct the path to the root:
+   L1
+   H8 (sibling of H7)
+   H4 (sibling of H3)
+   H2 (sibling of H1)

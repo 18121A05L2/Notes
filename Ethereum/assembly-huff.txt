@@ -8,3 +8,4 @@
 -> run time byteCode - huffc <FileLocaltion> --bin-runtime
 -> JUMPDEST is a marker for valid jump locations in EVM bytecode, ensuring safe and predictable control flow for smart contracts. Without it, arbitrary jumps could break contract logic or create security vulnerabilities
 -> dedaub - decompiler
+-> ls dependencies - will list all soldeer dependencies

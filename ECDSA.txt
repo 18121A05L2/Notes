@@ -1,0 +1,17 @@
+-> The specific curve used in ECDSA is secp256k1curve curve
+-> All elliptic curves are symmetrical about their x axis
+-> Precompiled contracts are a set of core routines integral to Ethereum’s cryptographic functionalities and ECDSA is one of them
+-> The EIP-191 Signed Data Standard proposed the following format for signed data: 0x19 <1 byte version> <version specific data> <data to sign>
+-> EIP 712 - 0x19 0x01 <domainSeparator> <hashStruct(message)>
+-> EIP-712 is version 1 of EIP-191
+-> A hash function takes a message and produces a fixed-length output, called a digest
+-> EIP 191 Examples 
+    0x19 || 0x00 || validatorAddress || data
+    0x19 || 0x01 || keccak256(EIP712Domain) || keccak256(typedData)
+    0x19 || 0x02 || personalMessage      -> message format - "\x19Ethereum Signed Message:\n" + messageLength + message
+
+-> (uint8 v, bytes32 r, bytes32 s) = vm.sign(signerPrivateKey, digest);
+    bytes memory signature = abi.encodePacked(r, s, v); // note the order here is different from line above.
+-> r (32 bytes):The x-coordinate of the elliptic curve point resulting from signing.
+   s (32 bytes):A scalar value derived during signing that ensures the signature's uniqueness
+   v (1 byte)  :The recovery id used to determine the correct public key from the signature. It’s either 27 or 28 in Ethereum (or 0 or 1 for the EIP-1559 chain ID scheme)
