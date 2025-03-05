@@ -1,3 +1,5 @@
 --> need to add , add test net to the wallet networks when user clicks on the connect wallet to connect to metamask ( https://chainlist.org/ )
 —> making a get req with the help of the chainlink
 -> Implement a Diamond proxy pattern smart contract - https://eips.ethereum.org/EIPS/eip-2535#reference-implementation
+-> Using abi.encode: The output contains ABI-encoding details (like the length of each string and their offsets) in addition 
+    to the actual string data. Converting that directly to a string does not produce a simple human-readable message

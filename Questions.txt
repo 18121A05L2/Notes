@@ -20,6 +20,22 @@ Need to check when destructing from a direct struct and a function returning a s
 -> How to approve a erc20 token from a transaction initiated from a contract
 -> what is gas griefing attack
 -> Does event emitted in blockchain is store in blockchain state ?
+-> what is read only reentrancy
+-> What are post deployment practises 
+-> Request solidity team to provide abi.decodePacked if possible
+-> What is Differential Testing
+-> What is formal verification
+-> How to generate scope.csv file using cloc and moving it to notion
+
+
+
+
+
+
+
+# https://www.vigilseek.com/
+# solana - https://github.com/slowmist/solana-smart-contract-security-best-practices
+
 
 
 

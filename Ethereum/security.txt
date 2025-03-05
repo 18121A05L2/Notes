@@ -1,6 +1,26 @@
--> static analysis - slitner , aderyn and mythril
--> formal verification - symbolic execution - 
+# https://github.com/Cyfrin/security-and-auditing-full-course-s23
+# https://github.com/bkrem/awesome-solidity
+-> static analysis ( Automatically checking code for issiues without executing ) - slither , aderyn and mythril
+-> formal verification - symbolic execution is one of the type of formal verification
+    - tools ( certora and halmos )
+    - imagine its the code , basicaly solidity code or cairto code doesn't matter. and for every function or like even functionality
+    - we will make some kind of mathematical equation that represents this function and then we use this mathematical 
+    - equation in order to prove something right or wrong ( and after this we will test this math formula instead of code itself)
+    - key goal : Align mental model (how we thought the expected output could be) with the machine model
 -> cloc - to calculate the no of lines of code
--> solidity-code-metrics - Analyse the whole smart contract code
+    - nSLOC - numner of source lines of code
+    - cloc --csv --csv-delimiter=";" --by-file --include-ext=sol --report-file=scope.csv .
+
+-> Solidity Code Metrics - Analyse the whole smart contract code
+-> solidity-code-metrics (Extention) - Analyse the whole smart contract code
 -> Notes - Vs Notes
--> certora and halmos - former verification tool
+-> Security audit Firms - Cyfrin , Openzeppelin and trail of bits
+-> Post deployment best practices - Bug bounty , Disaster recovery drills and Monitoring
+-> Persons - Tincho 
+-> Real audit (first time)
+    - download the code 
+    - read the documentation ( architectural diagrams too if the protocol is complex)
+    - read the audit reports
+-> USDT contract doesn't return a boolean for their transfer from function , where as other normal ERC20 contracts do
+-> Use Docker containers to run the code in in isolated environments - https://github.com/Cyfrin/web3-dev-containers
+-> To Generate a PDF - pandoc report-example.md -o report.pdf --from markdown --template=eisvogel --listings

@@ -58,8 +58,8 @@
 -> selfdesctruct is deprecated now - but previously it has a capability to force send the Ehter if the caller contract does not have any payable fallback function which is capable of receiving ether
 -> Generating Bytecode of a contract - abi.encodePacked(type(ContractName).creationCode) , (not 100% sure ) if it has any constants or immutable data types we need to add those to the encodePacked
 -> witht the help of create2 deployment method we can precompile the address of the smart contract as we are the person who is going to provide salt bytes to create a contract
--> abi.encodeWithSignature('functionName(uint256)',200)
-   abi.encodeWithSelector(this.functionName.selector,200)
+-> abi.encodeWithSignature('functionName(uint256)',200)       -- signature - functionName(uint256)
+   abi.encodeWithSelector(this.functionName.selector,200)     -- selector  - this.functionName.selector
    abi.encodeWithSelector(bytes4(keccak256(bytes('functionName(uint256)'))))
 -> this.functionName is the function pointer
 -> multi call - we can do it with call or staticCall
@@ -148,8 +148,28 @@
 -> If multiple parent contracts define the same function, you must specify all parent contracts using override(A, B)
 -> which factors of overriding things can be changed - Research suggests visibility can change from external to public, but otherwise must stay the same; mutability can be made more restrictive, like from view to pure -- An unexpected detail is that changing visibility from external to public makes the function more accessible, allowing internal calls, which might not align with the base contract's intent but is explicitly allowed
 -> Public mappings don't return structs directly - they return individual components.You must destructure the return values into separate variables.If you want to use it as a struct, you must manually reconstruct it.
+-> a base contract with a virtual function and a derived contract that overrides it
+-> In the provided function, abi.encode("Hello ", "World!") encodes the strings with additional type information like lengths 
+   and offsets, following the ABI standard. When cast to a string, this gives you the encoded data as bytes, not the 
+   concatenated string "Hello World!". This is because abi.encode is designed for encoding function arguments, not for 
+   string concatenation
+      0x
+      0000000000000000000000000000000000000000000000000000000000000020  // Offset = 32 bytes (0x20)
+      0000000000000000000000000000000000000000000000000000000000000005  // Length = 5 bytes
+      48656c6c6f000000000000000000000000000000000000000000000000000000  // "Hello" (0x48 65 6c 6c 6f) padded to 32 bytes
 
+      The total encoded data would be a byte sequence like:
+         Bytes 0-31: 64 (offset to first string)
+         Bytes 32-63: 102 (offset to second string, calculated based on the length)
+         Bytes 64-95: 6 (length of first string)
+         Bytes 96-101: "Hello " (6 bytes)
+         Bytes 102-133: 6 (length of second string)
+         Bytes 134-139: "World!" (6 bytes)
 
+-> abi.encodePacked: This function packs the given arguments without any type information or padding, simply 
+   concatenating their raw byte sequences
+-> while the EVM's behavior is fully specified by the Ethereum protocol, its implementations are written in multiple programming languages depending on the client.
+-> Data field in a transaction for a function call will be the function selector and for the contract deployment it will be the bytecode ( initcode of the contract )
 
 
 
