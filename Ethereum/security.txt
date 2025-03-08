@@ -24,3 +24,5 @@
 -> USDT contract doesn't return a boolean for their transfer from function , where as other normal ERC20 contracts do
 -> Use Docker containers to run the code in in isolated environments - https://github.com/Cyfrin/web3-dev-containers
 -> To Generate a PDF - pandoc report-example.md -o report.pdf --from markdown --template=eisvogel --listings
+-> Causing a function or a transaction to not be able to execte is the DOS attack
+-> Infinite for loop DOS attacks can be caused by making the transaction to cost more than the block gas limit by having that number of loopings

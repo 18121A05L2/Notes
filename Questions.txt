@@ -26,7 +26,11 @@ Need to check when destructing from a direct struct and a function returning a s
 -> What is Differential Testing
 -> What is formal verification
 -> How to generate scope.csv file using cloc and moving it to notion
-
+-> if we have static list of addresses then we can use merkle proofs to prove them by storing root in the contract
+   but what if we have dynamic list of addresses that are increasing daily then we need to generate root each time a user is being added , how to tackle this 
+-> what is enumarableset in openzeppelin
+-> Difference between read only reentrancy and normal reentrancy and crossfunction reentrancy
+-> How miners can able to manipulate the block.timestamp in contracts for a couple of seconds
 
 
 

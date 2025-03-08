@@ -126,3 +126,37 @@ contract ExampleOptimized {
 // Lower stack-to-memory conversion overhead.
 
 // ----------------------------------------------------------------------------------------------
+
+contract NFT {
+    // ex : data:application/json;base64,eyJuYW1lIjoiUHVwcHkgUmFmZmxlIiwgImRlc2NyaXB0aW9uIjoiQW4gYWRvcmFibGUgcHVwcHkhIiwgImF0dHJpYnV0ZXMiOiBbeyJ0cmFpdF90eXBlIjogInJhcml0eSIsICJ2YWx1ZSI6IGNvbW1vbn1dLCAiaW1hZ2UiOiJpcGZzOi8vUW1Tc1lSeDNMcERBYjFHWlFtN3paMUF1SFpqZmJQa0Q2SjdzOXI0MXh1MW1mOCJ9
+    function _baseURI() internal pure returns (string memory) {
+        return "data:application/json;base64,";
+    }
+    // function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+    //     require(_exists(tokenId), "PuppyRaffle: URI query for nonexistent token");
+
+    //     uint256 rarity = tokenIdToRarity[tokenId];
+    //     string memory imageURI = rarityToUri[rarity];
+    //     string memory rareName = rarityToName[rarity];
+
+    //     return string(
+    //         abi.encodePacked(
+    //             _baseURI(),
+    //             Base64.encode(
+    //                 bytes(
+    //                     abi.encodePacked(
+    //                         '{"name":"',
+    //                         name(),
+    //                         '", "description":"An adorable puppy!", ',
+    //                         '"attributes": [{"trait_type": "rarity", "value": ',
+    //                         rareName,
+    //                         '}], "image":"',
+    //                         imageURI,
+    //                         '"}'
+    //                     )
+    //                 )
+    //             )
+    //         )
+    //     );
+    // }
+}

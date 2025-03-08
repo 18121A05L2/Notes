@@ -170,7 +170,10 @@
    concatenating their raw byte sequences
 -> while the EVM's behavior is fully specified by the Ethereum protocol, its implementations are written in multiple programming languages depending on the client.
 -> Data field in a transaction for a function call will be the function selector and for the contract deployment it will be the bytecode ( initcode of the contract )
-
-
-
+-> The caret (^) in the version pragma indicates that the contract is compatible with the specified version and any newer minor version up to the next major version
+-> pragma solidity ^0.7.6 --it means the contract can be compiled with any compiler version starting at 0.7.6 up to, but not including, 0.8.0. This follows the semantic versioning rules.
+-> CTRL + -  -- to go to back of the file where we are in vscode
+-> Index range access is only supported for dynamic calldata arrays. - numbers[1:3] -- uint[] calldata numbers
+-> Array slicing is not supported for - Fixed-Size Arrays , Storage Arrays and Memory Arrays
+-> Reasoning: Slicing in calldata leverages its read-only, pre-allocated nature, avoiding the need to allocate new memory or modify storage, which would increase gas costs significantly.
 
