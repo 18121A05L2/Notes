@@ -26,3 +26,13 @@
 -> To Generate a PDF - pandoc report-example.md -o report.pdf --from markdown --template=eisvogel --listings
 -> Causing a function or a transaction to not be able to execte is the DOS attack
 -> Infinite for loop DOS attacks can be caused by making the transaction to cost more than the block gas limit by having that number of loopings
+-> when refunding the gas used to interact with the contract , we need to be aware of attack throught 63/64 gas rule 
+-> [S-#] TITLE (Root Cause + Impact)
+    Description:
+
+    Impact:
+
+    Proof of Concept:
+
+    Recommended Mitigation:
+-> 

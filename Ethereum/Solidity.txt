@@ -55,7 +55,7 @@
 -> with call function we can able to call functions in other smart contracts
 -> keccack hash collision 
      - (not 100% sure ) this will happen only when we have two dynamic data types next to each other ( string , string )
--> selfdesctruct is deprecated now - but previously it has a capability to force send the Ehter if the caller contract does not have any payable fallback function which is capable of receiving ether
+-> selfdestruct is deprecated now - but previously it has a capability to force send the Ehter if the caller contract does not have any payable fallback function which is capable of receiving ether
 -> Generating Bytecode of a contract - abi.encodePacked(type(ContractName).creationCode) , (not 100% sure ) if it has any constants or immutable data types we need to add those to the encodePacked
 -> witht the help of create2 deployment method we can precompile the address of the smart contract as we are the person who is going to provide salt bytes to create a contract
 -> abi.encodeWithSignature('functionName(uint256)',200)       -- signature - functionName(uint256)
@@ -176,4 +176,9 @@
 -> Index range access is only supported for dynamic calldata arrays. - numbers[1:3] -- uint[] calldata numbers
 -> Array slicing is not supported for - Fixed-Size Arrays , Storage Arrays and Memory Arrays
 -> Reasoning: Slicing in calldata leverages its read-only, pre-allocated nature, avoiding the need to allocate new memory or modify storage, which would increase gas costs significantly.
-
+-> Transient Storage - Apart from being an alternative to contract storage in cases where persistence is not required (like reentrancy locks), transient storage allows developers to easily create global singletons on-chain. These singletons are useful since information about a transaction can be accessed by any contract, independent of the stack depth
+-> code size of the currect contract in the constructor is zero , by the time of construtor executing current contract is still not deployed
+-> Every account has an associated nonce: for regular accounts it is increased on every transaction, while for contract accounts it is increased on every contract creation. Nonces cannot be reused, and they must be sequential.
+-> create optcode uses - keccak256(rlp.encode(deployingAddress, nonce))[12:]
+-> create2 optcode users - keccak256(0xff ++ deployingAddr ++ salt ++ keccak256(bytecode))[12:]
+   - to calulate address - bytes32 hash = keccak256(abi.encodePacked(bytes1(0xff),address(this),salt,keccak256(fullBytecode)));

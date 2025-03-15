@@ -5,3 +5,5 @@
 -> (Stateless) Fuzz test - random data for a single function
 -> (Stateful) Invarient tests - Random data and random function calls to many functions ( function name should be invariant_* )
 -> Linearization of inheritance graph impossiblesolidity -- Solidity expects the list to be from most base-like to most derived
+-> usage of beforeTestSetup --   function beforeTestSetup(bytes4 testSelector) public returns (bytes[] memory beforeTestCalldata) {}
+-> if you add logs in beforeTestSetup function it wont log because that was used for how to seequence the tests

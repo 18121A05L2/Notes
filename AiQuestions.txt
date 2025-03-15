@@ -1,0 +1,229 @@
+---------------------------------------Smart Contract Vulnerabilities and Attacks
+What is a reentrancy attack, and how can it be mitigated in Solidity?
+How does a front-running attack work, and what strategies can prevent it?
+What’s the difference between a denial-of-service (DoS) attack and a gas griefing attack?
+How can timestamp dependence lead to vulnerabilities in smart contracts?
+What’s the risk of using tx.origin for authorization, and why is it insecure?
+How does an integer overflow or underflow occur in Solidity, and what are the consequences?
+What is a delegatecall injection attack, and how can it be prevented?
+How can improper access control lead to unauthorized fund withdrawals?
+What’s the danger of uninitialized storage pointers in Solidity?
+How does a flash loan attack exploit smart contract logic?
+What is a sandwich attack in decentralized exchanges (DEXs)?
+How can a contract be vulnerable to a "honeypot" scam?
+What’s the risk of relying on block hashes for randomness in contracts?
+How does a "shadowing" vulnerability occur in Solidity inheritance?
+What is a "gas token" attack, and how does it exploit EVM mechanics?
+How can a contract be exploited through "unchecked external calls"?
+What’s the difference between a "replay attack" and a "signature replay attack"?
+How does a "malicious callback" exploit contracts with external calls?
+What is "block stuffing," and how can it disrupt contract functionality?
+How can improper handling of selfdestruct lead to security issues?
+--------------------------------------Security Tools and Techniques
+What is MythX, and how does it help in detecting smart contract vulnerabilities?
+How does Slither analyze Solidity code for security issues?
+What’s the role of Echidna in fuzzing smart contracts?
+How can Manticore be used to symbolically execute EVM bytecode?
+What is Oyente, and what types of vulnerabilities does it detect?
+How does Scribble help in writing formal specifications for contracts?
+What’s the purpose of the Certora Prover in verifying smart contract correctness?
+How can Foundry’s invariant testing be used to ensure contract security?
+What is the difference between static analysis and dynamic analysis in security tools?
+How does the Remix IDE’s Static Analysis plugin aid in vulnerability detection?
+What’s the role of GasTap in optimizing gas usage during security audits?
+How can you use Brownie’s debugging tools to trace contract execution?
+What is the purpose of the solc --optimize flag in reducing attack surfaces?
+How does the Securify tool detect vulnerabilities in smart contracts?
+What’s the benefit of using formal verification tools like K Framework for EVM?
+How can you integrate Mythril into your CI/CD pipeline for automated security checks?
+What is the role of "taint analysis" in tools like Slither?
+How does the "echidna-shrink" feature help in minimizing exploit examples?
+What’s the difference between white-box and black-box testing in smart contract security?
+How can you use the "solhint" linter to enforce security best practices?
+----------------------------------------Advanced Security Concepts
+What is "formal verification," and how does it apply to smart contracts?
+How can "invariant testing" be used to ensure protocol correctness?
+What’s the role of "symbolic execution" in finding edge-case vulnerabilities?
+How does "concolic testing" combine symbolic and concrete execution for security?
+What are "zero-knowledge proofs," and how can they enhance contract privacy?
+How does "secure multi-party computation" (sMPC) apply to blockchain security?
+What’s the concept of "economic security" in DeFi protocols?
+How can "game theory" be used to design secure incentive mechanisms?
+What is "MEV" (Miner Extractable Value), and how does it pose security risks?
+How can "circuit breakers" be implemented to pause contracts during attacks?
+What’s the role of "timelocks" in securing governance contracts?
+How does "on-chain anomaly detection" help in identifying attacks?
+What are "honeytokens," and how can they be used in smart contract security?
+How can "threshold signatures" improve security in multi-signature wallets?
+What’s the purpose of "commit-reveal schemes" in preventing front-running?
+How does "gas estimation" play a role in preventing DoS attacks?
+What is "flash minting," and what security considerations does it introduce?
+How can "rate limiting" be implemented in contracts to prevent abuse?
+What’s the risk of "oracle manipulation" in DeFi protocols?
+How does "secure key management" apply to blockchain security research?
+---------------------------------Tools for Security Research Efficiency
+How can you use "diffusc" to compare contract versions for security changes?
+What’s the role of "crytic-compile" in preparing contracts for analysis?
+How does "sūrya" help in visualizing contract structure and dependencies?
+What’s the benefit of using "eth-security-toolbox" for penetration testing?
+How can "Ganache" be used to simulate attacks in a local environment?
+What’s the purpose of "ethlint" in enforcing secure coding standards?
+How does "ConsenSys Diligence’s Scanner" automate vulnerability detection?
+What’s the role of "Trail of Bits’ EVM Opcode Explorer" in understanding EVM behavior?
+How can "Ethereum ETL" help in analyzing on-chain attack patterns?
+What’s the advantage of using "DeFi Saver" for monitoring protocol interactions?
+How does "Tenderly" assist in debugging and simulating contract exploits?
+What’s the purpose of "BlockSec’s Phalcon" in real-time attack detection?
+How can "Ape Framework" streamline security testing workflows?
+What’s the role of "Hardhat’s console.log" in debugging security issues?
+How does "ethers.js" facilitate interacting with contracts for security tests?
+What’s the benefit of using "Waffle" for property-based testing in security?
+How can "Remix’s Gas Profiler" help identify gas-related vulnerabilities?
+What’s the purpose of "Solgraph" in visualizing contract control flow?
+How does "ChainSecurity’s VerX" automate formal verification?
+What’s the role of "OpenZeppelin’s Defender" in automating security operations?
+------------------Solidity and Smart Contract Development-------------
+How does Solidity handle integer overflow and underflow in versions before and after 0.8.0, and what are the security implications?
+What’s the difference between view, pure, and constant functions in Solidity?
+How do msg.sender and tx.origin differ, and why is tx.origin risky for authorization?
+How do you implement a proxy contract pattern in Solidity, and what are its benefits and risks?
+What’s the purpose of fallback and receive functions, and how do they differ?
+What is "gas griefing," and how can it be mitigated in smart contracts?
+How does delegatecall work in Solidity, and what security risks does it pose?
+What’s the difference between storage and memory in Solidity, and how do they impact gas costs?
+How can you optimize a smart contract to minimize gas costs during deployment and execution?
+What are "flash loans," and how do they interact with smart contracts?
+What is "reentrancy" in smart contracts, and how can it be exploited?
+What’s the difference between selfdestruct and suicide in Solidity, and why is selfdestruct controversial?
+How do you implement a multi-signature wallet in Solidity?
+What’s the purpose of the assembly keyword in Solidity, and when should you use it?
+What’s the difference between public, private, internal, and external visibility modifiers?
+How does Solidity handle inheritance and function overriding?
+What’s the difference between abi.encode, abi.encodePacked, and abi.encodeWithSignature?
+How can you create a token contract that complies with both ERC-20 and ERC-721 standards?
+What are "events" in Solidity, and how do they differ from "logs"?
+How can you implement "gasless transactions" using meta-transactions in Solidity?
+How can you implement a diamond pattern (EIP-2535) in Solidity, and what advantages does it offer over traditional proxy upgrades?
+What’s the role of selfbalance in Solidity, and how does it differ from address(this).balance?
+How can you use keccak256 to create a Merkle tree within a smart contract?
+What’s the difference between pure and view functions when they’re called internally versus externally?
+How can you design a contract to handle batch processing of ERC-721 token transfers efficiently?
+What are the trade-offs of using bytes32 versus string for storing data in Solidity?
+How can you implement a staking mechanism with slashing conditions in Solidity?
+What’s the purpose of receive() versus fallback() functions, and how are they triggered differently?
+How can you use delegatecall to modularize contract logic without a proxy?
+What’s the gas impact of using nested mappings versus a single mapping with concatenated keys?
+--------------------------Ethereum Virtual Machine (EVM)------------------------------
+How does the EVM handle stack underflow and overflow conditions during execution?
+What’s the role of the BALANCE opcode, and how does it interact with gas costs?
+How does the EVM process STATICCALL, and what makes it different from CALL?
+What’s the significance of the CODESIZE opcode, and how can it be used in contract introspection?
+How does the EVM calculate gas refunds, and what operations qualify for them?
+What’s the purpose of the DIFFICULTY opcode, and how has its meaning changed post-merge?
+How does the EVM handle calldata alignment for function calls?
+What’s the role of the TIMESTAMP opcode, and how reliable is it for time-dependent logic?
+How does the EVM process inline assembly with the MSTORE8 opcode?
+What happens to the EVM’s state when a contract call exceeds the call stack depth limit?
+What is the EVM, and how does it execute smart contracts?
+What is "gas" in the EVM, and how is it calculated?
+What are the different types of EVM opcodes, and how do they affect gas costs?
+How does the EVM handle exceptions during contract execution?
+What’s the difference between CALL, STATICCALL, and DELEGATECALL in the EVM?
+What are "stack" and "memory" in the EVM, and how do they differ from Solidity’s storage and memory?
+What’s the purpose of CREATE and CREATE2 opcodes, and how do they differ?
+How does the EVM process contract creation and initialization code?
+What is the "Yellow Paper," and why does it matter for the EVM?
+What are "precompiles" in the EVM, and when are they used?
+How does the EVM handle big-endian vs. little-endian byte order?
+What’s the difference between SSTORE and SLOAD opcodes in terms of gas costs?
+What is "transient storage" in EIP-1153, and how does it differ from regular storage?
+How does the EVM handle contract self-destruction?
+What is "calldata" in the EVM, and how is it used?
+What are "gas refunds" in the EVM, and what are their limitations?
+How does the EVM manage nested contract calls, and what’s the maximum call depth?
+What’s the difference between EXTCODESIZE and EXTCODEHASH?
+What are "gas tokens," and how do they exploit EVM mechanics?
+How does the EVM support contract upgrades?
+---------------------------------Ethereum Ecosystem and Blockchain Concepts--------------------------
+How does Ethereum’s “state expiry” proposal aim to reduce long-term storage costs?
+What’s the role of “attestations” in Ethereum’s danksharding design?
+How do “commit-reveal schemes” work in Ethereum voting systems?
+What’s the difference between “state channels” and “payment channels” in Ethereum scaling?
+How does Ethereum’s “EIP-1559” fee market affect miner incentives post-merge?
+What are “crypto-economic incentives” in Ethereum’s slashing mechanisms?
+How do “bridge contracts” facilitate asset transfers between Ethereum and other blockchains?
+What’s the purpose of “checkpointing” in Ethereum’s consensus layer?
+How does “data availability sampling” improve scalability in Ethereum’s roadmap?
+What’s the role of “proposer boost” in Ethereum’s proof-of-stake consensus?
+What’s the difference between Ethereum Mainnet, Testnets, and Layer 2 solutions?
+How do Proof of Work (PoW) and Proof of Stake (PoS) differ in Ethereum?
+What’s the role of "miners" in PoW and "validators" in PoS?
+How does Ethereum handle transaction ordering and finality in PoS?
+What’s a "fork" in blockchain, and how do hard forks differ from soft forks?
+What is "sharding" in Ethereum 2.0, and how does it improve scalability?
+What’s the purpose of the "Beacon Chain" in Ethereum 2.0?
+How do "rollups" work in Ethereum, and what’s the difference between Optimistic and ZK-Rollups?
+What was "the Merge" in Ethereum, and how did it affect the network?
+How are "gas fees" determined in Ethereum?
+What’s the difference between "on-chain" and "off-chain" transactions?
+How do decentralized oracles like Chainlink function?
+What’s the Ethereum Name Service (ENS), and how does it work?
+What is "MEV" (Miner Extractable Value), and how does it impact Ethereum?
+How does Ethereum address privacy in transactions and contracts?
+What are "wrapped tokens" like WETH, and why are they used?
+What are "cross-chain bridges," and what risks do they pose?
+What’s the difference between "fungible" and "non-fungible" tokens (NFTs)?
+How do decentralized exchanges (DEXs) like Uniswap operate?
+What’s the role of "liquidity pools" in DeFi protocols?
+-------------------------------------Security and Best Practices---------------------------
+How can you protect a smart contract from “front-running” in a decentralized auction?
+What’s the risk of “block stuffing” attacks, and how can they be mitigated?
+How do you design a contract to resist “timestamp dependence” vulnerabilities?
+What’s the danger of “shadowing” state variables in Solidity inheritance?
+How can you prevent “gas griefing” in contracts with external calls?
+What’s the purpose of “salting” in cryptographic signatures for replay protection?
+How do you secure a contract against “malicious callback” exploits?
+What’s the risk of “uninitialized storage pointers” in Solidity, and how do you avoid it?
+How can you detect and prevent “overflow truncation” in token transfers?
+What’s the role of “invariant testing” in ensuring smart contract correctness?
+What are the most common smart contract vulnerabilities?
+What is "front-running" in Ethereum, and how can it be prevented?
+What’s a "honeypot" smart contract?
+How can you securely generate and store private keys for Ethereum wallets?
+What’s "formal verification" in smart contract development?
+What’s the difference between "gas limit" and "gas price"?
+What are "timelocks" in smart contracts?
+How can you create a secure random number generator in Solidity?
+What’s the difference between "hot" and "cold" wallets?
+What are "signature replay attacks," and how do you prevent them?
+What are "upgradeable contracts," and what security issues do they raise?
+How does the unchecked keyword in Solidity affect security?
+What are "circuit breakers" in smart contracts?
+Why is using tx.origin for authentication risky?
+How can you prevent "denial of service" (DoS) attacks in smart contracts?
+What’s the difference between "on-chain" and "off-chain" governance in DAOs?
+How do you securely interact with external contracts or oracles?
+What’s the purpose of "multisig wallets"?
+What is "flash minting," and what risks does it introduce?
+How do you audit a smart contract for vulnerabilities?
+-----------------------------------Advanced Topics--------------------------------------
+What’s the difference between "state channels" and "sidechains"?
+What are "zero-knowledge proofs," and how are they used in Ethereum?
+How does "account abstraction" (EIP-4337) work?
+What’s the purpose of EIP-1559, and how does it affect Ethereum’s fee market?
+What is "layer 0" in blockchain architecture?
+What are "smart contract wallets," and how do they differ from traditional wallets?
+How does "sharding" interact with "cross-shard communication" in Ethereum 2.0?
+What’s the role of "blob transactions" in EIP-4844?
+What are "verkle trees," and how might they impact Ethereum?
+How do "decentralized autonomous organizations" (DAOs) function?
+How does “threshold cryptography” enable multi-signature wallets on Ethereum?
+What’s the concept of “state rent” and its potential impact on Ethereum’s design?
+How can “homomorphic encryption” be applied to private computation on Ethereum?
+What’s the role of “execution clients” versus “consensus clients” in Ethereum’s post-merge architecture?
+How do “intents” in transaction frameworks improve user experience on Ethereum?
+What are “modular blockchains,” and how might Ethereum evolve into this paradigm?
+How does “succinct proof systems” like STARKs enhance Ethereum’s scalability?
+What’s the potential of “tokenized voting” in Ethereum governance systems?
+How can “quantum-resistant cryptography” be integrated into Ethereum’s future?
+What’s the role of “cross-layer communication” in Ethereum’s multi-layer ecosystem?
