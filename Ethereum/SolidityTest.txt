@@ -7,3 +7,20 @@
 -> Linearization of inheritance graph impossiblesolidity -- Solidity expects the list to be from most base-like to most derived
 -> usage of beforeTestSetup --   function beforeTestSetup(bytes4 testSelector) public returns (bytes[] memory beforeTestCalldata) {}
 -> if you add logs in beforeTestSetup function it wont log because that was used for how to seequence the tests
+-> Invarient - the property of the system that should always hold true
+-> Formal verification 
+    - types ( symbolic execution , abstract intrepretation , Model checking )
+    - This process often involves the time-consuming task of manually writing the specifications using a specialized language (that many developers will need to learn first).
+    - Halmos is a formal verification tool designed for symbolic testing. Instead of requiring separate specifications or learning a new language, Halmos uses existing tests as formal specifications
+-> Branches in forge coverage - shows the percentage of conditional branches (like if/else or ternary operators) that were execute
+-> To run Echidna in mac - docker run --platform linux/amd64 -it --rm -v $PWD:/code trailofbits/eth-security-toolbox
+    - echidna testEchidna.sol --contract TestEchidna        --limit-times 500 --config time.yaml
+    - A Fast Smart Contract Fuzzer
+-> Testing the properties with fuzzing - Echidna and Medusa
+-> seed varaible in Fuzz - Reproducibility is critical for debugging. By setting a specific seed, you can rerun the exact same sequence of inputs to investigate a failure or verify a fix. Without a seed, the inputs would be different each time, making it harder to replicate issues
+-> (Open invariant Testing) fail_on_revert = true: The test fails immediately if any transaction reverts.
+-> (Handler Invariant Testing) fail_on_revert = false: The test continues even if transactions revert, failing only if an invariant is violated
+
+
+
+

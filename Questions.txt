@@ -31,7 +31,8 @@ Need to check when destructing from a direct struct and a function returning a s
 -> what is enumarableset in openzeppelin
 -> Difference between read only reentrancy and normal reentrancy and crossfunction reentrancy
 -> How miners can able to manipulate the block.timestamp in contracts for a couple of seconds
-
+-> Need to know about in depth about AMM
+-> 
 
 
 

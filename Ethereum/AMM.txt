@@ -1,0 +1,78 @@
+-> AMM - x * y = k ( x = Asset A , y = Asset B , k = Constant value ) 
+-> price of Asset x = x / y
+-> price of Asset y = y / x
+From the above equations we can get the below two equations
+-> reserve of x**2 = K / price of x
+-> reserve of y**2 = K * price of y
+-> At a price of 4000 USDT/ETH: ( invested 1 eth at 2000 price )
+Pool Reserves: Approximately 0.7071 ETH and 2828.43 USDT.
+Total Value upon Removal: ~5656.86 USDT.
+Impermanent Loss: ~343.14 USDT compared to simply holding.
+
+At a price of 5000 USDT/ETH:
+Pool Reserves: Approximately 0.6325 ETH and 3162.28 USDT.
+Total Value upon Removal: ~6324.78 USDT.
+Impermanent Loss: ~675.22 USDT compared to holding.
+
+At 1000 USDT/ETH:
+Pool Reserves: ≈ 1.4142 ETH and ≈ 1414.21 USDT
+Total Value: ≈ 2828.42 USDT
+If Held: 3000 USDT
+Impermanent Loss: ≈ 171.58 USDT
+
+At 500 USDT/ETH:
+Pool Reserves: 2 ETH and 1000 USDT
+Total Value: 2000 USDT
+If Held: 2500 USDT
+Impermanent Loss: 500 USDT
+
+For a Price Drop to 0.1 USDT/ETH: ( TODO: this is red flag for liquidity providers )
+The pool rebalances to roughly 141.42 ETH and 14.14 USDT. The total value becomes a meager 28.28 USDT. 
+In contrast, holding your original tokens would be worth about 2000.1 USDT. This demonstrates an extreme 
+impermanent loss where the vast majority of value is lost.
+
+-> Total liquidity fees Percentage -  ( his LP tokens / Total number of LP tokens ) *100
+For CONCENTRATED LIQUIDITY ( user enters at 2000 Eth price with LP range was 1500 to 2000)
+user provided liquidy - 1 ether and 2540 usdt
+------ Decrease in price ------------------
+At 1800 USDT/ETH (within range):
+Approximately 1.511 ETH and 1564.27 USDT
+Total value ≈ 4284.07 USDT.
+
+At 1000 USDT/ETH (below range):
+Approximately 2.463 ETH and 0 USDT
+Total value ≈ 2463 USDT.
+
+At 0.1 USDT/ETH (extremely below range):
+Approximately 2.463 ETH and 0 USDT
+Total value ≈ 0.2463 USDT.
+-------- Increase in Price ------------------
+At 2300 USDT/ETH (Within Range):
+Approximately 0.360 ETH and 3910 USDT.
+Total value ≈ 4738 USDT.
+
+At 3000 USDT/ETH (Above Range):
+Entirely in USDT: approximately 4773 USDT.
+
+At 5000 USDT/ETH (Far Above Range):
+Still entirely in USDT: approximately 4773 USDT.
+---------- Token to provide for LP ranges ----------------
+For a 1000–3000 range:
+Deposit: ~1 ETH and ~3193 USDC.
+
+For a 1000–2100 range:
+Deposit: ~1 ETH and ~24,648 USDC.
+
+For a 1900–2100 range:
+Deposit: ~1 ETH and ~2130 USDC.
+
+Range [1999, 2001]:
+Approximate Deposit: ~1 ETH and ~1960 USDC
+
+Range [1999, 3000]:
+Approximate Deposit: ~1 ETH and ~2.44 USDC
+
+Range [1000, 5000]:
+Approximate Deposit: ~1 ETH and ~1595 USDC
+​
+
