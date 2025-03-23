@@ -55,7 +55,6 @@
 -> with call function we can able to call functions in other smart contracts
 -> keccack hash collision 
      - (not 100% sure ) this will happen only when we have two dynamic data types next to each other ( string , string )
--> selfdestruct is deprecated now - but previously it has a capability to force send the Ehter if the caller contract does not have any payable fallback function which is capable of receiving ether
 -> Generating Bytecode of a contract - abi.encodePacked(type(ContractName).creationCode) , (not 100% sure ) if it has any constants or immutable data types we need to add those to the encodePacked
 -> witht the help of create2 deployment method we can precompile the address of the smart contract as we are the person who is going to provide salt bytes to create a contract
 -> abi.encodeWithSignature('functionName(uint256)',200)       -- signature - functionName(uint256)
@@ -118,12 +117,14 @@
 -> How to create a smart contract using another smart contract - using new ( standard deployment), using create and create2 ( low level deployment )
 -> if L2 breaks how user can easily escape the funds from L2 to L1 ( withdrawsls in escape hatch mode)
 -> selfdestruct removes a contract's bytecode and storage but does not erase its address , but after dencun update it wont remove the bytecode if we wont call the selfdestruct in the same transaction
+   - Even if a contract's code does not contain a call to selfdestruct, it can still perform that operation using delegatecall or callcode.
+   - selfdestruct is deprecated now - but previously it has a capability to force send the Ehter if the caller contract does not have any payable fallback function which is capable of receiving ether
 -> Why optocodes deals with storage has more gas cost than memory or stack , what does it actually do or how does it differs internally
   --Changing a value in storage requires:
     Fetching the existing value from the Ethereum State Trie (SLOAD).
     Computing the new value.
     Updating the trie structure, which may involve multiple hash computations (Keccak256).
-    Propagating the changes across all full nodes.
+    Propagating the changes across allfull nodes.
     Compare this with stack operations, which are just pushing/popping values within a single transaction's execution (cheap and immediate).
 -> 1) When you create a new wallet:
    2) MetaMask generates a 12/24-word seed phrase (BIP-39).
@@ -181,4 +182,12 @@
 -> Every account has an associated nonce: for regular accounts it is increased on every transaction, while for contract accounts it is increased on every contract creation. Nonces cannot be reused, and they must be sequential.
 -> create optcode uses - keccak256(rlp.encode(deployingAddress, nonce))[12:]
 -> create2 optcode users - keccak256(0xff ++ deployingAddr ++ salt ++ keccak256(bytecode))[12:]
-   - to calulate address - bytes32 hash = keccak256(abi.encodePacked(bytes1(0xff),address(this),salt,keccak256(fullBytecode)));
+   - to calulate address - address addr = address(uint160(uint256(keccak256(abi.encodePacked(bytes1(0xff),address(this),salt,keccak256(fullBytecode))))));
+   - assembly { newContract := create2(0, add(bytecode, 32), mload(bytecode), salt) }
+   - bytes memory bytecode = type(NudgeCampaign).creationCode;
+   - CREATE2(amount, offset, size , salt)
+   - add is an EVM opcode (0x01) that performs addition. bytecode is a pointer to the start of the bytes array. add(bytecode, 32) shifts the pointer past the first 32 bytes (which store the length), directly to the actual bytecode
+   - CREATE2 makes the deployed contract's address depend on the deployer's address, so: If a different contract deploys using the same salt and bytecode, the address would be different because the deployer is different
+   - CREATE2 automatically uses the deployer’s address (i.e., address(this)) as part of its address calculation.
+-> using <LibraryName> for <Type> , if we use Type as * , then that library function will be used by all functions
+

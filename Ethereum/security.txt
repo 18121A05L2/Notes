@@ -8,8 +8,9 @@
     - equation in order to prove something right or wrong ( and after this we will test this math formula instead of code itself)
     - key goal : Align mental model (how we thought the expected output could be) with the machine model
 -> cloc - to calculate the no of lines of code
+    - cloc ./src/campaign ( scanning only specific path)
     - nSLOC - numner of source lines of code
-    - cloc --csv --csv-delimiter=";" --by-file --include-ext=sol --report-file=scope.csv .
+    - cloc --csv --csv-delimiter=";" --by-file --include-ext=sol --report-file=scope.csv --exclude-dir=test,lib,mocks .
 
 -> Solidity Code Metrics - Analyse the whole smart contract code
 -> solidity-code-metrics (Extention) - Analyse the whole smart contract code

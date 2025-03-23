@@ -47,3 +47,7 @@
 -> EIP-4444: Bound Historical Data in Execution Clients
 
 -> Chian Abstraction ?
+
+-> RIP - L1SLOAD - relying the state root from L1 to L2 in a verifiable way
+
+-> 

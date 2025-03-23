@@ -1,0 +1,1 @@
+-> Partial<T>: This is a built-in TypeScript utility type that makes all properties of T optional

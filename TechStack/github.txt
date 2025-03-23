@@ -1,0 +1,5 @@
+->  in .gitattributes - This tells GitHub Linguist to treat these files as vendored (third-party). Vendored code does not count towards the repository’s language statistics.
+    lib/** linguist-vendored
+    artifacts/** linguist-generated
+    node_modules/** linguist-vendored
+-> 

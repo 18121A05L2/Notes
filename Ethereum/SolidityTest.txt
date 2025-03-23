@@ -13,6 +13,9 @@
     - This process often involves the time-consuming task of manually writing the specifications using a specialized language (that many developers will need to learn first).
     - Halmos is a formal verification tool designed for symbolic testing. Instead of requiring separate specifications or learning a new language, Halmos uses existing tests as formal specifications
 -> Branches in forge coverage - shows the percentage of conditional branches (like if/else or ternary operators) that were execute
+-> % Statements in forge coverage 
+    - The distinction is significant because achieving 100% line coverage doesn't necessarily mean that all statements have been tested. If multiple statements exist on a single line, some might be executed while others are not, leading to discrepancies between line and statement coverage percentages
+    - Ex : uint256 a = 5; uint256 b = 10;  Here, one line contains two statements
 -> To run Echidna in mac - docker run --platform linux/amd64 -it --rm -v $PWD:/code trailofbits/eth-security-toolbox
     - echidna testEchidna.sol --contract TestEchidna        --limit-times 500 --config time.yaml
     - A Fast Smart Contract Fuzzer
