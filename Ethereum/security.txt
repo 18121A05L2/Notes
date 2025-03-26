@@ -36,4 +36,4 @@
     Proof of Concept:
 
     Recommended Mitigation:
--> 
+-> As an auditor, your primary goal is to catch security issues. Solhint has built-in rules (like avoid-low-level-calls, avoid-suicide/avoid-selfdestruct, etc.) that highlight potential security problems

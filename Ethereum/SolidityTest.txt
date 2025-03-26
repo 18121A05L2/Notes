@@ -23,6 +23,8 @@
 -> seed varaible in Fuzz - Reproducibility is critical for debugging. By setting a specific seed, you can rerun the exact same sequence of inputs to investigate a failure or verify a fix. Without a seed, the inputs would be different each time, making it harder to replicate issues
 -> (Open invariant Testing) fail_on_revert = true: The test fails immediately if any transaction reverts.
 -> (Handler Invariant Testing) fail_on_revert = false: The test continues even if transactions revert, failing only if an invariant is violated
+-> Mutation testing is like testing how good your testing framework by changing the code and see what happens
+-> 
 
 
 

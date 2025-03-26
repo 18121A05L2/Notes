@@ -190,4 +190,10 @@
    - CREATE2 makes the deployed contract's address depend on the deployer's address, so: If a different contract deploys using the same salt and bytecode, the address would be different because the deployer is different
    - CREATE2 automatically uses the deployer’s address (i.e., address(this)) as part of its address calculation.
 -> using <LibraryName> for <Type> , if we use Type as * , then that library function will be used by all functions
+-> stack too deep error is only for if we have more than 14 variables in one single function if we can split to two functions then there wont be issue
+-> Unlike traditional (legacy) EVM bytecode, which is a single, flat sequence of instructions, EOF uses a container format that organizes code and data into distinct sections
+-> slither-check-erc 0xdac17f958d2ee523a2206206994597c13d831ec7 TetherToken --erc erc20
+-> 
+
+
 

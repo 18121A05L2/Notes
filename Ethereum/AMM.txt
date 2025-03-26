@@ -5,6 +5,9 @@ From the above equations we can get the below two equations
 -> reserve of x**2 = K / price of x
 -> reserve of y**2 = K * price of y
 -> At a price of 4000 USDT/ETH: ( invested 1 eth at 2000 price )
+-> Our share in the liquidity is = liq of ours / current total liquidity
+-> When liquidity is added, K changes because the total pool size has increased—but each liquidity provider's share is then calculated as a fraction of the new total liquidity
+-> x*y = (x + deltax) * (y - deltay)
 Pool Reserves: Approximately 0.7071 ETH and 2828.43 USDT.
 Total Value upon Removal: ~5656.86 USDT.
 Impermanent Loss: ~343.14 USDT compared to simply holding.
