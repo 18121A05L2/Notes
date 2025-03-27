@@ -37,3 +37,4 @@
 
     Recommended Mitigation:
 -> As an auditor, your primary goal is to catch security issues. Solhint has built-in rules (like avoid-low-level-calls, avoid-suicide/avoid-selfdestruct, etc.) that highlight potential security problems
+-> if we are using a try catch , and if that external call fails , the state that has been updated in that external call will be reverted and in catch it will all be like the state how it was before the external call in the try is triggered
