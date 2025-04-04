@@ -44,3 +44,6 @@
 --> via_ir=true or --via-ir for New Intermedite Representation
 --> Solidity can generate EVM bytecode in two different ways: Either directly from Solidity to EVM opcodes (“old codegen”) 
     or through an intermediate representation (“IR”) in Yul (“new codegen” or “IR-based codegen”)
+--> cast 4byte 0xdd62ed3e
+--> Installing multiple versions of same dependency - forge install openzeppelin-contracts-v3=Openzeppelin Gihub link
+--> When you start a prank with vm.startPrank(player), all subsequent calls occur in a single simulated transaction. In this context, the account’s nonce isn’t incremented between calls because they're not separate transactions—they're part of one execution context.

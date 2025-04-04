@@ -1,0 +1,4 @@
+-> Flash loans are unsecured (uncollateralized) loans where a borrower must repay their entire loan back to a lender in the same transaction
+    Advantages - Trading Arbitrage , Collateral Swap ( swapping the collateral locked asset that we have pledged ) and self liquidation
+    Fee in AAve - 0.09%
+-> Checkpoint in Governance - Voting power at a specific block is determined by finding the most recent checkpoint with a fromBlock less than or equal to the target block. For example, if an account has checkpoints at Block 100 with 50 votes and Block 150 with 100 votes, querying at Block 120 returns 50 votes (from Block 100). At Block 90, with no earlier checkpoint, it returns 0, assuming no prior records

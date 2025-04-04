@@ -197,6 +197,23 @@
 -> To use console in remix - import "https://github.com/foundry-rs/forge-std/blob/master/src/console.sol";
 -> if we have any send or trasfer or call in the contructor and we are triggering someother function which is going to send ether to us , then it will treat as EOA because at that point of time in constructor the contract itself is not there in the blockchain state
 -> if we are using a try catch , and if that external call fails , the state that has been updated in that external call will be reverted and in catch it will all be like the state how it was before the external call in the try is triggered
+-> when we are using mload , for arrays the first location will be the length of the array and we need to load by shifting 32 bytes (add(pointer,32)) after it , as there onlly we will get the first element of the array
+-> when we call any function it wiil have calldata -  calldataload(4) loads 32 bytes from the call data starting at byte offset 4. Why offset 4? Because the first 4 bytes of the call data contain the function selector.
+-> How call data of a function works - https://docs.soliditylang.org/en/v0.8.19/abi-spec.html#examples
+-> If we do normal function calls it follows the formation ( <ContractName>.<functionName>) of the call data specified in Solidity docs and if we want to modify it we can pass something like this - address(ContractName).call(<bytesDataInHexFormat>)
+-> Function Overloading - A contract can have multiple functions of the same name but with different parameter types. This process is called “overloading” and also applies to inherited functions
+-> String Literal "Hello" :- This literal is 5 bytes long (one byte per character for simple ASCII characters).
+-> combining two bytes based on our length requirements of that bytes -  bytes memory data = abi.encodePacked(switchh.flipSwitch.selector,abi.encode(uint32(96),uint32(0),bytes4(switchh.turnSwitchOff.selector),uint32(4),bytes4(switchh.turnSwitchOn.selector)));
+-> for two dimentional array in function parameters , the call data will be - selector + location for multi dimentional array + lenth of the multi dimentional array + location of first array + location of second array (( This Applies same for the array of strings too - string[])) - https://docs.soliditylang.org/en/v0.8.19/abi-spec.html#use-of-dynamic-types
+-> Assuming positions in CALLDATA with dynamic types can be erroneous, especially when using hard-coded CALLDATA positions. - https://ethernaut.openzeppelin.com/level/0xb2aBa0e156C905a9FAEc24805a009d99193E3E53
+-> assigning values to variables dynamically - require((shares = previewDeposit(assets)) != 0, "ZERO_SHARES");
+-> you can append curly-brace options (like {value: amount} or even {value: amount, gas: someGas}) to any function call. This syntax tells the EVM to send the specified Ether along with the call. Just make sure that the function you’re calling is declared as payable; otherwise, the transaction will revert
+-> Meta-transactions are a mechanism that allows users to interact with a blockchain without needing to hold the native cryptocurrency (like ETH on Ethereum) to pay for gas. Instead, users sign a transaction off-chain, and a third party (often called a relayer) submits that transaction on-chain on their behalf. The relayer pays the gas fee, and later may be compensated by the user or by the protocol - userful for gasless transactions
+-> An abstract contract in Solidity doesn't need to have unimplemented functions to be considered abstract. It can be marked as abstract to indicate that it's intended only as a base contract and not for direct instantiation
+-> abi.encodeCall(function pointer , (tuple arguments)) performs a type check where as the abi.encodeWithSelector(function selector , .... ) does not perform a type check
+-> Reading Nested mapping - token.allowance(address(pool),recovery);  mapping(address => mapping(address => uint256)) public allowance;
 -> 
+
+
 
 
