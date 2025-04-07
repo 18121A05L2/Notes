@@ -2,3 +2,4 @@
     Advantages - Trading Arbitrage , Collateral Swap ( swapping the collateral locked asset that we have pledged ) and self liquidation
     Fee in AAve - 0.09%
 -> Checkpoint in Governance - Voting power at a specific block is determined by finding the most recent checkpoint with a fromBlock less than or equal to the target block. For example, if an account has checkpoints at Block 100 with 50 votes and Block 150 with 100 votes, querying at Block 120 returns 50 votes (from Block 100). At Block 90, with no earlier checkpoint, it returns 0, assuming no prior records
+-> In Governance : Delegation means an address can loan their voting power to another address without transferring their tokens to that address

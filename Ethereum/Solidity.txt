@@ -212,8 +212,8 @@
 -> An abstract contract in Solidity doesn't need to have unimplemented functions to be considered abstract. It can be marked as abstract to indicate that it's intended only as a base contract and not for direct instantiation
 -> abi.encodeCall(function pointer , (tuple arguments)) performs a type check where as the abi.encodeWithSelector(function selector , .... ) does not perform a type check
 -> Reading Nested mapping - token.allowance(address(pool),recovery);  mapping(address => mapping(address => uint256)) public allowance;
--> 
-
+-> There are a number of common techniques which help avoid potential re-entrancy vulnerabilities in smart contracts. The first is to ( whenever possible) use the built-in transfer() function when sending ether to external contracts. The transfer function only sends 2300 gas with the external call, which isn't enough for the destination address/contract to call another contract (i.e. re-enter the sending contract)
+-> The DELEGATECALL opcode is identical to the standard message call, except that the code executed at the targeted address is run in the context of the calling contract along with the fact that msg.sender and msg.value remain unchanged. This feature enables the implementation of libraries whereby developers can create reusable code for future contracts.
 
 
 

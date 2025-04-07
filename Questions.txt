@@ -36,7 +36,11 @@ Need to check when destructing from a direct struct and a function returning a s
 -> What is EOF contract creation 
 -> Need to experiment on call data with differnt kind of variations like dynamic data types and static data types and multiple dynamic data types
 -> Need to implement one flash loan
-
+-> ERC20Snapshots and ERC20 votes
+-> Lp token pricing mechanism ( Exploit using LP price manipulation )
+-> How warpp finance exploit happened with LP tokens
+-> Cream finance hack kinda like LP Tokens manipulation uniswap v3 (https://www.youtube.com/watch?v=5zA8hOhMlPE&ab_channel=DeFiSecuritySummit)
+-> How Submnarine send and commit reveal strategy will mitigate the MEV  (libsubmarine.org)
 
 
 
