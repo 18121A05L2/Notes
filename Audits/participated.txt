@@ -1,2 +1,4 @@
-https://codehawks.cyfrin.io/c/2025-04-eggstravaganza
-https://codehawks.cyfrin.io/c/2025-03-inheritable-smart-contract-wallet
+https://codehawks.cyfrin.io/c/2025-04-eggstravaganza - NFTs ( first flight )
+https://codehawks.cyfrin.io/c/2025-03-inheritable-smart-contract-wallet - inheriting assets ( first flight )
+https://code4rena.com/audits/2025-04-kinetiq - liquid staking 
+https://code4rena.com/audits/2025-03-nudgexyz - Assets reallocation 

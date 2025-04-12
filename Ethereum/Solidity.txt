@@ -214,6 +214,23 @@
 -> Reading Nested mapping - token.allowance(address(pool),recovery);  mapping(address => mapping(address => uint256)) public allowance;
 -> There are a number of common techniques which help avoid potential re-entrancy vulnerabilities in smart contracts. The first is to ( whenever possible) use the built-in transfer() function when sending ether to external contracts. The transfer function only sends 2300 gas with the external call, which isn't enough for the destination address/contract to call another contract (i.e. re-enter the sending contract)
 -> The DELEGATECALL opcode is identical to the standard message call, except that the code executed at the targeted address is run in the context of the calling contract along with the fact that msg.sender and msg.value remain unchanged. This feature enables the implementation of libraries whereby developers can create reusable code for future contracts.
-
-
-
+-> Deleting structs does not delete containing mappings - (https://www.youtube.com/watch?v=8fNNVQv4-oY&ab_channel=OwenThurm)
+-> TypeError: Built-in unary operator delete cannot be applied to type mapping(uint256 => uint256). - we can't delete the inner mapping in below numbers mapping
+   mapping(uint256 => mapping(uint256 => uint256))  numbers
+-> mapping(string name => Person) people; (https://grok.com/share/bGVnYWN5_73760cbd-c1bc-40c6-a978-55195b4b5b24)
+   struct Person { mapping(uint256 id => uint256 age) details; uint256 favoriteNumber; }
+   favoutiteNumber - will be stored at location - keccak256(abi.encode(_name, 0)) + 1 (https://grok.com/share/bGVnYWN5_9f91ee8f-392e-489a-9b84-db09359755a7)
+   people[_name].details[_id] - will be stored at location - keccak256(abi.encode(_id, keccak256(abi.encode(_name, 0))))
+-> The value for a key in a mapping is stored at a slot calculated as keccak256(abi.encode(key, slot))
+-> deleting Arrays 
+   Dynamic Arrays: delete resets them to an empty array ([]) with length 0.
+   Static Arrays: delete resets all elements to 0, but the array keeps its original fixed length.
+-> Downcasting can still overflow or underflow ( uint256 to uint8 or uint8 to uint256 )
+-> if we have multiple contracts inherited , the super keyword will be the last inherited contract - here B will the super (contract Child is ParentA, ParentB ) :: This applies same in override(A,B)
+-> if we have two parents with same function overridden then we to Explicitly call each parent’s version functions in the current contract
+-> when using Two libraries for one type - If two libraries define the same function name for the same type, the compiler will bind the last using directive for unqualified calls
+-> In Solidity, an interface can inherit and even re‑declare the very same function signature without error - Identical declarations are merged, not duplicated
+-> Interface functions are implicitly virtual and don’t need override if there’s only one base
+      - One base → implement the function normally; no override needed.
+      - Two (or more) bases with the same signature → you must write:
+-> 

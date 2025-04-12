@@ -41,8 +41,11 @@
 -> selector signature hash collision
 -> In Erc20 approve function of openzeppelin , it was not checking whether the allowed balace user owns or not
 -> Low-level calls in Solidity, such as .call(), .delegatecall(), and .staticcall(), do not automatically revert the transaction when they fail. Instead, they return a boolean value indicating success or failure. It is up to the developer to handle the failure case appropriately. Not testing explicitly for the return value could lead to unexpected behavior in the caller contract
-
-
+-> not having a withdraw method for the contracts receiving ether is main drawback
+-> parallel data structures will always have problem at some point , like when deleting we may miss to update in the other data structure that we store related data (https://grok.com/share/bGVnYWN5_725858ab-9a70-4b57-836f-bf5ccafdab8c)
+-> Mstore in yul does not update the free memory pointer (https://www.youtube.com/watch?v=8fNNVQv4-oY&ab_channel=OwenThurm)
+-> do not use msg.value inside a loop , it can cause unexpected behaviour like - The value of msg.value is set once when the function is invoked and does not update after each iteration or external call
+-> Decoding arbitrary bytes that comes from the random address can be dangerous
 
 
 

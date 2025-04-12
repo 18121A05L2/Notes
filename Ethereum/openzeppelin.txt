@@ -1,0 +1,11 @@
+-> The EnumerableSet library from OpenZeppelin provides a powerful tool for managing collections of unique values in Solidity. It offers efficient ways to store, retrieve, and enumerate over sets of data, making it perfect for use cases like access control, governance, and token management.
+-> As of now EnumerableSet supports  - Bytes32Set , AddressSet and UintSet
+-> About _disableInitializers() - https://grok.com/share/bGVnYWN5_29c70810-f989-40ad-98bc-0f2199e815cc
+-> reinitializer() - https://grok.com/share/bGVnYWN5_752bc8fd-3875-4f15-96ff-2f22ccaf6911
+-> Difference between EnumerableSet and EnumerableMap - https://grok.com/share/bGVnYWN5_42cab544-afaf-4ae3-983b-bb738810d04d
+-> keyvalue paris of EnumerableMap - https://grok.com/share/bGVnYWN5_afffd22d-1c05-4d8b-aa27-47d379f3d898
+-> 
+
+
+
+

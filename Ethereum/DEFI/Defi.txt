@@ -1,0 +1,4 @@
+-> Flash loans are unsecured (uncollateralized) loans where a borrower must repay their entire loan back to a lender in the same transaction
+    Advantages - Trading Arbitrage , Collateral Swap ( swapping the collateral locked asset that we have pledged ) and self liquidation
+    Fee in AAve - 0.09%
+
