@@ -219,7 +219,7 @@
    mapping(uint256 => mapping(uint256 => uint256))  numbers
 -> mapping(string name => Person) people; (https://grok.com/share/bGVnYWN5_73760cbd-c1bc-40c6-a978-55195b4b5b24)
    struct Person { mapping(uint256 id => uint256 age) details; uint256 favoriteNumber; }
-   favoutiteNumber - will be stored at location - keccak256(abi.encode(_name, 0)) + 1 (https://grok.com/share/bGVnYWN5_9f91ee8f-392e-489a-9b84-db09359755a7)
+   favoriteNumber - will be stored at location - keccak256(abi.encode(_name, 0)) + 1 (https://grok.com/share/bGVnYWN5_9f91ee8f-392e-489a-9b84-db09359755a7)
    people[_name].details[_id] - will be stored at location - keccak256(abi.encode(_id, keccak256(abi.encode(_name, 0))))
 -> The value for a key in a mapping is stored at a slot calculated as keccak256(abi.encode(key, slot))
 -> deleting Arrays 
@@ -233,4 +233,5 @@
 -> Interface functions are implicitly virtual and don’t need override if there’s only one base
       - One base → implement the function normally; no override needed.
       - Two (or more) bases with the same signature → you must write:
--> 
+-> solidity supports negative numbers -     int8   public smallNeg = -128;  // min of int8
+-> singed integers wont revert -   int256 public a = 10-20;

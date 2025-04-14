@@ -1,4 +1,6 @@
 -> Flash loans are unsecured (uncollateralized) loans where a borrower must repay their entire loan back to a lender in the same transaction
     Advantages - Trading Arbitrage , Collateral Swap ( swapping the collateral locked asset that we have pledged ) and self liquidation
     Fee in AAve - 0.09%
-
+-> When a insolvency occurs , we need to be careful about the revert of the underflow as the losses will be more than the collateral assert (as we dont have negative number here)
+-> Loan-to-Value (LTV) ratio is the ratio of the loan amount to the total value of the collateral.
+-> 

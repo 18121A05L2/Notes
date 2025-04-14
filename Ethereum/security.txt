@@ -46,6 +46,18 @@
 -> Mstore in yul does not update the free memory pointer (https://www.youtube.com/watch?v=8fNNVQv4-oY&ab_channel=OwenThurm)
 -> do not use msg.value inside a loop , it can cause unexpected behaviour like - The value of msg.value is set once when the function is invoked and does not update after each iteration or external call
 -> Decoding arbitrary bytes that comes from the random address can be dangerous
+-> stepwise jumps - we can always find some Bugs with this ( user can deposit the assets before the price appreciation and then withdraw after that )
+    - Reward compounds , redeeming rewards ( sandwich attacks , front running )
+    - Interest rate updates , reward rate updates ( usually updated by the trusted protocol admins)
+    - Inflaction Attacks (depending on the balanceOf)
+
+
+
+
+
+
+
+
 
 
 

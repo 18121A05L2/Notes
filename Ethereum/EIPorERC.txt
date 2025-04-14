@@ -53,3 +53,6 @@
 -> ERC-3156: Flash Loans
 
 -> ERC4626 : Vaults
+
+-> EIP-4788 :  is an Ethereum Improvement Proposal introducing a mechanism for the
+   execution layer of Ethereum mainnet to access the beacon roots of the consensus layer
