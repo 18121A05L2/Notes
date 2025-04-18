@@ -1,0 +1,2 @@
+-> Single-step Ownership Transfer Pattern Can Be Dangerous - Consider using the OpenZeppelin's `Ownable2Step` instead of `Ownable`
+-> 

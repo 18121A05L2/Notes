@@ -1,0 +1,9 @@
+--> updating package inside a package
+    In this example, any instance of multer used by express-openapi-validator will be overridden to version 1.4.4-lts.1. This method is particularly useful for addressing vulnerabilities or ensuring consistency across your dependency tree
+    {
+        "overrides": {
+            "express-openapi-validator": {
+                "multer": "1.4.4-lts.1"
+                }
+        }
+    }

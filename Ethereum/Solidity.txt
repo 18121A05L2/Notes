@@ -189,7 +189,7 @@
    - CREATE2(amount, offset, size , salt)
    - add is an EVM opcode (0x01) that performs addition. bytecode is a pointer to the start of the bytes array. add(bytecode, 32) shifts the pointer past the first 32 bytes (which store the length), directly to the actual bytecode
    - CREATE2 makes the deployed contract's address depend on the deployer's address, so: If a different contract deploys using the same salt and bytecode, the address would be different because the deployer is different
-   - CREATE2 automatically uses the deployer’s address (i.e., address(this)) as part of its address calculation.
+   - CREATE2 automatically uses the deployer's address (i.e., address(this)) as part of its address calculation.
 -> using <LibraryName> for <Type> , if we use Type as * , then that library function will be used by all functions
 -> stack too deep error is only for if we have more than 14 variables in one single function if we can split to two functions then there wont be issue
 -> Unlike traditional (legacy) EVM bytecode, which is a single, flat sequence of instructions, EOF uses a container format that organizes code and data into distinct sections
@@ -207,7 +207,7 @@
 -> for two dimentional array in function parameters , the call data will be - selector + location for multi dimentional array + lenth of the multi dimentional array + location of first array + location of second array (( This Applies same for the array of strings too - string[])) - https://docs.soliditylang.org/en/v0.8.19/abi-spec.html#use-of-dynamic-types
 -> Assuming positions in CALLDATA with dynamic types can be erroneous, especially when using hard-coded CALLDATA positions. - https://ethernaut.openzeppelin.com/level/0xb2aBa0e156C905a9FAEc24805a009d99193E3E53
 -> assigning values to variables dynamically - require((shares = previewDeposit(assets)) != 0, "ZERO_SHARES");
--> you can append curly-brace options (like {value: amount} or even {value: amount, gas: someGas}) to any function call. This syntax tells the EVM to send the specified Ether along with the call. Just make sure that the function you’re calling is declared as payable; otherwise, the transaction will revert
+-> you can append curly-brace options (like {value: amount} or even {value: amount, gas: someGas}) to any function call. This syntax tells the EVM to send the specified Ether along with the call. Just make sure that the function you're calling is declared as payable; otherwise, the transaction will revert
 -> Meta-transactions are a mechanism that allows users to interact with a blockchain without needing to hold the native cryptocurrency (like ETH on Ethereum) to pay for gas. Instead, users sign a transaction off-chain, and a third party (often called a relayer) submits that transaction on-chain on their behalf. The relayer pays the gas fee, and later may be compensated by the user or by the protocol - userful for gasless transactions
 -> An abstract contract in Solidity doesn't need to have unimplemented functions to be considered abstract. It can be marked as abstract to indicate that it's intended only as a base contract and not for direct instantiation
 -> abi.encodeCall(function pointer , (tuple arguments)) performs a type check where as the abi.encodeWithSelector(function selector , .... ) does not perform a type check
@@ -227,11 +227,12 @@
    Static Arrays: delete resets all elements to 0, but the array keeps its original fixed length.
 -> Downcasting can still overflow or underflow ( uint256 to uint8 or uint8 to uint256 )
 -> if we have multiple contracts inherited , the super keyword will be the last inherited contract - here B will the super (contract Child is ParentA, ParentB ) :: This applies same in override(A,B)
--> if we have two parents with same function overridden then we to Explicitly call each parent’s version functions in the current contract
+-> if we have two parents with same function overridden then we to Explicitly call each parent's version functions in the current contract
 -> when using Two libraries for one type - If two libraries define the same function name for the same type, the compiler will bind the last using directive for unqualified calls
--> In Solidity, an interface can inherit and even re‑declare the very same function signature without error - Identical declarations are merged, not duplicated
--> Interface functions are implicitly virtual and don’t need override if there’s only one base
+-> In Solidity, an interface can inherit and even re-declare the very same function signature without error - Identical declarations are merged, not duplicated
+-> Interface functions are implicitly virtual and don't need override if there's only one base
       - One base → implement the function normally; no override needed.
       - Two (or more) bases with the same signature → you must write:
 -> solidity supports negative numbers -     int8   public smallNeg = -128;  // min of int8
 -> singed integers wont revert -   int256 public a = 10-20;
+-> transfering zero ether can also triggers the fallback functions

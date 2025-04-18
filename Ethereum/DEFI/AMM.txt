@@ -4,10 +4,10 @@
 From the above equations we can get the below two equations
 -> reserve of x**2 = K / price of x
 -> reserve of y**2 = K * price of y
--> At a price of 4000 USDT/ETH: ( invested 1 eth at 2000 price )
--> Our share in the liquidity is = liq of ours / current total liquidity
+-> Our share in the liquidity is = liquidity of ours / current total liquidity
 -> When liquidity is added, K changes because the total pool size has increased—but each liquidity provider's share is then calculated as a fraction of the new total liquidity
 -> x*y = (x + deltax) * (y - deltay)
+-> At a price of 4000 USDT/ETH: ( invested 1 eth at 2000 price )
 Pool Reserves: Approximately 0.7071 ETH and 2828.43 USDT.
 Total Value upon Removal: ~5656.86 USDT.
 Impermanent Loss: ~343.14 USDT compared to simply holding.
@@ -60,13 +60,13 @@ Entirely in USDT: approximately 4773 USDT.
 At 5000 USDT/ETH (Far Above Range):
 Still entirely in USDT: approximately 4773 USDT.
 ---------- Token to provide for LP ranges ----------------
-For a 1000–3000 range:
+For a 1000-3000 range:
 Deposit: ~1 ETH and ~3193 USDC.
 
-For a 1000–2100 range:
+For a 1000-2100 range:
 Deposit: ~1 ETH and ~24,648 USDC.
 
-For a 1900–2100 range:
+For a 1900-2100 range:
 Deposit: ~1 ETH and ~2130 USDC.
 
 Range [1999, 2001]:

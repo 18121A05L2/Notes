@@ -22,3 +22,5 @@
        -> blobs are breaked into tiny pieces to stored as distrubuted with the help of the bittorrent like architecture
 
 --> possible scalability solutions  - sharding , roll ups , proto Danksharding , lightening network , Plasma and state channels
+--> MEV is not possible in layer2 as we dont have mempool here and the sequencer will be deciding the transactions ordering
+--> 

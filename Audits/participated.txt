@@ -2,3 +2,10 @@ https://codehawks.cyfrin.io/c/2025-04-eggstravaganza - NFTs ( first flight )
 https://codehawks.cyfrin.io/c/2025-03-inheritable-smart-contract-wallet - inheriting assets ( first flight )
 https://code4rena.com/audits/2025-04-kinetiq - liquid staking (like lido in ethereum ecosystem)
 https://code4rena.com/audits/2025-03-nudgexyz - Assets reallocation 
+https://codehawks.cyfrin.io/c/2025-02-datingdapp - dating app ( first flight )
+https://codehawks.cyfrin.io/c/2025-01-pieces-protocol - A new marketplace where users can buy a fraction of an nft ( first flight )
+
+
+
+
+forge install https://github.com/foundry-rs/forge-std --no-commit && forge install https://github.com/OpenZeppelin/openzeppelin-contracts --no-commit 

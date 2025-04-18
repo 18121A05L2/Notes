@@ -48,3 +48,11 @@
 --> Installing multiple versions of same dependency - forge install openzeppelin-contracts-v3=Openzeppelin Gihub link
 --> When you start a prank with vm.startPrank(player), all subsequent calls occur in a single simulated transaction. In this context, the account’s nonce isn’t incremented between calls because they're not separate transactions—they're part of one execution context.
 --> Reading Private key - deployerKey = vm.envUint("PRIVATE_KEY");
+--> vm.startPrank only pranks the msg.sender on external contract calls.
+    - Internal calls (including library/internal functions and console.log in your test) remain in the original execution context.
+        vm.startPrank(admin);
+        console.log("admin : ", admin);
+        console.log("msg.sender : ", msg.sender);
+    - here msg.sender and admin were different
+--> vm.warp(1 horus) - Absolute warps do NOT accumulate—they just set the timestamp to the given value.
+    vm.warp(block.timestamp + 1) - Relative warps accumulate, so the timestamp is moved forward by the given value.
