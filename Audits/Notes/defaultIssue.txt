@@ -2,8 +2,6 @@
 
 ## vulnerability details
 
-## Test to check
-
 ## POC
 
 ## impact - Low

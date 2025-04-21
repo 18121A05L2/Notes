@@ -236,3 +236,6 @@
 -> solidity supports negative numbers -     int8   public smallNeg = -128;  // min of int8
 -> singed integers wont revert -   int256 public a = 10-20;
 -> transfering zero ether can also triggers the fallback functions
+-> Mappings default to zero-initialized structs. Fetching games[_gameId] when no game exists yields a Game where every field is “zero” (numeric fields → 0; addresses → 0x0; bytes → 0x00…; enums → first member (https://codehawks.cyfrin.io/c/2025-04-rock-paper-scissors)
+-> Enums - When you fetch a struct from a mapping that has never been written to, Solidity returns the “zero-state” for that struct: every field is set to its type's default value. For enums, the default is the first member (the one with index 0)
+-> Mappings always return a value for any key, even if never set. All fields are their type’s defaults (numbers → 0; addresses → 0x0; enums → first member)
