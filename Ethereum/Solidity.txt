@@ -238,13 +238,13 @@
 -> transfering zero ether can also triggers the fallback functions
 -> Mappings default to zero-initialized structs. Fetching games[_gameId] when no game exists yields a Game where every field is “zero” (numeric fields → 0; addresses → 0x0; bytes → 0x00…; enums → first member (https://codehawks.cyfrin.io/c/2025-04-rock-paper-scissors)
 -> Enums - When you fetch a struct from a mapping that has never been written to, Solidity returns the “zero-state” for that struct: every field is set to its type's default value. For enums, the default is the first member (the one with index 0)
--> Mappings always return a value for any key, even if never set. All fields are their type’s defaults (numbers → 0; addresses → 0x0; enums → first member)
+-> Mappings always return a value for any key, even if never set. All fields are their type's defaults (numbers → 0; addresses → 0x0; enums → first member)
 -> Gas efficiency: Transient storage ops (TSTORE/TLOAD) cost ~100 gas each vs. 20 000 gas for SSTORE, reducing approval costs by an order of magnitude
 -> Currently, Temporary Approve cannot be used by externally owned accounts (EOAs), as EOAs cannot currently make multiple calls within a single transaction.
 -> Solidity's C3 linearization algorithm ensures that in a multiple-inheritance scenario each base contract (like ERC20Upgradeable) is included only once in the storage layout, preventing duplicate state slots even if it appears in two inheritance paths
    - contract ParetoDollarStaking is ERC20Upgradeable, ERC4626Upgradeable ( here ERC4626Upgradeable is already inheriting the ERC20 )
 -> The contract Inherited was the derived contract (ParetoDollarStaking) and the contracts that we are inheriting are the base contract (ERC20Upgradeable)
--> __ERC20_init_unchained: This is a more focused initializer. It only sets up the ERC20-specific state and doesn’t call the parent’s initializer, giving you control when the parent’s initialization needs to happen separately. ()
+-> __ERC20_init_unchained: This is a more focused initializer. It only sets up the ERC20-specific state and doesn't call the parent's initializer, giving you control when the parent's initialization needs to happen separately. ()
 
 
 

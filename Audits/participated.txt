@@ -5,6 +5,7 @@ https://code4rena.com/audits/2025-03-nudgexyz - Assets reallocation
 https://codehawks.cyfrin.io/c/2025-02-datingdapp - dating app ( first flight )
 https://codehawks.cyfrin.io/c/2025-01-pieces-protocol - A new marketplace where users can buy a fraction of an nft ( first flight )
 https://codehawks.cyfrin.io/c/2025-04-rock-paper-scissors - Rock paper scissors ( first flight )
+https://audits.sherlock.xyz/contests/920?filter=questions - Synthetic dollars ( like stablecoins )
 
 
 

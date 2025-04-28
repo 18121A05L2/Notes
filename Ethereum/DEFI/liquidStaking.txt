@@ -1,8 +1,8 @@
 -> liquid staking builds upon existing staking systems by unlocking liquidity for staked tokens ( like getting stETH for ETH for staking )
 -> Liquid staking provides all of the benefits of traditional staking services while unlocking the value of staked assets for use as collateral across the DeFi ecosystem
 -> validators in liquid staking - (https://grok.com/share/bGVnYWN5_8052d314-ca39-419f-9579-9ff3537f964b)
--> In short, Lido stakes the ETH on the beacon chain using keys from trusted operators, but the ETH stays within Lido’s control, not in the operators’ hands
--> The withdrawal credentials in the deposit transaction point to Lido’s smart contract, not the node operator’s address
+-> In short, Lido stakes the ETH on the beacon chain using keys from trusted operators, but the ETH stays within Lido's control, not in the operators' hands
+-> The withdrawal credentials in the deposit transaction point to Lido's smart contract, not the node operator's address
 -> validators keys sharing mechanism -(https://grok.com/share/bGVnYWN5_036e057e-0c0b-422c-af88-608a61f67774)
 -> when we stake eth under validator , these staked ether linked to the withdrawl address and only they can able to withdraw the staked ether and rewards
 -> oracles in lido - https://grok.com/share/bGVnYWN5_03b8d0a8-09a5-4d78-aa9f-e350bc1eee6f

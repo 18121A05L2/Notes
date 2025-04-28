@@ -40,13 +40,13 @@
 --> Foundry wallets are store in this location - ~/.foundry/keystores/
 --> makePersistant- Each fork (createFork) has its own independent storage, which is also replaced when another fork is selected (selectFork). 
     By default, only the test contract account and the caller are persistent across forks, which means that changes to the state of the test 
-    contract (variables) are preserved when different forks are selected. This way data can be shared by storing it in the contract’s variables
+    contract (variables) are preserved when different forks are selected. This way data can be shared by storing it in the contract's variables
 --> via_ir=true or --via-ir for New Intermedite Representation
 --> Solidity can generate EVM bytecode in two different ways: Either directly from Solidity to EVM opcodes (“old codegen”) 
     or through an intermediate representation (“IR”) in Yul (“new codegen” or “IR-based codegen”)
 --> cast 4byte 0xdd62ed3e
 --> Installing multiple versions of same dependency - forge install openzeppelin-contracts-v3=Openzeppelin Gihub link
---> When you start a prank with vm.startPrank(player), all subsequent calls occur in a single simulated transaction. In this context, the account’s nonce isn’t incremented between calls because they're not separate transactions—they're part of one execution context.
+--> When you start a prank with vm.startPrank(player), all subsequent calls occur in a single simulated transaction. In this context, the account's nonce isn't incremented between calls because they're not separate transactions—they're part of one execution context.
 --> Reading Private key - deployerKey = vm.envUint("PRIVATE_KEY");
 --> vm.startPrank only pranks the msg.sender on external contract calls.
     - Internal calls (including library/internal functions and console.log in your test) remain in the original execution context.

@@ -1,1 +1,1 @@
--> O(1) refers to constant complexity, where the algorithm’s performance is not affected by the input size, while O(n) refers to linear complexity, where algorithm performance scales linearly with the input size.
+-> O(1) refers to constant complexity, where the algorithm's performance is not affected by the input size, while O(n) refers to linear complexity, where algorithm performance scales linearly with the input size.
