@@ -41,7 +41,8 @@ Need to check when destructing from a direct struct and a function returning a s
 -> How warpp finance exploit happened with LP tokens
 -> Cream finance hack kinda like LP Tokens manipulation uniswap v3 (https://www.youtube.com/watch?v=5zA8hOhMlPE&ab_channel=DeFiSecuritySummit)
 -> How Submnarine send and commit reveal strategy will mitigate the MEV  (libsubmarine.org)
-
+-> what is polymarket
+-> we can use ERC-1967 for all the proxy , implementation and for Prevent collision among logic contract modules state , why we need an extra erc standard for that
 
 
 
