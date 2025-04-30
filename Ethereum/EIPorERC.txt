@@ -17,8 +17,7 @@
 -> ERC-165 
    Standarad Interface Detection
 
--> EIP - 191
-   Signatures and Verifications
+-> EIP - 191 - Standardizing Signatures , 712 - Making Signatures Readable - https://www.cyfrin.io/blog/understanding-ethereum-signature-standards-eip-191-eip-712
 
 -> ERC - 4334 - Account Abstraction
 
@@ -28,7 +27,7 @@
 
 -> EIP - 1967 - Proxy storage slots
 
--> EIP - 191 - Standardizing Signatures , 712 - Making Signatures Readable - https://www.cyfrin.io/blog/understanding-ethereum-signature-standards-eip-191-eip-712
+-> ERC - 7201: Namespaced Storage Layout -  /// @custom:storage-location <FORMULA_ID>:<NAMESPACE_ID>
 
 -> ERC - 5792 - Wallet Call Api Methods ( APPS calls to the Wallets to know Info about what our Account is capable of )
 
@@ -46,8 +45,6 @@
 
 -> EIP-4444: Bound Historical Data in Execution Clients
 
--> Chian Abstraction ?
-
 -> RIP - L1SLOAD - relying the state root from L1 to L2 in a verifiable way
 
 -> ERC-3156: Flash Loans
@@ -56,6 +53,4 @@
 
 -> EIP-4788 :  is an Ethereum Improvement Proposal introducing a mechanism for the
    execution layer of Ethereum mainnet to access the beacon roots of the consensus layer
-
--> ERC-7201: Namespaced Storage Layout -  /// @custom:storage-location <FORMULA_ID>:<NAMESPACE_ID>
 

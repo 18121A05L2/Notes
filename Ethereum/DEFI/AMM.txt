@@ -34,6 +34,8 @@ The pool rebalances to roughly 141.42 ETH and 14.14 USDT. The total value become
 In contrast, holding your original tokens would be worth about 2000.1 USDT. This demonstrates an extreme 
 impermanent loss where the vast majority of value is lost.
 
+------------------------------ Concentrated liquidity ---------------------------------------------------------
+
 -> Total liquidity fees Percentage -  ( his LP tokens / Total number of LP tokens ) *100
 For CONCENTRATED LIQUIDITY ( user enters at 2000 Eth price with LP range was 1500 to 2000)
 user provided liquidy - 1 ether and 2540 usdt

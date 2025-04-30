@@ -10,14 +10,12 @@
 -> what are the two 2 APIs used to interact with smart contract - EX : eth_sendTransaction , eth_call
 -> what is gas - an abstract unit to measure the transaction cost
     - a unit of resource consumption in a blocchain
--> how to retrive the current time stamp in solidity - block.timestamp
 -> custom data structure in solidity - struct ( like an object ) and enum ( a varient of same data) , enum StatusEnum { Waiting, InProgress, Finished }
 -> Solidity only allows state variable initialization directly with constant values or in the constructor and state modification only inside of a function
 -> Arrays 
     - uint256[3] public variables; // fixed size array - we can't push to a fixed size array , can only update using indexing
     - uint256[] public variables; // dynamic size array - we can push to a dynamic size array
     - uint256[] public variables = new uint256[](3); // dynamic size array with predefined size - we can push to a dynamic size array ( if we push a new element size becomes 4 )
--> is it necessary to make an address payable to transfer ERC-20 token - no , because payable is only required to transfer Ether
 -> Why Not Directly Add string.length?
     - Strings are complex: A string's length in bytes is not always equivalent to the number of visible characters, especially for UTF-8 encoded strings where some characters take up multiple bytes.
     - If .length were directly available on strings, developers might mistakenly assume it represents the number of characters, while it would actually represent the number of bytes.
@@ -32,7 +30,7 @@
             }
             return size > 0;
         }
--> why can we define all types of arrays in memory location but not mappings in solidity
+-> why can we define all types of arrays in memory location but not for mappings in solidity (using memory will takes less gas , where as the mappings serve from storage)
 -> Experience with zk rollups like Scroll, Taiko, zkSync
 -> ZK libraries such as Plonky3, halo2, circom, Groth16, sp1, r1cs
 

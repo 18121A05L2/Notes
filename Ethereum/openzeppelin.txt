@@ -2,7 +2,8 @@
 -> As of now EnumerableSet supports  - Bytes32Set , AddressSet and UintSet
 -> About _disableInitializers() - https://grok.com/share/bGVnYWN5_29c70810-f989-40ad-98bc-0f2199e815cc
 -> reinitializer() - https://grok.com/share/bGVnYWN5_752bc8fd-3875-4f15-96ff-2f22ccaf6911
--> onlyInitializing - Restricts a function to be called only during an ongoing initialization ( initializer modifier in parent contract )
+    - You've upgraded the contract: You've deployed a new implementation (e.g., MyTokenV2) and the proxy now points to it.
+-> onlyInitializing - Restricts a function to be called only during an ongoing initialization ( when initializer modifier in parent contract triggers )
     - Checks that an initialization is already in progress (via the flag set by initializer) before allowing execution
     - It doesn't start the initialization process itself but works within it
     - Usually internal, as it's meant for use within the contract's inheritance hierarchy
@@ -15,13 +16,19 @@
     - Computes the slot via keccak256("pareto.storage.EmergencyUtils")
 -> ERC-1967 (EIP-1967) defines unstructured proxy storage slots
     - If you're deploying or interacting with an upgradeable proxy (Transparent or UUPS), you rely on ERC-1967 to manage the proxy's own slots safely 
-    - If your logic contract has a complex state spanning multiple facets or concerns, and you want to namespace those state variables to avoid layout drift, adopt ERC-7201 alongside your proxy setup
--> Always use ERC-1967 for proxy deployments to isolate implementation/admin pointers—this is non-negotiable for Transparent or UUPS proxies 
+    - If your logic contract has a complex state spanning multiple facets or contracts, and you want to namespace those state variables to avoid layout drift, adopt ERC-7201 alongside your proxy setup
+-> Always use ERC-1967 for proxy deployments to isolate implementation/admin pointers — this is non-negotiable for Transparent or UUPS proxies 
     Opt-in to ERC-7201 when your implementation contract comprises multiple independent modules, mixins, or facets that each define their own state—this prevents internal collisions and eases maintenance
--> Despite ERC-1967 providing a robust solution for segregating proxy metadata (implementation, admin, beacon pointers) from a logic contract's state, it does not address storage collisions within the logic contract itself when that contract spans multiple modules or facets. ERC-7201 fills this gap by introducing a namespaced storage layout: each module declares its own struct annotated with a unique identifier, and the slot is derived via keccak256(namespace), guaranteeing isolation between modules at upgrade time 
-. Together, ERC-1967 and ERC-7201 enable end-to-end collision safety across both proxy and application storage in upgradeable systems
+-> Despite ERC-1967 providing a robust solution for segregating proxy metadata (implementation, admin, beacon pointers) from a logic contract's 
+    state, it does not address storage collisions within the logic contract itself when that contract spans multiple modules or facets. 
+    ERC-7201 fills this gap by introducing a namespaced storage layout: each module declares its own struct annotated with a unique identifier, 
+    and the slot is derived via keccak256(namespace), guaranteeing isolation between modules at upgrade time . Together, ERC-1967 and 
+    ERC-7201 enable end-to-end collision safety across both proxy and application storage in upgradeable systems
 -> verkle trees - ~bytes32(uint256(0xff)) - (https://grok.com/share/bGVnYWN5_b1e677c5-cf2c-493e-b157-d45ff866acc6)
     - (https://grok.com/share/bGVnYWN5_4a8e6bde-5001-4989-a4d2-c7d07c1363be)
+-> Revoke is an action taken by an authority or a party with the power to cancel something. Renounce is a voluntary act of giving up or rejecting something
+-> Enumerate (iterate over)
+-> function as parameter - function sort( uint256[] memory array,function(uint256, uint256) pure returns (bool) comp) internal pure returns (uint256[] memory)
 
 
 

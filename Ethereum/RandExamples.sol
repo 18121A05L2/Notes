@@ -1,5 +1,5 @@
 contract RandExamples {
-    //---------------------
+    //--------------------- Deleting structs does not delete containing mappings -----------------
     struct Person {
         mapping(uint256 id => uint256 age) details;
     }
