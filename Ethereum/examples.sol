@@ -126,3 +126,82 @@ contract ExampleOptimized {
 // Lower stack-to-memory conversion overhead.
 
 // ----------------------------------------------------------------------------------------------
+
+contract NFT {
+    // ex : data:application/json;base64,eyJuYW1lIjoiUHVwcHkgUmFmZmxlIiwgImRlc2NyaXB0aW9uIjoiQW4gYWRvcmFibGUgcHVwcHkhIiwgImF0dHJpYnV0ZXMiOiBbeyJ0cmFpdF90eXBlIjogInJhcml0eSIsICJ2YWx1ZSI6IGNvbW1vbn1dLCAiaW1hZ2UiOiJpcGZzOi8vUW1Tc1lSeDNMcERBYjFHWlFtN3paMUF1SFpqZmJQa0Q2SjdzOXI0MXh1MW1mOCJ9
+    function _baseURI() internal pure returns (string memory) {
+        return "data:application/json;base64,";
+    }
+    // function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+    //     require(_exists(tokenId), "PuppyRaffle: URI query for nonexistent token");
+
+    //     uint256 rarity = tokenIdToRarity[tokenId];
+    //     string memory imageURI = rarityToUri[rarity];
+    //     string memory rareName = rarityToName[rarity];
+
+    //     return string(
+    //         abi.encodePacked(
+    //             _baseURI(),
+    //             Base64.encode(
+    //                 bytes(
+    //                     abi.encodePacked(
+    //                         '{"name":"',
+    //                         name(),
+    //                         '", "description":"An adorable puppy!", ',
+    //                         '"attributes": [{"trait_type": "rarity", "value": ',
+    //                         rareName,
+    //                         '}], "image":"',
+    //                         imageURI,
+    //                         '"}'
+    //                     )
+    //                 )
+    //             )
+    //         )
+    //     );
+    // }
+}
+
+// ------------------------------------ SelfDestructs victim -------------------------------------
+
+/**
+ * @title SelfDestructer
+ * @notice This contract contains a function that calls selfdestruct.
+ *         When executed via delegatecall, it will self-destruct the calling contract.
+ */
+contract SelfDestructer {
+    function doSelfDestruct(address payable beneficiary) public {
+        // When delegatecalled, selfdestruct will affect the calling contract
+        selfdestruct(beneficiary);
+    }
+}
+
+/**
+ * @title Victim
+ * @notice This contract does not contain any direct selfdestruct calls.
+ *         However, it provides a function that uses delegatecall so that external code
+ *         (such as from SelfDestructer) can be executed in its context.
+ */
+contract Victim {
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    /**
+     * @notice Executes a delegatecall to the target contract with the provided data.
+     * @dev When target is SelfDestructer and data is the encoded call to doSelfDestruct,
+     *      this function will cause the Victim contract to self-destruct.
+     * @param target The contract whose code will be executed via delegatecall.
+     * @param data The calldata to send to the target.
+     */
+    function executeDelegatecall(address target, bytes calldata data)
+        public
+        returns (bool, bytes memory)
+    {
+        require(msg.sender == owner, "Not owner");
+        return target.delegatecall(data);
+    }
+}
+
+// ----------------------------------------------------------------------------------------------------

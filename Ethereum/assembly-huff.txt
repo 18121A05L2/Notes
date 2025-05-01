@@ -4,8 +4,10 @@
 -> PUSH1 optcode will push hex values into the stack , ADD optocde will pull those and add those and push the result back to the stack
 -> cast --to-base 0xF0102 bin -- will give 0b11110000000100000010
 -> hex , bin , dec 
--> CALLDATALOAD - loads 32 bytes from the calldata by removing the number of bytes we provided as stack input ( EX : if we give zero it wold store from the 0th byte of the calldata , and for 1 it would store from 1st byte of the calldata (removing first byte) )
+-> CALLDATALOAD - loads 32 bytes from the calldata by removing the number of bytes we provided as stack input ( EX : if we give zero it wold store
+    from the 0th byte of the calldata , and for 1 it would store from 1st byte of the calldata (removing first byte) )
 -> run time byteCode - huffc <FileLocaltion> --bin-runtime
--> JUMPDEST is a marker for valid jump locations in EVM bytecode, ensuring safe and predictable control flow for smart contracts. Without it, arbitrary jumps could break contract logic or create security vulnerabilities
+-> JUMPDEST is a marker for valid jump locations in EVM bytecode, ensuring safe and predictable control flow for smart contracts. Without it, 
+    arbitrary jumps could break contract logic or create security vulnerabilities
 -> dedaub - decompiler
 -> ls dependencies - will list all soldeer dependencies

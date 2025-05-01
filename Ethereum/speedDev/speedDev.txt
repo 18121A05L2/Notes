@@ -1,0 +1,4 @@
+-> git reset --soft HEAD~1
+    - The --soft option means that you will not lose the uncommitted changes you may have.
+    - git revert <commit to revert>
+-> command + w - to close the current working file in vs code 

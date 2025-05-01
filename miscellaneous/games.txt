@@ -1,0 +1,6 @@
+-> Rock paper scissors
+Rock crushes Scissors
+Scissors cuts Paper
+Paper covers Rock
+
+-> 

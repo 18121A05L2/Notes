@@ -1,0 +1,24 @@
+## summary
+
+## vulnerability details
+
+## POC
+
+## impact - Low
+
+## likelyhood - Low
+
+## Recommendations
+
+-------------------------------------------------------------------------------------
+
+# [S-#] TITLE (Root Cause + Impact)
+# Description:
+
+# Impact:
+
+# Proof of Concept:
+
+# Recommended Mitigation:
+
+-------------------------------------------------------------------------------------

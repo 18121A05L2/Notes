@@ -9,7 +9,7 @@
 
 
 
------ NATIVE ANSTRACTION -------
+----- NATIVE ACCOUNT ABSTRACTION -------
 
 -> each operation will be sub divided into individual frame for faster execution
 -> Each block builder can run independently on the same state and the overall block execution will be done once all individaul transactions are completed to check any transactions are invalid 

@@ -1,8 +1,41 @@
--> Event logs in solidity are stored as - topics[0] will be the selector and topics[1] will be the index params if we have
--> Stateless Fuzz Testing : Where the state of the previous run is discarded for every new run.
--> Stateful Fuzz Testing : Where the final state of the previous run is the starting state of the next run
+-> Event logs in Foundry tests are stored as - topics[0] will be the selector and topics[1...n] will be the index params ( where n is the numner of indexed variables and n <=3 )
+    - https://book.getfoundry.sh/cheatcodes/get-recorded-logs
+        //         struct Log {
+        //          bytes32[] topics;
+        //          bytes     data;   // we need to decode all the non indexed variables using these
+        //          address   emitter;
+        //         }
+-> Stateless (Fuzz) Fuzz Testing : Where the state of the previous run is discarded for every new run.
+-> Stateful (Invarient) Fuzz Testing : Where the final state of the previous run is the starting state of the next run
 -> In an individaul test follow these steps -> Arrange , Act and Assert
 -> (Stateless) Fuzz test - random data for a single function
 -> (Stateful) Invarient tests - Random data and random function calls to many functions ( function name should be invariant_* )
--> vm.prank only pranks for the next call 
+-> Linearization of inheritance graph impossible in solidity -- Solidity expects the list to be from most base-like to most derived
+    - https://grok.com/share/bGVnYWN5_73c3a28c-1d6c-4188-b931-cae873a8d599
+-> usage of beforeTestSetup --   function beforeTestSetup(bytes4 testSelector) public returns (bytes[] memory beforeTestCalldata) {}
+    - This is helpful when we have want to call certain tests (testA which has state changes needed by testC ) every time before calling another test ( testC)
+    - Think of this a modifier perspective , there we check for conditions here we wait for state updation
+-> if you add logs in beforeTestSetup function it wont log because that was used for how to seequence the tests
+-> Invarient - the property of the system that should always hold true
+-> Formal verification 
+    - types ( symbolic execution , abstract intrepretation , Model checking )
+    - This process often involves the time-consuming task of manually writing the specifications using a specialized language (that many developers will need to learn first).
+    - Halmos is a formal verification tool designed for symbolic testing. Instead of requiring separate specifications or learning a new language, Halmos uses existing tests as formal specifications
+-> Branches in forge coverage - shows the percentage of conditional branches (like if/else or ternary operators) that were execute
+-> % Statements in forge coverage 
+    - The distinction is significant because achieving 100% line coverage doesn't necessarily mean that all statements have been tested. If multiple statements exist on a single line, some might be executed while others are not, leading to discrepancies between line and statement coverage percentages
+    - Ex : uint256 a = 5; uint256 b = 10;  Here, one line contains two statements
+-> To run Echidna in mac - docker run --platform linux/amd64 -it --rm -v $PWD:/code trailofbits/eth-security-toolbox
+    - echidna testEchidna.sol --contract TestEchidna        --limit-times 500 --config time.yaml
+    - A Fast Smart Contract Fuzzer
+-> Testing the properties with fuzzing - Echidna and Medusa
+-> seed varaible in Fuzz - Reproducibility is critical for debugging. By setting a specific seed, you can rerun the exact same sequence of inputs 
+    to investigate a failure or verify a fix. Without a seed, the inputs would be different each time, making it harder to replicate issues
+-> (Open invariant Testing) fail_on_revert = true: The test fails immediately if any transaction reverts.
+-> (Handler Invariant Testing) fail_on_revert = false: The test continues even if transactions revert, failing only if an invariant is violated
+-> Mutation testing is like testing how good your testing framework by changing the code and see what happens
 -> 
+
+
+
+

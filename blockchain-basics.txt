@@ -2,7 +2,7 @@
 
 A blockchain is a database of transactions that is updated and shared across many computers in a network. Every time a new set of transactions 
 is added, its called a “block” - hence the name blockchain. Public blockchains like Ethereum allow anyone to add, but not remove, data. 
-If someone wanted to alter any of the information or cheat the system, they’d need to do so on the majority of computers on the network. 
+If someone wanted to alter any of the information or cheat the system, they'd need to do so on the majority of computers on the network. 
 That is a lot! This makes decentralized blockchains like Ethereum highly secure.
 
 A blockchain is a public database that is updated and shared across many computers in a network
@@ -31,13 +31,12 @@ A blockchain is a public database that is updated and shared across many compute
 —> How IPFS runs ( Architecture ) 
 —> How EVM works internally ( what is geth )
 —> the assignment of a value to **`names[0x5B38Da6a701c568545dCfcB03FcB875f56beddC4]`** outside of a function or constructor is not allowed in Solidity
-—> constants and the immutable variables are present in the byte code of the contract itself , those doesn’t take storage slot in the blockchain
+—> constants and the immutable variables are present in the byte code of the contract itself , those doesn't take storage slot in the blockchain
 —> EIP : Ethereum Imporvement Proposal
 —> ERC : Ethereum Request for Comments
-—> selfdestruct operation to delete the contract code and state
 —> beginning with “0x” simply means the value is in hexadecimal format
 —> In short, what *“PUSH1 0x60 PUSH1 0x40 MSTORE”* is doing is allocating 96 bytes of memory and moving the pointer to the beginning of the 64th byte. We now have 64 bytes for scratch space and 32 bytes for temporary memory storage.
-—> In the EVM, there are 3 places to store data. Firstly, in the stack. We’ve just used the “PUSH” opcode to store data there as per the example above. Secondly in the memory (RAM) where we use the “MSTORE” opcode and lastly, in the disk storage where we use “SSTORE” to store the data. The gas required to store data to storage is the most expensive and storing data to stack is the cheapest.
+—> In the EVM, there are 3 places to store data. Firstly, in the stack. We've just used the “PUSH” opcode to store data there as per the example above. Secondly in the memory (RAM) where we use the “MSTORE” opcode and lastly, in the disk storage where we use “SSTORE” to store the data. The gas required to store data to storage is the most expensive and storing data to stack is the cheapest.
 —> maximum contract size limit imposed by the Ethereum blockchain, which is 24 KB (24,576 bytes)
 —> Libraries do not count towards the 24KB limit of the contract that uses them
 
@@ -48,3 +47,4 @@ A blockchain is a public database that is updated and shared across many compute
 - Memory: Read-write
 
 -> ChainID was introduced in EIP-155 to prevent replay attacks between the main ETH and ETC chains, which both have a networkID of 1
+-> Counterfactual interactions refer to off-chain contract interactions that can be executed on-chain at a later time, but are not actually executed unless needed

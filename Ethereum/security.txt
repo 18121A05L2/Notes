@@ -1,6 +1,56 @@
--> static analysis - slitner , aderyn and mythril
--> formal verification - symbolic execution - 
+# https://github.com/Cyfrin/security-and-auditing-full-course-s23
+# https://github.com/bkrem/awesome-solidity
+-> static analysis ( Automatically checking code for issiues without executing ) - slither , aderyn and mythril
+-> formal verification - symbolic execution is one of the type of formal verification
+    - tools ( certora and halmos )
+    - imagine its the code , basicaly solidity code or cairto code doesn't matter. and for every function or like even functionality
+    - we will make some kind of mathematical equation that represents this function and then we use this mathematical 
+    - equation in order to prove something right or wrong ( and after this we will test this math formula instead of code itself)
+    - key goal : Align mental model (how we thought the expected output could be) with the machine model
 -> cloc - to calculate the no of lines of code
--> solidity-code-metrics - Analyse the whole smart contract code
+    - cloc ./src/campaign ( scanning only specific path)
+    - nSLOC - numner of source lines of code
+    - cloc --csv --csv-delimiter=";" --by-file --include-ext=sol --report-file=scope.csv --exclude-dir=test,lib,mocks .
+-> solidity-code-metrics (Extention) - Analyse the whole smart contract code
 -> Notes - Vs Notes
--> certora and halmos - former verification tool
+-> Security audit Firms - Cyfrin , Openzeppelin and trail of bits
+-> Post deployment best practices - Bug bounty , Disaster recovery drills and Monitoring
+-> Persons - Tincho 
+-> USDT contract doesn't return a boolean for their transferFrom function , where as other normal ERC20 contracts do
+-> Use Docker containers to run the code in in isolated environments - https://github.com/Cyfrin/web3-dev-containers
+-> To Generate a PDF - pandoc report-example.md -o report.pdf --from markdown --template=eisvogel --listings
+-> DOS attack -  Causing a function or a transaction not be able to execte 
+-> Infinite for loop DOS attacks can be caused by making the transaction to cost more than the block gas limit by having that number of loopings
+-> when refunding the gas used to interact with the contract , we need to be aware of attack throught 63/64 gas rule 
+-> As an auditor, your primary goal is to catch security issues. Solhint has built-in rules (like avoid-low-level-calls, 
+    avoid-suicide/avoid-selfdestruct, etc.) that highlight potential security problems
+-> if we are using a try catch , and if that external call fails , the state that has been updated in that external call will be reverted and 
+    in catch it will all be like the state how it was before
+-> selector signature hash collision
+-> In Erc20 approve function of openzeppelin , it was not checking whether the allowed balace user owns or not
+-> Low-level calls in Solidity, such as .call(), .delegatecall(), and .staticcall(), do not automatically revert the transaction when they fail. 
+    Instead, they return a boolean value indicating success or failure. It is up to the developer to handle the failure case appropriately. 
+    Not testing explicitly for the return value could lead to unexpected behavior in the caller contract
+-> not having a withdraw method for the contracts receiving ether is main drawback
+-> parallel data structures will always have problem at some point , like when deleting we may miss to update in the other data structure that 
+    we store related data (https://grok.com/share/bGVnYWN5_725858ab-9a70-4b57-836f-bf5ccafdab8c)
+-> Mstore in yul does not update the free memory pointer (https://www.youtube.com/watch?v=8fNNVQv4-oY&ab_channel=OwenThurm)
+-> do not use msg.value inside a loop , it can cause unexpected behaviour like - The value of msg.value is set once when the function is 
+    invoked and does not update after each iteration or external call
+-> Decoding arbitrary bytes that comes from the random address can be dangerous
+-> stepwise jumps - we can always find some Bugs with this ( user can deposit the assets before the price appreciation and then withdraw after that )
+    - Reward compounds , redeeming rewards ( sandwich attacks , front running )
+    - Interest rate updates , reward rate updates ( usually updated by the trusted protocol admins)
+    - Inflaction Attacks (depending on the balanceOf)
+
+
+
+
+
+
+
+
+
+
+
+

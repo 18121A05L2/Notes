@@ -1,0 +1,8 @@
+@todo — General ToDo remark 
+@note — General remark 
+@remind — General remark 
+@follow-up — General remark 
+@audit — Bookmark a potential issue for deeper review 
+@audit-info — Note informational points to reference later 
+@audit-ok — Mark a line as checked or deemed non-problematic 
+@audit-issue — Reference where an issue was filed (e.g., in a tracker) 
