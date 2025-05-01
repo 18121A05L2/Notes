@@ -1,8 +1,10 @@
-->  in .gitattributes - This tells GitHub Linguist to treat these files as vendored (third-party). Vendored code does not count towards the repository's language statistics.
+->  in .gitattributes - This tells GitHub Linguist to treat these files as vendored (third-party). Vendored code does not count 
+    towards the repository's language statistics.
     lib/** linguist-vendored
     artifacts/** linguist-generated
     node_modules/** linguist-vendored
 -> Searching in git - org:getndazn @dazn/clips-web path:**/package.json
--> Pressing y locks your file view to the exact commit you're looking at by swapping the branch name in the URL for that commits SHA—turning a “moving” link into a true permalink
+-> Pressing y locks your file view to the exact commit you're looking at by swapping the branch name in the URL for that commits SHA
+    - turning a “moving” link into a true permalink
 -> Shift + ?  -	Opens the keyboard shortcut help box (context-sensitive)
 -> Shift + t  - File finder: start typing a filename to jump straight to it
