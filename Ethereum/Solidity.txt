@@ -1,5 +1,6 @@
 -> Variables , Types ( value and referene types , complex type (string), user defined ) , Functions , 
-   Visibility , Modifiers , Custom Modifiers , constructors , global variables , operators , conditionals , Arrays , Mappings , Structs , Events , Ether , Errors , Inheritance , calling other functions , interface
+   Visibility , Modifiers , Custom Modifiers , constructors , global variables , operators , conditionals , Arrays , Mappings , Structs 
+   , Events , Ether , Errors , Inheritance , calling other functions , interface
 -> receive , fallback , call , send , transfer , payable , enums
 —> stack is the local variable ( cheapest of all variables )
 —> calldata was the temp variable that can't be modified, memory was the temp variable that can be modified in the function execution 
@@ -7,9 +8,11 @@
 —> we can't add state variables in libraries
 —> new address[](size) - dynamic arrays in Solidity are initialised with default values ( here zero addresses )
 —> Solidity is a synchronous language
--> safemath and libraries , what are checked and unchecked ( overflow or underflow checks are default in over 0.8 version , unchecked can be used to reduce the gas by explicitily specifying do not check for any overflow underflow for a specific expression )
+-> safemath and libraries , what are checked and unchecked ( overflow or underflow checks are default in over 0.8 version , unchecked can 
+   be used to reduce the gas by explicitily specifying do not check for any overflow underflow for a specific expression )
 -> in Solidity in order to send native blockchain tokens like etherem , you can only work with payable address to do that 
--> enums , events , try catch , function selectors , abi encode and decode , hashing and assembly --> The try keyword has to be followed by an expression representing an external function call or a contract creation (new ContractName())
+-> enums , events , try catch , function selectors , abi encode and decode , hashing and assembly --> The try keyword has to be followed by 
+   an expression representing an external function call or a contract creation (new ContractName())
 -> Ether in Solidity has 18 decimal places
 --> Public: Accessible everywhere; includes an automatic getter for variables.
     Private: Accessible only within the contract where it is defined; not visible to derived contracts.
@@ -20,15 +23,26 @@
 -> different Data types : value types - uint, int, bool ,address ,enum, bytes , and reference types - strings, arrays, mappings, structs
 -> address: Holds a 20 byte value (size of an Ethereum address).
 -> function (<parameter types>) {internal|external|public|private} [pure|view|payable] [returns (<return types>)]
--> Data location : memory (whose lifetime is limited to an external function call), storage (the location where the state variables are stored, where the lifetime is limited to the lifetime of a contract) or calldata (special data location that contains the function arguments).
+-> Data location : memory (whose lifetime is limited to an external function call), storage (the location where the state variables are stored,
+    where the lifetime is limited to the lifetime of a contract) or calldata (special data location that contains the function arguments).
 -> type(int256).min , InterfaceIdentifier - type(<InterfaceName>).interfaceId , bytes1 a = 0xb5; //  [10110101]
--> EIP-165 is a standard that enables smart contracts to declare the interfaces they implement. The interface identifier for an interface like IERC20 is derived by XORing all of the function selectors in that interface. This identifier is stored as type(IERC20).interfaceId and helps other contracts verify that a given contract implements IERC20 without needing to know the implementation details
--> This EIP-165 standards was decided by the developer whether they are accepting or not , but it does not really checks and compare all of the functions init to the ERC20 functions
--> For example, if a function is defined as function transfer(address to, uint256 amount), its signature is "transfer(address,uint256)". The function selector is then the first 4 bytes of the Keccak-256 hash of this signature
--> In Solidity, when you define a public state variable of a struct type, the compiler automatically generates a "getter" function for you. However, if your struct contains dynamic arrays (such as address[], uint256[], etc.) and mappings, the default getter cannot provide a complete representation of the struct - why we have this exception in solidity as reading data from blockchain is free --> Dynamic arrays can be arbitrarily large. For example, if you store a struct with a dynamic array containing thousands of elements, returning the entire array in one call would consume a significant amount of gas during the computation of the response.
+-> EIP-165 is a standard that enables smart contracts to declare the interfaces they implement. The interface identifier for an interface like 
+   IERC20 is derived by XORing all of the function selectors in that interface. This identifier is stored as type(IERC20).interfaceId and helps
+    other contracts verify that a given contract implements IERC20 without needing to know the implementation details
+-> This EIP-165 standards was decided by the developer whether they are accepting or not , but it does not really checks and compare all 
+   of the functions init to the ERC20 functions
+-> For example, if a function is defined as function transfer(address to, uint256 amount), its signature is "transfer(address,uint256)". 
+   The function selector is then the first 4 bytes of the Keccak-256 hash of this signature
+-> In Solidity, when you define a public state variable of a struct type, the compiler automatically generates a "getter" function for you. 
+   However, if your struct contains dynamic arrays (such as address[], uint256[], etc.) and mappings, the default getter cannot provide a 
+   complete representation of the struct - why we have this exception in solidity as reading data from blockchain is free --> Dynamic arrays 
+   can be arbitrarily large. For example, if you store a struct with a dynamic array containing thousands of elements, returning the entire 
+   array in one call would consume a significant amount of gas during the computation of the response.
 -> Mappings are not iterable because keys are not stored in a specific order or as a list
 -> mappings are implemented in Solidity—they are not iterable or copyable since their data structure resides only in storage and not in memory.
--> Member "push" is not available in address[] memory outside of storage ? - In Solidity, the push method is only available for dynamic storage arrays. It is not available for arrays declared in memory because memory arrays are fixed in size when they are created, even if they are declared as dynamic. This is a key design of Solidity to optimize performance and avoid dynamic memory allocation during execution
+-> Member "push" is not available in address[] memory outside of storage ? - In Solidity, the push method is only available for dynamic storage 
+   arrays. It is not available for arrays declared in memory because memory arrays are fixed in size when they are created, even if they are 
+   declared as dynamic. This is a key design of Solidity to optimize performance and avoid dynamic memory allocation during execution
 -> if you define variables in Solidity without explicitly specifying their visibility, they are private
 -> uint256 test = uint256(1) / uint256(37); --> return value is zero why 
      - Solidity uses integer arithmetic, so division always truncates toward zero.
@@ -55,17 +69,21 @@
 -> with call function we can able to call functions in other smart contracts
 -> keccack hash collision 
      - (not 100% sure ) this will happen only when we have two dynamic data types next to each other ( string , string )
--> Generating Bytecode of a contract - abi.encodePacked(type(ContractName).creationCode) , (not 100% sure ) if it has any constants or immutable data types we need to add those to the encodePacked
--> witht the help of create2 deployment method we can precompile the address of the smart contract as we are the person who is going to provide salt bytes to create a contract
+-> Generating Bytecode of a contract - abi.encodePacked(type(ContractName).creationCode) , (not 100% sure ) if it has any constants or 
+   immutable data types we need to add those to the encodePacked
+-> witht the help of create2 deployment method we can precompile the address of the smart contract as we are the person who is going to 
+   provide salt bytes to create a contract
 -> abi.encodeWithSignature('functionName(uint256)',200)       -- signature - functionName(uint256)
    abi.encodeWithSelector(this.functionName.selector,200)     -- selector  - this.functionName.selector
    abi.encodeWithSelector(bytes4(keccak256(bytes('functionName(uint256)'))))
 -> this.functionName is the function pointer
 -> multi call - we can do it with call or staticCall
--> staticcall - Invoking a view or pure function in another contract to read state or perform computations without modifying the blockchain state , where as call function is used when we want to change the state of the blockchain 
+-> staticcall - Invoking a view or pure function in another contract to read state or perform computations without modifying the blockchain 
+   state , where as call function is used when we want to change the state of the blockchain 
 -> abi.encodePacked("hello") and bytes("hello") gives the same output
 -> bytes(string) costs roughly 445 less Gas -  The first is copying the memory, the second is just casting the pointer type.
--> (complicated) to decode an encodePacked we need to seperate all the different data types and need to type cast with that respective data type and there is not other decoding strategy for this 
+-> (complicated) to decode an encodePacked we need to seperate all the different data types and need to type cast with that respective data 
+   type and there is not other decoding strategy for this 
 -> For reference types (e.g., arrays, mappings, structs): delete resets the reference itself but retains the data in storage for arrays and mappings
 -> updateValue(uint256) is the function signature and the hash generated with this is function selector
 -> the hex code data which we send from our wallet ( metamask ) is call data which contains function selector at the first four bytes
@@ -76,11 +94,15 @@
 -> need to have a grip on type conversions and type casting
 -> Solidity does not allow implicit widening or narrowing between signed and unsigned types unless the bit-widths match exactly ( EX: Conversion from uint160 to int184 )
 -> typeconvertions from string to bytes and bytes to string will work , but not between string and bytes32 as there is a possibility of data loss
--> When defining array literals ([1,2]) inside a function, Solidity infers the type of the array based on the smallest data type needed to represent the values in the array -->     uint256[] memory tempArr = [1,2];  --> TypeError: Type uint8[2] memory is not implicitly convertible to expected type uint256[] memory.
+-> When defining array literals ([1,2]) inside a function, Solidity infers the type of the array based on the smallest data type needed to represent the values in the array 
+   - uint256[] memory tempArr = [1,2];  --> TypeError: Type uint8[2] memory is not implicitly convertible to expected type uint256[] memory.
 -> Limitations for memory arrays that we usually define inside of a function 
 -> bytes memory empty = hex"";
--> Ethereum uses RLP encoding ( v , R and S values) of signatures and Bitcoin uses DER encoding ( R and S values) - https://ethereum.stackexchange.com/questions/64380/understanding-ethereum-signatures/64398#64398
--> why when creating a signature we need to send values as r,s and v instead of v , r and s - due to historical conventions and how cryptographic libraries (like elliptic and secp256k1) and Ethereum itself have chosen to serialize and handle signatures and bitcoin itself doesnot have a v which is only used by ethereum
+-> Ethereum uses RLP encoding ( v , R and S values) of signatures and Bitcoin uses DER encoding ( R and S values) 
+   - https://ethereum.stackexchange.com/questions/64380/understanding-ethereum-signatures/64398#64398
+-> why when creating a signature we need to send values as r,s and v instead of v , r and s - due to historical conventions and how 
+   cryptographic libraries (like elliptic and secp256k1) and Ethereum itself have chosen to serialize and handle signatures and bitcoin 
+   itself doesnot have a v which is only used by ethereum
 -> type of privatekey when using in tests - uint256  , its real format is hex
 -> in Solidity, any executable statements must be placed inside functions, constructors or modifiers — not directly in the contract body
 -> In a function - Checks , Effects and Intereactions
@@ -88,7 +110,8 @@
 -> Member "push" is not available in struct TokenPool.ChainUpdate[] memory outside of storage.solidity(4994)
    - memory arrays in Solidity are fixed size and do not support push()
 -> Only constants of value type and byte array type are implemented.solidity(9259) - using constant for bytes32[] is n
--> However, there is no way to stop an attacker from sending ether to a contract by self destroying. Hence, it is important to not count on the invariant address(this).balance == 0 for any contract logic.
+-> However, there is no way to stop an attacker from sending ether to a contract by self destroying. Hence, it is important to not count 
+   on the invariant address(this).balance == 0 for any contract logic.
 -> we can only ready Private variables data using off chain - await web3.eth.getStorageAt(contractAddress, 0);
 -> storage Calculation for element location in arrays
    - Fixed-Size Arrays: Use data.slot + index directly.
@@ -97,10 +120,12 @@
 -> address to bytes8 conversion - bytes8(uint64(uint160(address)))
 -> tx.origin - Represents the externally owned account (EOA) that initiated the entire transaction chain.
 -> in an hex code , 2 letters represent 1 byte
--> if we call another contract in a contructor , current contracts codesize is zero when the constructor transaction is executing in the another contract , because the current contract is still not deployed
+-> if we call another contract in a contructor , current contracts codesize is zero when the constructor transaction is executing in the 
+   another contract , because the current contract is still not deployed
 -> s ^ key = max ( we will get below by applying xor with s on both the sides and a ^ a ^ b = b)
    key = s ^ max 
--> if we want to send Ether to EOA using a contract , then we must need to mark that address as payable for ony send and transfer and for call we dont need the EOA to be marked as payable as it will by pass that check
+-> if we want to send Ether to EOA using a contract , then we must need to mark that address as payable for ony send and transfer and for 
+   call we dont need the EOA to be marked as payable as it will by pass that check
 -> assert(condition) -  Consumes all remaining gas if the condition fails (unlike require and revert) - for below 0.8 versions of solidity
 -> assembly { invalid() } - Consumes all of the gas
 -> Always specify a fixed gas stipend for low-level calls to prevent denial-of-service (DoS) attacks
@@ -110,13 +135,19 @@
    - new contract accounts (created by CREATE or CREATE2) are initialized with nonce = 1 instead of 0
    - Externally Owned Accounts (EOAs) are NOT affected , their nonce still starts at 0.
 -> if we deploy AA code in one chain , we need to deploy in all other chains like L2s to achieve this in that specific chain
--> Solidity Optimizer - runs is not how many times the optimizer will run but how many times you expect to call functions in that smart contract. If the smart contract is only of one-time use as a smart contract for vesting or locking of tokens, you can set the runs value to 1 so that the compiler will produce the smallest possible bytecode but it may cost slightly more gas to call the function(s). If you are deploying a contract that will be used a lot (like an ERC20 token), you should set the runs to a high number like 1337 so that initial bytecode will be slightly larger but calls made to that contract will be cheaper. Commonly used functions like transfer will be cheaper
+-> Solidity Optimizer - runs is not how many times the optimizer will run but how many times you expect to call functions in that smart contract. 
+   If the smart contract is only of one-time use as a smart contract for vesting or locking of tokens, you can set the runs value to 1 so that 
+   the compiler will produce the smallest possible bytecode but it may cost slightly more gas to call the function(s). If you are deploying 
+   a contract that will be used a lot (like an ERC20 token), you should set the runs to a high number like 1337 so that initial bytecode 
+   will be slightly larger but calls made to that contract will be cheaper. Commonly used functions like transfer will be cheaper
 -> for Lower deployment const runs is 1 and for lower execution cost runs is 200 or much higher
--> Zero-knowledge proofs (ZKPs) are cryptographic protocols that allow one party (the prover) to convince another party (the verifier) that a statement is true without revealing any information beyond the validity of the statement itself
+-> Zero-knowledge proofs (ZKPs) are cryptographic protocols that allow one party (the prover) to convince another party (the verifier) 
+   that a statement is true without revealing any information beyond the validity of the statement itself
    - Groth 16
 -> How to create a smart contract using another smart contract - using new ( standard deployment), using create and create2 ( low level deployment )
 -> if L2 breaks how user can easily escape the funds from L2 to L1 ( withdrawsls in escape hatch mode)
--> selfdestruct removes a contract's bytecode and storage but does not erase its address , but after dencun update it wont remove the bytecode if we wont call the selfdestruct in the same transaction
+-> selfdestruct removes a contract's bytecode and storage but does not erase its address , but after dencun update it wont remove the 
+   bytecode if we wont call the selfdestruct in the same transaction
    - Even if a contract's code does not contain a call to selfdestruct, it can still perform that operation using delegatecall or callcode.
    - selfdestruct is deprecated now - but previously it has a capability to force send the Ehter if the caller contract does not have any payable fallback function which is capable of receiving ether
 -> Why optocodes deals with storage has more gas cost than memory or stack , what does it actually do or how does it differs internally
@@ -134,7 +165,8 @@
    3) The encrypted data is stored in IndexedDB.
      - windows -   C:\Users\USER_NAME\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings\nkbihfbeogaeaoehlefnkodbefgpgknn
      - mac os -                  ~/Library/Application Support/Google/Chrome/Default/Local Extension Settings/nkbihfbeogaeaoehlefnkodbefgpgknn
--> However, data location applies only to reference types (e.g., arrays, structs, strings). For value types like uint256, int, bool, and address, Solidity does not require a data location because they are always stored in memory and passed by value
+-> However, data location applies only to reference types (e.g., arrays, structs, strings). For value types like uint256, int, bool, and address,
+    Solidity does not require a data location because they are always stored in memory and passed by value
 -> You must explicitly define memory for reference types because Solidity needs to know if you are modifying storage or working with a temporary copy
 -> CREATE2 allows deploying a contract at a predictable address, even before it's deployed.
 -> Self-Destruct & Contract Resurrection - Deleting a contract and deploying a new version at the same address
@@ -142,14 +174,22 @@
 -> CMD + E - to get into the end of the Line in Remix inputs
 -> Refunds cannot exceed 1/5 (20%) of the gas used in a transaction, due to the EIP-3529 update
 -> New Storage slot - 20k gas , Overwrite a storage slot - 5k , delete a variable in a storage slot 5k and 4.8k gas refund
--> Why Gas Token Exploits Existed and How They Worked - Before EIP-3529, Ethereum allowed unlimited gas refunds, which enabled gas token exploits. Gas tokens like Chi Gas Token (Chi) and GasToken (GST2) were created to abuse storage refunds and store cheap data during low gas prices, then delete it when gas prices were high to reduce costs
--> Before - EIP-3529 : Users stored garbage data cheaply when gas prices were low and deleted it to artificially reduce transaction costs when gas prices were high
+-> Why Gas Token Exploits Existed and How They Worked - Before EIP-3529, Ethereum allowed unlimited gas refunds, which enabled gas token exploits. 
+   Gas tokens like Chi Gas Token (Chi) and GasToken (GST2) were created to abuse storage refunds and store cheap data during low gas prices, then 
+   delete it when gas prices were high to reduce costs
+-> Before - EIP-3529 : Users stored garbage data cheaply when gas prices were low and deleted it to artificially reduce transaction costs when 
+   gas prices were high
 # -> Use structs to reduce memory allocations when returning multiple values
 -> Try can only be used with external function calls and contract creation calls
 -> If multiple parent contracts define the same function, you must specify all parent contracts using override(A, B)
--> which factors of overriding things can be changed (inheritance) - Research suggests visibility can change from external to public, but otherwise must stay the same; mutability can be made more restrictive, like from view to pure -- An unexpected detail is that changing visibility from external to public makes the function more accessible, allowing internal calls, which might not align with the base contract's intent but is explicitly allowed
--> if we have function in an interface with only extenal and no mutability like view or pure , we can add those as those are more restrictive and we will adding these based on our needs and requirement suitablity
--> Public mappings don't return structs directly - they return individual components.You must destructure the return values into separate variables.If you want to use it as a struct, you must manually reconstruct it.
+-> which factors of overriding things can be changed (inheritance) - Research suggests visibility can change from external to public, but 
+   otherwise must stay the same; mutability can be made more restrictive, like from view to pure -- An unexpected detail is that changing 
+   visibility from external to public makes the function more accessible, allowing internal calls, which might not align with the base 
+   contract's intent but is explicitly allowed
+-> if we have function in an interface with only extenal and no mutability like view or pure , we can add those as those are more restrictive 
+   and we will adding these based on our needs and requirement suitablity
+-> Public mappings don't return structs directly - they return individual components.You must destructure the return values into separate 
+   variables.If you want to use it as a struct, you must manually reconstruct it.
 -> a base contract with a virtual function and a derived contract that overrides it
 -> In the provided function, abi.encode("Hello ", "World!") encodes the strings with additional type information like lengths 
    and offsets, following the ABI standard. When cast to a string, this gives you the encoded data as bytes, not the 
@@ -177,10 +217,14 @@
 -> CTRL + -  -- to go to back of the file where we are in vscode
 -> Index range access is only supported for dynamic calldata arrays. - numbers[1:3] -- uint[] calldata numbers
 -> Array slicing is not supported for - Fixed-Size Arrays , Storage Arrays and Memory Arrays
--> Reasoning: Slicing in calldata leverages its read-only, pre-allocated nature, avoiding the need to allocate new memory or modify storage, which would increase gas costs significantly.
--> Transient Storage - Apart from being an alternative to contract storage in cases where persistence is not required (like reentrancy locks), transient storage allows developers to easily create global singletons on-chain. These singletons are useful since information about a transaction can be accessed by any contract, independent of the stack depth
+-> Reasoning: Slicing in calldata leverages its read-only, pre-allocated nature, avoiding the need to allocate new memory or modify storage, 
+   which would increase gas costs significantly.
+-> Transient Storage - Apart from being an alternative to contract storage in cases where persistence is not required (like reentrancy locks), 
+   transient storage allows developers to easily create global singletons on-chain. These singletons are useful since information about a 
+   transaction can be accessed by any contract, independent of the stack depth
 -> code size of the currect contract in the constructor is zero , by the time of construtor executing current contract is still not deployed
--> Every account has an associated nonce: for regular accounts it is increased on every transaction, while for contract accounts it is increased on every contract creation. Nonces cannot be reused, and they must be sequential.
+-> Every account has an associated nonce: for regular accounts it is increased on every transaction, while for contract accounts it is increased 
+   on every contract creation. Nonces cannot be reused, and they must be sequential.
 -> create optcode uses - keccak256(rlp.encode(deployingAddress, nonce))[12:]
 -> create2 optcode users - keccak256(0xff ++ deployingAddr ++ salt ++ keccak256(bytecode))[12:]
    - to calulate address - address addr = address(uint160(uint256(keccak256(abi.encodePacked(bytes1(0xff),address(this),salt,keccak256(fullBytecode))))));
@@ -192,28 +236,49 @@
    - CREATE2 automatically uses the deployer's address (i.e., address(this)) as part of its address calculation.
 -> using <LibraryName> for <Type> , if we use Type as * , then that library function will be used by all functions
 -> stack too deep error is only for if we have more than 14 variables in one single function if we can split to two functions then there wont be issue
--> Unlike traditional (legacy) EVM bytecode, which is a single, flat sequence of instructions, EOF uses a container format that organizes code and data into distinct sections
+-> Unlike traditional (legacy) EVM bytecode, which is a single, flat sequence of instructions, EOF uses a container format that organizes code 
+   and data into distinct sections
 -> slither-check-erc 0xdac17f958d2ee523a2206206994597c13d831ec7 TetherToken --erc erc20
 -> To use console in remix - import "https://github.com/foundry-rs/forge-std/blob/master/src/console.sol";
--> if we have any send or trasfer or call in the contructor and we are triggering someother function which is going to send ether to us , then it will treat as EOA because at that point of time in constructor the contract itself is not there in the blockchain state
--> if we are using a try catch , and if that external call fails , the state that has been updated in that external call will be reverted and in catch it will all be like the state how it was before the external call in the try is triggered
--> when we are using mload , for arrays the first location will be the length of the array and we need to load by shifting 32 bytes (add(pointer,32)) after it , as there onlly we will get the first element of the array
--> when we call any function it wiil have calldata -  calldataload(4) loads 32 bytes from the call data starting at byte offset 4. Why offset 4? Because the first 4 bytes of the call data contain the function selector.
+-> if we have any send or trasfer or call in the contructor and we are triggering someother function which is going to send ether to us , 
+   then it will treat as EOA because at that point of time in constructor the contract itself is not there in the blockchain state
+-> if we are using a try catch , and if that external call fails , the state that has been updated in that external call will be reverted and 
+   in catch it will all be like the state how it was before the external call in the try is triggered
+-> when we are using mload , for arrays the first location will be the length of the array and we need to load by shifting 32 bytes
+    (add(pointer,32)) after it , as there onlly we will get the first element of the array
+-> when we call any function it wiil have calldata -  calldataload(4) loads 32 bytes from the call data starting at byte offset 4. Why 
+   offset 4? Because the first 4 bytes of the call data contain the function selector.
 -> How call data of a function works - https://docs.soliditylang.org/en/v0.8.19/abi-spec.html#examples
--> If we do normal function calls it follows the formation ( <ContractName>.<functionName>) of the call data specified in Solidity docs and if we want to modify it we can pass something like this - address(ContractName).call(<bytesDataInHexFormat>)
--> Function Overloading - A contract can have multiple functions of the same name but with different parameter types. This process is called “overloading” and also applies to inherited functions
+-> If we do normal function calls it follows the formation ( <ContractName>.<functionName>) of the call data specified in Solidity docs and 
+   if we want to modify it we can pass something like this - address(ContractName).call(<bytesDataInHexFormat>)
+-> Function Overloading - A contract can have multiple functions of the same name but with different parameter types. This process is 
+   called “overloading” and also applies to inherited functions
 -> String Literal "Hello" :- This literal is 5 bytes long (one byte per character for simple ASCII characters).
--> combining two bytes based on our length requirements of that bytes -  bytes memory data = abi.encodePacked(switchh.flipSwitch.selector,abi.encode(uint32(96),uint32(0),bytes4(switchh.turnSwitchOff.selector),uint32(4),bytes4(switchh.turnSwitchOn.selector)));
--> for two dimentional array in function parameters , the call data will be - selector + location for multi dimentional array + lenth of the multi dimentional array + location of first array + location of second array (( This Applies same for the array of strings too - string[])) - https://docs.soliditylang.org/en/v0.8.19/abi-spec.html#use-of-dynamic-types
--> Assuming positions in CALLDATA with dynamic types can be erroneous, especially when using hard-coded CALLDATA positions. - https://ethernaut.openzeppelin.com/level/0xb2aBa0e156C905a9FAEc24805a009d99193E3E53
+-> combining two bytes based on our length requirements of that bytes 
+   - bytes memory data = abi.encodePacked(switchh.flipSwitch.selector,abi.encode(uint32(96),uint32(0),bytes4(switchh.turnSwitchOff.selector),uint32(4),bytes4(switchh.turnSwitchOn.selector)));
+-> for two dimentional array in function parameters , the call data will be - selector + location for multi 
+   dimentional array + lenth of the multi dimentional array + location of first array + location of second array 
+   (( This Applies same for the array of strings too - string[])) - https://docs.soliditylang.org/en/v0.8.19/abi-spec.html#use-of-dynamic-types
+-> Assuming positions in CALLDATA with dynamic types can be erroneous, especially when using hard-coded CALLDATA positions. 
+   - https://ethernaut.openzeppelin.com/level/0xb2aBa0e156C905a9FAEc24805a009d99193E3E53
 -> assigning values to variables dynamically - require((shares = previewDeposit(assets)) != 0, "ZERO_SHARES");
--> you can append curly-brace options (like {value: amount} or even {value: amount, gas: someGas}) to any function call. This syntax tells the EVM to send the specified Ether along with the call. Just make sure that the function you're calling is declared as payable; otherwise, the transaction will revert
--> Meta-transactions are a mechanism that allows users to interact with a blockchain without needing to hold the native cryptocurrency (like ETH on Ethereum) to pay for gas. Instead, users sign a transaction off-chain, and a third party (often called a relayer) submits that transaction on-chain on their behalf. The relayer pays the gas fee, and later may be compensated by the user or by the protocol - userful for gasless transactions
--> An abstract contract in Solidity doesn't need to have unimplemented functions to be considered abstract. It can be marked as abstract to indicate that it's intended only as a base contract and not for direct instantiation
+-> you can append curly-brace options (like {value: amount} or even {value: amount, gas: someGas}) to any function call. This syntax tells 
+   the EVM to send the specified Ether along with the call. Just make sure that the function you're calling is declared as payable; otherwise, 
+   the transaction will revert
+-> Meta-transactions are a mechanism that allows users to interact with a blockchain without needing to hold the native cryptocurrency
+    (like ETH on Ethereum) to pay for gas. Instead, users sign a transaction off-chain, and a third party (often called a relayer) submits 
+    that transaction on-chain on their behalf. The relayer pays the gas fee, and later may be compensated by the user or by the
+    protocol - userful for gasless transactions
+-> An abstract contract in Solidity doesn't need to have unimplemented functions to be considered abstract. It can be marked as abstract 
+   to indicate that it's intended only as a base contract and not for direct instantiation
 -> abi.encodeCall(function pointer , (tuple arguments)) performs a type check where as the abi.encodeWithSelector(function selector , .... ) does not perform a type check
 -> Reading Nested mapping - token.allowance(address(pool),recovery);  mapping(address => mapping(address => uint256)) public allowance;
--> There are a number of common techniques which help avoid potential re-entrancy vulnerabilities in smart contracts. The first is to ( whenever possible) use the built-in transfer() function when sending ether to external contracts. The transfer function only sends 2300 gas with the external call, which isn't enough for the destination address/contract to call another contract (i.e. re-enter the sending contract)
--> The DELEGATECALL opcode is identical to the standard message call, except that the code executed at the targeted address is run in the context of the calling contract along with the fact that msg.sender and msg.value remain unchanged. This feature enables the implementation of libraries whereby developers can create reusable code for future contracts.
+-> There are a number of common techniques which help avoid potential re-entrancy vulnerabilities in smart contracts. The first is 
+   to ( whenever possible) use the built-in transfer() function when sending ether to external contracts. The transfer function only 
+   sends 2300 gas with the external call, which isn't enough for the destination address/contract to call another contract (i.e. re-enter the sending contract)
+-> The DELEGATECALL opcode is identical to the standard message call, except that the code executed at the targeted address is run in the 
+   context of the calling contract along with the fact that msg.sender and msg.value remain unchanged. This feature enables the implementation 
+   of libraries whereby developers can create reusable code for future contracts.
 -> Deleting structs does not delete containing mappings - (https://www.youtube.com/watch?v=8fNNVQv4-oY&ab_channel=OwenThurm)
 -> TypeError: Built-in unary operator delete cannot be applied to type mapping(uint256 => uint256). - we can't delete the inner mapping in below numbers mapping
    mapping(uint256 => mapping(uint256 => uint256))  numbers
@@ -226,7 +291,8 @@
    Dynamic Arrays: delete resets them to an empty array ([]) with length 0.
    Static Arrays: delete resets all elements to 0, but the array keeps its original fixed length.
 -> Downcasting can still overflow or underflow ( uint256 to uint8 or uint8 to uint256 )
--> if we have multiple contracts inherited , the super keyword will be the last inherited contract - here B will the super (contract Child is ParentA, ParentB ) :: This applies same in override(A,B)
+-> if we have multiple contracts inherited , the super keyword will be the last inherited contract - here B will the super 
+     (contract Child is ParentA, ParentB ) :: This applies same in override(A,B)
 -> if we have two parents with same function overridden then we to Explicitly call each parent's version functions in the current contract
 -> when using Two libraries for one type - If two libraries define the same function name for the same type, the compiler will bind the last using directive for unqualified calls
 -> In Solidity, an interface can inherit and even re-declare the very same function signature without error - Identical declarations are merged, not duplicated
@@ -236,15 +302,19 @@
 -> solidity supports negative numbers -     int8   public smallNeg = -128;  // min of int8
 -> singed integers wont revert -   int256 public a = 10-20;
 -> transfering zero ether can also triggers the fallback functions
--> Mappings default to zero-initialized structs. Fetching games[_gameId] when no game exists yields a Game where every field is “zero” (numeric fields → 0; addresses → 0x0; bytes → 0x00…; enums → first member (https://codehawks.cyfrin.io/c/2025-04-rock-paper-scissors)
--> Enums - When you fetch a struct from a mapping that has never been written to, Solidity returns the “zero-state” for that struct: every field is set to its type's default value. For enums, the default is the first member (the one with index 0)
+-> Mappings default to zero-initialized structs. Fetching games[_gameId] when no game exists yields a Game where every field is
+    “zero” (numeric fields → 0; addresses → 0x0; bytes → 0x00…; enums → first member (https://codehawks.cyfrin.io/c/2025-04-rock-paper-scissors)
+-> Enums - When you fetch a struct from a mapping that has never been written to, Solidity returns the “zero-state” for that struct: every field 
+   is set to its type's default value. For enums, the default is the first member (the one with index 0)
 -> Mappings always return a value for any key, even if never set. All fields are their type's defaults (numbers → 0; addresses → 0x0; enums → first member)
 -> Gas efficiency: Transient storage ops (TSTORE/TLOAD) cost ~100 gas each vs. 20 000 gas for SSTORE, reducing approval costs by an order of magnitude
 -> Currently, Temporary Approve cannot be used by externally owned accounts (EOAs), as EOAs cannot currently make multiple calls within a single transaction.
--> Solidity's C3 linearization algorithm ensures that in a multiple-inheritance scenario each base contract (like ERC20Upgradeable) is included only once in the storage layout, preventing duplicate state slots even if it appears in two inheritance paths
+-> Solidity's C3 linearization algorithm ensures that in a multiple-inheritance scenario each base contract (like ERC20Upgradeable) is included 
+   only once in the storage layout, preventing duplicate state slots even if it appears in two inheritance paths
    - contract ParetoDollarStaking is ERC20Upgradeable, ERC4626Upgradeable ( here ERC4626Upgradeable is already inheriting the ERC20 )
 -> The contract Inherited was the derived contract (ParetoDollarStaking) and the contracts that we are inheriting are the base contract (ERC20Upgradeable)
--> __ERC20_init_unchained: This is a more focused initializer. It only sets up the ERC20-specific state and doesn't call the parent's initializer, giving you control when the parent's initialization needs to happen separately. ()
+-> __ERC20_init_unchained: This is a more focused initializer. It only sets up the ERC20-specific state and doesn't call the parent's initializer,
+    giving you control when the parent's initialization needs to happen separately. ()
 
 
 
