@@ -41,3 +41,7 @@
    Blocks, Headers, and Other Data → Remaining size
    Logs are stored in the transaction history but are not part of the state trie.
    Pruned nodes (like archive nodes vs. full nodes) may discard older logs to save space. 
+-> user case and problem : we have created a smart contract wallet with social recovery and we have initialized smart 
+    contract account in both ethereum and zksync and you have lost your EOA which you used to initialize the smart contract accounts
+    and some one sent you mony on optimism and you can't initialize the smart contract account with same address in optimism because
+    you have used create2 and lost EOA adddress to initialize and generate the address of smart contract account
