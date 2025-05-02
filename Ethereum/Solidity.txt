@@ -186,8 +186,8 @@
    otherwise must stay the same; mutability can be made more restrictive, like from view to pure -- An unexpected detail is that changing 
    visibility from external to public makes the function more accessible, allowing internal calls, which might not align with the base 
    contract's intent but is explicitly allowed
--> if we have function in an interface with only extenal and no mutability like view or pure , we can add those as those are more restrictive 
-   and we will adding these based on our needs and requirement suitablity
+-> (add view and pure as extra) if we have function in an interface with only external and no mutability like view or pure , we can add 
+   those, as those are more restrictive and we will adding these based on our needs and requirement suitablity
 -> Public mappings don't return structs directly - they return individual components.You must destructure the return values into separate 
    variables.If you want to use it as a struct, you must manually reconstruct it.
 -> a base contract with a virtual function and a derived contract that overrides it
@@ -210,8 +210,10 @@
 
 -> abi.encodePacked: This function packs the given arguments without any type information or padding, simply 
    concatenating their raw byte sequences
--> while the EVM's behavior is fully specified by the Ethereum protocol, its implementations are written in multiple programming languages depending on the client.
--> Data field in a transaction for a function call will be the function selector and for the contract deployment it will be the bytecode ( initcode of the contract )
+-> while the EVM's behavior is fully specified by the Ethereum protocol, its implementations are written in multiple programming languages 
+   depending on the client. (Ethereum client)
+-> Data field in a transaction for a function call will be the call data along with function selector and for the contract 
+   deployment it will be the bytecode ( initcode of the contract )
 -> The caret (^) in the version pragma indicates that the contract is compatible with the specified version and any newer minor version up to the next major version
 -> pragma solidity ^0.7.6 --it means the contract can be compiled with any compiler version starting at 0.7.6 up to, but not including, 0.8.0. This follows the semantic versioning rules.
 -> CTRL + -  -- to go to back of the file where we are in vscode
@@ -234,30 +236,31 @@
    - add is an EVM opcode (0x01) that performs addition. bytecode is a pointer to the start of the bytes array. add(bytecode, 32) shifts the pointer past the first 32 bytes (which store the length), directly to the actual bytecode
    - CREATE2 makes the deployed contract's address depend on the deployer's address, so: If a different contract deploys using the same salt and bytecode, the address would be different because the deployer is different
    - CREATE2 automatically uses the deployer's address (i.e., address(this)) as part of its address calculation.
+   - https://grok.com/share/bGVnYWN5_c440c4ff-539b-45fb-91e0-9881d55a7194
 -> using <LibraryName> for <Type> , if we use Type as * , then that library function will be used by all functions
 -> stack too deep error is only for if we have more than 14 variables in one single function if we can split to two functions then there wont be issue
 -> Unlike traditional (legacy) EVM bytecode, which is a single, flat sequence of instructions, EOF uses a container format that organizes code 
    and data into distinct sections
--> slither-check-erc 0xdac17f958d2ee523a2206206994597c13d831ec7 TetherToken --erc erc20
+-> slither-check-erc 0xdac17f958d2ee523a2206206994597c13d831ec7 TetherToken --erc erc20 (checks for ERC's conformance)
 -> To use console in remix - import "https://github.com/foundry-rs/forge-std/blob/master/src/console.sol";
 -> if we have any send or trasfer or call in the contructor and we are triggering someother function which is going to send ether to us , 
    then it will treat as EOA because at that point of time in constructor the contract itself is not there in the blockchain state
 -> if we are using a try catch , and if that external call fails , the state that has been updated in that external call will be reverted and 
    in catch it will all be like the state how it was before the external call in the try is triggered
 -> when we are using mload , for arrays the first location will be the length of the array and we need to load by shifting 32 bytes
-    (add(pointer,32)) after it , as there onlly we will get the first element of the array
+    (add(pointer,32)) after it , as there only we will get the first element of the array
 -> when we call any function it wiil have calldata -  calldataload(4) loads 32 bytes from the call data starting at byte offset 4. Why 
    offset 4? Because the first 4 bytes of the call data contain the function selector.
 -> How call data of a function works - https://docs.soliditylang.org/en/v0.8.19/abi-spec.html#examples
 -> If we do normal function calls it follows the formation ( <ContractName>.<functionName>) of the call data specified in Solidity docs and 
-   if we want to modify it we can pass something like this - address(ContractName).call(<bytesDataInHexFormat>)
+   if we want to modify the selector in the calldata it we can pass something like this - address(ContractName).call(<bytesDataInHexFormat>)
 -> Function Overloading - A contract can have multiple functions of the same name but with different parameter types. This process is 
    called “overloading” and also applies to inherited functions
 -> String Literal "Hello" :- This literal is 5 bytes long (one byte per character for simple ASCII characters).
 -> combining two bytes based on our length requirements of that bytes 
    - bytes memory data = abi.encodePacked(switchh.flipSwitch.selector,abi.encode(uint32(96),uint32(0),bytes4(switchh.turnSwitchOff.selector),uint32(4),bytes4(switchh.turnSwitchOn.selector)));
 -> for two dimentional array in function parameters , the call data will be - selector + location for multi 
-   dimentional array + lenth of the multi dimentional array + location of first array + location of second array 
+   dimentional array + length of the multi dimentional array + location of first array + location of second array 
    (( This Applies same for the array of strings too - string[])) - https://docs.soliditylang.org/en/v0.8.19/abi-spec.html#use-of-dynamic-types
 -> Assuming positions in CALLDATA with dynamic types can be erroneous, especially when using hard-coded CALLDATA positions. 
    - https://ethernaut.openzeppelin.com/level/0xb2aBa0e156C905a9FAEc24805a009d99193E3E53
@@ -271,11 +274,18 @@
     protocol - userful for gasless transactions
 -> An abstract contract in Solidity doesn't need to have unimplemented functions to be considered abstract. It can be marked as abstract 
    to indicate that it's intended only as a base contract and not for direct instantiation
+   - Abstract contracts serve as base contracts that provide a partial implementation, leaving some functions to be implemented by inheriting contracts
+   - They can have a mix of implemented functions (with bodies) and unimplemented functions (declared with the virtual keyword and no body). If at least one function is unimplemented, the contract is marked abstract and cannot be deployed directly
+   - Abstract contracts can have state variables, which can be inherited by derived contracts
+   - They can inherit from other contracts and interfaces, making them more flexible for code reuse
+   - When a contract inherits from an interface, it must implement all the functions, or it becomes abstract
+   - https://grok.com/share/bGVnYWN5_82ea619e-afd7-4f0c-9ce9-0f168d7f2ec9
 -> abi.encodeCall(function pointer , (tuple arguments)) performs a type check where as the abi.encodeWithSelector(function selector , .... ) does not perform a type check
 -> Reading Nested mapping - token.allowance(address(pool),recovery);  mapping(address => mapping(address => uint256)) public allowance;
 -> There are a number of common techniques which help avoid potential re-entrancy vulnerabilities in smart contracts. The first is 
    to ( whenever possible) use the built-in transfer() function when sending ether to external contracts. The transfer function only 
    sends 2300 gas with the external call, which isn't enough for the destination address/contract to call another contract (i.e. re-enter the sending contract)
+   - but it has its drawback too
 -> The DELEGATECALL opcode is identical to the standard message call, except that the code executed at the targeted address is run in the 
    context of the calling contract along with the fact that msg.sender and msg.value remain unchanged. This feature enables the implementation 
    of libraries whereby developers can create reusable code for future contracts.
@@ -291,30 +301,31 @@
    Dynamic Arrays: delete resets them to an empty array ([]) with length 0.
    Static Arrays: delete resets all elements to 0, but the array keeps its original fixed length.
 -> Downcasting can still overflow or underflow ( uint256 to uint8 or uint8 to uint256 )
--> if we have multiple contracts inherited , the super keyword will be the last inherited contract - here B will the super 
-     (contract Child is ParentA, ParentB ) :: This applies same in override(A,B)
--> if we have two parents with same function overridden then we to Explicitly call each parent's version functions in the current contract
+-> if we have multiple contracts inherited , the super keyword will be the last inherited contract
+   - here B will the super(contract Child is ParentA, ParentB ) :: This applies same in override(A,B)
+-> if we have two parents with same function overridden then we have to Explicitly call each parent's version functions in the current contract
 -> when using Two libraries for one type - If two libraries define the same function name for the same type, the compiler will bind the last using directive for unqualified calls
--> In Solidity, an interface can inherit and even re-declare the very same function signature without error - Identical declarations are merged, not duplicated
--> Interface functions are implicitly virtual and don't need override if there's only one base
+-> In Solidity, an interface can inherit another interface and even re-declare the very same function signature without error 
+   - Identical declarations are merged, not duplicated
+-> Interface functions are implicitly virtual and don't need override in derived contract if there's only one base
       - One base → implement the function normally; no override needed.
-      - Two (or more) bases with the same signature → you must write:
+      - Two (or more) bases with the same signature → you must write : override(Base1, Base2)
 -> solidity supports negative numbers -     int8   public smallNeg = -128;  // min of int8
--> singed integers wont revert -   int256 public a = 10-20;
+-> singed integers wont revert -   int256 public a = 10-20; ( Ragnge of int8 is from -128 through 127)
 -> transfering zero ether can also triggers the fallback functions
 -> Mappings default to zero-initialized structs. Fetching games[_gameId] when no game exists yields a Game where every field is
     “zero” (numeric fields → 0; addresses → 0x0; bytes → 0x00…; enums → first member (https://codehawks.cyfrin.io/c/2025-04-rock-paper-scissors)
 -> Enums - When you fetch a struct from a mapping that has never been written to, Solidity returns the “zero-state” for that struct: every field 
    is set to its type's default value. For enums, the default is the first member (the one with index 0)
--> Mappings always return a value for any key, even if never set. All fields are their type's defaults (numbers → 0; addresses → 0x0; enums → first member)
+-> Mappings always return a value for any key, even if never set. All fields are their type's defaults (numbers → 0; addresses → 0x0; enums → first member)
 -> Gas efficiency: Transient storage ops (TSTORE/TLOAD) cost ~100 gas each vs. 20 000 gas for SSTORE, reducing approval costs by an order of magnitude
 -> Currently, Temporary Approve cannot be used by externally owned accounts (EOAs), as EOAs cannot currently make multiple calls within a single transaction.
 -> Solidity's C3 linearization algorithm ensures that in a multiple-inheritance scenario each base contract (like ERC20Upgradeable) is included 
    only once in the storage layout, preventing duplicate state slots even if it appears in two inheritance paths
    - contract ParetoDollarStaking is ERC20Upgradeable, ERC4626Upgradeable ( here ERC4626Upgradeable is already inheriting the ERC20 )
--> The contract Inherited was the derived contract (ParetoDollarStaking) and the contracts that we are inheriting are the base contract (ERC20Upgradeable)
--> __ERC20_init_unchained: This is a more focused initializer. It only sets up the ERC20-specific state and doesn't call the parent's initializer,
-    giving you control when the parent's initialization needs to happen separately. ()
+-> The contract Inherited was the derived contract (ParetoDollarStaking) and the contracts that we are inheriting was the base contract (ERC20Upgradeable)
+-> __ERC20_init_unchained (having onlyInitializer modifier): This is a more focused initializer. It only sets up the ERC20-specific initialization 
+   state and doesn't call the parent's initializer, giving you control when the parent's initialization needs to happen separately or not
 
 
 

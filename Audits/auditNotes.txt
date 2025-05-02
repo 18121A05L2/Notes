@@ -2,3 +2,4 @@
 -> https://www.codeslaw.app/ - helpful for bug bounty (we can search for the top smart contract functions in which contracts these were used)
 -> Force approve in safe Allowance or decrease ( Fallback for non-standard tokens)
    - Some tokens (e.g. Tether USDT) always revert when changing from a non-zero to a different non-zero allowance—so here it first sets allowance to 0, then retries setting it to value
+-> transfering zero ether can also triggers the fallback functions
