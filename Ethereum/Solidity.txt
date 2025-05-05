@@ -5,17 +5,19 @@
 —> stack is the local variable ( cheapest of all variables )
 —> calldata was the temp variable that can't be modified, memory was the temp variable that can be modified in the function execution 
 -> Data location can only be specified for arrays ,structs or mappings ( a string is an array or bytes )
+   - public and external functions cannot accept parameters marked storage; they must use memory or calldata instead. storage parameters can only be used with internal (or private) functions
 —> we can't add state variables in libraries
 —> new address[](size) - dynamic arrays in Solidity are initialised with default values ( here zero addresses )
 —> Solidity is a synchronous language
 -> safemath and libraries , what are checked and unchecked ( overflow or underflow checks are default in over 0.8 version , unchecked can 
-   be used to reduce the gas by explicitily specifying do not check for any overflow underflow for a specific expression )
--> in Solidity in order to send native blockchain tokens like etherem , you can only work with payable address to do that 
+   be used to reduce the gas by explicitily specifying do not check for any overflow or underflow for a specific expression )
+-> in Solidity in order to send native blockchain tokens like ethereum , you can only work with payable address to do that (when using call 
+   this was not needed and when using transfer and send payable is needed)
 -> enums , events , try catch , function selectors , abi encode and decode , hashing and assembly --> The try keyword has to be followed by 
    an expression representing an external function call or a contract creation (new ContractName())
 -> Ether in Solidity has 18 decimal places
---> Public: Accessible everywhere; includes an automatic getter for variables.
-    Private: Accessible only within the contract where it is defined; not visible to derived contracts.
+--> Public: Accessible everywhere; includes an automatic getter for variables. 
+    Private: Accessible only within the contract where it is defined; not visible to derived contracts. (by default if we wont specify visability)
     Internal: Accessible within the contract and by derived contracts; not visible externally.
     External: Functions accessible only from outside the contract; variables cannot have external visibility.
 -> Enums in Solidity are a simply way to give names to a set of integer values, and these names are internally mapped to unsigned integers starting from 0.
@@ -53,6 +55,8 @@
      - The transaction is effectively as if it never happened.
 -> in Upgradable smart contracts ( in implementation contracts we can add new varialbles but can't reorder the existing storage variables)
 -> EIP - 2535 Diamond proxy pattern ( static router (less expensive) , dynamic router ( more expensive))
+   - (static) Hard-coded Jump Table and (dynamic) Storage Mapping Lookup
+   - https://www.rareskills.io/post/diamond-proxy
 -> Proxy patterns ( https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies)
      - Unstructured Storage Proxies
      - Beacon contract address in EIP-1967 ( Beacon Proxy pattern ) - It simplifies the upgrade process for multiple proxies by centralizing the management of the implementation contract address
@@ -64,7 +68,6 @@
 -> Event logs come with a timestamp, so there is no need to add another timestamp variable in it.
 -> Bitmask for storing boolean storage variables - packing of variables
 -> central logging mechanism like logs needs to be emitted by only one main contract
--> if we want to generate addresses using number that number type must be a uint160
 -> we can write custom erros and free functions outside of the smart contract too
 -> with call function we can able to call functions in other smart contracts
 -> keccack hash collision 

@@ -1,17 +1,22 @@
 -> System contracts - Difference between Zksync and Ethereum Mainnet 
+   - System contracts are a specialized set of contracts in virtual machines (VM) that enhance the Ethereum Virtual Machine (EVM) by supporting opcodes not available by default
+   - https://docs.zksync.io/zksync-protocol/contracts/system-contracts
 -> system contract call - SystemContractsCaller.systemCallWithPropagatedRevert
 -> foundryup-zksync
 -> forge build --zksync
 -> Contracts with a large number of instructions will not compile on ZKsync due to the 65535 addressable space limitation imposed by zksolc
--> The zksolc compiler enforces a limit on the number of instructions a contract can have, capped at 2^16 instructions. If a contract exceeds this limit, the compilation will fail.
+-> The zksolc compiler enforces a limit on the number of instructions a contract can have, capped at 2^16 instructions. If a contract 
+     exceeds this limit, the compilation will fail.
 -> Sequencer responsibilities
      - Accept user transactions. 
+     - Reads user transactions from an L2 mempool
      - Order and execute transactions. 
      - Batch transactions for submission to Ethereum L1.
      - Provide fast but non-final confirmations.
 -> zero knowledge proofs - the ability to prove honest computation without revealing the inputs 
 -> circum and snarkjs - DSL for zksnarks
--> when we have 4 inputs in a merkle tree - Proof 1 = Hash 2 , Proof 2 = Hash 3-4 ( These are the proofs that we are going to provide for the first input as an aarray of proofs)
+-> when we have 4 inputs in a merkle tree - Proof 1 = Hash 2 , Proof 2 = Hash 3-4 ( These are the proofs that we are going to provide 
+     for the first input as an aarray of proofs)
 ->                                            Merkle Root
                                                H0
                             ___________________|___________________
@@ -33,3 +38,5 @@
    H8 (sibling of H7)
    H4 (sibling of H3)
    H2 (sibling of H1)
+-> zkSync uses two nonces: a deployment nonce (for create calls) and a transaction nonce (for replay protection). This affects contract 
+     address calculation, so tweak your Foundry scripts accordingly
