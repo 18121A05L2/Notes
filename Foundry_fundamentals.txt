@@ -58,3 +58,6 @@
     vm.warp(block.timestamp + 1) - Relative warps accumulate, so the timestamp is moved forward by the given value.
         - this mean , it does includes the previous vm.warp(1 hours)
 --> startPrank overriding issue - https://github.com/foundry-rs/foundry/issues/10310
+--> anvil --load-state initital_state.json
+    - --block-time 5 (This will mine the block with the given interval, here 5 seconds)
+--> 

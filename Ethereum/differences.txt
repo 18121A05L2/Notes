@@ -1,0 +1,7 @@
+-> uups and transparent proxies - https://grok.com/share/bGVnYWN5_caa2f5f4-4c55-4bcc-8e3e-aa1ed1d20dec
+    - because of function clashes we are not having any public functions in Transparent Proxies
+    - UUPS : This contract should be inherited by the implementation contracts, not by the proxy contract
+    - https://www.rareskills.io/post/transparent-upgradeable-proxy
+    - https://www.rareskills.io/post/uups-proxy
+-> cold and warm access - https://grok.com/share/bGVnYWN5_2d287f6f-4c75-427b-9d59-fe0333b04216
+-> 

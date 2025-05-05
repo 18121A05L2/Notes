@@ -29,6 +29,10 @@
 -> Revoke is an action taken by an authority or a party with the power to cancel something. Renounce is a voluntary act of giving up or rejecting something
 -> Enumerate (iterate over)
 -> function as parameter - function sort( uint256[] memory array,function(uint256, uint256) pure returns (bool) comp) internal pure returns (uint256[] memory)
+-> Question - As we are going to store all the state in a proxy contract and what there is not effect if anyone calls the 
+    implementation contract initializer as calling the initializer function directly sets the state in the implementation 
+    where no one cares about that data and we can still initialize the initializer by callling the initializer using proxy contract
+    - https://forum.openzeppelin.com/t/uupsupgradeable-vulnerability-post-mortem/15680 (SelfDestruct the impl contract)
 
 
 

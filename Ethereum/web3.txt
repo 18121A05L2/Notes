@@ -1,0 +1,3 @@
+-> viem (replacement of ethers), wagmi, synpress
+
+-> Vite to create a react project
