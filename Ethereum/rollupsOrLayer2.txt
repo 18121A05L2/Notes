@@ -23,4 +23,6 @@
 
 --> possible scalability solutions  - sharding , roll ups , proto Danksharding , lightening network , Plasma and state channels
 --> MEV is not possible in layer2 as we dont have mempool here and the sequencer will be deciding the transactions ordering
+--> Decentralizing rollups - removing security councils fully or make them only active in cases where the code has clearly has a bug 
+    because it is disaggreing with itself
 --> 

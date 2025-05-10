@@ -57,6 +57,7 @@
 -> EIP - 2535 Diamond proxy pattern ( static router (less expensive) , dynamic router ( more expensive))
    - (static) Hard-coded Jump Table and (dynamic) Storage Mapping Lookup
    - https://www.rareskills.io/post/diamond-proxy
+   - https://blessingemah.medium.com/a-beginners-guide-to-the-diamond-standard-proxy-b57076365403#:~:text=The%20Diamond%20Standard%20also%20known%20as%20an,Pattern%20which%20was%20created%20by%20Nick%20Mudge.
 -> Proxy patterns ( https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies)
      - Unstructured Storage Proxies
      - Beacon contract address in EIP-1967 ( Beacon Proxy pattern ) - It simplifies the upgrade process for multiple proxies by centralizing the management of the implementation contract address
@@ -210,7 +211,7 @@
          Bytes 96-101: "Hello " (6 bytes)
          Bytes 102-133: 6 (length of second string)
          Bytes 134-139: "World!" (6 bytes)
-
+   - String concatenation - string(abi.encodePacked("Hello ", "World!"))
 -> abi.encodePacked: This function packs the given arguments without any type information or padding, simply 
    concatenating their raw byte sequences
 -> while the EVM's behavior is fully specified by the Ethereum protocol, its implementations are written in multiple programming languages 
@@ -329,6 +330,7 @@
 -> The contract Inherited was the derived contract (ParetoDollarStaking) and the contracts that we are inheriting was the base contract (ERC20Upgradeable)
 -> __ERC20_init_unchained (having onlyInitializer modifier): This is a more focused initializer. It only sets up the ERC20-specific initialization 
    state and doesn't call the parent's initializer, giving you control when the parent's initialization needs to happen separately or not
-
-
+-> msg.sig refers to the first four bytes of the transaction data, which acts as a function selector, determining which function to call within
+    a contract. It's a global variable that remains constant throughout a transaction, even if other functions are called within it
+-> 
 

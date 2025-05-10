@@ -33,6 +33,10 @@
 -> why can we define all types of arrays in memory location but not for mappings in solidity (using memory will takes less gas , where as the mappings serve from storage)
 -> Experience with zk rollups like Scroll, Taiko, zkSync
 -> ZK libraries such as Plonky3, halo2, circom, Groth16, sp1, r1cs
+-> concatenation of strings - string.concat("Hello ", "World!")
+-> cold vs warm access
+-> Full stack block chain developer tech stack
+-> 
 
 
 

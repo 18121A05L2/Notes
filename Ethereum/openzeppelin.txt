@@ -1,4 +1,6 @@
--> The EnumerableSet library from OpenZeppelin provides a powerful tool for managing collections of unique values in Solidity. It offers efficient ways to store, retrieve, and enumerate over sets of data, making it perfect for use cases like access control, governance, and token management.
+-> The EnumerableSet library from OpenZeppelin provides a powerful tool for managing collections of unique values in Solidity. It offers 
+    efficient ways to store, retrieve, and enumerate over sets of data, making it perfect for use cases like access control, governance, and 
+    token management.
 -> As of now EnumerableSet supports  - Bytes32Set , AddressSet and UintSet
 -> About _disableInitializers() - https://grok.com/share/bGVnYWN5_29c70810-f989-40ad-98bc-0f2199e815cc
 -> reinitializer() - https://grok.com/share/bGVnYWN5_752bc8fd-3875-4f15-96ff-2f22ccaf6911
@@ -18,7 +20,8 @@
     - If you're deploying or interacting with an upgradeable proxy (Transparent or UUPS), you rely on ERC-1967 to manage the proxy's own slots safely 
     - If your logic contract has a complex state spanning multiple facets or contracts, and you want to namespace those state variables to avoid layout drift, adopt ERC-7201 alongside your proxy setup
 -> Always use ERC-1967 for proxy deployments to isolate implementation/admin pointers — this is non-negotiable for Transparent or UUPS proxies 
-    Opt-in to ERC-7201 when your implementation contract comprises multiple independent modules, mixins, or facets that each define their own state—this prevents internal collisions and eases maintenance
+    Opt-in to ERC-7201 when your implementation contract comprises multiple independent modules, mixins, or facets that each define their own 
+    state—this prevents internal collisions and eases maintenance
 -> Despite ERC-1967 providing a robust solution for segregating proxy metadata (implementation, admin, beacon pointers) from a logic contract's 
     state, it does not address storage collisions within the logic contract itself when that contract spans multiple modules or facets. 
     ERC-7201 fills this gap by introducing a namespaced storage layout: each module declares its own struct annotated with a unique identifier, 
