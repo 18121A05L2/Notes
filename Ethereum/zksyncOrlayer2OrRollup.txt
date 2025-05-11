@@ -40,3 +40,18 @@
    H2 (sibling of H1)
 -> zkSync uses two nonces: a deployment nonce (for create calls) and a transaction nonce (for replay protection). This affects contract 
      address calculation, so tweak your Foundry scripts accordingly
+-> STARKs (succinct zero-knowledge proofs without trusted setup)
+-> Validium's mechanism is very similar to a zkRollup, the only difference being that data-availability in a zkRollup is on-chain, while 
+   Validium keeps it off-chain. This permits Validium to achieve considerably higher throughput
+-> what is validium ? ( exchange validiums or exhchange proof of solvency) - exchanges can able to prove each and every coin 
+   of the deposits they got and they have that corresponding coins and ther are not being fractional reserves
+   - https://www.youtube.com/watch?v=5GvoJhwhv8E
+   - Funds belonging to validium users are controlled by a smart contract on Ethereum
+   - However, validium users can have their funds frozen and withdrawals restricted. This can happen if data availability managers (Data Availability Committee (DAC)) on the validium chain withhold offchain state data from users. Without access to transaction data, users cannot compute the Merkle proof required to prove ownership of funds and execute withdrawals
+   - https://ethereum.org/en/developers/docs/scaling/validium/
+   - In zkSync 2.0, the L2 state will be divided into 2 sides: zkRollup with on-chain data availability and zkPorter with off-chain data availability.
+   - zkPorter accounts can make thousands of swaps on the Uniswap contract, but only a single update needs to be published to Ethereum
+   - Volition
+-> The rollup's state is available to the zkRollup users as long as at least one Ethereum full node is online
+-> what is zero knowledge proof of transaction history ?
+-> SNARKS cost to verify on ETH (SNARK verifiers) ( 270k gas for plonk proof and 11 million gas for a STARK proof)

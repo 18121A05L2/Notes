@@ -284,6 +284,7 @@
    - They can inherit from other contracts and interfaces, making them more flexible for code reuse
    - When a contract inherits from an interface, it must implement all the functions, or it becomes abstract
    - https://grok.com/share/bGVnYWN5_82ea619e-afd7-4f0c-9ce9-0f168d7f2ec9
+   - Functions in interfaces must be declared external.
 -> abi.encodeCall(function pointer , (tuple arguments)) performs a type check where as the abi.encodeWithSelector(function selector , .... ) does not perform a type check
 -> Reading Nested mapping - token.allowance(address(pool),recovery);  mapping(address => mapping(address => uint256)) public allowance;
 -> There are a number of common techniques which help avoid potential re-entrancy vulnerabilities in smart contracts. The first is 

@@ -46,9 +46,6 @@ Need to check when destructing from a direct struct and a function returning a s
 -> Chian Abstraction ?
 -> what is eip 4844 proto dank sharding ?
 -> How single slot finality works under the hood 
--> what is validium ? ( exchange validiums or exhchange proof of solvency) - exchange can able to prove each and every coin 
-   of the deposits they got and they have that corresponding coins and ther are not being fractional reserves
-   - https://www.youtube.com/watch?v=5GvoJhwhv8E
 -> what is two party computation , fully homomorphic encryption and proof of person hood protocols
 
 
