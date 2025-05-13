@@ -36,7 +36,8 @@
     implementation contract initializer as calling the initializer function directly sets the state in the implementation 
     where no one cares about that data and we can still initialize the initializer by callling the initializer using proxy contract
     - https://forum.openzeppelin.com/t/uupsupgradeable-vulnerability-post-mortem/15680 (SelfDestruct the impl contract)
-
+-> One of the original motivations for UUPS was to deploy many smart contract wallets on the mainnet, where the logic could be deployed once 
+   and the proxy could be deployed multiple times for each new wallet, saving gas
 
 
 

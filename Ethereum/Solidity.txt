@@ -140,11 +140,11 @@
    - Externally Owned Accounts (EOAs) are NOT affected , their nonce still starts at 0.
 -> if we deploy AA code in one chain , we need to deploy in all other chains like L2s to achieve this in that specific chain
 -> Solidity Optimizer - runs is not how many times the optimizer will run but how many times you expect to call functions in that smart contract. 
-   If the smart contract is only of one-time use as a smart contract for vesting or locking of tokens, you can set the runs value to 1 so that 
+   If the smart contract is only of one-time use as a smart contract for vesting or locking of tokens, you can set the runs value to 1.
    the compiler will produce the smallest possible bytecode but it may cost slightly more gas to call the function(s). If you are deploying 
    a contract that will be used a lot (like an ERC20 token), you should set the runs to a high number like 1337 so that initial bytecode 
    will be slightly larger but calls made to that contract will be cheaper. Commonly used functions like transfer will be cheaper
--> for Lower deployment const runs is 1 and for lower execution cost runs is 200 or much higher
+   - for Lower deployment cont runs is 1 and for lower execution cost runs is 200 or much higher ( 200 is the default optimizer for solidity)
 -> Zero-knowledge proofs (ZKPs) are cryptographic protocols that allow one party (the prover) to convince another party (the verifier) 
    that a statement is true without revealing any information beyond the validity of the statement itself
    - Groth 16
@@ -333,5 +333,13 @@
    state and doesn't call the parent's initializer, giving you control when the parent's initialization needs to happen separately or not
 -> msg.sig refers to the first four bytes of the transaction data, which acts as a function selector, determining which function to call within
     a contract. It's a global variable that remains constant throughout a transaction, even if other functions are called within it
--> 
-
+-> Function name match checking from the call data of the transaction 
+   - Each selector == X comparison (and the associated branch, JUMPI) has a constant gas cost—approximately 22 gas for the comparison plus the jump logic 
+-> As you can imagine, this is because different op-codes are needed for each one of this different functions (which all achieve the exact same result)
+   - num += 1 ; (26429 gas) num = num +1 (26416 gas) num++ (26368 gas) ++num (26362 gas)
+-> Memory expansion cost 
+   - When a contract call needs to use more than 32 kilobytes of memory storage in a single transaction, the memory cost will enter into a quadratic section
+   - compare 1,000 , 10,000 and 20,000 arrays with sizes
+   - will this applicable to dynamic sized arrays too ?  yes
+   - The cost to expand memory increases quadratically with size:
+   - memory expansion cost = ( new memory size**2 - previous memory size**2 )/ 512

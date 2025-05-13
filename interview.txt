@@ -3,6 +3,7 @@
 -> solidity is statically type language - Javascript is dynamically typed language
 -> is solidiy compiled or intrepeted language - compiled , js is just in time compiled langauge
 -> default visibility of state variables - private
+-> default visability for a function is  - public
 -> what are two container type in solidity - arrays and mappings
 -> what are the two artifacts produced by solidity when compiling smart contract - ABI , ByteCode
 -> internal and private functions wont be included in ABI as they are only intended to use inside of the smart contract

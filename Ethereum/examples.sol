@@ -195,13 +195,30 @@ contract Victim {
      * @param target The contract whose code will be executed via delegatecall.
      * @param data The calldata to send to the target.
      */
-    function executeDelegatecall(address target, bytes calldata data)
-        public
-        returns (bool, bytes memory)
-    {
+    function executeDelegatecall(address target, bytes calldata data) public returns (bool, bytes memory) {
         require(msg.sender == owner, "Not owner");
         return target.delegatecall(data);
     }
 }
 
-// ----------------------------------------------------------------------------------------------------
+// ------------------------------------Function naming costs----------------------------------------------------------------
+
+contract Test {
+    function a() external {} // 122 gas
+
+    function b() external {} // 166 gas
+
+    function c() external {} // 210 gas
+
+    function d() external {} // 188 gas
+
+    function f() external {} // 144 gas
+
+    //    691064612   - hex(2930cf24)  - red()
+    //    1479797728  - hex(5833ebe0)  - yel()
+    //    1620274157  - hex(60936bed)  - blu()
+    //    2126128108  - hex(7eba23ec)  - zeb()
+    //    3710841148  - hex(dd2ef13c)  - gre()
+    // https://chatgpt.com/c/6822352e-86dc-8010-9b7d-a692023d9078
+    // 
+}
