@@ -58,6 +58,8 @@
    - (static) Hard-coded Jump Table and (dynamic) Storage Mapping Lookup
    - https://www.rareskills.io/post/diamond-proxy
    - https://blessingemah.medium.com/a-beginners-guide-to-the-diamond-standard-proxy-b57076365403#:~:text=The%20Diamond%20Standard%20also%20known%20as%20an,Pattern%20which%20was%20created%20by%20Nick%20Mudge.
+   - https://github.com/code-423n4/2022-10-zksync/blob/main/ethereum/contracts/zksync/libraries/Diamond.sol#L285-L288
+   - https://gist.github.com/mudgen/7d50e3d0aca93b9cc321dfa0dbded373
 -> Proxy patterns ( https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies)
      - Unstructured Storage Proxies
      - Beacon contract address in EIP-1967 ( Beacon Proxy pattern ) - It simplifies the upgrade process for multiple proxies by centralizing the management of the implementation contract address
