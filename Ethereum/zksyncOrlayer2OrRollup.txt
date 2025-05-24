@@ -55,3 +55,42 @@
 -> The rollup's state is available to the zkRollup users as long as at least one Ethereum full node is online
 -> what is zero knowledge proof of transaction history ?
 -> SNARKS cost to verify on ETH (SNARK verifiers) ( 270k gas for plonk proof and 11 million gas for a STARK proof)
+-> In order for a Zero knowledge to be valid , It must need to satisy three fundamental properties
+   - Completeness    - if the statement is true, an honest prover must convince the verifier if they have the knowledge of the witness
+   - Soundness       - if the statement if false, no dishonest prover can convince an honest verifier with an invaid witness
+   - Zero Knowledge  - The verifier must learn nothing except that the prover's statement is true
+-> ZKPs sytems comprises of two components
+   - front-end - the frontend is the constraint system it is where the problem is defined mathematically
+   - back-end - proving system - Takes the compiled circuits and generates the proof - verifies the proof
+-> Type of zero knowledge proofs
+   - Interactive zero knowledge proofs (IZKPs)
+      - In interactive ZKPs, the prover and verifier engage in a back-and-forth conversation. The verifier sends random challenges, and the prover responds to each one in real-time.
+   - non-interactive zero knowledge proofs
+         - Non-interactive proofs require no back-and-forth communication. The prover generates a single proof that the verifier can check independently.
+         - snarks ( needs trusted setup ) 
+            - trusted setup - A trusted setup ceremony is a procedure that is done once to generate some data that must be used every time some cryptographic (ZK in this instance) protocol is run
+                           - The trusted setup is a one-time ceremony that generates public parameters — special cryptographic data that both the prover and verifier will use
+                           - The system is designed to be secure as long as at least one participant is honest and destroys their secret
+                - toxic waste - during initial setup some random numbers will be generated and these needs to be securely destroyed, if an attacker knows these values he can forge an invalid proofs and that will pass the verification
+                - CRS (common reference string) - A set of public parameters that both the prover and verifier use in the proof generation and verification processes
+                    - SRS ( Structure reference string ) - data is specific format, EX: elliptic curve points
+                - Multi party computation (MPC)  - https://grok.com/chat/a02ae464-9842-4ac6-885f-f6659211d5dc
+                - polynomial commitment - EX : KZG commitment
+                - Examples 1) Circuit specific (Groth16) - The cryptographic parameters need to be regenerated for every circuit
+                        -  2) universal (plonk) - The cryptographic parametes can be reused ( for circuits upto a certain size )
+            - plonk
+            - groth16
+         - starks
+         - bulletproofs
+   - https://grok.com/share/bGVnYWN5_b9d43569-2ffa-46b3-9432-573d66b96f10
+   - https://x.com/panditdhamdhere/status/1925894438988951680
+-> Terminology 
+   - Constraint - Mathematical condition which must be satisfied in order for the claim to be valid
+      - constraints define the rules the inputs ( private (only prover knows) and public (both prover and verifier know) inputs ) must follow
+      - written using Circom or NOA
+   - Circuit - A system of constraints makes up the circuit
+        - The circuit defines how the constraints work together 
+   - Witness - The set of private values that allow a prover to demonstrate that their claim or statement is valid/true
+         - THe witness must satisfy the constraints of the circuit
+   - prover - The prover is the entity that generates the proof of computation to demonstate the knowledge of witness while satisying the circut constraints
+-> Proof of web2 data ( private web data to onchain ) ( DECO - Data Enabled Computation Oracle)
