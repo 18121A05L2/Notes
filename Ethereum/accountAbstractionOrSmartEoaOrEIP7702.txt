@@ -1,3 +1,6 @@
+
+------------------------------------- EIP-4337 - ACCOUNT ABSTRACTION -----------------------------------------
+
 -> use cases - dead man swith - we can add something like if after 50 years transfer this owernship to the new 
     owner ( family) . this can be transferred after one year of account inactive
 -> pay gas with any ERC20 token
@@ -10,8 +13,12 @@
 
 
 
+--------------------------------------- EIP-7702 - smart EOAs -------------------------------------------------
 
------ NATIVE ACCOUNT ABSTRACTION -------
+
+
+
+--------------------------------------- NATIVE ACCOUNT ABSTRACTION ---------------------------------------------
 
 -> each operation will be sub divided into individual frame for faster execution
 -> Each block builder can run independently on the same state and the overall block execution will be done once 

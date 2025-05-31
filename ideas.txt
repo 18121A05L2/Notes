@@ -3,3 +3,4 @@
     - IZKPs can be used to verify the authenticity of financial transactions without revealing the specific details of the transaction
 -> Cross rollup relaying porotocols (like L1 -> L2 -> L1) or (L2 - L2 )
 -> permissioned bank blockchains ( centralized bank blockchains )
+-> EMI's on blockchain

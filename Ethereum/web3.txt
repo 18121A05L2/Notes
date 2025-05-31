@@ -1,5 +1,0 @@
--> viem (replacement of ethers), wagmi, synpress
-
--> Vite to create a react project
-
--> Tech stack - https://chatgpt.com/c/681866c5-61c4-8010-98e1-d0762ff1d110

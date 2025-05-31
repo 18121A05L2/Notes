@@ -1,5 +1,6 @@
 --> forge script script/DeploySimpleStorage.s.sol --rpc-url http://127.0.0.1:8545 --broadcast --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 --> forge script script/DeploySimpleStorage.s.sol --rpc-url http://localhost:8545 --account one_anvil --broadcast
+-> forge create EIP7702 --from <anvilAddress> --unlocked --broadcast
 --> source .env --> forge script script/DeploySimpleStorage.s.sol --rpc-url $SEPOLIA_URL --private-key $PRIVATE_KEY --broadcast
 --> (storing private key) cast wallet import one_anvil --interactive
 --> cast send 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9 "store(uint256)" 345 --account one_anvilca
@@ -20,6 +21,7 @@
 --> forge inspect FundMe storageLayout
 --> forge inspect <contractAddress> methods - will print all functions with its selectors
 --> cast storage <contractAddress>
+--> cast code <contractAddress>
 --> cast storage <contractAddress> <slotnumber> --rpc-url $LOCAL_RPC_URL
 --> cast parse-bytes32-string <bytes32>
 --> cast sig "fund()" - will return the hex code of the selector
@@ -58,6 +60,8 @@
     vm.warp(block.timestamp + 1) - Relative warps accumulate, so the timestamp is moved forward by the given value.
         - this mean , it does includes the previous vm.warp(1 hours)
 --> startPrank overriding issue - https://github.com/foundry-rs/foundry/issues/10310
---> anvil --load-state initital_state.json
+--> anvil --load-state initital_state.json ( need to try one example with , cast send )
     - --block-time 5 (This will mine the block with the given interval, here 5 seconds)
---> 
+--> EIP-7702 Delegator - cast send $(cast az) --private-key $alice_pk --auth $(cast wallet sign-auth $DelegateContractV0 --private-key $bob_pk )
+    - Adding delegator for bob signature using alice
+    - anvil --hardfork prague

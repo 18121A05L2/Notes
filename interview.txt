@@ -1,4 +1,4 @@
--> Ethereum smart contract so special from other languages - it cannt be stopped (becuaser of decentralized nodes) , hacked ( cyrptography ) and modified ( immutable )
+-> Ethereum smart contract so special from other languages - it cannt be stopped (becuase of decentralized nodes) , hacked ( cyrptography ) and modified ( immutable )
 -> smart contracts are deterministic in nature
 -> solidity is statically type language - Javascript is dynamically typed language
 -> is solidiy compiled or intrepeted language - compiled , js is just in time compiled langauge

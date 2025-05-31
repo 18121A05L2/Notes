@@ -1,0 +1,29 @@
+Example projects
+    - https://github.com/Cyfrin/ts-tsender-ui-cu ( Frontend focused )
+    - https://github.com/Cyfrin/ts-nft-marketplace-cu ( Backend focused )
+
+--------------------------------- FRONTEND ----------------------------------------------------
+
+-> viem (replacement of ethers) , Low-level Ethereum toolkit
+   wagmi → React hooks wrapper built on viem
+
+-> Vite to create a react project
+
+-> Testing
+    - unit test   - vitest for testing framework
+    - e2e testing 
+        - playwright
+        - synpress ( combination of playwright and cypress with metamask support) , build by synthetix team
+
+-> Tech stack - https://chatgpt.com/c/681866c5-61c4-8010-98e1-d0762ff1d110
+
+-> rainbowkit - wallet library for frontend
+
+-> compliance engine - circle console
+
+-> server side backend call - next js
+
+-------------------------------------- BACKEND -------------------------------------------------
+-> Indexing 
+    - rindexer ( uses postgress db) - building database, indexes, exposing GraphQL APIs - ( Alternatives , The graph protocol )
+    - graphql

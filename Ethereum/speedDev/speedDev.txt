@@ -3,3 +3,5 @@
     - git revert <commit to revert>
 -> command + w - to close the current working file in vs code 
 -> ctrl + backtick(`) - to toggle the terminal in vscode
+->  Minimize Current Window - ⌘ Command + M
+-> Maximize / Restore (Zoom) Current Window - Control + ⌘ Command + F
