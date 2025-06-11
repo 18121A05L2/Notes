@@ -65,3 +65,6 @@
 --> EIP-7702 Delegator - cast send $(cast az) --private-key $alice_pk --auth $(cast wallet sign-auth $DelegateContractV0 --private-key $bob_pk )
     - Adding delegator for bob signature using alice
     - anvil --hardfork prague
+--> Because of how Foundry’s vm.signAndAttachDelegation(...) works, the next time you send any transaction from that EOA, the VM will first process
+     the signed delegation (i.e. “swap in” delegateContract’s code as if Alice/Bob were their own contract wallets) and then execute the call
+     - https://github.com/theredguild/7702-goat/blob/5626163a3ebbda450cb94df28735b8e09595a212/test/DelegateContractV1.t.sol#L39

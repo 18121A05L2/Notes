@@ -220,5 +220,48 @@ contract Test {
     //    2126128108  - hex(7eba23ec)  - zeb()
     //    3710841148  - hex(dd2ef13c)  - gre()
     // https://chatgpt.com/c/6822352e-86dc-8010-9b7d-a692023d9078
-    // 
+    //
 }
+
+// ----------------------------------------- Sload and Sstore --------------------------------------------
+
+// -> These two dont perform type check
+
+contract WriteStorage {
+    address public owner = address(2);
+
+    function sstoreOpcode(uint256 value) public {
+        assembly {
+            sstore(owner.slot, value)
+        }
+    }
+
+    function sloadStore() public view returns (bool val) {
+        assembly {
+            val := sload(owner.slot)
+        }
+    }
+}
+
+// ------------------------------------------- Dynamic Arrays -------------------------------------------
+
+contract MyDynArray {
+    uint256 private someNumber; // storage slot 0
+    address private someAddress; // storage slot 1
+    uint32[] private myArr = [3, 4, 5, 9, 7]; // storage slot 2
+
+    function getSlotValue(uint256 _index) public view returns (bytes32 value) {
+        uint256 _slot = uint256(keccak256(abi.encode(2))) + _index;
+        assembly {
+            value := sload(_slot)
+        }
+    }
+}
+// ----------------------------------------------- NESTED ARRAYS ------------------------------
+// Suppose we want to find the storage slot that holds the element 8 in the array [[2,9,6,3],[7,4,8,10]] in the contract above.
+
+// We need to identify three things:
+
+// the base slot of the nested array
+// the index of the sub-array containing the element,
+// and the index of the element within that sub-array.

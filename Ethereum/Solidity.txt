@@ -222,7 +222,7 @@
    deployment it will be the bytecode ( initcode of the contract )
 -> The caret (^) in the version pragma indicates that the contract is compatible with the specified version and any newer minor version up to the next major version
 -> pragma solidity ^0.7.6 --it means the contract can be compiled with any compiler version starting at 0.7.6 up to, but not including, 0.8.0. This follows the semantic versioning rules.
--> npm packages - ((~8.1.1 - >=8.1.1 <8.2.0 (patch updates only)))  , ((^8.1.1 -	>=8.1.1 <9.0.0))
+-> npm packages - ((~8.1.1 - >=8.1.1 <8.2.0 (patch updates only)))  , (^8.1.1 -	>=8.1.1 <9.0.0 (patch and major updates only ))
 -> CTRL + -  -- to go to back of the file where we are in vscode
 -> Index range access is only supported for dynamic calldata arrays. - numbers[1:3] -- uint[] calldata numbers
 -> Array slicing is not supported for - Fixed-Size Arrays , Storage Arrays and Memory Arrays
@@ -346,3 +346,13 @@
    - will this applicable to dynamic sized arrays too ?  yes
    - The cost to expand memory increases quadratically with size:
    - memory expansion cost = ( new memory size**2 - previous memory size**2 )/ 512
+-> 1 hexadecimal character represents 4 bits. 2 hexadecimal characters represent 1 byte
+-> in assembly, every variable is essentially treated as a bytes32 type. Outside of the assembly scope, the variable will resume its original type and format the data accordingly
+-> Sstore and Sload dont perform any type checks , sstore and sload operate on lengths of 32 bytes
+-> we do not have an opcode to directly modify or read from their byte sequence in storage ( for storage-packed variables , where multiple data type packed in a single 32 byte slot )
+-> Nested mapping storage slot - keccak256(abi.encode(key2, keccak256(abi.encode(key1, <storage slot>))))
+-> The storage variable slot (base slot) stores the string together with information about its length for short strings or only information about its length for long strings
+   - The string data and its length are stored together in the base slot. The string is packed from the left, with its length stored in the rightmost byte of the slot. For short strings, the maximum length of the string is 31 characters. However, what actually gets stored by the protocol is the length of the string multiplied by 2, since each character occupies one byte in storage. This means that the maximum value that can be stored for a short string is 31 * 2 = 62, which is 0x3e in hexadecimal.
+   - String type in Solidity does not have length property , To use the length property on a string, you need to convert the string to bytes and use bytes(<string>).length
+   - https://www.rareskills.io/post/solidity-dynamic
+-> defining a struct in Solidity does not take up a storage slot space until it is declared

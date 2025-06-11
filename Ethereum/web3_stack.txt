@@ -7,7 +7,7 @@ Example projects
 -> viem (replacement of ethers) , Low-level Ethereum toolkit
    wagmi → React hooks wrapper built on viem
 
--> Vite to create a react project
+-> pnpm create next-app@latest
 
 -> Testing
     - unit test   - vitest for testing framework

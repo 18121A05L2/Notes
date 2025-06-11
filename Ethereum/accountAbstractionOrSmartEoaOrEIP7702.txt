@@ -14,6 +14,10 @@
 
 
 --------------------------------------- EIP-7702 - smart EOAs -------------------------------------------------
+-> When a transaction is sent to the EOA, the logic at the designated smart contract is executed, while preserving the EOA as the msg.sender
+-> When the transaction executes, msg.sender is still the EOA's address, and tx.origin is also the EOA's address
+-> EOA will be the proxy and Delegation contract will be the logic contract
+-> https://decentralizedsecurity.es/eip-7702-ethereums-next-step-toward-a-more-flexible-account-model?utm_source=chatgpt.com
 
 
 

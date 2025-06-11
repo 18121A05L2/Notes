@@ -76,3 +76,9 @@
 -> Turing machine - https://grok.com/share/bGVnYWN5_c9eaca24-3cb6-4863-8577-ecded478336f
     - A Turing machine can perform any computation that can be described by an algorithm, given enough time and resources
 -> The base transaction cost (21,000 gas)
+-> Etherem accounts have a state consisting of four key fields: 
+    Nonce: A counter that tracks the number of transactions sent from the account, preventing replay attacks.
+    Balance: The amount of ETH the account holds.
+    Storage Hash: A Merkle root representing the account's storage.
+    Code Hash: A hash of the account's associated code (empty for EOAs).
+-> shamir backup - social recovery wallet

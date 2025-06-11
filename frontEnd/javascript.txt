@@ -1,1 +1,5 @@
 -> npm ci stands for "clean install", and it's a command used to install dependencies exactly as specified in your package-lock.json
+-> Primitive types
+   Complex types 
+-> need to go through
+   - template literals , default parameters , object literals , rest and spread operators , destructuring assignment , reduce
