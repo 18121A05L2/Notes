@@ -1,2 +1,0 @@
--> function foo() { console.log(arguments); }
-   foo(1,2,3); // logs [1,2,3], but no runtime problem

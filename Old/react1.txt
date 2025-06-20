@@ -1,0 +1,229 @@
+REACT
+
+--> using image after importing in jsx file - <img src={require("./images/brightness.png")} alt="light mode"/>
+
+--> index.js is default for a directory in react 
+
+--> margin-left : auto   -- this will makes any element in free space to the right most   ( in flexbox it is not able to use absolute and right 0 )
+
+--> Most props on a JSX element are passed on to the component, however, there are two special props (ref and key) which are 
+
+   used by React, and are thus not forwarded to the component.
+
+--> import { v4 as uuidv4 } from 'uuid';  --  use this for an unique key for the react components
+
+--> style = { { textDecorationLine : "line-through" ,} } -- textDecorationstyle , textDecorationColor , textDecorationThickness
+
+--> promise object takes a function as input and that function takes two arguments which is resolve and reject 
+
+--> anything inside a promise_obj.then( ) is going to run for the resolve function and catch( ) fo the reject function
+
+--> /* offset-x | offset-y | blur-radius | spread-radius | color */
+
+    box-shadow:  2px  2px  2px  1px  rgba(0, 0, 0, 0.2);
+
+--> bulk images in react should require( image path ) . default in an index.js file of the images folder
+
+--> rgb( 0 0 0 / 40% )  -- this means that black color with 40% transparency  
+
+-->  window.name = "John";   --   Once the variable is declared, you can call it from another React component you have in your project.
+
+--> window.$name = "John";   ---  you can prefix the variable name with the dollar sign ($) to identify it as a global variable.
+
+--> array.find( )  in react accepts only function as argument
+
+--> Use the includes() method to check if a primitive exists in an array.
+
+--> Use the some() method to check if an object exists in an array.
+
+--> The problem is that forEach does not return anything (i.e it returns undefined). So it's better to use map because map returns an array
+
+--> The document.getElementById() method returns null in React when we call the method before the element with the provided ID has been rendered to the DOM or if an element with the ID doesn't exist
+
+--> You can use the document.getElementById method in the useEffect hook because the hook runs after the component has been mounted.  or use refs
+
+--> Rules for React hooks -- https://reactjs.org/docs/hooks-rules.html
+
+--> Don’t call Hooks inside loops, conditions, or nested functions
+
+--> In React we have a concept of Refs which is equivalent to document.getElementById() in Javascript. Refs provide a way to access DOM nodes or React elements created in the render method
+
+--> for example, you want to show some component at mobile version), you can use helpers like react-responsive or react-media-hook.
+
+# --> moreThan700 && ( document.body.style.backgroundImage = "url('./images/bg-desktop-light.jpg')" )  -- must and should brackets due to precedence
+
+--> You can't use JavaScript Objects as a child in React.
+
+--> getMonth( ) starts from 0 t0 11 and getDay will gives us the day of the week
+
+--> npm instal classnames
+
+--> Instead of using Redux to manage data you get from a server, use a library like React Query.
+
+--> npm install react-icons --save
+
+--> import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
+
+--> npm install cors ( in server )-- installs a Node.js package that allows cross origin resource sharing.
+
+--> useEffect ( fun ) runs the function init , every time the component renders  ( it runs at both the first render and after every update  )
+
+--> useEffect ( fun  , [ ] )  -- when we pass states or props into the array then useEffect will only run if there is any changes in those states or props
+
+--> if we pass an empty array then its only runs the functionin useEffect only on initial rendering and it wont depend on any states or props
+
+--> performance -- the function before the rerender is differnt from the function after the rerender
+
+--> the usecall back function will cache the present function and returns that if state regarding that function is not changed , if anychange occurs in its state or props then only it will return new function
+
+--> useMemo is a hook that will only recomputes the cached values when one of the dependencies changed
+
+--> if we need to cache function useCallBack and when we need to cache the result of an invoked function useMemo
+
+--> In other words, action creators create objects that represent action events.
+
+
+--> when ever we update our state our component rerenders 
+
+--> useEffects updates after the rendering of the page
+
+--> console.count("count : ")
+
+--> strings , boolean and numbers are primitive
+    objects and arrays are non-primitive
+
+--> in useEffect first clean up function executes 
+
+--> If you are wrapping you app in <StrictMode> your components will be mounted / unmounted / remounted to identify potential unsafe lifecycles. 
+This only occurs on developement mode.                                        
+
+--> React dispatches the state changes in batch, when running a for loop it quickly batches 100 requests resulting in only 1 state update and 
+eventually 1 re-render
+
+--> In short, useEffect is a tool that lets us interact with the outside world but not affect the rendering or performance of the component that it's in
+
+--> Another example is to use subscriptions with WebSockets. Subscriptions need to be "turned off" when we are no longer using them, 
+and this is what the cleanup function is for
+
+--> in closures , all the variables in that are the references of that varibles 
+
+--> derived state problem - they are the two instances of the same data that are supposed to referencing the same thing , but they are not
+
+--> keep in mind that useState() setter function is asynchronous , thats y sometimes it is somethong like fall beyond one update , 
+because async function are run only after the call stack is empty
+
+--> does setter of useState() runs or useEffect() runs first ?
+
+--> 
+
+
+
+
+
+
+
+Missed Topics 
+
+--> redux toolkit , react router , render queue , react dispatches the state change in batches
+
+
+
+
+
+
+
+------------------------------> DEPLOYING REACT IN GITHUB PAGES <-------------------------------------------------------------------------------
+
+https://create-react-app.dev/docs/deployment/#github-pages
+
+  --> npm install gh-pages --save-dev     ( this saves gh-pages under dev dependencies )
+  
+  --> add this obj in package.json 
+         "homepage":"http://18121A05L2.github.io/frontend-mentor-job-listing-with-filtering-in-react"
+         
+  --> add this to the scripts object in package.json
+           "predeploy": "npm run build",
+           "deploy" :"gh-pages -d build",
+
+  --> npm run deploy
+
+
+
+
+
+------------------------------------------------------  REACT ROUTER  -------------------------------------------------------------------------
+
+--> npm install react-router-dom
+
+--> import { BrowserRouter , Routes , Route } from "react-router-dom";    -- in index.js
+
+--> import { Link } from "react-router-dom";             -- in app.jsx  
+
+--> import { useParams } from "react-router-dom"; 
+
+--> if something is not defaultly exported in any js file , we must use {  } when it is importing
+
+--> routes helps us to go back between pages without having to refresh
+
+--> The exact param disables the partial matching for a route and makes sure that it only returns the route if the path is an EXACT match to the current url.
+
+--> by default -- the router will go through all of our defined routes and return the FIRST match it finds
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------  USEFUL LINKS -------------------------------------------------------------------------------------
+
+--> REACT QUERY --  https://tanstack.com/query/v4/docs/overview
+
+--> REACT TRICKS --  https://www.freecodecamp.org/news/build-better-react-apps-with-these-tricks/
+
+--> npm install @tanstack/react-query
+
+--> COINGECO API -- https://www.coingecko.com/en/api/documentation
+
+--> https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false
+
+--> https://itnext.io/how-to-make-a-fancy-inverted-border-radius-in-css-5db048a53f95
+
+--> figma ui design -- https://www.figma.com/files/recent?fuid=1132288024909944346
+
+--> https://create-react-app.dev/docs/getting-started
+
+--> https://github.com/remix-run/react-router/blob/main/docs/getting-started/tutorial.md
+
+--> MERN STACK  --  https://www.mongodb.com/languages/mern-stack-tutorial
+
+--> toast notifications -- https://fkhadra.github.io/react-toastify/introduction/
+
+--> tippy -- https://atomiks.github.io/tippyjs/
+
+--> 
+
+
+
+
+
+
+
+
+
+
+
+NEED TO LEARN  
+
+--> NEXT JS , STYLED COMPONENTS , custom templates , npm test , display grid , react query
+
+
+
+------------------------------------------------------  HTML ----------------------------------------------------------------------------------
+-->   list-style-image: url("./images/icon-check.svg")
+
+-->  need to learn -- box shadow , linear gradient
+
+--> The getElementsByTagName() method returns an HTMLCollection.
+
+--> toggle between monthly and yearly
+
+--> input range slider
+
+--> how to customize check box 

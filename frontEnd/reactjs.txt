@@ -30,4 +30,10 @@
     - in first case child renders whenever the parent renders but not in the second case
     - if parent for both these renders , then at that time these two will render
 -> React.memo comes with an extra cost
--> 
+-> Noraml Script - Html parsing (and if it encounter any script tag) + fetch the script tag resources + execute the script tag js and then continue HTML parsing
+-> Async Script - Html parsing (and if it encounter any script tag) + execute the script tag js and then continue HTML parsing
+                             + fetch the script tag resources in parallel
+-> defer script - HTML parsing                              After HTML parsing is done + execute the scripts fetched in parallel
+                    + fetch scripts resources in parallel
+-> Async does not guarantee the order of execution but defer does
+-> Transitive dependency: A module that you didn't install directly, but one of your direct dependencies did

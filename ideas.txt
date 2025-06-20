@@ -4,3 +4,4 @@
 -> Cross rollup relaying porotocols (like L1 -> L2 -> L1) or (L2 - L2 )
 -> permissioned bank blockchains ( centralized bank blockchains )
 -> EMI's on blockchain
+-> Chrom extentions like sponsor or ad skip for youtube videos

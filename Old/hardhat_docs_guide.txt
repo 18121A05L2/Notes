@@ -15,3 +15,48 @@
 --> npx hardhat run scripts/deploy.js
 
 -->  npx hardhat node
+
+------------------------------------------------------------  HARDHAT SETUP  ------------------------------------------------------------
+
+--> yarn add --dev hardhat
+
+--> yarn hardhat -- and create the advanced project
+
+--> yarn solhint contracts/*.sol -- linter for solidity
+
+--> yarn hardhat compile -- to check whether our code is working properly or not
+
+--> yarn add --dev @chainlink/contracts  -- installing chainlink dependency
+
+--> yarn add --dev hardhat-deploy   -- to make our deployment easy in hardhat
+
+--> yarn add --save-dev  @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
+
+--> yarn hardhat -- to see all the available tasks in the hardhat ( from the above 2 we will get deploy as an option )
+
+
+--> module.exports = async (hre) => { }   -- hardhat runtime envirnment
+
+--> module.exports = async ( { getNamedAccounts , deployments } ) => { } 
+
+--> const {deploy,log} = deployments
+    
+--> const { deployer } = await getNamedAccounts()
+
+--> const chainid = network.config.chainid  ( this will get the info from the hardhat config file )
+
+--> yarn hardhat test , yarn hardhat coverage
+
+--> const variables and immutable variables do not take up spot in storage
+
+
+---------------------------------------------------------- ETHERS JS -------------------------------------------------------
+
+--> we need to change the type of the script to module in html , so that we can use imports in the index.js file
+
+--> a promise only returns when it executes resolve( ) or reject( )
+
+--> an address payable can receive Ether, while a plain address cannot.
+
+
+

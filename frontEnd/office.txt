@@ -1,0 +1,6 @@
+-> Learn Newrelic commands
+-> How nx works and helpful for monorepo ( to build fullstack blockchain apps )
+-> https://github.com/ishwarrimal/frontend-interview-preparation
+-> Playwright for testing
+-> firebase tools
+-> AWS

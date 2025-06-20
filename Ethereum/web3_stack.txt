@@ -27,3 +27,33 @@ Example projects
 -> Indexing 
     - rindexer ( uses postgress db) - building database, indexes, exposing GraphQL APIs - ( Alternatives , The graph protocol )
     - graphql
+
+
+
+
+
+
+
+---------------------------------------- ALL ------------------------------------------------------
+-> Nx allows you to manage all of these in a single monorepo, with each as a separate project (app/lib)
+    - Smart contracts (e.g., Solidity using Foundry or Hardhat)
+    - Frontend (React/Next.js)
+    - Backend (APIs, indexers)
+    - Scripts (deployment, testing, interactions)
+    - Vissual Dependency Graph
+        - Updating a smart contract => only test affected frontend apps
+        - Modifying ABI => re-generate only relevant services
+
+apps/
+  frontend/         (React + Wagmi + RainbowKit + Nextjs)
+  backend/          (Node.js API with Ethers.js)
+  indexer/          (Subgraph or GraphQL API)
+libs/
+  contracts/        (Solidity / Foundry )
+  utils/            (shared utils)
+  abi-types/        (generated ABI typings)
+tools/
+  deploy/           (deployment scripts, Hardhat tasks)
+
+
+
