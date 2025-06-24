@@ -37,3 +37,10 @@
                     + fetch scripts resources in parallel
 -> Async does not guarantee the order of execution but defer does
 -> Transitive dependency: A module that you didn't install directly, but one of your direct dependencies did
+
+-> useEffects runs after the rendering of the page
+-> strings , boolean and numbers are primitive
+    objects and arrays are non-primitive
+    In short, useEffect is a tool that lets us interact with the outside world but not affect the rendering or performance of the component that it's in
+-> Packages : React Router DOM 
+-> MERN STACK  --  https://www.mongodb.com/languages/mern-stack-tutorial

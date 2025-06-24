@@ -1,0 +1,17 @@
+-> FACET - Breaks down the result into groups based on an attribute, similar to SQL GROUP BY.
+-> count(*) - 	An aggregation function that returns the total number of matching events.
+-> httpResponseCode = 0 
+    - Request was never completed - This often happens when a request was aborted or failed to even reach the server (e.g. network error, CORS rejection, or browser cancellation).
+    - Client-side issues - JavaScript fetch or XHR was blocked by an ad blocker, firewall, or the user navigated away before completion.
+    - No valid HTTP response - The browser tried to make a request but didn't get any actual HTTP response—so there's no real status code (like 200, 404, etc.).
+-> NRQL syntax
+SELECT function(attribute) [AS 'label'][, ...] 
+FROM data type
+[WHERE attribute [comparison] [AND|OR ...]][AS 'label'][, ...]
+[FACET attribute | function(attribute)]
+[LIMIT number]
+[SINCE time]
+[UNTIL time]
+[WITH TIMEZONE timezone]
+[COMPARE WITH time]
+[TIMESERIES time]
