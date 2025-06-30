@@ -5,3 +5,4 @@
 -> ctrl + backtick(`) - to toggle the terminal in vscode
 ->  Minimize Current Window - ⌘ Command + M
 -> Maximize / Restore (Zoom) Current Window - Control + ⌘ Command + F
+-> Install baxh-completion for many auto completion features in bash

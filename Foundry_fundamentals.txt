@@ -3,6 +3,8 @@
 -> forge create EIP7702 --from <anvilAddress> --unlocked --broadcast
 --> source .env --> forge script script/DeploySimpleStorage.s.sol --rpc-url $SEPOLIA_URL --private-key $PRIVATE_KEY --broadcast
 --> (storing private key) cast wallet import one_anvil --interactive
+--> cast wallet public-key --account one_anvil
+--> cast wallet sign --no-hash <HashedMessage> --account one_anvil
 --> cast send 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9 "store(uint256)" 345 --account one_anvilca
 --> foundryup , foundryup-zksync
 --> forge fmt
