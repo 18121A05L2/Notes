@@ -1,5 +1,8 @@
 -> git reset --soft HEAD~1
     - The --soft option means that you will not lose the uncommitted changes you may have.
+    - HEAD = current commit
+    - HEAD~1 = one commit before
+    - HEAD~2 = two commits before, etc.
     - git revert <commit to revert>
 -> command + w - to close the current working file in vs code 
 -> ctrl + backtick(`) - to toggle the terminal in vscode
