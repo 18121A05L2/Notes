@@ -5,3 +5,5 @@
 -> permissioned bank blockchains ( centralized bank blockchains )
 -> EMI's on blockchain
 -> Chrom extentions like sponsor or ad skip for youtube videos
+-> How about raising an EIP , by wrapping around ERC20 and adding something like tags , so that if someone hacks any ERC20 token we can block those hacked tokens by having each token a unique identifier mapped to the tags
+    - we can add this one to the base ETH which we pays for gas

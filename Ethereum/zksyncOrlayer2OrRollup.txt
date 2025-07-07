@@ -154,6 +154,30 @@
       import { fileURLToPath } from 'url';
       const __filename = fileURLToPath(import.meta.url);
       const __dirname = dirname(__filename);
+-> Tornado has fixed denomination :: the prover only needs to show “I know a secret note whose commitment is in the Merkle tree for the 1 ETH pool,” rather than proving a relation on arbitrary numeric balances
+-> what is a Commitment :: Commitment schemes allow a user to commit to a chosen value ( or values ) while keeping it hidden, with the ability to reveal the value later
+   - properties of commitment scheme
+      - Binding : The committor cannot change the committed vakue(s) after the fact
+      - Hiding : The commitment reveals nothing about the original value(s) being commited to 
+         - Pedersen Commitment which is used by tornado cash
+            - Information theoretic hiding :: Even with unlimited computational power one cannot determine the original value 
+            - Computational binding :: they are secure as long as computational hardness assumptions , like the discrete logarithm problem, hold
+            - General Formulae : commitment = value * G + randomness * H
+            - Tornado Formulae : commitment = secret * G + nullifier * H
+         - Modern commitment scheme : poseidon commitment
+   - secret Note Formation :: tornado-[network]-[denomination]-[nullifier]-[secret]
+   - Tornado uses MIMC sponge hash function in for merkle tree , but we will use the latest poseidon hash function
+-> when withdrawing we need to provide a zeroknowlegde proof which is generated offchain using circom
+-> Tornado cash uses incremental merkle tree
+-> Relayer in Tornado cash :: When you deposit, you receive an encrypted “note” that proves membership in a pool. To withdraw privately, you generate a zk-SNARK proof and encrypt your recipient address into a payload.You send that encrypted payload to a relayer rather than broadcasting it yourself.Because the relayer's address—not yours—is what interacts with the on-chain withdraw function, the link between deposit and withdrawal addresses is broken
+   - That payload is POSTed to a relayer's HTTP API endpoint (you can choose from public relayers or run your own
+   - Custom Relayer :: https://github.com/tornadocash/relayer.git
+-> FontRunning :: If receipient address is not included in the circuit , mempool observer who sees the transaction can able to frontrun by taking the proofs and adding their address and submit the transaction just before the real user transaction executes
+-> Incremental Merkle Trees 
+   - has fixed depth/height (size)
+   - Leaves are initially populated with 'zero' values
+       - This zero is actually not zero , it is the hash of hash("tornado") , kind of constant value 
+   - Every single node in the tree can be considered as the root of its own "subtree"
 
 
  
