@@ -1,2 +1,17 @@
 -> O(1) refers to constant complexity, where the algorithm's performance is not affected by the input size, while O(n) refers to linear 
     complexity, where algorithm performance scales linearly with the input size.
+
+
+-> Complexity   Name                                	                                               Example
+    O(1)        constant time	      Takes the same time regardless of input size                     Array lookup
+    O(n)	    linear time	          Time grows proportionally with input size                        Loop over array
+    O(log n)	logarithmic time	  Reduces the problem size by half each time                       Binary search
+    O(n log n)  linearithmic time	  Common in efficient sorting algorithms                           Merge sort / Quick sort
+    O(n²)	    quadratic time	      Nested loops — time grows exponentially with input               Nested loops / Bubble sort
+    O(2ⁿ)	    exponential time	  Time doubles with each added input — very slow for large input   Recursive Fibonacci, brute-force
+
+
+
+
+-> difference between O(n) and O(logn)
+-> You can prove inclusion (Merkle proof) of a leaf with a small log₂(n) proof. in Incremental Merkle tree

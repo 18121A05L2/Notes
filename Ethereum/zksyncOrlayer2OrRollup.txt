@@ -68,6 +68,7 @@
 -> In order for a Zero knowledge to be valid , It must need to satisy three fundamental properties
    - Completeness    - if the statement is true, an honest prover must convince the verifier if they have the knowledge of the witness
    - Soundness       - if the statement if false, no dishonest prover can convince an honest verifier with an invaid witness
+                     - If the conditions don't hold (e.g., computed_root != root), no valid proof can be generated to trick the verifier
    - Zero Knowledge  - The verifier must learn nothing except that the prover's statement is true
 -> ZKPs sytems comprises of two components
    - front-end - the frontend is the constraint system it is where the problem is defined mathematically
@@ -128,11 +129,11 @@
 -> Noir is an open-source Domain-Specific Language for safe and seamless construction of privacy-preserving Zero-Knowledge programs, requiring no previous knowledge on the underlying mathematics or cryptography
 -> Noir - noir --help  , noirup
    Barretenberg proving backend  - bbup 
-      - inorder to user barraetenberg we need to install jq
+      - inorder to use barraetenberg we need to install jq
 -> when we are creating the proofs we need to provide public and private inputs and when we are verifying the proofs on chain we need to specify public inputs along with proofs
 -> When an integer is defined in Noir without a specific type, it will default to Field.
    The one exception is for loop indices which default to u32 since comparisons on Fields are not possible
--> nargo execute :: What it will do is it will compile the circuit into ACIR and it will execute our compiled circuits using the provided inputs in the Prover.toml and then compute a witness and then we will use this witness to create proof
+-> nargo execute :: it will compile the circuit into ACIR and it will execute our compiled circuits using the provided inputs in the Prover.toml and then compute a witness and then we will use this witness to create proof
 -> creating Proof :: nargo prove -b <compileCircuitLocation> -w <witnessLocation> -o <outputProofLocation>
 -> Verification key :: is basically a cryptographic object that allows the verifier to check the validity of the proof without having to rerun the full computation 
    - if we change something in the circuit we again need to regenerate the proof and the verification key
@@ -156,8 +157,9 @@
       const __dirname = dirname(__filename);
 -> Tornado has fixed denomination :: the prover only needs to show “I know a secret note whose commitment is in the Merkle tree for the 1 ETH pool,” rather than proving a relation on arbitrary numeric balances
 -> what is a Commitment :: Commitment schemes allow a user to commit to a chosen value ( or values ) while keeping it hidden, with the ability to reveal the value later
+      - The on-chain "locked box" that hides the secret and represents the deposit.
    - properties of commitment scheme
-      - Binding : The committor cannot change the committed vakue(s) after the fact
+      - Binding : The committor cannot change the committed value(s) after the fact
       - Hiding : The commitment reveals nothing about the original value(s) being commited to 
          - Pedersen Commitment which is used by tornado cash
             - Information theoretic hiding :: Even with unlimited computational power one cannot determine the original value 
@@ -170,17 +172,51 @@
 -> when withdrawing we need to provide a zeroknowlegde proof which is generated offchain using circom
 -> Tornado cash uses incremental merkle tree
 -> Relayer in Tornado cash :: When you deposit, you receive an encrypted “note” that proves membership in a pool. To withdraw privately, you generate a zk-SNARK proof and encrypt your recipient address into a payload.You send that encrypted payload to a relayer rather than broadcasting it yourself.Because the relayer's address—not yours—is what interacts with the on-chain withdraw function, the link between deposit and withdrawal addresses is broken
-   - That payload is POSTed to a relayer's HTTP API endpoint (you can choose from public relayers or run your own
+   - That payload is Posted to a relayer's HTTP API endpoint (you can choose from public relayers or run your own)
    - Custom Relayer :: https://github.com/tornadocash/relayer.git
 -> FontRunning :: If receipient address is not included in the circuit , mempool observer who sees the transaction can able to frontrun by taking the proofs and adding their address and submit the transaction just before the real user transaction executes
 -> Incremental Merkle Trees 
    - has fixed depth/height (size)
-   - Leaves are initially populated with 'zero' values
+   - leaves are initially populated with 'zero' values
        - This zero is actually not zero , it is the hash of hash("tornado") , kind of constant value 
    - Every single node in the tree can be considered as the root of its own "subtree"
-
-
- 
+   - This tree fills from left most node to right most node
+   - caching of filled subtrees - with this we will do less computation onchain
+      - filled subtrees does not need to be recomputed
+   - hasing was done from left to right ( hash (0 th node and 1 st node))
+      - if we are going to update the even index node ( left leaf node ) , then it needs to be hashed with precalculated zero substree
+      - if we are going to update the odd index node ( right leaf node ) , then it needs to be hashed with cached sub tree
+   - poseideon max hash value is less than the max value of keccak256
+   - if we are going to insert at position 13 , the number of cached subtrees will be 3 ( 13 in binary 1101)
+      - 1 depth 3 subtree , 1 depth 2 subtree , 0 depth 1 subtrees , 1 depth 0 subtree
+-> Tornado Cash doesn't use keccak256 in its proof circuits because it's not designed for arithmetic circuits.Instead, it uses zk-SNARK-friendly hashes like Poseidon to keep proving times fast and circuits small
+   - These circuits: Do well with operations like addition, multiplication. But do very poorly with bitwise operations, which keccak256 uses heavily
+   - A single keccak256 inside a zk-SNARK circuit may require tens of thousands of constraints
+   - A zk-friendly hash like Poseidon or MiMC may need under 1,000 constraints for the same operation
+-> In this mixer , we will check the most recent n number of roots because of
+   - If someone generated a proof off chain and in the meanwhile if some one deposits , then the root hash will change , thats why we will check the current root we are supplying for the withdraw by checking if it was present in the most recent root hashes
+-> bb.js will run our code in a separate service worker
+   - worker_threads - This is useful for CPU-intensive tasks (e.g. hashing, proof generation, parsing large data) so that the main event loop isn't blocked
+-> import { Noir } from "@noir-lang/noir_js"; -  await noir.execute(input);
+   - with the help of this noir package , we can execute the circuits and generate witness
+->  import { UltraHonkBackend } from "@aztec/bb.js"; - await honk.generateProof(witness, { keccak: true });
+   - with the help of this package , we can create proof which is keccack compatible , using the witness and verify proof
+-> Depth fo Tornado is 20 so per instance , there will be only 2**20 which is around 1 million transactions 
+   - Upgradation of this will be the Tornado Nova , which uses - Tree of trees ( Hirerarchical Merkle Trees , meta merkle trees)
+-> When withdrawing if one removes the commitment , then we can know the link between the depositor and the withdrawer
+   - but what if we remove some random commitment that has been already used to withdraw the funds , with this we dont knwow the linkage and also we can decrease the size of the merkle tree , so that we can overcome that only 1 million transactions can occur in the same denomination
+-> Why we have both nullifer and the secret ?
+   - actually to prevent the double spending we need some marking , if we mark the commitment then at withdrawing we need to pass that commitment , then there will be link between depositor and the witdrawer , thats wher nulllifer has came to add another layer of security for the secrets and also can be used to prevent double spending
+-> If Alice deposits and generates a proof locally to withdraw , then 50 new deposits has happened , then Alice can't able to withdraw with the proof she generated previously , she again need to generate a new proof where root includes in the most 30 recent roots
+-> Proof Verification:
+   - The Solidity verifier contract does not re-execute the circuit or compute commitment or computed_root.
+   - Instead, it uses the proof and the public inputs to perform a mathematical check (specific to the ZKP scheme, like Groth16 or PLONK) that confirms the prover's computations were valid.
+   - The proof essentially “certifies” that there exist private inputs that satisfy the circuit's conditions (e.g., the Merkle root matches root), and the verifier contract confirms this without needing to see or compute those private inputs.
+-> This is why it's called incremental: you incrementally update the Merkle tree on each insert, without rebuilding it
+-> when sending public inputs to the Solidity verifier smart contract generated using the Barretenberg backend, you must send the exact same public inputs that were used when the prover created the proof. If you send different public inputs, the verification will fail
+   - If the public inputs sent to the verifier match those used during proof generation, the verification can succeed (assuming the proof is valid). However, if they differ, the verification fails because the proof is cryptographically tied to the original public inputs.
+   - If you change recipient, it disrupts the statement being verified (though recipient isn't directly checked in your circuit, it's still part of the public input set)
+-> The "superpower" of a merkle tree is that if the tree holds 2**n leaves, it only takes n pieces of data to prove that some piece of data is a leaf of the tree
 
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -188,6 +224,8 @@ Resources ::
 -> https://github.com/matter-labs/awesome-zero-knowledge-proofs?tab=readme-ov-file#comparison-of-the-most-popular-zkp-systems
 -> https://dev.to/spalladino/a-beginners-intro-to-coding-zero-knowledge-proofs-c56
 -> Example for Trusted setup ceremony - https://github.com/tornadocash/phase2-bn254
+-> https://github.com/nkrishang/tornado-cash-rebuilt
+-> https://docs.ipfs.tech/how-to/pin-files/#three-kinds-of-x
 -> Tornado Trusted setup - Trusted setup for Groth16 SNARKS is done in 2 steps. The first step is universal for all SNARKs and is called Powers of Tau. The second step is called Phase 2 and is circuit-specific, so it should be done separately for each different SNARK
 
 
@@ -203,3 +241,6 @@ Question ::
 -> What is the significance of an Intermediate Representation (IR) like ACIR (Abstract Circuit Intermediate Representation) in ZKP systems
    - It serves as a standardized bridge between different front-end circuit languages and back-end proving systems
 -> Where in this course we have gone through the trusted setup when creating circuits and proving them
+-> Why are we using the poseidon hash instead of the normal keccak256 hash ?
+-> why do we actually need to check the recent roots in tornado instead of the main root
+-> https://github.com/semaphore-protocol ?

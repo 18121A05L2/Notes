@@ -356,3 +356,4 @@
    - String type in Solidity does not have length property , To use the length property on a string, you need to convert the string to bytes and use bytes(<string>).length
    - https://www.rareskills.io/post/solidity-dynamic
 -> defining a struct in Solidity does not take up a storage slot space until it is declared
+-> Solidity does not support switch at the high-level language, but it does support it inside assembly blocks

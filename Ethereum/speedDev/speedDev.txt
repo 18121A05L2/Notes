@@ -6,6 +6,10 @@
     - git revert <commit to revert>
 -> command + w - to close the current working file in vs code 
 -> ctrl + backtick(`) - to toggle the terminal in vscode
-->  Minimize Current Window - ⌘ Command + M
+-> Minimize Current Window - ⌘ Command + M
 -> Maximize / Restore (Zoom) Current Window - Control + ⌘ Command + F
 -> Install baxh-completion for many auto completion features in bash
+-> clear local storage :: Bookmarklet (One-click outside DevTools) ::> javascript:localStorage.clear();console.log('✅ localStorage cleared');
+    - Use Bookmark Mnemonics for Speed - just hit Cmd + L, type cl, and press Enter
+-> Cmd + L - to focus the address bar , then hit tab repeatedly to until it focus on the bookmarks
+-> Cmd + tab - to shift to new opened apps
