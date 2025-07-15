@@ -96,7 +96,6 @@
                               -  PLONK offers advantages such as a universal and updatable trusted setup , The term 'updatable' refers to the ability for anyone to add randomness to the setup, reinforcing trust in its integrity
                               - This reduces the need for repeated trusted setups and enables easier addition of new programs or circuits without redoing the entire setup
                               - a downside of PLONK is that it results in larger proof sizes, which can impact gas costs on the Ethereum network
-                              - https://medium.com/coinmonks/under-the-hood-of-zksnarks-plonk-protocol-part-1-34bc406d8303
             - PLONK (Permutation Argument over Lagrange bases for Oecumenical Noninteractive Arguments of Knowledge)
                - https://medium.com/coinmonks/under-the-hood-of-zksnarks-plonk-protocol-part-1-34bc406d8303
             - groth16
@@ -123,6 +122,11 @@
 -> HighLevel Overview - In practise ZKPs involve arithmeticizing the problem into a circuit using languages like noir , cirum or cairo , then using a backend to generate a proof and then verifies that proof , either onchain or offchain using a generated verifier smart contract
 -> ZKRollup :- Transactions are actually batched offchain and then this data is bundled together. And then this bundle of data is then submitted to L1 for verification 
       - What this does is generate a ZK proof that proove that state chages for these bundle of transactions . So instead of submitting all of the transaction data to the L1 only the proof and the transaction bundle are submitted which drastically decrease the gas fees
+-> Depth of the merkle tree - It is the number of HOPS ( Hash operations ) from leaf node to the root
+-> How many cached subtrees we need - “We only need to cache the roots of the smallest set of non-overlapping subtrees that fully represent the current state of the tree.”
+   - In our on-chain incremental Merkle tree, each time you insert a leaf you only recompute hashes along its insertion path, and you store (“cache”) certain subtree roots so future inserts can use them without re-walking the entire tree.
+   - But you don't need to cache every node you ever computed—just a minimal set of subtree roots that, taken together, let you reconstruct the entire tree state by filling in the gaps with your pre-computed “zero” values
+      
 
 ------------------------------------------------------------- noir-programming-and-zk-circuits ----------------------------------------------------
 
@@ -189,6 +193,7 @@
    - poseideon max hash value is less than the max value of keccak256
    - if we are going to insert at position 13 , the number of cached subtrees will be 3 ( 13 in binary 1101)
       - 1 depth 3 subtree , 1 depth 2 subtree , 0 depth 1 subtrees , 1 depth 0 subtree
+   - The IMT is currently used by TornadoCash to anonymize the depositors; by Semaphore to store group membership commitments; and by the Beaconchain deposit smart contract to maintain the list of Ethereum validators
 -> Tornado Cash doesn't use keccak256 in its proof circuits because it's not designed for arithmetic circuits.Instead, it uses zk-SNARK-friendly hashes like Poseidon to keep proving times fast and circuits small
    - These circuits: Do well with operations like addition, multiplication. But do very poorly with bitwise operations, which keccak256 uses heavily
    - A single keccak256 inside a zk-SNARK circuit may require tens of thousands of constraints
@@ -217,6 +222,12 @@
    - If the public inputs sent to the verifier match those used during proof generation, the verification can succeed (assuming the proof is valid). However, if they differ, the verification fails because the proof is cryptographically tied to the original public inputs.
    - If you change recipient, it disrupts the statement being verified (though recipient isn't directly checked in your circuit, it's still part of the public input set)
 -> The "superpower" of a merkle tree is that if the tree holds 2**n leaves, it only takes n pieces of data to prove that some piece of data is a leaf of the tree
+-> Sparse Merkle Tree - A sparse Merkle tree is like a standard Merkle tree, except the contained data is indexed, and each datapoint is placed at the leaf that corresponds to that datapoint's index.
+   - extra features than merkle trees - able to provide non-inlcusion proofs efficiently
+-> Cartesian Merkle Tree (CMT) is an elegant synergy of three data structures: the binary search tree, the heap, and the Merkle tree
+   - The CMT nodes store three values: the key, the priority, and the merkleHash
+   - https://medium.com/distributed-lab/cartesian-merkle-tree-the-new-breed-a30b005ecf27
+->
 
 ------------------------------------------------------------------------------------------------------------------------------
 

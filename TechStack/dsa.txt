@@ -15,3 +15,9 @@
 
 -> difference between O(n) and O(logn)
 -> You can prove inclusion (Merkle proof) of a leaf with a small log₂(n) proof. in Incremental Merkle tree
+
+
+Questions
+-> what is heap
+-> what is binary search tree
+->
