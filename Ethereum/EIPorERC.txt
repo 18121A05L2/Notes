@@ -40,6 +40,8 @@
 -> ERC - 7715 Grant permissions for Wallets
 
 -> erc-1155 -  what are semi fungible token
+      - A single ERC-1155 contract can manage multiple token types, including fungible, non-fungible, and semi-fungible tokens
+      - ERC-1155 can represent semi-fungible tokens, which are essentially fungible tokens that can be converted into non-fungible tokens under certain conditions
 
 -> EIP-3529: Reduction in refunds
 

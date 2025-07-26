@@ -1,0 +1,1 @@
+--> npx create-next-app@latest -e https://github.com/Seth-McKilla/nextjs-wagmi

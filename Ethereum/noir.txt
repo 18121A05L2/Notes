@@ -1,1 +1,16 @@
 -> In Noir (just like in Rust), the presence or absence of a trailing semicolon turns an expression into either a value‑producing expression (no semicolon) or a statement that returns () (with a semicolon)
+-> Field :: It is an integer type whose maximum value is determined by the field modulus of the underlying proving system.
+-> How are test functions identified and utilized in the Noir programming language? - By using the `#[test]` attribute above a function definition, to verify circuit logic with specific inputs.
+-> In cryptographic systems that utilize proofs of computation, what is the fundamental role of a 'verification key'? - It allows an entity to validate a submitted proof for a specific computation without needing access to the secret inputs or the full circuit.
+-> Arrays must be statically sized, meaning their length is known at compile time.
+
+
+
+
+
+
+
+
+
+
+

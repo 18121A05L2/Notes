@@ -6,3 +6,4 @@
 -> AWS
 -> How to use google notebook llm
 -> create a merkle tree using with all functionalities in js
+-> tanstack query which is used in wagmi

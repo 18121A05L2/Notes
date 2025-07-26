@@ -13,3 +13,4 @@
     - Use Bookmark Mnemonics for Speed - just hit Cmd + L, type cl, and press Enter
 -> Cmd + L - to focus the address bar , then hit tab repeatedly to until it focus on the bookmarks
 -> Cmd + tab - to shift to new opened apps
+-> Capture Chrome Screenshot without other tabs , bookmarks and extentions :: In Chrome : cmd + opt + i  and then cmd + shift + p and then search for capture screenshot

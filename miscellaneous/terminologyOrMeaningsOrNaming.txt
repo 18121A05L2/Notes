@@ -5,3 +5,4 @@
 -> succinct - (especially of something written or spoken) briefly and clearly expressed. (short and fast to check in blockchain terminology)
 -> Ethereum 2.0, also known as Serenity
 -> In database terminology, "upsert" means to either update an existing record or insert a new one if the record doesn't already exist
+-> LGTM - Looks Good to me

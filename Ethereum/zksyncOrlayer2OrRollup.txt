@@ -138,13 +138,15 @@
 -> When an integer is defined in Noir without a specific type, it will default to Field.
    The one exception is for loop indices which default to u32 since comparisons on Fields are not possible
 -> nargo execute :: it will compile the circuit into ACIR and it will execute our compiled circuits using the provided inputs in the Prover.toml and then compute a witness and then we will use this witness to create proof
--> creating Proof :: nargo prove -b <compileCircuitLocation> -w <witnessLocation> -o <outputProofLocation>
+-> creating Proof :: bb prove -b <compileCircuitLocation> -w <witnessLocation> -o <outputProofLocation>
 -> Verification key :: is basically a cryptographic object that allows the verifier to check the validity of the proof without having to rerun the full computation 
    - if we change something in the circuit we again need to regenerate the proof and the verification key
    - kind of digital finger print for the circuit
    - bb write_vk -b <compileCircuitLocation> -o <verificationKeyLocation>
    - verifier would be creating this verification key from the byte code and then using it to verify the proof
    - bb verify -k <verificationKeyLocation> -p <proofLocation> 
+->  In the context of developing Zero-Knowledge proofs with Noir, what does a 'Witness' represent?
+   - A complete set of all intermediate values and assignments that satisfy the circuit's constraints for a specific input
 -> In General signature is of 65 bytes - ( r is of 32 bytes , s is of 32 bytes , v is of 1 byte )
 -> To execute a shell script first we need to convert it to executable - chmod +x script.sh ( change mode executable)
 -> To generate VK for onchain :: bb write_vk --oracle_hash keccak -b <CompiledByteCodeOrACIR> -o <verificationKeyLocation>
@@ -227,7 +229,7 @@
 -> Cartesian Merkle Tree (CMT) is an elegant synergy of three data structures: the binary search tree, the heap, and the Merkle tree
    - The CMT nodes store three values: the key, the priority, and the merkleHash
    - https://medium.com/distributed-lab/cartesian-merkle-tree-the-new-breed-a30b005ecf27
-->
+->  What is the primary purpose of a library (`"lib"`) crate in Noir? - To create reusable Noir code that can be shared across different projects.
 
 ------------------------------------------------------------------------------------------------------------------------------
 
