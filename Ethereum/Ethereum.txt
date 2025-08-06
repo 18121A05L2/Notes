@@ -82,3 +82,4 @@
     Storage Hash: A Merkle root representing the account's storage.
     Code Hash: A hash of the account's associated code (empty for EOAs).
 -> shamir backup - social recovery wallet
+-> An SRP ( Seed Recovery Phrase ) restores the entire wallet with all its derived accounts, while a Private Key only restores one specific account.

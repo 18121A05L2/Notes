@@ -1,30 +1,45 @@
+
+----------------------------------- Uniswap v2 -----------------------------------------
+-> the bigger the curve , the better price you will get when we do a trade ( more liquidity)
+-> Three main contracts - Factory , Router and pair contracts
+    - Factory is used to deploy the pair contract
+    - Router is the intermediate contract between the user and the pair contract
+    - users can still directly interact with the pair contract but suggested to use the router contract so it will automate some functionalities and checks
+-> swap fee was charged on the incoming token into the pool
+
+
+
+
+-------------------------------- Constant Product AMM -----------------------------------
 -> AMM - x * y = k ( x = Asset A , y = Asset B , k = Constant value ) 
 -> price of Asset x = x / y
 -> price of Asset y = y / x
 From the above equations we can get the below two equations
 -> reserve of x**2 = K / price of x
 -> reserve of y**2 = K * price of y
--> Our share in the liquidity is = liquidity of ours / current total liquidity
+-> Our share in the liquidity is = liquidity of ours / current total liquidity ( LP tokens )
 -> When liquidity is added, K changes because the total pool size has increased—but each liquidity provider's share is then calculated as a fraction of the new total liquidity
 -> x*y = (x + deltax) * (y - deltay)
--> At a price of 4000 USDT/ETH: ( invested 1 eth at 2000 price )
-Pool Reserves: Approximately 0.7071 ETH and 2828.43 USDT.
+
+Below Example was from LP token holder perspective
+-> At a price of 4000 USDT/ETH: ( added 1 eth at 2000 price into the pool ( 1 eth , 2000 usdt ) )
+Pool Reserves: Approximately 0.7071 ETH and 2828.43 USDT. ( x * y = ~2000)
 Total Value upon Removal: ~5656.86 USDT.
 Impermanent Loss: ~343.14 USDT compared to simply holding.
 
 At a price of 5000 USDT/ETH:
-Pool Reserves: Approximately 0.6325 ETH and 3162.28 USDT.
+Pool Reserves: Approximately 0.6325 ETH and 3162.28 USDT. ( x * y = ~2000)
 Total Value upon Removal: ~6324.78 USDT.
 Impermanent Loss: ~675.22 USDT compared to holding.
 
 At 1000 USDT/ETH:
-Pool Reserves: ≈ 1.4142 ETH and ≈ 1414.21 USDT
+Pool Reserves: ≈ 1.4142 ETH and ≈ 1414.21 USDT ( x * y = ~2000)
 Total Value: ≈ 2828.42 USDT
 If Held: 3000 USDT
 Impermanent Loss: ≈ 171.58 USDT
 
 At 500 USDT/ETH:
-Pool Reserves: 2 ETH and 1000 USDT
+Pool Reserves: 2 ETH and 1000 USDT ( x * y = ~2000)
 Total Value: 2000 USDT
 If Held: 2500 USDT
 Impermanent Loss: 500 USDT

@@ -47,6 +47,7 @@ Need to check when destructing from a direct struct and a function returning a s
 -> what is eip 4844 proto dank sharding ?
 -> How single slot finality works under the hood 
 -> what is two party computation , fully homomorphic encryption and proof of person hood protocols
+-> How flashbots prevents the MEV like attacks
 
 
 # https://www.vigilseek.com/

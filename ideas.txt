@@ -7,3 +7,5 @@
 -> Chrom extentions like sponsor or ad skip for youtube videos
 -> How about raising an EIP , by wrapping around ERC20 and adding something like tags , so that if someone hacks any ERC20 token we can block those hacked tokens by having each token a unique identifier mapped to the tags
     - we can add this one to the base ETH which we pays for gas
+-> Todays hardware wallet sucks , we need to implement robust and clearly users can see what they are signing
+-> why we need to provide liquidity to each individual pool pair , what if we have something like provide liquidiy to a pool where we can trade every asset in that pool ( need a robust formulae for this)
