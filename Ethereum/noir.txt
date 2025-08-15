@@ -1,0 +1,1 @@
+-> In Noir (just like in Rust), the presence or absence of a trailing semicolon turns an expression into either a value‑producing expression (no semicolon) or a statement that returns () (with a semicolon)

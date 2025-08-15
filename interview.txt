@@ -1,8 +1,9 @@
--> Ethereum smart contract so special from other languages - it cannt be stopped (becuaser of decentralized nodes) , hacked ( cyrptography ) and modified ( immutable )
+-> Ethereum smart contract so special from other languages - it cannt be stopped (becuase of decentralized nodes) , hacked ( cyrptography ) and modified ( immutable )
 -> smart contracts are deterministic in nature
 -> solidity is statically type language - Javascript is dynamically typed language
 -> is solidiy compiled or intrepeted language - compiled , js is just in time compiled langauge
 -> default visibility of state variables - private
+-> default visability for a function is  - public
 -> what are two container type in solidity - arrays and mappings
 -> what are the two artifacts produced by solidity when compiling smart contract - ABI , ByteCode
 -> internal and private functions wont be included in ABI as they are only intended to use inside of the smart contract
@@ -33,6 +34,10 @@
 -> why can we define all types of arrays in memory location but not for mappings in solidity (using memory will takes less gas , where as the mappings serve from storage)
 -> Experience with zk rollups like Scroll, Taiko, zkSync
 -> ZK libraries such as Plonky3, halo2, circom, Groth16, sp1, r1cs
+-> concatenation of strings - string.concat("Hello ", "World!")
+-> cold vs warm access
+-> Full stack block chain developer tech stack
+-> 
 
 
 

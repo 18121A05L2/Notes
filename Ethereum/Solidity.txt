@@ -5,17 +5,19 @@
 —> stack is the local variable ( cheapest of all variables )
 —> calldata was the temp variable that can't be modified, memory was the temp variable that can be modified in the function execution 
 -> Data location can only be specified for arrays ,structs or mappings ( a string is an array or bytes )
+   - public and external functions cannot accept parameters marked storage; they must use memory or calldata instead. storage parameters can only be used with internal (or private) functions
 —> we can't add state variables in libraries
 —> new address[](size) - dynamic arrays in Solidity are initialised with default values ( here zero addresses )
 —> Solidity is a synchronous language
 -> safemath and libraries , what are checked and unchecked ( overflow or underflow checks are default in over 0.8 version , unchecked can 
-   be used to reduce the gas by explicitily specifying do not check for any overflow underflow for a specific expression )
--> in Solidity in order to send native blockchain tokens like etherem , you can only work with payable address to do that 
+   be used to reduce the gas by explicitily specifying do not check for any overflow or underflow for a specific expression )
+-> in Solidity in order to send native blockchain tokens like ethereum , you can only work with payable address to do that (when using call 
+   this was not needed and when using transfer and send payable is needed)
 -> enums , events , try catch , function selectors , abi encode and decode , hashing and assembly --> The try keyword has to be followed by 
    an expression representing an external function call or a contract creation (new ContractName())
 -> Ether in Solidity has 18 decimal places
---> Public: Accessible everywhere; includes an automatic getter for variables.
-    Private: Accessible only within the contract where it is defined; not visible to derived contracts.
+--> Public: Accessible everywhere; includes an automatic getter for variables. 
+    Private: Accessible only within the contract where it is defined; not visible to derived contracts. (by default if we wont specify visability)
     Internal: Accessible within the contract and by derived contracts; not visible externally.
     External: Functions accessible only from outside the contract; variables cannot have external visibility.
 -> Enums in Solidity are a simply way to give names to a set of integer values, and these names are internally mapped to unsigned integers starting from 0.
@@ -53,6 +55,11 @@
      - The transaction is effectively as if it never happened.
 -> in Upgradable smart contracts ( in implementation contracts we can add new varialbles but can't reorder the existing storage variables)
 -> EIP - 2535 Diamond proxy pattern ( static router (less expensive) , dynamic router ( more expensive))
+   - (static) Hard-coded Jump Table and (dynamic) Storage Mapping Lookup
+   - https://www.rareskills.io/post/diamond-proxy
+   - https://blessingemah.medium.com/a-beginners-guide-to-the-diamond-standard-proxy-b57076365403#:~:text=The%20Diamond%20Standard%20also%20known%20as%20an,Pattern%20which%20was%20created%20by%20Nick%20Mudge.
+   - https://github.com/code-423n4/2022-10-zksync/blob/main/ethereum/contracts/zksync/libraries/Diamond.sol#L285-L288
+   - https://gist.github.com/mudgen/7d50e3d0aca93b9cc321dfa0dbded373
 -> Proxy patterns ( https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies)
      - Unstructured Storage Proxies
      - Beacon contract address in EIP-1967 ( Beacon Proxy pattern ) - It simplifies the upgrade process for multiple proxies by centralizing the management of the implementation contract address
@@ -64,7 +71,6 @@
 -> Event logs come with a timestamp, so there is no need to add another timestamp variable in it.
 -> Bitmask for storing boolean storage variables - packing of variables
 -> central logging mechanism like logs needs to be emitted by only one main contract
--> if we want to generate addresses using number that number type must be a uint160
 -> we can write custom erros and free functions outside of the smart contract too
 -> with call function we can able to call functions in other smart contracts
 -> keccack hash collision 
@@ -136,11 +142,11 @@
    - Externally Owned Accounts (EOAs) are NOT affected , their nonce still starts at 0.
 -> if we deploy AA code in one chain , we need to deploy in all other chains like L2s to achieve this in that specific chain
 -> Solidity Optimizer - runs is not how many times the optimizer will run but how many times you expect to call functions in that smart contract. 
-   If the smart contract is only of one-time use as a smart contract for vesting or locking of tokens, you can set the runs value to 1 so that 
+   If the smart contract is only of one-time use as a smart contract for vesting or locking of tokens, you can set the runs value to 1.
    the compiler will produce the smallest possible bytecode but it may cost slightly more gas to call the function(s). If you are deploying 
    a contract that will be used a lot (like an ERC20 token), you should set the runs to a high number like 1337 so that initial bytecode 
    will be slightly larger but calls made to that contract will be cheaper. Commonly used functions like transfer will be cheaper
--> for Lower deployment const runs is 1 and for lower execution cost runs is 200 or much higher
+   - for Lower deployment cont runs is 1 and for lower execution cost runs is 200 or much higher ( 200 is the default optimizer for solidity)
 -> Zero-knowledge proofs (ZKPs) are cryptographic protocols that allow one party (the prover) to convince another party (the verifier) 
    that a statement is true without revealing any information beyond the validity of the statement itself
    - Groth 16
@@ -207,7 +213,7 @@
          Bytes 96-101: "Hello " (6 bytes)
          Bytes 102-133: 6 (length of second string)
          Bytes 134-139: "World!" (6 bytes)
-
+   - String concatenation - string(abi.encodePacked("Hello ", "World!"))
 -> abi.encodePacked: This function packs the given arguments without any type information or padding, simply 
    concatenating their raw byte sequences
 -> while the EVM's behavior is fully specified by the Ethereum protocol, its implementations are written in multiple programming languages 
@@ -216,6 +222,7 @@
    deployment it will be the bytecode ( initcode of the contract )
 -> The caret (^) in the version pragma indicates that the contract is compatible with the specified version and any newer minor version up to the next major version
 -> pragma solidity ^0.7.6 --it means the contract can be compiled with any compiler version starting at 0.7.6 up to, but not including, 0.8.0. This follows the semantic versioning rules.
+-> npm packages - ((~8.1.1 - >=8.1.1 <8.2.0 (patch updates only)))  , (^8.1.1 -	>=8.1.1 <9.0.0 (patch and major updates only ))
 -> CTRL + -  -- to go to back of the file where we are in vscode
 -> Index range access is only supported for dynamic calldata arrays. - numbers[1:3] -- uint[] calldata numbers
 -> Array slicing is not supported for - Fixed-Size Arrays , Storage Arrays and Memory Arrays
@@ -280,6 +287,7 @@
    - They can inherit from other contracts and interfaces, making them more flexible for code reuse
    - When a contract inherits from an interface, it must implement all the functions, or it becomes abstract
    - https://grok.com/share/bGVnYWN5_82ea619e-afd7-4f0c-9ce9-0f168d7f2ec9
+   - Functions in interfaces must be declared external.
 -> abi.encodeCall(function pointer , (tuple arguments)) performs a type check where as the abi.encodeWithSelector(function selector , .... ) does not perform a type check
 -> Reading Nested mapping - token.allowance(address(pool),recovery);  mapping(address => mapping(address => uint256)) public allowance;
 -> There are a number of common techniques which help avoid potential re-entrancy vulnerabilities in smart contracts. The first is 
@@ -326,6 +334,26 @@
 -> The contract Inherited was the derived contract (ParetoDollarStaking) and the contracts that we are inheriting was the base contract (ERC20Upgradeable)
 -> __ERC20_init_unchained (having onlyInitializer modifier): This is a more focused initializer. It only sets up the ERC20-specific initialization 
    state and doesn't call the parent's initializer, giving you control when the parent's initialization needs to happen separately or not
-
-
-
+-> msg.sig refers to the first four bytes of the transaction data, which acts as a function selector, determining which function to call within
+    a contract. It's a global variable that remains constant throughout a transaction, even if other functions are called within it
+-> Function name match checking from the call data of the transaction 
+   - Each selector == X comparison (and the associated branch, JUMPI) has a constant gas cost—approximately 22 gas for the comparison plus the jump logic 
+-> As you can imagine, this is because different op-codes are needed for each one of this different functions (which all achieve the exact same result)
+   - num += 1 ; (26429 gas) num = num +1 (26416 gas) num++ (26368 gas) ++num (26362 gas)
+-> Memory expansion cost 
+   - When a contract call needs to use more than 32 kilobytes of memory storage in a single transaction, the memory cost will enter into a quadratic section
+   - compare 1,000 , 10,000 and 20,000 arrays with sizes
+   - will this applicable to dynamic sized arrays too ?  yes
+   - The cost to expand memory increases quadratically with size:
+   - memory expansion cost = ( new memory size**2 - previous memory size**2 )/ 512
+-> 1 hexadecimal character represents 4 bits. 2 hexadecimal characters represent 1 byte
+-> in assembly, every variable is essentially treated as a bytes32 type. Outside of the assembly scope, the variable will resume its original type and format the data accordingly
+-> Sstore and Sload dont perform any type checks , sstore and sload operate on lengths of 32 bytes
+-> we do not have an opcode to directly modify or read from their byte sequence in storage ( for storage-packed variables , where multiple data type packed in a single 32 byte slot )
+-> Nested mapping storage slot - keccak256(abi.encode(key2, keccak256(abi.encode(key1, <storage slot>))))
+-> The storage variable slot (base slot) stores the string together with information about its length for short strings or only information about its length for long strings
+   - The string data and its length are stored together in the base slot. The string is packed from the left, with its length stored in the rightmost byte of the slot. For short strings, the maximum length of the string is 31 characters. However, what actually gets stored by the protocol is the length of the string multiplied by 2, since each character occupies one byte in storage. This means that the maximum value that can be stored for a short string is 31 * 2 = 62, which is 0x3e in hexadecimal.
+   - String type in Solidity does not have length property , To use the length property on a string, you need to convert the string to bytes and use bytes(<string>).length
+   - https://www.rareskills.io/post/solidity-dynamic
+-> defining a struct in Solidity does not take up a storage slot space until it is declared
+-> Solidity does not support switch at the high-level language, but it does support it inside assembly blocks

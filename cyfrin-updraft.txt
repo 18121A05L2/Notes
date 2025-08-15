@@ -11,10 +11,10 @@
 —> max inflation for the Eth is 0.5 - 2 % per year
 —> current Layer 1 Ethereum processes 15 transactions per second
 —> what does handling transactions in off chain means with layer 2 technology  ( state channels and payment channels  ) 
-—>  plasma framework for layer2 - child chains ( omg network ) ?
+—> plasma framework for layer2 - child chains ( omg network ) ?
 —> side chains - xthai ( side chains derive their security based on their own protocols , but Roll ups derive their security from the base layers ) 
 —> what is sharding , proto-danksharding and danksharding
-—> consensus types 1) chain selection and 2 ) sybil resistance ( POW )
+—> consensus types 1) chain selection and 2) sybil resistance ( POW )
 —> sharding and roll ups are solutions for the scalability issues 
 —> bridging mechanisms 1) locking and unlocking 2) burning and minting 
 -> algorithmic stablecoin : Dai , Frax and rai

@@ -1,0 +1,61 @@
+Example projects
+    - https://github.com/Cyfrin/ts-tsender-ui-cu ( Frontend focused )
+    - https://github.com/Cyfrin/ts-nft-marketplace-cu ( Backend focused )
+
+--------------------------------- FRONTEND ----------------------------------------------------
+
+-> viem (replacement of ethers) , Low-level Ethereum toolkit
+   wagmi → React hooks wrapper built on viem
+
+-> pnpm create next-app@latest
+
+-> Testing
+    - unit test   - vitest for testing framework
+    - e2e testing 
+        - playwright
+        - synpress ( combination of playwright and cypress with metamask support) , build by synthetix team
+
+-> Tech stack - https://chatgpt.com/c/681866c5-61c4-8010-98e1-d0762ff1d110
+
+-> rainbowkit - wallet library for frontend
+
+-> compliance engine - circle console
+
+-> server side backend call - next js
+
+-------------------------------------- BACKEND -------------------------------------------------
+-> Indexing 
+    - rindexer ( uses postgress db) - building database, indexes, exposing GraphQL APIs - ( Alternatives , The graph protocol )
+    - graphql
+
+
+
+
+
+
+
+---------------------------------------- ALL ------------------------------------------------------
+-> Nx allows you to manage all of these in a single monorepo, with each as a separate project (app/lib)
+    - Smart contracts (e.g., Solidity using Foundry or Hardhat)
+    - Frontend (React/Next.js)
+    - Backend (APIs, indexers)
+    - Scripts (deployment, testing, interactions)
+    - Vissual Dependency Graph
+        - Updating a smart contract => only test affected frontend apps
+        - Modifying ABI => re-generate only relevant services
+
+apps/
+  frontend/         (React + Wagmi + RainbowKit + Nextjs)
+  backend/          (Node.js API with Ethers.js)
+  indexer/          (Subgraph or GraphQL API)
+libs/
+  contracts/        (Solidity / Foundry )
+  utils/            (shared utils)
+  abi-types/        (generated ABI typings)
+tools/
+  deploy/           (deployment scripts, Hardhat tasks)
+
+-> Monitoring Tool - Newrelic
+
+
+

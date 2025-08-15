@@ -49,8 +49,13 @@
 
 -> ERC-3156: Flash Loans
 
--> ERC4626 : Vaults ( ERC7540 advancement of ERC4626 )
+-> ERC-4626 : Vaults ( ERC7540 advancement of ERC4626 )
 
 -> EIP-4788 :  is an Ethereum Improvement Proposal introducing a mechanism for the
    execution layer of Ethereum mainnet to access the beacon roots of the consensus layer
 
+-> EIP-7863 proposes block-level warming
+
+-> EIP-2930 : Pre-warming with Access Lists 
+
+-> EIP-1822 : Universal Upgradeable Proxy Standard (UUPS)

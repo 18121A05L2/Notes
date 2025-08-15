@@ -44,7 +44,9 @@ Need to check when destructing from a direct struct and a function returning a s
 -> what is polymarket
 -> we can use ERC-1967 for all the proxy , implementation and for Prevent collision among logic contract modules state , why we need an extra erc standard for that
 -> Chian Abstraction ?
-
+-> what is eip 4844 proto dank sharding ?
+-> How single slot finality works under the hood 
+-> what is two party computation , fully homomorphic encryption and proof of person hood protocols
 
 
 # https://www.vigilseek.com/

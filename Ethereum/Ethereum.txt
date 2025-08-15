@@ -3,18 +3,25 @@
 -> Peer scoring algorithms
 -> Pos is not just a block driven but also a time driven network
 -> Beacon nodes ( consensus ) database was 50-Gb and the execution client has between 500-700 GB
--> We need to run separate consensus and execution clients, which has their own p2p nodes and data will come through consensus to execution through Engine API
+-> We need to run separate consensus and execution clients, which has their own p2p nodes and data will come through consensus to execution 
+    through Engine API
 -> Putting ur wallet ( private key ) inside the execution client for those key management APIs was dumb
 -> What are archive nodes
 -> 1Ether = 10^18 wei , 1Ether = 10^9 Gwei
 -> The state root hash is the hash of the root node of the state trie after the execution of all the transactions included in the block.
--> When a light client needs to verify a specific part of the state (e.g., the balance of an account or the result of a transaction), it can request a Merkle proof from a full node
+-> When a light client needs to verify a specific part of the state (e.g., the balance of an account or the result of a transaction), it can 
+    request a Merkle proof from a full node
 -> A Merkle proof is a path in the Merkle Patricia Trie from a particular leaf (the account or storage data) up to the state root hash
--> Ethereum 2.0 divides time into periods called epochs (each epoch consists of 32 slots, with each slot lasting 12 seconds) -- Assume there are 100,000 active validators. For a block to be justified, at least 66,667 validators (⅔) need to attest to it in an epoch
+-> Ethereum 2.0 divides time into periods called epochs (each epoch consists of 32 slots, with each slot lasting 12 seconds) 
+    - Assume there are 100,000 active validators. For a block to be justified, at least 66,667 validators (⅔) need to attest to it in an epoch
 -> A bug in a consensus client with over 33% of the Ethereum nodes could prevent the consensus layer from finalizing
--> Epochs are units of 32 slots - each slot lasts 12 seconds - Slots and epochs set the pace of the blockchain --> In each epoch, the block in the first slot is a checkpoint. These checkpoints are important because they are used to make sections of the blockchain permanent and irreversible ( justified Epochs and Finalized Epochs )
--> a validator will participate in a sync committee. A sync committee is a group of 512 randomly chosen validators that sign block headers so that light clients can retrieve validated blocks without having to access the full historical chain or the full validator set
--> the validator is slashed. This means that 1/64th of their staked ether (up to a maximum of 0.5 ether) is immediately burned, then a 36 day removal period begins
+-> Epochs are units of 32 slots - each slot lasts 12 seconds - Slots and epochs set the pace of the blockchain 
+    - In each epoch, the block in the first slot is a checkpoint. These checkpoints are important because they are used to make sections 
+      of the blockchain permanent and irreversible ( justified Epochs and Finalized Epochs )
+-> a validator will participate in a sync committee. A sync committee is a group of 512 randomly chosen validators that sign block headers 
+    so that light clients can retrieve validated blocks without having to access the full historical chain or the full validator set
+-> the validator is slashed. This means that 1/64th of their staked ether (up to a maximum of 0.5 ether) is immediately burned, then a 36 day 
+    removal period begins
 -> Execution Client is not responsible for block building, block gossiping or handling consensus logic
 -> Execution Client - home to the Ethereum Virtual Machine, Ethereum's state and transaction pool
 -> The consensus client does not participate in attesting to or proposing blocks - this is done by a validator, an optional add-on to a consensus client
@@ -45,3 +52,33 @@
     contract account in both ethereum and zksync and you have lost your EOA which you used to initialize the smart contract accounts
     and some one sent you mony on optimism and you can't initialize the smart contract account with same address in optimism because
     you have used create2 and lost EOA adddress to initialize and generate the address of smart contract account
+-> Why Gas Exist in the first place : Ethereum is a Turing-complete system. Turing-complete systems face the challenge 
+    of the halting problem i.e. given an arbitrary program and its input, it is not solvable to determine whether the
+    program will eventually stop running. So Ethereum cannot predict if a smart contract will terminate, or how long it
+    will run. Therefore, to constrain the resources used by a smart contract, Ethereum introduces a metering mechanism 
+    called gas. So, gas is the unit used in Ethereum for measuring and limiting computations per block.
+    - https://coinsbench.com/advanced-gas-optimizations-tips-for-solidity-85c47f413dc5
+-> verge 
+    - decreasing node sync time from a couple of days to 10 minutes
+    - restart or resynsc can go  from 2 days to 10 minutes 
+    - and decrease the hardware requirements
+    - verfying the blocks with snarks
+-> The Purge
+    - which involves removing outdated data and simplifying the protocol
+    - History Expiration: Nodes might not be required to store all previous blocks, reducing storage requirements
+-> Splurge
+    - 
+-> scurge
+-> selfdestruct will let you kill the contract even if the conctract has arbitrary large numner of storage slots 
+    - this means there is not upper bound on the amount of state within in that could change within in a single block
+    - if in contract has a million object and if we selfdestruct this contract then this million objects will go away ( handling this edge case is complex and for this we need to add large amount of extra code on the client developers)
+    - hardlimit on number of the storage slots that can change within in a single block
+-> Turing machine - https://grok.com/share/bGVnYWN5_c9eaca24-3cb6-4863-8577-ecded478336f
+    - A Turing machine can perform any computation that can be described by an algorithm, given enough time and resources
+-> The base transaction cost (21,000 gas)
+-> Etherem accounts have a state consisting of four key fields: 
+    Nonce: A counter that tracks the number of transactions sent from the account, preventing replay attacks.
+    Balance: The amount of ETH the account holds.
+    Storage Hash: A Merkle root representing the account's storage.
+    Code Hash: A hash of the account's associated code (empty for EOAs).
+-> shamir backup - social recovery wallet

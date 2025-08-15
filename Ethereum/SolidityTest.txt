@@ -15,7 +15,7 @@
 -> usage of beforeTestSetup --   function beforeTestSetup(bytes4 testSelector) public returns (bytes[] memory beforeTestCalldata) {}
     - This is helpful when we have want to call certain tests (testA which has state changes needed by testC ) every time before calling another test ( testC)
     - Think of this a modifier perspective , there we check for conditions here we wait for state updation
--> if you add logs in beforeTestSetup function it wont log because that was used for how to seequence the tests
+-> if you add logs in beforeTestSetup function it wont log because that was used for how to sequence the tests
 -> Invarient - the property of the system that should always hold true
 -> Formal verification 
     - types ( symbolic execution , abstract intrepretation , Model checking )

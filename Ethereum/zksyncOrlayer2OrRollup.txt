@@ -1,0 +1,257 @@
+-> System contracts - Difference between Zksync and Ethereum Mainnet 
+   - System contracts are a specialized set of contracts in virtual machines (VM) that enhance the Ethereum Virtual Machine (EVM) by supporting opcodes not available by default
+   - https://docs.zksync.io/zksync-protocol/contracts/system-contracts
+-> system contract call - SystemContractsCaller.systemCallWithPropagatedRevert
+-> foundryup-zksync
+-> forge build --zksync
+-> Contracts with a large number of instructions will not compile on ZKsync due to the 65535 addressable space limitation imposed by zksolc
+-> The zksolc compiler enforces a limit on the number of instructions a contract can have, capped at 2^16 instructions. If a contract 
+     exceeds this limit, the compilation will fail.
+-> Sequencer responsibilities
+     - Accept user transactions. 
+     - Reads user transactions from an L2 mempool
+     - Order and execute transactions. 
+     - Batch transactions for submission to Ethereum L1.
+     - Provide fast but non-final confirmations.
+-> zero knowledge proofs - the ability to prove honest computation without revealing the inputs 
+-> circum and snarkjs - DSL for zksnarks
+-> when we have 4 inputs in a merkle tree - Proof 1 = Hash 2 , Proof 2 = Hash 3-4 ( These are the proofs that we are going to provide 
+     for the first input as an aarray of proofs)
+->                                            Merkle Root
+                                               H0
+                            ___________________|___________________
+                           |                                       |
+                          H1                                       H2
+                ___________|__________                  ___________|__________
+               |                      |                |                      |
+              H3                     H4              H5                     H6
+         ______|______         ______|______     ______|______         ______|______
+        |             |       |             |   |             |       |             |
+       H7            H8      H9           H10  H11          H12      H13          H14
+      / \           / \     / \          / \   / \          / \      / \          / \
+    L0  L1       L2  L3   L4  L5      L6  L7 L8  L9     L10  L11  L12  L13    L14  L15
+     |___ Single Node Layer for Remaining Nodes |      L16   L17  L18   L19
+
+-> Leaf Node to Verify: L0
+   Merkle Proof: The following sibling hashes are required to reconstruct the path to the root:
+   L1
+   H8 (sibling of H7)
+   H4 (sibling of H3)
+   H2 (sibling of H1)
+-> zkSync uses two nonces: a deployment nonce (for create calls) and a transaction nonce (for replay protection). This affects contract 
+     address calculation, so tweak your Foundry scripts accordingly
+-> STARKs (succinct zero-knowledge proofs without trusted setup)
+-> Validium's mechanism is very similar to a zkRollup, the only difference being that data-availability in a zkRollup is on-chain, while 
+   Validium keeps it off-chain. This permits Validium to achieve considerably higher throughput
+-> what is validium ? ( exchange validiums or exhchange proof of solvency) - exchanges can able to prove each and every coin 
+   of the deposits they got and they have that corresponding coins and ther are not being fractional reserves
+   - https://www.youtube.com/watch?v=5GvoJhwhv8E
+   - Funds belonging to validium users are controlled by a smart contract on Ethereum
+   - However, validium users can have their funds frozen and withdrawals restricted. This can happen if data availability managers (Data Availability Committee (DAC)) on the validium chain withhold offchain state data from users. Without access to transaction data, users cannot compute the Merkle proof required to prove ownership of funds and execute withdrawals
+   - https://ethereum.org/en/developers/docs/scaling/validium/
+   - In zkSync 2.0, the L2 state will be divided into 2 sides: zkRollup with on-chain data availability and zkPorter with off-chain data availability.
+   - zkPorter accounts can make thousands of swaps on the Uniswap contract, but only a single update needs to be published to Ethereum
+   - Volition
+-> The rollup's state is available to the zkRollup users as long as at least one Ethereum full node is online
+-> what is zero knowledge proof of transaction history ?
+->  ZK-SNARKs (Zero-Knowledge Succinct Non-Interactive Argument of Knowledge)
+    ZK-STARKs (Zero-Knowledge Scalable Transparent ARgument of Knowledge)
+-> SNARKS cost to verify on ETH (SNARK verifiers) ( 270k gas for plonk proof and 11 million gas for a STARK proof)
+-> PLONK 
+      - Plonk utilizes the KZG (Kate, Zaverucha, Goldberg) scheme for verification
+      - It has three phases : Setup phase , Commit phase and Reveal phase
+      - The prover calculates a commitment to the polynomial P(τ) using the Common Reference String obtained from the trusted setup, and sends this commitment, which is a point on an elliptic curve, to the verifier
+
+--------------------------------------------------------- Fundamentals for Zero knowledge proofs ---------------------------------------------------------
+
+-> Zero knowledge proofs (ZKPs) - A cryptographic method that allows one party ( the prover ) to convince another party ( the verifier ) that they know something without revealing the actual information itself
+-> In order for a Zero knowledge to be valid , It must need to satisy three fundamental properties
+   - Completeness    - if the statement is true, an honest prover must convince the verifier if they have the knowledge of the witness
+   - Soundness       - if the statement if false, no dishonest prover can convince an honest verifier with an invaid witness
+                     - If the conditions don't hold (e.g., computed_root != root), no valid proof can be generated to trick the verifier
+   - Zero Knowledge  - The verifier must learn nothing except that the prover's statement is true
+-> ZKPs sytems comprises of two components
+   - front-end - the frontend is the constraint system it is where the problem is defined mathematically
+         - Arthmetization and constraint systems
+   - back-end - proving system - Takes the compiled circuits and generates the proof or verifies the proof
+         - proof generation , Takes the ACIR and generates proof of execution
+         - verification , checks the proof againt constraints
+-> Type of zero knowledge proofs
+   - Interactive zero knowledge proofs (IZKPs)
+      - In interactive ZKPs, the prover and verifier engage in a back-and-forth conversation. The verifier sends random challenges, and the prover responds to each one in real-time.
+   - non-interactive zero knowledge proofs
+         - Non-interactive proofs require no back-and-forth communication. The prover generates a single proof that the verifier can check independently.
+         - SNARKs ( needs trusted setup ) 
+            - trusted setup - A trusted setup ceremony is a procedure that is done once to generate some data that must be used every time some cryptographic (ZK in this instance) protocol is run
+                           - The trusted setup is a one-time ceremony that generates public parameters — special cryptographic data that both the prover and verifier will use
+                           - The system is designed to be secure as long as at least one participant is honest and destroys their secret
+                - toxic waste - during initial setup some random numbers will be generated and these needs to be securely destroyed, if an attacker knows these values he can forge an invalid proofs and that will pass the verification
+                - CRS (common reference string) - A set of public parameters that both the prover and verifier use in the proof generation and verification processes
+                    - SRS ( Structure reference string ) - data is specific format, EX: elliptic curve points
+                - Multi party computation (MPC)  - https://grok.com/chat/a02ae464-9842-4ac6-885f-f6659211d5dc
+                - polynomial commitment - This is a cryptographic method that allow you to commit to a specific polynomial , while keeping the coefficient of this polynomial secret
+                     -  EX : KZG commitment (KZG (Kate, Zaverucha, Goldberg))
+                - Examples 1) Circuit specific (Groth16) - The cryptographic parameters need to be regenerated for every circuit
+                        -  2) universal (plonk) - The cryptographic parametes can be reused ( for circuits upto a certain size )
+                              -  PLONK offers advantages such as a universal and updatable trusted setup , The term 'updatable' refers to the ability for anyone to add randomness to the setup, reinforcing trust in its integrity
+                              - This reduces the need for repeated trusted setups and enables easier addition of new programs or circuits without redoing the entire setup
+                              - a downside of PLONK is that it results in larger proof sizes, which can impact gas costs on the Ethereum network
+            - PLONK (Permutation Argument over Lagrange bases for Oecumenical Noninteractive Arguments of Knowledge)
+               - https://medium.com/coinmonks/under-the-hood-of-zksnarks-plonk-protocol-part-1-34bc406d8303
+            - groth16
+            - powers of TAU ??
+         - STARKs
+            - Starks does not require trusted setup , Instead, zk-STARKs use hash functions and publicly known randomness to construct proofs, which enhances their security and scalability
+            - STARKs rely on hash functions, such as SHA-256
+         - bulletproofs
+   - https://grok.com/share/bGVnYWN5_b9d43569-2ffa-46b3-9432-573d66b96f10
+-> Terminology 
+   - claim or statement - A claim is an assertion that something is true. In the context of the Zero knowledge proofs it refers to the property being proven wihtout revealing the addition information 
+         - It is the 'claim' that prover is making about the 'witness'
+   - Constraint - Mathematical condition which must be satisfied in order for the claim to be valid
+      - constraints define the rules, the inputs ( private (only prover knows), public (both prover and verifier know) inputs ) must follow to be valid
+      - written using Circom or NOA
+   - Circuit - A system of constraints makes up the circuit
+        - The circuit defines how the constraints work together 
+        - A series of mathematical relations and operations
+   - Witness - The set of private values that allow a prover to demonstrate that their claim or statement is valid/true
+         - THe witness must satisfy the constraints of the circuit
+         - include the private inputs , but also can include the intermediate calculations
+   - prover - The prover is the entity that generates the proof of computation to demonstate the knowledge of witness while satisying the circut constraints
+-> Proof of web2 data ( private web data to onchain ) ( DECO - Data Enabled Computation Oracle)
+-> HighLevel Overview - In practise ZKPs involve arithmeticizing the problem into a circuit using languages like noir , cirum or cairo , then using a backend to generate a proof and then verifies that proof , either onchain or offchain using a generated verifier smart contract
+-> ZKRollup :- Transactions are actually batched offchain and then this data is bundled together. And then this bundle of data is then submitted to L1 for verification 
+      - What this does is generate a ZK proof that proove that state chages for these bundle of transactions . So instead of submitting all of the transaction data to the L1 only the proof and the transaction bundle are submitted which drastically decrease the gas fees
+-> Depth of the merkle tree - It is the number of HOPS ( Hash operations ) from leaf node to the root
+-> How many cached subtrees we need - “We only need to cache the roots of the smallest set of non-overlapping subtrees that fully represent the current state of the tree.”
+   - In our on-chain incremental Merkle tree, each time you insert a leaf you only recompute hashes along its insertion path, and you store (“cache”) certain subtree roots so future inserts can use them without re-walking the entire tree.
+   - But you don't need to cache every node you ever computed—just a minimal set of subtree roots that, taken together, let you reconstruct the entire tree state by filling in the gaps with your pre-computed “zero” values
+      
+
+------------------------------------------------------------- noir-programming-and-zk-circuits ----------------------------------------------------
+
+-> Noir is an open-source Domain-Specific Language for safe and seamless construction of privacy-preserving Zero-Knowledge programs, requiring no previous knowledge on the underlying mathematics or cryptography
+-> Noir - noir --help  , noirup
+   Barretenberg proving backend  - bbup 
+      - inorder to use barraetenberg we need to install jq
+-> when we are creating the proofs we need to provide public and private inputs and when we are verifying the proofs on chain we need to specify public inputs along with proofs
+-> When an integer is defined in Noir without a specific type, it will default to Field.
+   The one exception is for loop indices which default to u32 since comparisons on Fields are not possible
+-> nargo execute :: it will compile the circuit into ACIR and it will execute our compiled circuits using the provided inputs in the Prover.toml and then compute a witness and then we will use this witness to create proof
+-> creating Proof :: nargo prove -b <compileCircuitLocation> -w <witnessLocation> -o <outputProofLocation>
+-> Verification key :: is basically a cryptographic object that allows the verifier to check the validity of the proof without having to rerun the full computation 
+   - if we change something in the circuit we again need to regenerate the proof and the verification key
+   - kind of digital finger print for the circuit
+   - bb write_vk -b <compileCircuitLocation> -o <verificationKeyLocation>
+   - verifier would be creating this verification key from the byte code and then using it to verify the proof
+   - bb verify -k <verificationKeyLocation> -p <proofLocation> 
+-> In General signature is of 65 bytes - ( r is of 32 bytes , s is of 32 bytes , v is of 1 byte )
+-> To execute a shell script first we need to convert it to executable - chmod +x script.sh ( change mode executable)
+-> To generate VK for onchain :: bb write_vk --oracle_hash keccak -b <CompiledByteCodeOrACIR> -o <verificationKeyLocation>
+-> To generate Solidity contract verifier :: bb write_solidity_verifier -b <CompiledByteCodeOrACIR> -k <verificationKeyLocation> -o <verificationKeyLocation>
+-> Field Max value is less than the max value of keccak256
+   - range for Field is based on prime number which is 0 to 21888242871839275222246405745257275088548364400416034343698204186575808495616
+-> To run arbitary scripts in Foundry tests -  vm.ffi(inputs) - string[] memory inputs 
+-> To get the circuit path in JS :: 
+   - __dirName is the current working directory which is available only in NodeJs , we cant use this in the frontend inside of the browsers
+   - To get Dirname 
+      import { dirname } from 'path';
+      import { fileURLToPath } from 'url';
+      const __filename = fileURLToPath(import.meta.url);
+      const __dirname = dirname(__filename);
+-> Tornado has fixed denomination :: the prover only needs to show “I know a secret note whose commitment is in the Merkle tree for the 1 ETH pool,” rather than proving a relation on arbitrary numeric balances
+-> what is a Commitment :: Commitment schemes allow a user to commit to a chosen value ( or values ) while keeping it hidden, with the ability to reveal the value later
+      - The on-chain "locked box" that hides the secret and represents the deposit.
+   - properties of commitment scheme
+      - Binding : The committor cannot change the committed value(s) after the fact
+      - Hiding : The commitment reveals nothing about the original value(s) being commited to 
+         - Pedersen Commitment which is used by tornado cash
+            - Information theoretic hiding :: Even with unlimited computational power one cannot determine the original value 
+            - Computational binding :: they are secure as long as computational hardness assumptions , like the discrete logarithm problem, hold
+            - General Formulae : commitment = value * G + randomness * H
+            - Tornado Formulae : commitment = secret * G + nullifier * H
+         - Modern commitment scheme : poseidon commitment
+   - secret Note Formation :: tornado-[network]-[denomination]-[nullifier]-[secret]
+   - Tornado uses MIMC sponge hash function in for merkle tree , but we will use the latest poseidon hash function
+-> when withdrawing we need to provide a zeroknowlegde proof which is generated offchain using circom
+-> Tornado cash uses incremental merkle tree
+-> Relayer in Tornado cash :: When you deposit, you receive an encrypted “note” that proves membership in a pool. To withdraw privately, you generate a zk-SNARK proof and encrypt your recipient address into a payload.You send that encrypted payload to a relayer rather than broadcasting it yourself.Because the relayer's address—not yours—is what interacts with the on-chain withdraw function, the link between deposit and withdrawal addresses is broken
+   - That payload is Posted to a relayer's HTTP API endpoint (you can choose from public relayers or run your own)
+   - Custom Relayer :: https://github.com/tornadocash/relayer.git
+-> FontRunning :: If receipient address is not included in the circuit , mempool observer who sees the transaction can able to frontrun by taking the proofs and adding their address and submit the transaction just before the real user transaction executes
+-> Incremental Merkle Trees 
+   - has fixed depth/height (size)
+   - leaves are initially populated with 'zero' values
+       - This zero is actually not zero , it is the hash of hash("tornado") , kind of constant value 
+   - Every single node in the tree can be considered as the root of its own "subtree"
+   - This tree fills from left most node to right most node
+   - caching of filled subtrees - with this we will do less computation onchain
+      - filled subtrees does not need to be recomputed
+   - hasing was done from left to right ( hash (0 th node and 1 st node))
+      - if we are going to update the even index node ( left leaf node ) , then it needs to be hashed with precalculated zero substree
+      - if we are going to update the odd index node ( right leaf node ) , then it needs to be hashed with cached sub tree
+   - poseideon max hash value is less than the max value of keccak256
+   - if we are going to insert at position 13 , the number of cached subtrees will be 3 ( 13 in binary 1101)
+      - 1 depth 3 subtree , 1 depth 2 subtree , 0 depth 1 subtrees , 1 depth 0 subtree
+   - The IMT is currently used by TornadoCash to anonymize the depositors; by Semaphore to store group membership commitments; and by the Beaconchain deposit smart contract to maintain the list of Ethereum validators
+-> Tornado Cash doesn't use keccak256 in its proof circuits because it's not designed for arithmetic circuits.Instead, it uses zk-SNARK-friendly hashes like Poseidon to keep proving times fast and circuits small
+   - These circuits: Do well with operations like addition, multiplication. But do very poorly with bitwise operations, which keccak256 uses heavily
+   - A single keccak256 inside a zk-SNARK circuit may require tens of thousands of constraints
+   - A zk-friendly hash like Poseidon or MiMC may need under 1,000 constraints for the same operation
+-> In this mixer , we will check the most recent n number of roots because of
+   - If someone generated a proof off chain and in the meanwhile if some one deposits , then the root hash will change , thats why we will check the current root we are supplying for the withdraw by checking if it was present in the most recent root hashes
+-> bb.js will run our code in a separate service worker
+   - worker_threads - This is useful for CPU-intensive tasks (e.g. hashing, proof generation, parsing large data) so that the main event loop isn't blocked
+-> import { Noir } from "@noir-lang/noir_js"; -  await noir.execute(input);
+   - with the help of this noir package , we can execute the circuits and generate witness
+->  import { UltraHonkBackend } from "@aztec/bb.js"; - await honk.generateProof(witness, { keccak: true });
+   - with the help of this package , we can create proof which is keccack compatible , using the witness and verify proof
+-> Depth fo Tornado is 20 so per instance , there will be only 2**20 which is around 1 million transactions 
+   - Upgradation of this will be the Tornado Nova , which uses - Tree of trees ( Hirerarchical Merkle Trees , meta merkle trees)
+-> When withdrawing if one removes the commitment , then we can know the link between the depositor and the withdrawer
+   - but what if we remove some random commitment that has been already used to withdraw the funds , with this we dont knwow the linkage and also we can decrease the size of the merkle tree , so that we can overcome that only 1 million transactions can occur in the same denomination
+-> Why we have both nullifer and the secret ?
+   - actually to prevent the double spending we need some marking , if we mark the commitment then at withdrawing we need to pass that commitment , then there will be link between depositor and the witdrawer , thats wher nulllifer has came to add another layer of security for the secrets and also can be used to prevent double spending
+-> If Alice deposits and generates a proof locally to withdraw , then 50 new deposits has happened , then Alice can't able to withdraw with the proof she generated previously , she again need to generate a new proof where root includes in the most 30 recent roots
+-> Proof Verification:
+   - The Solidity verifier contract does not re-execute the circuit or compute commitment or computed_root.
+   - Instead, it uses the proof and the public inputs to perform a mathematical check (specific to the ZKP scheme, like Groth16 or PLONK) that confirms the prover's computations were valid.
+   - The proof essentially “certifies” that there exist private inputs that satisfy the circuit's conditions (e.g., the Merkle root matches root), and the verifier contract confirms this without needing to see or compute those private inputs.
+-> This is why it's called incremental: you incrementally update the Merkle tree on each insert, without rebuilding it
+-> when sending public inputs to the Solidity verifier smart contract generated using the Barretenberg backend, you must send the exact same public inputs that were used when the prover created the proof. If you send different public inputs, the verification will fail
+   - If the public inputs sent to the verifier match those used during proof generation, the verification can succeed (assuming the proof is valid). However, if they differ, the verification fails because the proof is cryptographically tied to the original public inputs.
+   - If you change recipient, it disrupts the statement being verified (though recipient isn't directly checked in your circuit, it's still part of the public input set)
+-> The "superpower" of a merkle tree is that if the tree holds 2**n leaves, it only takes n pieces of data to prove that some piece of data is a leaf of the tree
+-> Sparse Merkle Tree - A sparse Merkle tree is like a standard Merkle tree, except the contained data is indexed, and each datapoint is placed at the leaf that corresponds to that datapoint's index.
+   - extra features than merkle trees - able to provide non-inlcusion proofs efficiently
+-> Cartesian Merkle Tree (CMT) is an elegant synergy of three data structures: the binary search tree, the heap, and the Merkle tree
+   - The CMT nodes store three values: the key, the priority, and the merkleHash
+   - https://medium.com/distributed-lab/cartesian-merkle-tree-the-new-breed-a30b005ecf27
+->
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Resources ::
+-> https://github.com/matter-labs/awesome-zero-knowledge-proofs?tab=readme-ov-file#comparison-of-the-most-popular-zkp-systems
+-> https://dev.to/spalladino/a-beginners-intro-to-coding-zero-knowledge-proofs-c56
+-> Example for Trusted setup ceremony - https://github.com/tornadocash/phase2-bn254
+-> https://github.com/nkrishang/tornado-cash-rebuilt
+-> https://docs.ipfs.tech/how-to/pin-files/#three-kinds-of-x
+-> Tornado Trusted setup - Trusted setup for Groth16 SNARKS is done in 2 steps. The first step is universal for all SNARKs and is called Powers of Tau. The second step is called Phase 2 and is circuit-specific, so it should be done separately for each different SNARK
+
+
+
+Question ::
+??
+-> what is R1CS system ( DSL is Circum) ?
+-> what is power of tau ?
+-> DSL ( Domain Specific Language ) compile to  ACIR (Abstract Circuit Intermediate Representation) or R1CS (circum) ( intermediate representation of circuit )
+-> Do we use snarks or starks in zkrollup ?
+-> DECO ( Data Enabled Computation Oracle ) - If we want to prove something like private web data on chain ( proof of web2 data )
+   - EX: bank balance , phonepay transaction amount
+-> What is the significance of an Intermediate Representation (IR) like ACIR (Abstract Circuit Intermediate Representation) in ZKP systems
+   - It serves as a standardized bridge between different front-end circuit languages and back-end proving systems
+-> Where in this course we have gone through the trusted setup when creating circuits and proving them
+-> Why are we using the poseidon hash instead of the normal keccak256 hash ?
+-> why do we actually need to check the recent roots in tornado instead of the main root
+-> https://github.com/semaphore-protocol ?

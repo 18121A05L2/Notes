@@ -1,7 +1,26 @@
 --> CCIP - cross chain interoperability protocol
 --> DON - Decentralized Oracle Networks
 --> When importing IERC20 make sure to import the exact IERC20 which they were importing in their contract ( EX: TokenPool)
---> Lanes are unidirectional. For instance, Ethereum Mainnet => Polygon Mainnet and Polygon Mainnet => Ethereum Mainnet are two different lanes
+--> Lanes are unidirectional in CCIP. For instance, Ethereum Mainnet => Polygon Mainnet and Polygon Mainnet => Ethereum Mainnet are two different lanes
 --> Chainlink 
     - Free to consume - price feeds ( data feeds ) , proof of reserve feeds
-    - Paid to consume - VRFs ( verifiable random functions ) , automation , functions , ccip , data streams and data requests (API data requests)
+    - Pay to consume - VRFs ( verifiable random functions ) , automation , functions , ccip , data streams and data requests (API data requests)
+--> DECO ( Data Enabled Computation Oracle ) - If we want to prove something like private web data on chain ( proof of web2 data )
+    - provenance :: Enable users to prove that a piece of data comes from a particular data source, even if user authentication is required
+    - privacy    :: Enable users to prove arbitary statements about this data in zero knowledge, keeping the private/sensitive data hidden
+        - using DECO users can control exactly what data goes online
+    - compatability :: Enable users to use DECO with any TLS-secured API and without modifications required at the data source
+    - Deco has a three way communication :: Web server , prover and verifier
+        - Web Server :: Data source where user wants to prove data from
+        - Prover :: Signin and interaction with web server
+        - Verifier :: Witness where information is coming from
+
+        - prover will the person who logs in to the website to show the information
+        - verifier will witness that the prover and the web server are communicating
+            - here verifier will be the deco oracle
+--> Chainlink's Offchain Reporting (OCR) is a consensus mechanism used by its decentralized oracle networks (DONs) to aggregate data from multiple oracles and reach agreement on a single, accurate value before reporting it on-chain
+
+questions
+-> How does deco gets data without needing the user credentails ?
+
+

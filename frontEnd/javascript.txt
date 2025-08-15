@@ -1,0 +1,99 @@
+-> npm ci stands for "clean install", and it's a command used to install dependencies exactly as specified in your package-lock.json
+-> Primitive types
+   Complex types 
+-> need to go through
+   - template literals , default parameters , object literals , rest and spread operators , destructuring assignment , reduce
+-> function foo() { console.log(arguments); }
+   foo(1,2,3); // logs [1,2,3], but no runtime problem
+
+--> using all possible multipe selectors in css
+
+--> AJAX - asynchronous java script and xml - It allows web pages to be updated asynchronously by exchanging small amount of data with the server
+      - With out AJAX previously we had to refresh the page to get the new content ( or any piece of information we need in the current page ) from the server
+      - Javascript talks to the server through a set of set of programming methods called API and uses whats called XHR or XML HTTPRequest
+      - AJAX is not a programming language , it is what we called the framework for javascript
+        let a = new XMLHttpRequest
+        a.open("GET","https://jsonplaceholder.typicode.com/todos/1")
+         a.send()
+   
+--> const arr2 = [0, 1, [2, [3, [4, 5]]]];
+      console.log(arr2.flat(Infinity));
+   
+--> splice is only for arrays , use substring for strings
+   
+--> regex will be helpful in the replace or repalce all of the string methods
+   
+--> numbers.sort((a, b) => a - b)  -- sorting array in javascript using a callback function
+   
+--> if we pass extra arguments for the function , then it just ignores , it wont be an error
+   
+--> spread operator : makes the array to individuals  ,, Rest operator : takes the values and make up the array
+   
+--> because of the drawbacks of the waterfall model ,, agile came to the present tech
+--> agile : 1) continuous delivery 2) collaboration  
+--> Scrum is an Agile Development Methodology initially created to speed up software development
+   
+--> sort and fill actually changes the origianl array ,, map and filter will return array and reduce can return based on the acc initialization
+   
+--> Leading 0 (zero) on an integer literal, or leading 0o (or 0O) indicates it is in octal. Octal integers can include only the digits 0-7
+      - const a = 0o10; // 8 in decimal
+      - const b = 0o7;  // 7 in decimal
+   
+--> The Array.from() static method creates a new, shallow-copied Array instance from an iterable or array-like object
+   
+--> Asynchronous generators
+      - Each yield returns a Promise under the hood
+      - for await...of
+         - This syntax is used to consume async iterables
+         - It waits for each Promise to resolve before continuing
+         - Works similarly to for...of, but handles async data like streams, paginated APIs, etc.
+   
+   const fetchPages = async function* () {
+      for (let page = 1; page <= 3; page++) {
+        const data = await fetch(`https://api.example.com/page=${page}`).then(res => res.json());
+        yield data;
+      }
+     };
+     
+     (async () => {
+      for await (const pageData of fetchPages()) {
+        console.log(pageData);
+      }
+     })();
+   
+--> Array.from in js
+   
+     For numbers you can use ES6 Array.from(), which works in everything these days except IE:
+     
+     Shorter version:
+     
+     Array.from({length: 20}, (x, i) => i);
+     Longer version:
+     
+     Array.from(new Array(20), (x, i) => i);​​​​​​
+     which creates an array from 0 to 19 inclusive. This can be further shortened to one of these forms:
+     
+     Array.from(Array(20).keys());
+     // or
+     [...Array(20).keys()];
+     Lower and upper bounds can be specified too, for example:
+     
+     Array.from(new Array(20), (x, i) => i + *lowerBound*);
+
+-> The in operator returns true if the specified property is in the specified object or its prototype chain
+   - const car = { make: "Honda", model: "Accord", year: 1998 };
+   - console.log("make" in car);
+
+-> node myScript.js arg1 arg2 arg3
+   - console.log(process.argv);
+   [
+      '/usr/local/bin/node',     // process.argv[0] → Node path
+      '/path/to/myScript.js',    // process.argv[1] → Script path
+      'arg1',                    // process.argv[2] → First argument
+      'arg2',                    // process.argv[3] → Second argument
+      'arg3'                     // process.argv[4] → Third argument
+    ]
+-> 
+    
+
+     

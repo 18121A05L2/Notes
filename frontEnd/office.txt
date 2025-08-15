@@ -1,0 +1,8 @@
+-> Learn Newrelic commands
+-> How nx works and helpful for monorepo ( to build fullstack blockchain apps )
+-> https://github.com/ishwarrimal/frontend-interview-preparation
+-> Playwright for testing
+-> firebase tools
+-> AWS
+-> How to use google notebook llm
+-> create a merkle tree using with all functionalities in js

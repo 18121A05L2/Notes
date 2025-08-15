@@ -1,0 +1,31 @@
+
+------------------------------------- EIP-4337 - ACCOUNT ABSTRACTION -----------------------------------------
+
+-> use cases - dead man swith - we can add something like if after 50 years transfer this owernship to the new 
+    owner ( family) . this can be transferred after one year of account inactive
+-> pay gas with any ERC20 token
+-> wihtrawing tokens from tornado cash with a new account we can pay gas with the withdrawng token , instead of 
+    sending token to the new account for gas
+-> Multiple transactions at a time
+-> delayed operations
+-> Every single account on zksync is a smart contract account which follows DefaultAccount.sol era-contract
+-> UserOperations -> altmem pool -> handleOps( Entrypoint.sol) -> ValidateUserOp (AA.sol)
+
+
+
+--------------------------------------- EIP-7702 - smart EOAs -------------------------------------------------
+-> When a transaction is sent to the EOA, the logic at the designated smart contract is executed, while preserving the EOA as the msg.sender
+-> When the transaction executes, msg.sender is still the EOA's address, and tx.origin is also the EOA's address
+-> EOA will be the proxy and Delegation contract will be the logic contract
+-> https://decentralizedsecurity.es/eip-7702-ethereums-next-step-toward-a-more-flexible-account-model?utm_source=chatgpt.com
+
+
+
+
+--------------------------------------- NATIVE ACCOUNT ABSTRACTION ---------------------------------------------
+
+-> each operation will be sub divided into individual frame for faster execution
+-> Each block builder can run independently on the same state and the overall block execution will be done once 
+    all individaul transactions are completed to check any transactions are invalid 
+-> we need to send Transaction type as 113 for account abstraction in Zksync
+-> just like the Entrypoint contract in Ethereum , we have bootloader system contract in ZKsync for native AA
