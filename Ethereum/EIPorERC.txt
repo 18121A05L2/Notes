@@ -58,6 +58,8 @@
 
 -> EIP-7863 proposes block-level warming
 
--> EIP-2930 : Pre-warming with Access Lists 
+-> EIP-2930 : Pre-warming with Access Lists ( cold and warm access)
+      - An Ethereum access list transaction enables saving gas on cross-contract calls by declaring in advance which contract and storage slots will be accessed. Up to 100 gas can be saved per accessed storage slot
+      - Making a cross contract call normally incurs an additional 2600 gas, but using an access list transaction costs 2400 and prewarms the contract access so that it only charges 100 gas, meaning the net cost goes from 2600 to 2500.
 
 -> EIP-1822 : Universal Upgradeable Proxy Standard (UUPS)

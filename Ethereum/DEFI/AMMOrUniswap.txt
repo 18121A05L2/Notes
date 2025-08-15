@@ -6,6 +6,10 @@
     - Router is the intermediate contract between the user and the pair contract
     - users can still directly interact with the pair contract but suggested to use the router contract so it will automate some functionalities and checks
 -> swap fee was charged on the incoming token into the pool
+-> swapExactTokensForTokens - I want to spend exactly X tokens, give me at least Y tokens out
+-> swapTokensForExactTokens - I want to receive exactly Y tokens, and I'm willing to spend up to X tokens to get it
+-> Uniswap uses TWAP - Time weighted average price
+-> Uniswap provides flash swaps using the pair contracts just like the flash loans
 
 
 

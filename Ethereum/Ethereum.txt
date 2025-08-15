@@ -50,7 +50,7 @@
    Pruned nodes (like archive nodes vs. full nodes) may discard older logs to save space. 
 -> user case and problem : we have created a smart contract wallet with social recovery and we have initialized smart 
     contract account in both ethereum and zksync and you have lost your EOA which you used to initialize the smart contract accounts
-    and some one sent you mony on optimism and you can't initialize the smart contract account with same address in optimism because
+    and some one sent you money on optimism and you can't initialize the smart contract account with same address in optimism because
     you have used create2 and lost EOA adddress to initialize and generate the address of smart contract account
 -> Why Gas Exist in the first place : Ethereum is a Turing-complete system. Turing-complete systems face the challenge 
     of the halting problem i.e. given an arbitrary program and its input, it is not solvable to determine whether the
@@ -71,7 +71,7 @@
 -> scurge
 -> selfdestruct will let you kill the contract even if the conctract has arbitrary large numner of storage slots 
     - this means there is not upper bound on the amount of state within in that could change within in a single block
-    - if in contract has a million object and if we selfdestruct this contract then this million objects will go away ( handling this edge case is complex and for this we need to add large amount of extra code on the client developers)
+    - if a contract has a million object and if we selfdestruct this contract then this million objects will go away ( handling this edge case is complex and for this we need to add large amount of extra code on the client developers)
     - hardlimit on number of the storage slots that can change within in a single block
 -> Turing machine - https://grok.com/share/bGVnYWN5_c9eaca24-3cb6-4863-8577-ecded478336f
     - A Turing machine can perform any computation that can be described by an algorithm, given enough time and resources
