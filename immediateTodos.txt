@@ -1,4 +1,3 @@
 -> need to build zkmixer , by end of july 2025 
     - will all latest tech stack 
 -> try for transaction verification before submitting and go through the safe wallet
--> Build uniswap v2

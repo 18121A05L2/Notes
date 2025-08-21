@@ -77,3 +77,6 @@
         string memory output = string(result);
         console.log("Script Output: %s", output);
 --> Foreign Function Interface (FFI) - To run arbitary cli scripts
+--> So Chisel is just showing you for : abi.encode("name") - output will be ( pointer + length + actual data)
+        Memory layout (how EVM stores it)
+        Tuple encoding layout (how ABI would serialize it for function calls / logs)

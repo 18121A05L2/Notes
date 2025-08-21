@@ -26,6 +26,7 @@ Example projects
 -------------------------------------- BACKEND -------------------------------------------------
 -> Indexing 
     - rindexer ( uses postgress db) - building database, indexes, exposing GraphQL APIs - ( Alternatives , The graph protocol )
+    - Docker Compose is a tool for running and managing multi-container Docker applications using a simple YAML file (docker-compose.yml)
     - graphql
 
 
