@@ -5,7 +5,7 @@
     - HEAD~2 = two commits before, etc.
     - git revert <commit to revert>
 -> command + w - to close the current working file in vs code 
--> ctrl + backtick(`) - to toggle the terminal in vscode
+-> Ctrl+J = Jump down (to the bottom panel). - VS code terminal
 -> Minimize Current Window - ⌘ Command + M
 -> Maximize / Restore (Zoom) Current Window - Control + ⌘ Command + F
 -> Install baxh-completion for many auto completion features in bash

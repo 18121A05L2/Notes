@@ -1,3 +1,10 @@
+-> need to go throgh all rust concepts and build a small project on solana
+
+-> try for transaction verification before submitting and go through the safe wallet
+
+
+
+
+# --------------------------- DONE ---------------------
 -> need to build zkmixer , by end of july 2025 
     - will all latest tech stack 
--> try for transaction verification before submitting and go through the safe wallet
