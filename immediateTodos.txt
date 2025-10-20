@@ -1,3 +1,5 @@
+-> complete Raisebox Faucet codehawks tomorrow
+
 -> need to go throgh all rust concepts and build a small project on solana
 
 -> try for transaction verification before submitting and go through the safe wallet

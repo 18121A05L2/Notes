@@ -7,7 +7,11 @@ Resource :: https://github.com/18121A05L2/rust-crash-course
     - scalar = a module (a file, or a mod scalar { ... } block, or a dependency crate).
     - * = glob import (means “everything that's public inside scalar).
 -> we have overflow / underflow issues in rust
-    - Overflow doesn't panic when compiled with --release
+    - in general overflow/underflow panics, but doesn't panic when compiled with --release
+    - x.wrapping_add(y)	   -  Always wraps (like release mode)
+    - x.checked_add(y)	   -  Returns Option<T> (None on overflow)
+    - x.saturating_add(y)  -  Clamps to max/min value
+    - x.overflowing_add(y) -  Returns a tuple (value, did_overflow)
 -> What characteristic primarily defines the size (in bits) of the `usize` and `isize` integer types in Rust?
     - The pointer size of the target system's architecture (e.g., 32-bit or 64-bit).
 -> char in Rust is always 4 bytes and can represent any Unicode scalar value.
@@ -30,8 +34,10 @@ Resource :: https://github.com/18121A05L2/rust-crash-course
     - Instead, Option<T> forces you to handle the case where the value may not exist
 -> You need to use * whenever you want to directly read or write the value behind a reference
     - helpful when updating hashmap values
--> the type of the length for arrays and vecors are usize
-->  if a `loop` is used as an expression (e.g., assigned to a variable), how is a value typically returned from it
+    - Deref Coercion (Auto Dereferencing) - &String is automatically deref'd to &str
+-> std::any::type_name_of_val(&x) -  To know the type of a datatype
+-> the type for the length for arrays and vecors are usize
+-> if a `loop` is used as an expression (e.g., assigned to a variable), how is a value typically returned from it
     - By providing the value after the `break` keyword (e.g., `break my_value;`).
 -> Which scenario is most suitable for using an `if let` expression in Rust?
     - When you need to execute code for only one specific variant of an enum and ignore the rest.
@@ -46,16 +52,19 @@ Resource :: https://github.com/18121A05L2/rust-crash-course
     - memory safety is enforced through Rust's ownership and borrowing rules
     - Example DataTypes :: strings and vectors
     - let boxed = Box::new(20i32)  - to store stack data specifically on heap
--> for copy trade data types - ownership wont be transfered by assigning like the case for strings
+-> Box::new creates a smart pointer that allocates a value on the heap, and gives you ownership of that heap allocation
+-> for copy trade data types - ownership wont be transfered by assigning like the case for String::from("hello")
     - Data types that implements Copy trait - Primitive, fixed-size, simple value types (stored entirely on the stack, no heap allocation):
         - Compound types (if all members are Copy):
             - Tuples, e.g. (i32, bool) is Copy (because both i32 and bool are Copy)
     - Which types do NOT implement Copy - Types that own heap memory or manage resources cannot be copied by just bitwise duplication. They must move instead.
 -> unwrap and expect are the two functions that you can call to get the inner values of a Option or Result
+    - Returns the inner value if it exists (Some or Ok).
+    - Panics (crashes the program) if it's None or Err.
     - with expect we can have a custom error message
 -> The main purpose of the ? (question mark) operator in Rust is to make error handling with Result (or Option) more concise
-    - what is the primary function of the question mark operator (`?`) when appended to an expression that returns a `Result<T, E>` type
-    - A) To unwrap the `Ok(value)` to `value`, or propagate the `Err(e)` by returning it from the current function.
+    - the ? operator can only be used in a function that returns Result or Option
+    - where we can use this ? - if any expression is an error or None, stop here and return that error/None from the current function.
 -> cargo test -- --nocapture ( To see logs when the the test ran successfully )
 -> Modules are the way to oraganize code in Rust
 -> Super - means go one module level above and check for the module
@@ -72,9 +81,13 @@ Resource :: https://github.com/18121A05L2/rust-crash-course
         - Code bloat: if you use a generic with many different types, the compiler generates multiple copies → larger binaries.
         - Longer compile times, since the compiler has to generate and optimize multiple versions.
 -> Trait - A trait in Rust is a collection of methods that a type can implement, letting you write generic, reusable, polymorphic code
-    - A trait in Rust is like an interface in other languages.
+    - A common interface for a group of types.
+    - A trait is like an interface that data types can implement. When a type implements a trait it can be treated abstractly as that trait using generics or trait objects
     - It defines a set of methods that a type must implement if it wants to “have that trait.”
--> Trait bound is a way to tell the rust compiler that a type implements a trait
+-> Trait bound is a way to tell the rust compiler that a type(T) implements a trait. This becomes necessary when you work with generic functions
+    - vectors in Rust don't allow moving elements out by index
+        - That would leave a "hole" in the vector.
+        - Only Copy types (like integers) can be implicitly copied like this
 -> A lifetime in Rust is the scope during which a reference (&T) is valid
     - this is to prevent dangling references
         - A reference that points to a memory location that has been deallocated or is no longer valid.
@@ -94,3 +107,27 @@ Resource :: https://github.com/18121A05L2/rust-crash-course
         - Rust unifies them into a common 'a = min('a1, 'a2).
         - Thus, the returned reference is guaranteed to be valid at least until both s1 and s2 are still alive.
         - My return value can live only as long as the shorter of my two inputs.
+    - Ellison rules 
+        - Each input reference gets its own lifetime parameter
+        - If there is exactly one input reference, that lifetime is assigned to all output references
+        - If there are multiple input references, but one of them is &self or &mut self, then the lifetime of self is assigned to all output references
+            - Ellison fail case scenario
+                - If multiple input references exist and none of them is self, the compiler won't know which lifetime the return value should be tied to:
+-> Iterators
+    - into_iter() : iterate over T ( transfers ownership )
+    - iter() : iterate over &T
+    - iter_mut() : iterate over &mut T
+-> Iterator Adaptors :: map , filter and collect
+    - iterator adapters are the functions that we can call on our iterator
+    - filter() always passes a reference &Item ( as an argument )
+    - map() gives you whatever Item is
+    - `collect()` is a generic method that can create many different kinds of collections, so the compiler needs the type annotation to know the specific target collection type.
+-> Async runtime - An async runtime is a specialized runtime that knows how to drive asynchronous tasks.It's what makes .await actually do something
+    - Rust's async/await is zero-cost at compile time — it just creates state machines that represent potentially paused tasks.
+    - But to actually run those tasks, you need an executor — and that executor lives inside the async runtime.
+        - A reactor: waits for I/O events (like sockets ready to read/write)
+        - An executor: polls async tasks until they finish
+        - Optionally: a scheduler: decides which task runs next on which thread
+-> join macro - Waits for all of them to complete
+   select macro -  Returns as soon as one of them completes
+

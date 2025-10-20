@@ -23,13 +23,15 @@ Begginers tutorial - https://www.youtube.com/playlist?list=PLlrxD0HtieHjbTjrchBw
     - cargo new <ProjectName> , cargo run , cargo build
 -> Variables are immutable by default
     - Mutalbe variable example - let mut variableName = value
--> Default variable type will be - in signed i32 , in floating points f64
+-> Default variable type will be :: in signed - i32 , in floating points - f64
 -> Scalar DataTypes -  bool , char , i32(signed) , u32(unsigned) , f32(floating point) , i128 , f64 
     - A char in Rust represents exactly one Unicode scalar value (one character).
     - use single quotes for char and use double quotes for string literal
 -> Type inference (like with let) is not allowed for const
+-> A const in Rust is computed entirely at compile time — no heap allocation, no runtime logic, no non-const function calls.
 -> constants can only set to be an expression, not the result of an function call or anything else with the value that is computed at program runtime
 -> Static - A single memory location that exists for the entire program (like a global variable).
+-> Rust is a compiled systems language, not a scripting language like Python or JavaScript.In Rust, code outside functions runs at compile time, not runtime
 -> Compound data types - Arrays , Tuples ( The word compound means “made up of two or more parts.”)
 -> Arrays
     - fixed length (length known at compile time)
@@ -89,6 +91,9 @@ Begginers tutorial - https://www.youtube.com/playlist?list=PLlrxD0HtieHjbTjrchBw
 -> Collections - vec (access by index) , hashmap (associate keys and values) , hashset (unique items and no access by index), vecdeque , linkedlist ( double linkedlist )
     - vec - which is a global continuous stack of items of the same type
 -> You can use impl to define methods for a struct
+    - impl mean implementation block - It's where you implement methods, associated functions, or traits for a type (like a struct, enum, or trait)
+    - Associated function ( static methods ) - If a function inside impl does not take self, it's an associated function — like a static method in other languages.
 -> Clone - Copies data on both heap and stack
 -> Borrowing - if we dont want to create a full copy on both the stack and the heap , we can use a technique called borrowing
     - borrowing create a reference to the value of that variable
+-> &String automatically coerces to &str - Rust allows something called "deref coercion", which is an automatic conversion that happens when you pass a reference of one type to a function expecting a reference of another (related) type
