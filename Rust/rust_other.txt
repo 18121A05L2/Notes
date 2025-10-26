@@ -1,0 +1,1 @@
+-> If we are testing errors in solana - we can use #[should-panic] will pas the test if it throws an error

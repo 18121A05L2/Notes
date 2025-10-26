@@ -1,0 +1,26 @@
+-> anchor is framework for quickly building secure solana programs
+    - It handles serialization and deserialization of Instruction data
+    - handles checks for us and generate an interface so that we can interact from frontend ( kind of ABI )
+        - IDL generation (Interface Description Language) for frontend integration
+-> we will get the declare_id!() using the this comand - solana-keygen pubkey target/deploy/<programName>-keypair.json
+    - Anchor generates a "program keypair" ahead of time
+-> #[program] is an Anchor macro that:
+    - Marks a module as containing all the program's entrypoints.
+    - Converts Rust functions into Solana instructions.
+-> we need to define one struct (which derives Accounts) for each of the instruction that we want to handle for our functions
+    - struct would inherit the Accounts trait
+-> Anchor in solana - A Domain-Specific Language is a small, specialized “mini-language” designed to make programming within a certain domain easier
+-> whenever we are writing and instruction for an anchor the very first parameter that needs to pass throgh the instruction is going to be context
+    - context macro is used to define a struct that encapsulates all the accounts that will be passed through a given instruction handler
+-> #[derive(Accounts)] - This is used on a Rust struct that defines the full list of accounts required for an instruction (handler) --- [Who’s coming to the function?]
+    - Context struct
+    - The derive keyword tells Rust: “Automatically generate the implementation of the Accounts trait for this struct.
+-> #[account] - This is used on a struct that defines the data layout stored inside an on-chain account  ----  [What’s inside this account?]
+-> #[derive(InitSpace)] is a helper macro that lets you automatically calculate the space needed for your account based on its fields
+    - Solana requires you to specify the exact number of bytes (space) when you call #[account(init, ...)]
+-> #[account] → “what’s inside my box?”
+   #[derive(InitSpace)] → “how big should my box be?”
+   #[derive(Accounts)] → “who’s allowed to handle this box?”
+-> to check if an account already present - ctx.accounts.my_account.to_account_info().data_is_empty()
+-> Each program in solana owns its own accounts
+-> anchor keys sync - To sync all the program ids in your anchor project

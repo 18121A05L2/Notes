@@ -58,13 +58,15 @@ Resource :: https://github.com/18121A05L2/rust-crash-course
         - Compound types (if all members are Copy):
             - Tuples, e.g. (i32, bool) is Copy (because both i32 and bool are Copy)
     - Which types do NOT implement Copy - Types that own heap memory or manage resources cannot be copied by just bitwise duplication. They must move instead.
+    - Copy types      - Copied bit-by-bit; ownership is not moved
+    - Non-Copy types  - Ownership is moved; the source becomes invalid
 -> unwrap and expect are the two functions that you can call to get the inner values of a Option or Result
     - Returns the inner value if it exists (Some or Ok).
     - Panics (crashes the program) if it's None or Err.
     - with expect we can have a custom error message
 -> The main purpose of the ? (question mark) operator in Rust is to make error handling with Result (or Option) more concise
     - the ? operator can only be used in a function that returns Result or Option
-    - where we can use this ? - if any expression is an error or None, stop here and return that error/None from the current function.
+    - where we can use this ? - if any expression is an error or None, stop here and immediately return that error/None from the current function.
 -> cargo test -- --nocapture ( To see logs when the the test ran successfully )
 -> Modules are the way to oraganize code in Rust
 -> Super - means go one module level above and check for the module
@@ -130,4 +132,6 @@ Resource :: https://github.com/18121A05L2/rust-crash-course
         - Optionally: a scheduler: decides which task runs next on which thread
 -> join macro - Waits for all of them to complete
    select macro -  Returns as soon as one of them completes
+
+-> cargo run only works when:There is a binary target (an executable), i.e. a file with a main() function
 

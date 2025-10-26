@@ -9,4 +9,5 @@
 -> Shift + ?  -	Opens the keyboard shortcut help box (context-sensitive)
 -> Shift + t  - File finder: start typing a filename to jump straight to it
 -> git stash push --keep-index --include-untracked or git stash push -k -u
+-> .gitkeep is a dummy file used to ensure Git tracks an otherwise empty directory
 

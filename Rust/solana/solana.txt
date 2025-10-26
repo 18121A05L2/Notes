@@ -1,0 +1,64 @@
+Resources::
+https://www.youtube.com/playlist?list=PL53JxaGwWUqCr3xm4qvqbgpJ4Xbs4lCs7
+
+
+-> A Program Derived Address (PDA) is a special type of account address that is controlled by a Solana program, not by a private key.
+    - Normally, Solana accounts (like user wallets) are derived from a private/public keypair.
+    - But a PDA is derived mathematically from a program ID + some seeds, using Solana's cryptographic functions.
+    - Since PDAs don't have a valid private key, only the program that owns them can sign for them
+-> Transaction object 
+    - signatures
+    - Message
+        - Header ( metadata )
+        - Account addresses
+        - Recent blockhash
+        - Instructions
+            - Program ID ( the smart contract the transaction will interact with )
+            - Accounts ( Array of accounts, which contains the state information about the user )
+                - Signer
+                - Read only 
+                - Executable 
+                - Rent
+                - Data
+            - Data
+-> solana commands 
+    - solana config set --url http://127.0.0.1:8899
+    - solana config get
+    - solana account 7uG2yNwpT9t32nVLKPczfZymiivxDEcgHLFGvfBqyB65
+    - solana airdrop 5 9s1y1kZ7o6yYzcf2UJ4qG8MzJt2yMgxXCU2QoTvb8qgK
+    - solana-test-validator ( local Solana blockchain node )
+        - Persists ledger data in a local directory (~/.local/share/solana/test-ledger)
+-> test account seed phrase - december master same song rhythm leave guide blossom quote animal always post
+    - pubkey: AJwyDJjckpRktGDHw9NniTe6fhkeZ33ETDVU5vnuR9Xt
+-> Serialization means converting structured data (Rust structs, enums, etc.) into raw bytes 
+-> Solana programns consist of a bunch of instructions and each instruction has specific logic based on that instruction and those instructions interact with accounts to be able to modify data
+    - solana programs are stateless , They dont store any data , instead everything lives inside accounts
+    - solana programs stores the program state in accounts
+    - an instruction is an single call to a program, its essentially a function call and it specifies operations to process on chain
+    - a transaction is a bundle of one or more instructions that is signed and it send to the network
+    - for a wallet account owner will be the system program
+    - owner is the account that has the permisssion to be able to change the sol balance in the account and also change the data in the account 
+    - all transactions are atomic - meaning that if one instruction fails, all if the instructions reverted and the transaction fails
+-> Account type
+pub struct Account {
+    pub lamports: u64,
+    pub owner : Pubkey,
+    pub data: Vec<u8>,
+    pub executable: bool,( if this is true , then the account contains a deployed solana program, meaning it store executable code and it can be invoked )
+}                        ( if it is false, then it was created by program to store and manage data)
+-> Address of an account is an 32 byte address , base58 encoded string 
+     - this address could be one of ed25519 public key or program derived address
+     - to be able to store data onchain account must also keep a lamport balance that is proportional to the amount of data stored in the account in bytes
+        - this balance is like a rent and works like a deposit and once the account is closed we can recover the full balance that you have paid in rent
+-> npx create-solana-dapp@latest -t gh:solana-foundation/templates/gill/gill-next-tailwind-basic
+-> to get the program id - solana address -k target/deploy/<program-name>-keypair.json
+-> About computational capacity :: Every time Nvidia doubles the number of SIMD lanes available, our network will double in computational capacity
+-> Firedancer 🔥 is an independent, high-performance validator client for Solana, being built by Jump Crypto
+-> An account essentially holds all of the state of a program. Because of this, all data is passed by reference from the outside
+
+
+
+Questions 
+-> what does upgrade authority retained mean ( immutable contract )
+-> How solana can really process a maxium of 710k transactions per second 
+-> knowing about proof of history in depth
