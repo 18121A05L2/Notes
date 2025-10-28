@@ -11,3 +11,7 @@
 -> why we need to provide liquidity to each individual pool pair , what if we have something like provide liquidiy to a pool where we can trade every asset in that pool ( need a robust formulae for this)
 -> if we do a small change in our smart contract , we need to redeploy the whole smart contract again , do we have a way so that the redeployment cost will be less
 -> combining multi blockchain world ( kind of what polkadot is going to do )
+-> parallel block production 
+    - consider , if we have 1000 transactions in the queue , and why dont we classify each of these transactions and 
+        - process in sequential order only those modifies the same global state
+        - and parallel processing for the rest of the transactions

@@ -83,3 +83,7 @@
     Code Hash: A hash of the account's associated code (empty for EOAs).
 -> shamir backup - social recovery wallet
 -> An SRP ( Seed Recovery Phrase ) restores the entire wallet with all its derived accounts, while a Private Key only restores one specific account.
+-> Hybrid smart contracts - These smart contract has a combination of on chain and off chain data and logic
+-> BFT (Byzantine Fault Tolerance) consensus is a class of consensus algorithms designed to allow a blockchain network to reach agreement (consensus) even if some of the nodes (participants) are malicious, faulty, or acting arbitrarily
+    - a Byzantine Fault Tolerant system can continue to function correctly if up to 1/3 of nodes are faulty or malicious
+    - RTT - Round Trip Time

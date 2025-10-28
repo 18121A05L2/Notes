@@ -6,6 +6,12 @@ https://www.youtube.com/playlist?list=PL53JxaGwWUqCr3xm4qvqbgpJ4Xbs4lCs7
     - Normally, Solana accounts (like user wallets) are derived from a private/public keypair.
     - But a PDA is derived mathematically from a program ID + some seeds, using Solana's cryptographic functions.
     - Since PDAs don't have a valid private key, only the program that owns them can sign for them
+        - When Solana generates a PDA, it tries different “bump seeds” (0-255) until it finds a derived address that is not a valid ed25519 public key
+    - Why PDAs Exist
+        - Programs can't hold private keys.
+        - But sometimes a program needs to own an account.
+        - So we create deterministic addresses using seeds and the program ID.
+        - These are guaranteed to always produce the same PDA for the same seeds.
 -> Transaction object 
     - signatures
     - Message
@@ -27,7 +33,6 @@ https://www.youtube.com/playlist?list=PL53JxaGwWUqCr3xm4qvqbgpJ4Xbs4lCs7
     - solana account 7uG2yNwpT9t32nVLKPczfZymiivxDEcgHLFGvfBqyB65
     - solana airdrop 5 9s1y1kZ7o6yYzcf2UJ4qG8MzJt2yMgxXCU2QoTvb8qgK
     - solana-test-validator ( local Solana blockchain node )
-        - Persists ledger data in a local directory (~/.local/share/solana/test-ledger)
 -> test account seed phrase - december master same song rhythm leave guide blossom quote animal always post
     - pubkey: AJwyDJjckpRktGDHw9NniTe6fhkeZ33ETDVU5vnuR9Xt
 -> Serialization means converting structured data (Rust structs, enums, etc.) into raw bytes 
@@ -38,7 +43,7 @@ https://www.youtube.com/playlist?list=PL53JxaGwWUqCr3xm4qvqbgpJ4Xbs4lCs7
     - a transaction is a bundle of one or more instructions that is signed and it send to the network
     - for a wallet account owner will be the system program
     - owner is the account that has the permisssion to be able to change the sol balance in the account and also change the data in the account 
-    - all transactions are atomic - meaning that if one instruction fails, all if the instructions reverted and the transaction fails
+    - all transactions are atomic - meaning that if one instruction fails, all of the instructions reverted and the transaction fails
 -> Account type
 pub struct Account {
     pub lamports: u64,
@@ -47,7 +52,7 @@ pub struct Account {
     pub executable: bool,( if this is true , then the account contains a deployed solana program, meaning it store executable code and it can be invoked )
 }                        ( if it is false, then it was created by program to store and manage data)
 -> Address of an account is an 32 byte address , base58 encoded string 
-     - this address could be one of ed25519 public key or program derived address
+     - this address could be one of ed25519 public key or program derived address( which is off of the ed25519 curve)
      - to be able to store data onchain account must also keep a lamport balance that is proportional to the amount of data stored in the account in bytes
         - this balance is like a rent and works like a deposit and once the account is closed we can recover the full balance that you have paid in rent
 -> npx create-solana-dapp@latest -t gh:solana-foundation/templates/gill/gill-next-tailwind-basic
@@ -55,6 +60,47 @@ pub struct Account {
 -> About computational capacity :: Every time Nvidia doubles the number of SIMD lanes available, our network will double in computational capacity
 -> Firedancer 🔥 is an independent, high-performance validator client for Solana, being built by Jump Crypto
 -> An account essentially holds all of the state of a program. Because of this, all data is passed by reference from the outside
+    - Solana programs can't access accounts directly (for safety and parallelization),the runtime passes those accounts by reference to your program each time
+    - Solana programs are stateless functions that operate on external, persistent state objects called accounts, which the runtime passes in by reference.
+        - Why Pass by Reference? - Doesn't want programs to copy entire account data in memory (it can be huge)
+    - Each instruction runs in isolation - what if two instructions modify the same account at once?
+        - If two transactions don't overlap on any writable accounts, they can run in parallel.
+        - If they both write to the same account, one must wait until the other finishes.
+        - Solana achieves maximum parallelism only when different transactions touch different accounts
+        - When a transaction starts executing, the runtime locks the writable accounts it uses (like database row locks)
+        - This “account-based locking” model is what makes Solana extremely fast:
+-> findProgramAddressSync
+    - Client-side function to compute PDA + bump
+-> Leader rotation + pipelined blocks
+    - Solana doesn't have one block at a time.
+    - It has a continuous stream of blocks (entries), produced by a leader every ~400ms.
+    - The next leader starts preparing their block while the previous one is still being validated.
+    - So, block production and validation overlap in time.
+-> Sealevel — Parallel Transaction Runtime
+    - Solana's runtime (called Sealevel) executes transactions in parallel.
+    - It analyzes each transaction's read/write account set (i.e., which accounts it touches).
+    - If two transactions don't modify the same accounts, they can be executed concurrently.
+    - This means multiple CPU threads can modify disjoint parts of the state safely.
+-> Gulf Stream
+    - Solana's mempool replacement.
+    - Validators forward transactions to upcoming leaders early, so block producers already have a backlog of transactions ready to go.
+    - This reduces waiting time and enables concurrent pipeline stages.
+-> Turbine + QUIC + Firedancer
+    - The network layer (Turbine) splits blocks into small packets and distributes them in parallel (like BitTorrent).
+    - Firedancer, the new validator client (by Jump Crypto), is designed for massive parallelism at the network and execution level.
+-> Block production analogy 
+    - The current leader (Alice) is finalizing and broadcasting their block.
+    - The next leader (Bob) is collecting and organizing transactions for their slot.
+    - The next-next leader (Carol) might be validating previous blocks or preparing further entries.
+-> Solana's leader schedule is deterministically generated for an epoch, An epoch in Solana ≈ 432,000 slots (about 2-3 days)
+    - The leader schedule for the entire epoch is computed ahead of time, based on validator stakes and the random seed derived from the previous epoch's results.
+-> Solana does not currently have on-chain slashing for censorship or liveness failures
+    - So, if a validator: Goes offline, Drops transactions, Refuses to vote, orCensors users intentionally, they don't lose stake — they just miss rewards for those slots
+    - in firedancer , they are going to add slashing for these
+-> what if the next validation transaction updates the same account that was updated by the previous leader ?
+    - even if the next block touches the same account,it waits until the prior slot's updates are finalized before applying its own changes.
+-> If two transactions ( tx1 and tx2 ) toucing the same account A , then leader L1 only execute and commit tx1 , and tx2 is executed and commited by L2 ( as sequentional execution in L2 may slower the throughput and may exceed the 400ms timeslot )
+-> solana's principle - favor parallel throughput > sequential fairness
 
 
 
