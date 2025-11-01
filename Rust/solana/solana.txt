@@ -101,10 +101,22 @@ pub struct Account {
     - even if the next block touches the same account,it waits until the prior slot's updates are finalized before applying its own changes.
 -> If two transactions ( tx1 and tx2 ) toucing the same account A , then leader L1 only execute and commit tx1 , and tx2 is executed and commited by L2 ( as sequentional execution in L2 may slower the throughput and may exceed the 400ms timeslot )
 -> solana's principle - favor parallel throughput > sequential fairness
-
+-> Solana's runtime (written in Rust) uses multi-threading to run non-conflicting txs at the same time across CPU cores. This is why Solana is fast—unlike Ethereum's sequential EVM
+-> Solana doesn't run all transactions in parallel.
+    - It groups them into small batches called "entries" (One "mini-batch" = 4 to 24 transactions that are executed together in parallel).
+    - Within one entry: All txs run in parallel (on different CPU cores).
+    - But only if they don't touch the same accounts.
+    - If they do → conflict → they go into different entries (run one after another)
+    - A block contains many entries like pages in a book
+    - Sequential between entries
+    - Parallel within entry
 
 
 Questions 
 -> what does upgrade authority retained mean ( immutable contract )
 -> How solana can really process a maxium of 710k transactions per second 
 -> knowing about proof of history in depth
+-> what is hot account and cold account in solana
+-> Requires trust/robustness in forwarding logic — e.g., what if forwarded txs are withheld or mis-prioritized? 
+-> If they conflict, the scheduler serializes them or uses locking to ensure deterministic ordering - why the scheduler serializes , it only needed for leader slot schedule right ?
+-> Determinism must be preserved: every validator must arrive at the same post-state. - explain about this in detail , what is the getting in to post stage ?
