@@ -1,5 +1,0 @@
-https://github.com/ccxt/ccxt -  CryptoCurrency eXchange Trading Library
-https://github.com/binance/ai-trading-prototype
-https://github.com/chrisleekr/binance-trading-bot
-https://github.com/Haehnchen/crypto-trading-bot
-https://github.com/binance/binance-api-postman.git

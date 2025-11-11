@@ -54,6 +54,8 @@ need to go throught deep::
 -> gnsosis safe
 -> gas optimizations
     - https://coinsbench.com/advanced-gas-optimizations-tips-for-solidity-85c47f413dc5
+-> go through all the openzeppelin contracts
+-> foundry cheatsheet
 
 
 

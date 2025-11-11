@@ -1,3 +1,5 @@
+-> fix the zkmixer frontend to be able to withdraw
+
 -> uniswap contracts exploration
 
 -> proof of innocense

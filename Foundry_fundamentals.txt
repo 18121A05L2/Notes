@@ -23,7 +23,6 @@
 --> Generate a gas snapshot file - forge snapshot -m <testFunctionName>
 --> forge inspect FundMe storageLayout
 --> forge inspect <contractAddress> methods - will print all functions with its selectors
---> cast storage <contractAddress>
 --> cast code <contractAddress>
 --> cast storage <contractAddress> <slotnumber> --rpc-url $LOCAL_RPC_URL
 --> cast parse-bytes32-string <bytes32>
@@ -68,8 +67,8 @@
 --> EIP-7702 Delegator - cast send $(cast az) --private-key $alice_pk --auth $(cast wallet sign-auth $DelegateContractV0 --private-key $bob_pk )
     - Adding delegator for bob signature using alice
     - anvil --hardfork prague
---> Because of how Foundry’s vm.signAndAttachDelegation(...) works, the next time you send any transaction from that EOA, the VM will first process
-     the signed delegation (i.e. “swap in” delegateContract’s code as if Alice/Bob were their own contract wallets) and then execute the call
+--> Because of how Foundry's vm.signAndAttachDelegation(...) works, the next time you send any transaction from that EOA, the VM will first process
+     the signed delegation (i.e. “swap in” delegateContract's code as if Alice/Bob were their own contract wallets) and then execute the call
      - https://github.com/theredguild/7702-goat/blob/5626163a3ebbda450cb94df28735b8e09595a212/test/DelegateContractV1.t.sol#L39
 --> If we want to pass arguments to make file just like process.argv in node js , we need to assign those to variables and we can use those variables in the makefile
 --> To see the logs in the js file when we run vm.ffi

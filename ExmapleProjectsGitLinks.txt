@@ -1,9 +1,0 @@
-https://github.com/alchemyplatform/learn-solidity-presentations
-https://github.com/dappuniversity/decentratwitter
-https://github.com/Fantom-foundation/Artion-Contracts
-https://github.com/smartcontractkit/datastreams-demo
-https://github.com/alchemyplatform/smart-accounts-from-scratch
-https://github.com/YashK-194/Coffee-Dapp
-https://github.com/priyeshkadbe/web3-paypal
-https://github.com/smartcontractkit/hardhat-starter-kit
-

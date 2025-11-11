@@ -1,7 +1,7 @@
 -------------------- ADDRESSES -------------------------------
 -> privatekey - 32 bytes , publickey - 64 bytes , address - 20 bytes
 -> generating a public , private and address - https://kobl.one/blog/create-full-ethereum-keypair-and-address/#generating-the-ec-private-key
--> The private key must be 32 bytes and not begin with 0x00 and the public one must be uncompressed and 64 bytes long or 65 with the constant 0x04 prefix. More on that in the next section
+-> The private key must be 32 bytes and not begin with 0x00 and the public one must be uncompressed and 64 bytes long or 65 with the constant 0x04 prefix.
 -> # Generate the private and public keys
 ->  openssl ecparam -name secp256k1 -genkey -noout | openssl ec -text -noout > Key
 
@@ -24,7 +24,6 @@
 
 --------------------------- GRAPH | QUERYING THE BLOCKCHAIN --------------------------
 -> Graph - Access the workd blockchain data
--> https://miniscan.xyz/?network=ethereum
 -> https://api.studio.thegraph.com/query/99340/twitterclone/v0.0.1
 -> Problem #1: Indexing a Proxy Pattern Smart Contract
 

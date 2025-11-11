@@ -1,1 +1,0 @@
--> https://coinsbench.com/advanced-gas-optimizations-tips-for-solidity-85c47f413dc5
