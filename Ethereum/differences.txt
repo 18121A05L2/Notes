@@ -4,4 +4,8 @@
     - https://www.rareskills.io/post/transparent-upgradeable-proxy
     - https://www.rareskills.io/post/uups-proxy
 -> cold and warm access - https://grok.com/share/bGVnYWN5_2d287f6f-4c75-427b-9d59-fe0333b04216
--> 
+-> justified Epochs and Finalized Epochs
+-> execution client and consensus client
+    - execution client - Executes EVM, handles transactions, maintains state
+    - consensus client - Runs the Beacon Chain logic — manages fork choice, epochs, attestations, etc
+-> call and static call

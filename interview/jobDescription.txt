@@ -1,0 +1,50 @@
+
+McLaren Strategic Solutions (MSS)
+
+Blockchain Developer
+
+Bengaluru
+
+
+About the job
+Join a fast-paced blockchain engineering team focused on building secure and compliant decentralized systems. Responsible for smart contract development, protocol-level integrations, and core blockchain services.
+
+
+
+Key Responsibilities:
+
+· Design and develop smart contracts using Solidity with a focus on compliance and secure transaction handling.
+
+· Extend Ethereum-compatible clients by developing custom protocol hooks in Java.
+
+· Build and maintain integrations between blockchain components and backend microservices.
+
+· Write well-tested, secure, and auditable on-chain and off-chain code.
+
+· Participate in smart contract security audits and implement best practices to mitigate vulnerabilities.
+
+· Monitor transaction workflows, ensuring consistency, traceability, and compliance across services.
+
+· Collaborate with cross-functional teams including backend, DevOps, QA, and Product.
+
+· Maintain detailed documentation and follow version control best practices.
+
+· Continuously contribute to improvements in blockchain design, performance, and reliability.
+
+
+
+Must-Have Skills:
+
+· Proficiency in Solidity and Ethereum.
+
+· Experience with Java for client-level extensions.
+
+· Knowledge of smart contract security and audit practices.
+
+
+
+Nice-to-Have Skills:
+
+· Experience with Node.js.
+
+· Familiarity with blockchain internals and transaction processing.

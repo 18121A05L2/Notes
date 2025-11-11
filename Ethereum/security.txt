@@ -1,6 +1,6 @@
 # https://github.com/Cyfrin/security-and-auditing-full-course-s23
 # https://github.com/bkrem/awesome-solidity
--> static analysis ( Automatically checking code for issiues without executing ) - slither , aderyn and mythril
+-> static analysis ( Automatically checking code for issues without executing ) - slither , aderyn and mythril
 -> formal verification - symbolic execution is one of the type of formal verification
     - tools ( certora and halmos )
     - imagine its the code , basicaly solidity code or cairto code doesn't matter. and for every function or like even functionality

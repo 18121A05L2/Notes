@@ -63,3 +63,5 @@
       - Making a cross contract call normally incurs an additional 2600 gas, but using an access list transaction costs 2400 and prewarms the contract access so that it only charges 100 gas, meaning the net cost goes from 2600 to 2500.
 
 -> EIP-1822 : Universal Upgradeable Proxy Standard (UUPS)
+
+-> EIP-2612: Gasless Transactions (Permit) 

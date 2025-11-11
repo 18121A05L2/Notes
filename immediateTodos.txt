@@ -1,3 +1,7 @@
+-> uniswap contracts exploration
+
+-> proof of innocense
+
 -> complete Raisebox Faucet codehawks tomorrow
 
 -> need to go throgh all rust concepts and build a small project on solana

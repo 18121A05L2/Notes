@@ -2,8 +2,6 @@
 -> smart contracts are deterministic in nature
 -> solidity is statically type language - Javascript is dynamically typed language
 -> is solidiy compiled or intrepeted language - compiled , js is just in time compiled langauge
--> default visibility of state variables - private
--> default visability for a function is  - public
 -> what are two container type in solidity - arrays and mappings
 -> what are the two artifacts produced by solidity when compiling smart contract - ABI , ByteCode
 -> internal and private functions wont be included in ABI as they are only intended to use inside of the smart contract
@@ -21,7 +19,7 @@
     - Strings are complex: A string's length in bytes is not always equivalent to the number of visible characters, especially for UTF-8 encoded strings where some characters take up multiple bytes.
     - If .length were directly available on strings, developers might mistakenly assume it represents the number of characters, while it would actually represent the number of bytes.
     - UTF-8 character -  string memory myString = "Hello 🌍";
--> How to cancel a transaction - send another transaction with same nounce and higher gas price
+-> How to replace/cancel a transaction - send another transaction with same nounce and higher gas price
 -> random number in solidity - uint(keccak256(abi.encodePacked(block.timestamp, block.difficulty, msg.sender)))
 -> how to chek if a given address is a contract or EOA 
     -    function isContract(address addr) public view returns (bool) {
@@ -37,8 +35,36 @@
 -> concatenation of strings - string.concat("Hello ", "World!")
 -> cold vs warm access
 -> Full stack block chain developer tech stack
--> 
+-> data that was needed when signing a transaction is called authorization data (nonce, to, value, gas, and a cryptographic signature)
+-> Account nonce: a transaction counter in each account. This prevents replay attacks where a transaction sending eg. 20 coins from A to B can be replayed by B over and over to continually drain A's balance
+-> Proof of work nonce: a meaningless value in a block which can be adjusted in order to try to satisfy the proof of work condition
+    - The nonce does not protect against cross-chain replay attacks.
+    - why does chain ids exists :: an attacker taking someone's testnet transaction, and repeating it on the "real" blockchain, to steal "real" funds.
+        - EIP-155 made v encode (this v is from v , r and s ) the chain id, preventing simple cross-chain reuse.
+    - any given address and nonce combination can only be executed once per node
 
 
 
 
+need to go throught deep::
+-> try catch , function selectors , abi encode and decode , hashing and assembly
+-> function selector - generation
+-> create2 - examples
+-> implement a mutisig contract , erc20 and erc721 contract
+-> gnsosis safe
+-> gas optimizations
+    - https://coinsbench.com/advanced-gas-optimizations-tips-for-solidity-85c47f413dc5
+
+
+
+
+Required tech stacks
+-> Work with decentralized storage and blockchain interaction layers (e.g., IPFS, Web3, ethers.js, or similar)
+-> Implement authentication, authorization, and secure data handling patterns across distributed systems
+-> Solid understanding of blockchain concepts — transactions, consensus, gas, tokens, smart contracts, and wallets
+-> Hands-on experience with Web3.js, Ethers.js, Viem, Hardhat, Foundry or Truffle frameworks
+-> Familiarity with IPFS, PInata, The Graph, Chainlink, or other Web3 infrastructure tools
+-> Strong grasp of PostgreSQL/MySQL and exposure to NoSQL databases (MongoDB, Firestore, etc.)
+-> Understanding of modern security principles — authentication schemes (JWT, OAuth, WalletConnect) and data integrity in decentralized systems
+-> Build and maintain integrations between blockchain components and backend microservices
+-> Knowledge of cryptography, security protocols, and data structures
