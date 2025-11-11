@@ -1,0 +1,2532 @@
+# Block Chain ( decentralized, permissionless, censorship-resistant )
+
+A blockchain is a database of transactions that is updated and shared across many computers in a network. Every time a new set of transactions 
+is added, its called a “block” - hence the name blockchain. Public blockchains like Ethereum allow anyone to add, but not remove, data. 
+If someone wanted to alter any of the information or cheat the system, they'd need to do so on the majority of computers on the network. 
+That is a lot! This makes decentralized blockchains like Ethereum highly secure.
+
+A blockchain is a public database that is updated and shared across many computers in a network
+
+—> Elliptic curve digital signature algorithm
+—> ETH Classic 51% Attack
+—> sharding , arbitrum , optimism 
+—> we only spend gas when we change the state of the block chain 
+→ https://solidity-by-example.org/
+—> https://docs.chain.link/data-feeds/getting-started#examine-the-sample-contract
+—> Ethers.js and web3.js
+—> Reentrancy attack in smart contracts
+—> Smart contract Attacks 
+     1 ) Gas griefing
+     2 ) Replay Signature Attack ( introduction of chain id , this was mitigated )
+     3 ) Meata transactions ( chain id wont mitigate the inner transaction that bounded in with the outer transaction 
+     4 ) MEV ( front running ) 
+
+—> Yearn Finance ( auto bot trading ) 
+—> solidity library ( openzepplin ) 
+—> The base fee can increase a maximum of 12.5 % per block when the block is utilized with more than 50% ( in ETH)
+—> consensus can be of two types 1)chain selection and 2) Sybil resistance
+→ sybil attack and 51% attack 
+—> sharding and rollups are scalability solutions
+—> chainlink VRF ( Verifiable Randomness Function ) 
+—> How IPFS runs ( Architecture ) 
+—> How EVM works internally ( what is geth )
+—> the assignment of a value to **`names[0x5B38Da6a701c568545dCfcB03FcB875f56beddC4]`** outside of a function or constructor is not allowed in Solidity
+—> constants and the immutable variables are present in the byte code of the contract itself , those doesn't take storage slot in the blockchain
+—> EIP : Ethereum Imporvement Proposal
+—> ERC : Ethereum Request for Comments
+—> beginning with “0x” simply means the value is in hexadecimal format
+—> In short, what *“PUSH1 0x60 PUSH1 0x40 MSTORE”* is doing is allocating 96 bytes of memory and moving the pointer to the beginning of the 64th byte. We now have 64 bytes for scratch space and 32 bytes for temporary memory storage.
+—> In the EVM, there are 3 places to store data. Firstly, in the stack. We've just used the “PUSH” opcode to store data there as per the example above. Secondly in the memory (RAM) where we use the “MSTORE” opcode and lastly, in the disk storage where we use “SSTORE” to store the data. The gas required to store data to storage is the most expensive and storing data to stack is the cheapest.
+—> maximum contract size limit imposed by the Ethereum blockchain, which is 24 KB (24,576 bytes)
+—> Libraries do not count towards the 24KB limit of the contract that uses them
+-> censorship resistance :: Every one can make transactions on the blockchain, while no one entity is capable of stopping or reversing those payments
+
+--Contract-to-Contract Call--
+
+- When one contract (let's call it `CurrentContract`) calls a function on another contract (`ExternalContract`), `msg.sender` in `ExternalContract` will be the address of `CurrentContract`, not the original user who initiated the transaction.
+- Call Data: Read-only
+- Memory: Read-write
+
+-> ChainID was introduced in EIP-155 to prevent replay attacks between the main ETH and ETC chains, which both have a networkID of 1
+-> Counterfactual interactions refer to off-chain contract interactions that can be executed on-chain at a later time, but are not actually executed unless needed
+
+--> CCIP - cross chain interoperability protocol
+--> DON - Decentralized Oracle Networks
+--> When importing IERC20 make sure to import the exact IERC20 which they were importing in their contract ( EX: TokenPool)
+--> Lanes are unidirectional in CCIP. For instance, Ethereum Mainnet => Polygon Mainnet and Polygon Mainnet => Ethereum Mainnet are two different lanes
+--> Chainlink 
+    - Free to consume - price feeds ( data feeds ) , proof of reserve feeds
+    - Pay to consume - VRFs ( verifiable random functions ) , automation , functions , ccip , data streams and data requests (API data requests)
+--> DECO ( Data Enabled Computation Oracle ) - If we want to prove something like private web data on chain ( proof of web2 data )
+    - provenance :: Enable users to prove that a piece of data comes from a particular data source, even if user authentication is required
+    - privacy    :: Enable users to prove arbitary statements about this data in zero knowledge, keeping the private/sensitive data hidden
+        - using DECO users can control exactly what data goes online
+    - compatability :: Enable users to use DECO with any TLS-secured API and without modifications required at the data source
+    - Deco has a three way communication :: Web server , prover and verifier
+        - Web Server :: Data source where user wants to prove data from
+        - Prover :: Signin and interaction with web server
+        - Verifier :: Witness where information is coming from
+
+        - prover will the person who logs in to the website to show the information
+        - verifier will witness that the prover and the web server are communicating
+            - here verifier will be the deco oracle
+--> Chainlink's Offchain Reporting (OCR) is a consensus mechanism used by its decentralized oracle networks (DONs) to aggregate data from multiple oracles and reach agreement on a single, accurate value before reporting it on-chain
+
+questions
+-> How does deco gets data without needing the user credentails ?
+
+-> rollups
+-> Account abstraction 
+-> EVM Opt Codes
+-> proxy contracts
+-> Querying -  blockchain sharding , BigchainDB
+-> IPFS ( InterPlanet File System )
+-> fork-choice algorithm ( two conflicting blocks for the same slot ) - LMD-GHOST (Latest Message Driven - Greediest Heaviest Observed SubTree)
+-> Merkle Patricia Trie Structure - Merkle proofs are powerful tools for enabling light clients to verify data in a blockchain. By recalculating the path from a specific piece of data (e.g., an account balance) to the state root using intermediate hashes in the proof
+-> Rando Reveal 
+-> Patricia Merkle Trie vs Verkle tree
+-> sign a transaction using ECDSA and recover
+—> difference between full nodes and half nodes and master nodes
+      - lightweight nodes have low storage requirements because they just need to download block headers to verify transactions
+         and they are dependent on full nodes
+—> what is ethereum world state ( World State Trie ) 
+—> chain link , moralis , ethers , graph 
+—> What and how does Layer 2 works ?
+—> How does private and public keys are being generated ( Elliptic curve digital signature algorithm ) ?
+—> 1 Eth = 1*10**9 Gwei      , 1 Eth = 1*10**18 Wei
+—> Eip 1559 fee model ( the base fee can increase or decrease 12.5 % per block based on the greater than 50 % or
+   less than 50% block utilization , base gas fee is 50 Gwei
+—> max inflation for the Eth is 0.5 - 2 % per year
+—> current Layer 1 Ethereum processes 15 transactions per second
+—> what does handling transactions in off chain means with layer 2 technology  ( state channels and payment channels  ) 
+—> plasma framework for layer2 - child chains ( omg network ) ?
+—> side chains - xthai ( side chains derive their security based on their own protocols , but Roll ups derive their security from the base layers ) 
+—> what is sharding , proto-danksharding and danksharding
+—> consensus types 1) chain selection and 2) sybil resistance ( POW )
+—> sharding and roll ups are solutions for the scalability issues 
+—> bridging mechanisms 1) locking and unlocking 2) burning and minting 
+-> algorithmic stablecoin : Dai , Frax and rai
+-> Curve - decentralized stablecoin exchange
+
+-> The specific curve used in ECDSA is secp256k1curve curve
+-> All elliptic curves are symmetrical about their x axis
+-> Precompiled contracts are a set of core routines integral to Ethereum's cryptographic functionalities and ECDSA is one of them
+-> The EIP-191 Signed Data Standard proposed the following format for signed data: 0x19 <1 byte version> <version specific data> <data to sign>
+-> EIP 712 - 0x19 0x01 <domainSeparator> <hashStruct(message)> - Meta transactions , forwarder contracts
+-> https://www.cyfrin.io/blog/understanding-ethereum-signature-standards-eip-191-eip-712
+-> EIP-712 is version 1 of EIP-191
+-> A hash function takes a message and produces a fixed-length output, called a digest
+-> EIP 191 Examples 
+    0x19 || 0x00 || validatorAddress || data
+    0x19 || 0x01 || keccak256(EIP712Domain) || keccak256(typedData)
+    0x19 || 0x02 || personalMessage      -> message format - "\x19Ethereum Signed Message:\n" + messageLength + message
+
+-> (uint8 v, bytes32 r, bytes32 s) = vm.sign(signerPrivateKey, digest);
+    bytes memory signature = abi.encodePacked(r, s, v); // note the order here is different from line above.
+-> r (32 bytes):The x-coordinate of the elliptic curve point resulting from signing.
+   s (32 bytes):A scalar value derived during signing that ensures the signature's uniqueness
+   v (1 byte)  :The recovery id used to determine the correct public key from the signature. It's either 27 or 28 in Ethereum (or 0 or 1 for the EIP-1559 chain ID scheme)
+
+--> forge script script/DeploySimpleStorage.s.sol --rpc-url http://127.0.0.1:8545 --broadcast --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+--> forge script script/DeploySimpleStorage.s.sol --rpc-url http://localhost:8545 --account one_anvil --broadcast
+--> forge create EIP7702 --from <anvilAddress> --unlocked --broadcast
+--> source .env --> forge script script/DeploySimpleStorage.s.sol --rpc-url $SEPOLIA_URL --private-key $PRIVATE_KEY --broadcast
+--> (storing private key) cast wallet import one_anvil --interactive
+--> cast wallet public-key --account one_anvil
+--> cast wallet sign --no-hash <HashedMessage> --account one_anvil
+--> cast keccak "hello"
+--> cast send 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9 "store(uint256)" 345 --account one_anvilca
+--> foundryup , foundryup-zksync
+--> forge fmt
+--> forge coverage
+--> forge coverage --report debug > coverage.txt
+--> forge test --debug <TestFunctionName>
+--> forge test --match-test <TestFunctionName>
+--> forge test --fork-url $MAINNET_RPC_URL --fork-block-number $BLOCK_NUMBER
+--> cast call 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9 "retrieve()" ( Only to Read Information from blockchain )
+    - 0x0000000000000000000000000000000000000000000000000000000000000159
+--> cast --to-base 0x0000000000000000000000000000000000000000000000000000000000000159 dec
+    - 345
+--> To install a dependency - forge install smartcontractkit/chainlink-brownie-contracts --no-commit
+--> setUp() in test will run each time a test function is executed
+--> Generate a gas snapshot file - forge snapshot -m <testFunctionName>
+--> forge inspect FundMe storageLayout
+--> forge inspect <contractAddress> methods - will print all functions with its selectors
+--> cast storage <contractAddress>
+--> cast code <contractAddress>
+--> cast storage <contractAddress> <slotnumber> --rpc-url $LOCAL_RPC_URL
+--> cast parse-bytes32-string <bytes32>
+--> cast sig "fund()" - will return the hex code of the selector
+--> cast --calldata-decode "transferFrom(address,address, uint256)" <CallData> -  provides the ouptut of argument values
+--> Cheat code address, 0x7109709ECfa91a80626fF3989D68f67F5b1DD12D.
+--> security audit analysis - python3 -m pip install slither-analyzer 
+--> Solidity's integer division truncates. Thus, performing division before multiplication can lead to precision loss.
+--> 0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38 - default sender of foundry
+--> For vm.sign() the address we have passed need to be unlocked
+--> console2 has upto 5 arguments where as for console we have only upto 3 arguments
+--> ZKSYNC - forge create --zksync --rpc-url ${ZKSYNC_SEPOLIA_RPC} --private-key ${PRIVATE_KEY} src/Counter.sol:Counter
+--> For example, the verbosity levels of the EVM are:
+        - 2 (-vv): Print logs for all tests.
+        - 3 (-vvv): Print execution traces for failing tests.
+        - 4 (-vvvv): Print execution traces for all tests, and setup traces for failing tests.
+        - 5 (-vvvvv): Print execution and setup traces for all tests, including storage changes.
+--> Foundry wallets are store in this location - ~/.foundry/keystores/
+--> makePersistant- Each fork (createFork) has its own independent storage, which is also replaced when another fork is selected (selectFork). 
+    By default, only the test contract account and the caller are persistent across forks, which means that changes to the state of the test 
+    contract (variables) are preserved when different forks are selected. This way data can be shared by storing it in the contract's variables
+--> via_ir=true or --via-ir for New Intermedite Representation
+--> Solidity can generate EVM bytecode in two different ways: Either directly from Solidity to EVM opcodes (“old codegen”) 
+    or through an intermediate representation (“IR”) in Yul (“new codegen” or “IR-based codegen”)
+--> cast 4byte 0xdd62ed3e
+--> Installing multiple versions of same dependency - forge install openzeppelin-contracts-v3=Openzeppelin Gihub link
+--> When you start a prank with vm.startPrank(player), all subsequent calls occur in a single simulated transaction. In this context, the
+     account's nonce isn't incremented between calls because they're not separate transactions they're part of one execution context.
+--> Reading Private key - deployerKey = vm.envUint("PRIVATE_KEY");
+--> vm.startPrank only pranks the msg.sender on external contract calls.
+    - Internal calls (including library/internal functions and console.log in your test) remain in the original execution context.
+        vm.startPrank(admin);
+        console.log("admin : ", admin);
+        console.log("msg.sender : ", msg.sender);
+    - here msg.sender and admin were different
+--> vm.warp(1 hours) - Absolute warps do NOT accumulate—they just set the timestamp to the given value.
+    vm.warp(block.timestamp + 1) - Relative warps accumulate, so the timestamp is moved forward by the given value.
+        - this mean , it does includes the previous vm.warp(1 hours)
+--> startPrank overriding issue - https://github.com/foundry-rs/foundry/issues/10310
+--> anvil --load-state initital_state.json ( need to try one example with , cast send )
+    - --block-time 5 (This will mine the block with the given interval, here 5 seconds)
+--> EIP-7702 Delegator - cast send $(cast az) --private-key $alice_pk --auth $(cast wallet sign-auth $DelegateContractV0 --private-key $bob_pk )
+    - Adding delegator for bob signature using alice
+    - anvil --hardfork prague
+--> Because of how Foundry’s vm.signAndAttachDelegation(...) works, the next time you send any transaction from that EOA, the VM will first process
+     the signed delegation (i.e. “swap in” delegateContract’s code as if Alice/Bob were their own contract wallets) and then execute the call
+     - https://github.com/theredguild/7702-goat/blob/5626163a3ebbda450cb94df28735b8e09595a212/test/DelegateContractV1.t.sol#L39
+--> If we want to pass arguments to make file just like process.argv in node js , we need to assign those to variables and we can use those variables in the makefile
+--> To see the logs in the js file when we run vm.ffi
+        bytes memory result = vm.ffi(cmds);
+        string memory output = string(result);
+        console.log("Script Output: %s", output);
+--> Foreign Function Interface (FFI) - To run arbitary cli scripts
+--> So Chisel is just showing you for : abi.encode("name") - output will be ( pointer + length + actual data)
+        Memory layout (how EVM stores it)
+        Tuple encoding layout (how ABI would serialize it for function calls / logs)
+
+-> how about building an free audit smart contract platform
+-> P2P network on smart contracts ( Binance p2p)
+    - IZKPs can be used to verify the authenticity of financial transactions without revealing the specific details of the transaction
+-> Cross rollup relaying porotocols (like L1 -> L2 -> L1) or (L2 - L2 )
+-> permissioned bank blockchains ( centralized bank blockchains )
+-> EMI's on blockchain
+-> Chrom extentions like sponsor or ad skip for youtube videos
+-> How about raising an EIP , by wrapping around ERC20 and adding something like tags , so that if someone hacks any ERC20 token we can block those hacked tokens by having each token a unique identifier mapped to the tags
+    - we can add this one to the base ETH which we pays for gas
+-> Todays hardware wallet sucks , we need to implement robust and clearly users can see what they are signing
+-> why we need to provide liquidity to each individual pool pair , what if we have something like provide liquidiy to a pool where we can trade every asset in that pool ( need a robust formulae for this)
+-> if we do a small change in our smart contract , we need to redeploy the whole smart contract again , do we have a way so that the redeployment cost will be less
+-> combining multi blockchain world ( kind of what polkadot is going to do )
+-> parallel block production 
+    - consider , if we have 1000 transactions in the queue , and why dont we classify each of these transactions and 
+        - process in sequential order only those modifies the same global state
+        - and parallel processing for the rest of the transactions
+-> Ethereum smart contract so special from other languages - it cannt be stopped (becuase of decentralized nodes) , hacked ( cyrptography ) and modified ( immutable )
+-> smart contracts are deterministic in nature
+-> solidity is statically type language - Javascript is dynamically typed language
+-> is solidiy compiled or intrepeted language - compiled , js is just in time compiled langauge
+-> what are two container type in solidity - arrays and mappings
+-> what are the two artifacts produced by solidity when compiling smart contract - ABI , ByteCode
+-> internal and private functions wont be included in ABI as they are only intended to use inside of the smart contract
+-> How to call a external function inside the same Smart contract - Functions marked external can only be called from outside the contract (via transactions or calls) or using this.functionName within the contract
+-> what are the two 2 APIs used to interact with smart contract - EX : eth_sendTransaction , eth_call
+-> what is gas - an abstract unit to measure the transaction cost
+    - a unit of resource consumption in a blocchain
+-> custom data structure in solidity - struct ( like an object ) and enum ( a varient of same data) , enum StatusEnum { Waiting, InProgress, Finished }
+-> Solidity only allows state variable initialization directly with constant values or in the constructor and state modification only inside of a function
+-> Arrays 
+    - uint256[3] public variables; // fixed size array - we can't push to a fixed size array , can only update using indexing
+    - uint256[] public variables; // dynamic size array - we can push to a dynamic size array
+    - uint256[] public variables = new uint256[](3); // dynamic size array with predefined size - we can push to a dynamic size array ( if we push a new element size becomes 4 )
+-> Why Not Directly Add string.length?
+    - Strings are complex: A string's length in bytes is not always equivalent to the number of visible characters, especially for UTF-8 encoded strings where some characters take up multiple bytes.
+    - If .length were directly available on strings, developers might mistakenly assume it represents the number of characters, while it would actually represent the number of bytes.
+    - UTF-8 character -  string memory myString = "Hello 🌍";
+-> How to cancel a transaction - send another transaction with same nounce and higher gas price
+-> random number in solidity - uint(keccak256(abi.encodePacked(block.timestamp, block.difficulty, msg.sender)))
+-> how to chek if a given address is a contract or EOA 
+    -    function isContract(address addr) public view returns (bool) {
+            uint256 size;
+            assembly {
+                size := extcodesize(addr)
+            }
+            return size > 0;
+        }
+-> why can we define all types of arrays in memory location but not for mappings in solidity (using memory will takes less gas , where as the mappings serve from storage)
+-> Experience with zk rollups like Scroll, Taiko, zkSync
+-> ZK libraries such as Plonky3, halo2, circom, Groth16, sp1, r1cs
+-> concatenation of strings - string.concat("Hello ", "World!")
+-> cold vs warm access
+-> Full stack block chain developer tech stack
+------------------ Javascript ------------------
+
+-> npm ci stands for "clean install", and it's a command used to install dependencies exactly as specified in your package-lock.json
+-> Primitive types
+   Complex types 
+-> need to go through
+   - template literals , default parameters , object literals , rest and spread operators , destructuring assignment , reduce
+-> function foo() { console.log(arguments); }
+   foo(1,2,3); // logs [1,2,3], but no runtime problem
+
+--> using all possible multipe selectors in css
+
+--> AJAX - asynchronous java script and xml - It allows web pages to be updated asynchronously by exchanging small amount of data with the server
+      - With out AJAX previously we had to refresh the page to get the new content ( or any piece of information we need in the current page ) from the server
+      - Javascript talks to the server through a set of set of programming methods called API and uses whats called XHR or XML HTTPRequest
+      - AJAX is not a programming language , it is what we called the framework for javascript
+        let a = new XMLHttpRequest
+        a.open("GET","https://jsonplaceholder.typicode.com/todos/1")
+         a.send()
+   
+--> const arr2 = [0, 1, [2, [3, [4, 5]]]];
+      console.log(arr2.flat(Infinity));
+   
+--> splice is only for arrays , use substring for strings
+   
+--> regex will be helpful in the replace or repalce all of the string methods
+   
+--> numbers.sort((a, b) => a - b)  -- sorting array in javascript using a callback function
+   
+--> if we pass extra arguments for the function , then it just ignores , it wont be an error
+   
+--> spread operator : makes the array to individuals  ,, Rest operator : takes the values and make up the array
+   
+--> because of the drawbacks of the waterfall model ,, agile came to the present tech
+--> agile : 1) continuous delivery 2) collaboration  
+--> Scrum is an Agile Development Methodology initially created to speed up software development
+   
+--> sort and fill actually changes the origianl array ,, map and filter will return array and reduce can return based on the acc initialization
+   
+--> Leading 0 (zero) on an integer literal, or leading 0o (or 0O) indicates it is in octal. Octal integers can include only the digits 0-7
+      - const a = 0o10; // 8 in decimal
+      - const b = 0o7;  // 7 in decimal
+   
+--> The Array.from() static method creates a new, shallow-copied Array instance from an iterable or array-like object
+   
+--> Asynchronous generators
+      - Each yield returns a Promise under the hood
+      - for await...of
+         - This syntax is used to consume async iterables
+         - It waits for each Promise to resolve before continuing
+         - Works similarly to for...of, but handles async data like streams, paginated APIs, etc.
+   
+   const fetchPages = async function* () {
+      for (let page = 1; page <= 3; page++) {
+        const data = await fetch(`https://api.example.com/page=${page}`).then(res => res.json());
+        yield data;
+      }
+     };
+     
+     (async () => {
+      for await (const pageData of fetchPages()) {
+        console.log(pageData);
+      }
+     })();
+   
+--> Array.from in js
+   
+     For numbers you can use ES6 Array.from(), which works in everything these days except IE:
+     
+     Shorter version:
+     
+     Array.from({length: 20}, (x, i) => i);
+     Longer version:
+     
+     Array.from(new Array(20), (x, i) => i);​​​​​​
+     which creates an array from 0 to 19 inclusive. This can be further shortened to one of these forms:
+     
+     Array.from(Array(20).keys());
+     // or
+     [...Array(20).keys()];
+     Lower and upper bounds can be specified too, for example:
+     
+     Array.from(new Array(20), (x, i) => i + *lowerBound*);
+
+-> The in operator returns true if the specified property is in the specified object or its prototype chain
+   - const car = { make: "Honda", model: "Accord", year: 1998 };
+   - console.log("make" in car);
+
+-> node myScript.js arg1 arg2 arg3
+   - console.log(process.argv);
+   [
+      '/usr/local/bin/node',     // process.argv[0] → Node path
+      '/path/to/myScript.js',    // process.argv[1] → Script path
+      'arg1',                    // process.argv[2] → First argument
+      'arg2',                    // process.argv[3] → Second argument
+      'arg3'                     // process.argv[4] → Third argument
+    ]
+-> 
+
+-------------------------- End of Javascript --------------------------
+
+-------------------------- React js ----------------------------------
+
+-> React is a library for building user interfaces , it was not a framework
+-> Hooks - state , context , Ref , effect and performance 
+-> npx - npm package runner
+    - Does not install globally: npx downloads and runs the latest version of create-react-app temporarily.
+-> Peer dependencies need to be specified in the libraries ( like whoever are publishing packages to npm )
+-> useCallback hook memoizes the function itself, not its return value. useMemo caches the functions return value so that the function need not execute again
+-> useCallback is used to cache a function to avoid re-creating it on every re-render
+-> componentDidMount
+    Hook: useEffect(() => { ... }, []) — Runs after the first render.
+
+    componentDidUpdate
+    Hook: useEffect(() => { ... }, [deps]) — Runs when dependencies change.
+
+    componentWillUnmount
+    Hook: useEffect(() => { return () => {...} }, []) — Cleanup before component unmounts.
+
+-> Portals - Render children into a DOM node outside the parent hierarchy (e.g., for modals).
+    - Event bubbling in portal works just like the normal child components in the parent hierarchy.
+-> Streaming allows you to break down the page's HTML into smaller chunks and progressively send those chunks from the server to the client.
+-> Context API - we will provide the state and dispatch when wrapping contextProvider and use those using useContext
+-> useCallback - if we have a function in a component and it will create each time when a component is rendered , with this it wont recreate until unless dependencies of it are changed
+-> useRef -  To persist a mutable value across renders without triggering re-renders , for mutable persistent values that don’t cause re-renders
+-> Rendering - The commit phase is usually fast but the render phase can be slow.
+    - same value after rerenders , react will render one more time for that component and bails out from any subsequest renders
+    - In React, the rendering process is divided into two main phases: the “render phase” and the “commit phase
+    - React looks for any useEffect hooks declared in the component in the commit phase and executes their effect functions
+    - (non primitive data types) same array and object references does not queue up for re-renders
+    # - (if parent re-renders) the child components would went through the render phase but not commit phase
+-> Parent and child and parent and children props ( <><Child/></>) , differs in rendering 
+    - in first case child renders whenever the parent renders but not in the second case
+    - if parent for both these renders , then at that time these two will render
+-> React.memo comes with an extra cost
+-> Noraml Script - Html parsing (and if it encounter any script tag) + fetch the script tag resources + execute the script tag js and then continue HTML parsing
+-> Async Script - Html parsing (and if it encounter any script tag) + execute the script tag js and then continue HTML parsing
+                             + fetch the script tag resources in parallel
+-> defer script - HTML parsing                              After HTML parsing is done + execute the scripts fetched in parallel
+                    + fetch scripts resources in parallel
+-> Async does not guarantee the order of execution but defer does
+-> Transitive dependency: A module that you didn't install directly, but one of your direct dependencies did
+
+-> useEffects runs after the rendering of the page
+-> strings , boolean and numbers are primitive
+    objects and arrays are non-primitive
+    In short, useEffect is a tool that lets us interact with the outside world but not affect the rendering or performance of the component that it's in
+-> Packages : React Router DOM 
+-> MERN STACK  --  https://www.mongodb.com/languages/mern-stack-tutorial
+
+------------------------------ End of React js ----------------------------
+
+------------------------------- start of hardhat ---------------------------
+									HARDHAT OFFICIAL DOCS GUIDE
+
+--> yarn add --dev hardhat
+
+--> npx hardhat  == To create the sample project
+
+--> dependencies ==  yarn add --dev "hardhat@^2.9.9" "@nomicfoundation/hardhat-toolbox@^1.0.1" "@nomicfoundation/hardhat-network-helpers@^1.0.0" "@nomicfoundation/hardhat-chai-matchers@^1.0.0" "@nomiclabs/hardhat-ethers@^2.0.0" "@nomiclabs/hardhat-etherscan@^3.0.0" "chai@^4.2.0" "ethers@^5.4.7" "hardhat-gas-reporter@^1.0.8" "solidity-coverage@^0.7.21" "@typechain/hardhat@^6.1.2" "typechain@^8.1.0" "@typechain/ethers-v5@^10.1.0" "@ethersproject/abi@^5.4.7" "@ethersproject/providers@^5.4.7"
+
+--> npx hardhat == To first get a quick sense of what's available and what's going on
+
+--> npx hardhat compile == for compilation
+
+--> npx hardhat test
+
+--> npx hardhat run scripts/deploy.js
+
+-->  npx hardhat node
+
+------------------------------------------------------------  HARDHAT SETUP  ------------------------------------------------------------
+
+--> yarn add --dev hardhat
+
+--> yarn hardhat -- and create the advanced project
+
+--> yarn solhint contracts/*.sol -- linter for solidity
+
+--> yarn hardhat compile -- to check whether our code is working properly or not
+
+--> yarn add --dev @chainlink/contracts  -- installing chainlink dependency
+
+--> yarn add --dev hardhat-deploy   -- to make our deployment easy in hardhat
+
+--> yarn add --save-dev  @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
+
+--> yarn hardhat -- to see all the available tasks in the hardhat ( from the above 2 we will get deploy as an option )
+
+
+--> module.exports = async (hre) => { }   -- hardhat runtime envirnment
+
+--> module.exports = async ( { getNamedAccounts , deployments } ) => { } 
+
+--> const {deploy,log} = deployments
+    
+--> const { deployer } = await getNamedAccounts()
+
+--> const chainid = network.config.chainid  ( this will get the info from the hardhat config file )
+
+--> yarn hardhat test , yarn hardhat coverage
+
+--> const variables and immutable variables do not take up spot in storage
+
+
+---------------------------------------------------------- ETHERS JS -------------------------------------------------------
+
+--> we need to change the type of the script to module in html , so that we can use imports in the index.js file
+
+--> a promise only returns when it executes resolve( ) or reject( )
+
+--> an address payable can receive Ether, while a plain address cannot.
+
+-------------------------------------- End of hardhat --------------------------------------
+
+-------------------------------------- Start of namaste javascript --------------------------------------
+
+
+-> Every thing in javascript run in the execution context
+   - Memory component ( variable Enviroment )
+      - Memory creation phase
+   - code component ( Thread of execution )
+      - code execution phase
+-> javascript is a synchronous , single threaded programming language
+-> P: arameter = Placeholder (in the function definition)
+   A: rgument = Actual Value (when calling the function)
+-> Call Stack - Bottom of every call stack we have Global Execution Context
+-> call stack maintains the order of execution of execution contexts
+
+--> hoisting is a phenomenon is js by which we can access the variables and functions even before we have initialized it , without any error
+--> allocation of memory to variables and functions before assigning is called hoisting
+
+--> scope is directly depend on the lexical environment
+--> lexical environment is created when execution context is created
+--> lexical environment is the local memory along with the lexical environment of its parent
+--> lexical means heirarichy or sequence 
+--> c() function is lexically sitting inside the a() function
+
+--> temporal dead zone - It is the time since when this let or const variable was hoisted and till it was assigned a value , the time between this is known as temoral dead zone
+--> for let and const hoisting , they are hoisted but not in the global scope ( they are hoisted in a different memory space , we can see as Script in chrome dev tools ) 
+
+--> Closures are functions bundled with their lexical environment
+    - Ex: SetTimeout and passing functions as arguments
+--> currying in javascript is possible just because of closures
+  - Currying is a functional-programming technique where you transform a function that takes multiple arguments into a sequence of functions, each taking a single argument
+
+--> Data hiding is done in js with the help of closures ( which was done with functions )
+--> disadvantages of closures  - over consumption of memory
+--> if the child function is not using the parent function varibles , then those varibles are garbage collected
+    - Mark and sweep algorithm is used to clean up the unused memory
+
+--> A “higher-order function” is a function that accepts functions as parameters and/or returns a function
+--> difference between function statement and expression is hoisting
+        - A function expression assigns a function (anonymous or named) to a variable
+        - A function statement declares a function with a name
+--> First Class Functions : the ability to use the functions as values  and can be passed as an argument to another function
+    and can be returned out of another a function is called First Class Functions
+
+--> event loop has one job , that too continuously check the callstack and call back queue , if it find call stack empty and callback queue with 
+  some calllback function then it simply moves it from callback queue to the call stack 
+    - callback functions like event listeners or settimeout will go to callback queue
+    - microtasks like promises or mutation observers will go to microtask queue
+    - microtasks queue has higher priority than callback queue
+    - the callback queue is also known as the macrotask queue
+
+--> Type	        Queued By	                                    When It Runs
+    Microtask	    .then, catch, await	                            After the current JS call stack clears
+    Macrotask	    setTimeout, setInterval, Dom Events     	    After microtasks have finished
+
+    Ex:
+        setTimeout(() => console.log("setTimeout"), 0);
+        Promise.resolve().then(() => console.log("promise"));
+
+--> interpreter will make the code run more fast
+    - this will start execution directly line by line , without any previous steps like parsing 
+--> compiler will make our code more efficeint by optimizing our code ( effeciency ) , before running
+--> our browser use both compiler and interpreter whis is know as JIT compiler
+--> JavaScript Runtime Enviroment ( v8 Engine ) - code -> parsing -> compilation -> execution 
+    - Parsing is the process of taking raw source text (your JavaScript code or data) and turning it into a structured representation that the JavaScript engine can work with
+    - These tokens are fed into a parser, which checks that they compile to JavaScript's grammar and builds an Abstract Syntax Tree (AST).
+
+--> prototype inheritance , polyfill
+    - Array.prototype.calucalate will make the calucalate method available to all arrays
+    - if we are using the radius =[] , then to use radius inside calculate with radius.calculate we need to use this keyword which will provide us the radius arrays
+    EX: Array.prototype.calculate = function(fn) {
+        return this.map(fn);
+        };
+        const radius = [1, 2, 3, 4];
+        const area = radius.calculate(function(r) {
+        return Math.PI * r * r;
+        });
+        console.log(area); // [3.14..., 12.56..., 28.27..., 50.26...]
+    
+--> everything in javascript are objects
+--> each and every object in java script has a prototype
+    - prototype chain - arr.__proto__ was from Array.prototype -> arr__proto__.__proto__ was from Object.prototype -> Object.prototype.__proto__ is null
+--> when ever we create something in js , we get some default hidden properties and that is through protoype inheritance
+--> every thing in js is object ,, when ever we create an object in js , all default functions will be creted as an object and jre adds it to our each and every  object
+--> to write a polyfill for a funcion , Function.prototype.methodName = function() {}
+
+--> if we have nested events and if we dont define capture keywored , then by default event bubbling will happen , event capturing is the opposite order of the events execution of event bubbling , event trickling is nothing but event capturing
+--> if we have both event bubbling and capturing ,, irrespective of the origin first capturing occurs then , event bubbling occurs 
+--> e.stopPropagation() ,, this is to stop the event bubbling or capturing 
+--> Event Delegation is a pattern based upon the concept of Event Bubbling. It is an event-handling pattern that allows you to handle events at a higher level in the DOM tree other than the level where the event was first received
+        - https://www.freecodecamp.org/news/event-delegation-javascript/
+        - The idea is that you "delegate" the handling of an event to a different element (in this case, the div, which is a parent element) instead of the actual element (the button) that received the event
+        - With event delegation, you create fewer event listeners and perform similar events-based logic in one place
+        - instead of adding a event listener to each and every child , we can add a single event listener to the parent ,, and make that trigger for each child click
+--> Event Propagation determines in which order the elements receive the event. There are two ways to handle this event propagation order of HTML DOM is Event Bubbling and Event Capturing
+
+--> if we do any normal function call ,, by default it assumes that there is window on the left side like window.fun() === fun()
+--> we can pass args to anonymous func despite if not having params and we can print it with console.log(arguments) ,, but with arrow functions it wont
+
+--> the dynamic nature of this keyword inside functions is one of the reasons we have reusability of code 
+
+--> whenever we do a cors request , before this an preflight options call will be made , with the additional headers wer are going to use and if that gets error , we are now allowed to use those additional headers
+        - https://grok.com/chat/45979a62-40d7-4259-805e-0208084c7299
+
+--> Debounce: ignores intermediate events, runs once after activity stops. Ex: Search box , Auto-saving forms
+    Throttle: runs at most once every X ms, even if events continue to fire. Ex: Resize event handlers , Scroll-triggered animations and Button click spam protection
+    - Use debounce for “only after the user stops” (search, resize), and throttle for “at a steady rate” (scroll position, progress updates)
+--> The rest and spread operators in JavaScript both use the ... (three dots) syntax, but they do opposite things depending on where they're used
+    - Rest Operator (... in function parameter or destructuring) - Collects multiple values into a single array.
+    - Used in object or array destructuring - const [first, ...rest] = [1, 2, 3, 4];
+    - Expands an array (or object) into individual a.
+    - Syntax location	Left side of = or params ( Rest )	Right side of = or args ( Spread )
+
+--> callback hell : Pyramid of doom 
+    - inversion of control - we were passing a callback to anohter function and trusting that it will be called , which we can loose control of
+--> A promise is an object which represents the eventual completion or failure of an asynchronous operation.
+    - promise chaining get helps us get out of call back hell
+    - Promise(function(resolve, reject) {}) constructor will take a function and that function has resolve and reject which will be provided by the Promise API in JS
+    - The then() method is defined in the Promise prototype, and its job is to return a new promise that represents the result of the callback you pass into it
+        - new Promise(function(resolve,reject){resolve("you got successful")}).then((info) => {console.log(info)})
+        - this will give you the PromiseResult as undefined because in the .then promise we are not returning anything
+    - if we have .catch() in a promise chain , and if we got any rejects in the top of the chain that will be handled by this catch
+    - Promise.race() - will return the first settled promise ( whether its a fullfilled or reject )
+    - Promise.any()  - will retutn the first settled fulfilled promise ( kind of success seeking race )
+            - If all promises in .any() fails the result will be the AggregateError
+            - for the array of AggregateError we can use err.errors in .catch()
+    - you can't "pause" or "cancel" promises once they start (unless you wrap them in something like AbortController)
+    - [[PromiseReactions]] - Queue of handlers(callbacks) waiting to run when the promise settles
+
+--> Async and Await are used to handle promises
+    - By default Async functions return a Promise
+    - even if we return something like string in this async function , it will wrap this string in promise and it will return
+    - whenever JS engine sees await keyword , it will suspend the execution of the function and will wait for the promise to settle , by moving that execution to microtask queue
+    - Async and await is just a syntactical sugar over promise chaining , under the hood it uses promise chaining
+
+--> This will be undefined in strict mode
+    - To use strict mode add "use strict" in the top of the js file
+    - ( this substitution ) - in non strict mode if this keyword is null or undefined , then it will be replaced with globalObject ( window in browser and global in nodejd)
+    - this keyword depends on how the function is called ( if this keyword was present inside function )
+    - if we make a function as part of an object then that will be called as method
+    - If this keyword was present inide a method then this keyword will represent that object
+    - this keyword in DOM elements represents the referece of the HTMLElement itself
+    - strict js doesnt allow window inside a function ,, instead we can use this which was same 
+    - 'this' keyword in arrow function is same like as it in the outside 
+
+--> JavaScript provides three methods for manipulating the 'this' keyword in functions: call(), apply(), and bind(). These methods allow you to change the context of the 'this' keyword, which can be useful for controlling the behaviour of functions
+    - DEFINATION : call, apply, and bind are methods used to manipulate the this context of a function and control how arguments are passed. call and apply immediately invoke the function, while bind creates a new function with a specified this context that can be invoked later
+    - Arrow functions do not bind their own this, arguments, super, or new.target. Instead, they lexically inherit these from the enclosing (parent) execution context.
+    - That means the this keyword inside an arrow function is the same as this keyword outside it — unlike normal functions, which bind this keyword dynamically depending on how they're called
+    - if we define a this inside of a function in an object , if that fuction is arrow function , then 'this' keyword refers to the Window and if we use normal function then this keyword refers to the object
+    - Explicit binding , Function borrowing
+
+
+
+
+
+
+
+
+
+
+
+--> Things learned:
+1. let and const are hoisted but its memory is allocated at other place than window which cannot be accessed before initialisation.
+2. Temporal Dead Zone exists until variable is declared and assigned a value.
+3. window.variable OR this.variable will not give value of variable defined using let or const.
+4. We cannot redeclare the same variable with let/const(even with using var the second time).
+5. const variable declaration and initialisation must be done on the same line.
+6. There are three types of error: [1] referenceError {given where variable does not have memory allocation} [2] typeError {given when we change type that is not supposed to be changed} [3] syntaxError {when proper syntax(way of writing a statement) is not used}.
+7. Use const wherever possible followed by let, Use var as little as possible(only if you have to). It helps avoid error.
+8. Initialising variables at the top is good idea, helps shrinks TDZ to zero.
+
+--> 1. When JavaScript code is executed, Execution Context is created and it is called Global Execution Context.
+2. JavaScript program is executed in TWO PHASES inside Execution Context
+  a. MEMORY ALLOCATION PHASE - JavaScript program goes throughout the program and allocate memory of Variables and Functions declared in program.
+  b. CODE EXECUTION PHASE -  JavaScript program now goes throughout the code line by line and execute the code. 
+3. A Function is invoked when it is called and it acts as another MINI PROGRAM and creates its own Execution Context.
+4. Returns keyword return the Control back to the PREVIOUS Execution-Context where the Function is called and Execution Context of the Function is DELETED.
+5. CALL STACK maintains the ORDER of execution of Execution Contexts. It CREATES Execution Context whenever a Program starts or a Function is invoked and it pops out the Execution Context when a Function or Program ENDS.
+
+--> Summary:
+
+1. In JS, before the code is executed, the variables get initialized to undefined.
+2. Arrow functions enact as variables and get "undefined" during the memory creation phase while functions actually get run.
+3. Hoisting: Mechanism in JS where the variable declarations are moved to the top of the scope before execution. Therefore it is possible to call a function before initializing it.
+4. Whenever a JS program is run, a global execution block is created, which comprises of 2: Memory creation and Code execution
+
+
+--> Summary:
+
+1. We learnt how functions work in JS.
+2. At first a global execution context is created, which consists of Memory and code and has 2 phases: Memory allocation phase and code execution phase.
+3. In the first phase, the variables are assigned "undefined" while functions have their own code.
+4. Whenever there is a function declaration in the code, a separate local execution context gets created having its own phases and is pushed into the call stack.
+5. Once the function ends, the EC is removed from the call stack.
+6. When the program ends, even the global EC is pulled out of the call stack.
+
+--> Summary
+
+1. Undefined is like a placeholder till a variable is not assigned a value.
+2. undefined !== not defined
+3. JS- weakly typed language since it doesn't depend on data type declaration
+
+-->
+Closure :Function bundled with its lexical environment is known as a closure. Whenever function is returned, even if its vanished in execution context 
+but still it remembers the reference it was pointing to. Its not just that function alone it returns but the entire closure and that's where 
+it becomes interesting
+
+--> Wow, these are some of the best doubts. ❤️
+1. When does the event loop actually start? - Event loop, as the name suggests, is a single-thread, loop that is `almost infinite`. It's always running and doing its job. ❤️
+2.  Are only asynchronous web API callbacks are registered in the web API environment? - YES, the synchronous callback functions like what we pass inside map, filter, and reduce aren't registered in the Web API environment. It's just those async callback functions that go through all this.
+3. Does the web API environment stores only the callback function and pushes the same callback to queue/microtask queue? - Yes, the callback functions are stored, and a reference is scheduled in the queues. Moreover, in the case of event listeners(for example click handlers), the original callbacks stay in the web API environment forever, that's why it's advised to explicitly remove the listeners when not in use so that the garbage collector does its job.
+4. How does it matter if we delay for setTimeout would be 0ms. Then callback will move to queue without any wait? 
+No, there are trust issues with setTimeout() 😅. The callback function needs to wait until the Call Stack is empty. So the 0 ms callback might have to wait for 100ms also if the stack is busy.  It's a very beautiful concept, and I've covered this in detail in the next episode of Namaste JavaScript. 🔥
+Thank you so much for asking all these questions, Shruti. You're a gem
+
+--> Things learned:
+1. Browser has superpowers that are lent to JS engine to execute some tasks, these superpowers include web API's such as console, location, DOM API, setTimeout, fetch, local storage.
+2. Callback functions and event handers are first stored in Web API environment and then transferred to callback queue.
+3. Promises and mutation observer are stored in API environment and then transferred to microtask queue.
+4. Event loop continuously observes call stack and when it is empty it transfers task to call stack.
+5. Micro task is given priority over callback tasks.
+6. Too many micro tasks generated can cause Starvation (nit giving time to callback tasks to execute)
+
+
+--> Benefits of event delegation:
+1) improves memory space
+2) mitigates risk of performance bottle neck
+3) Dom manipulation
+Limitations:
+1) All the events are not bubbled up, some events like blur, focus are not bubbled up
+2) if e.stopPropogation is used in child, then events are not bubbled up
+
+--> CONSTRUCTOR FUNCTIONS , PROMISES , MICROSTACK QUEUE , THIS IN ARROW FUNCTION , 
+
+--------------------------------------------- End of namaste javascript ---------------------------------------------
+
+----------------------------------- solidity basics -------------------------------------
+
+--> we only spend gas , when we only make a transaction by modify the block chain state.
+
+--> Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs can be useful
+ for storing structured data in your contract, kind of like a database.
+
+--> We're also providing instructions about where the _name variable should be stored- in memory.
+This is required for all reference types such as arrays, structs, mappings, and strings.
+
+--> by default the variable is assigned with 0
+
+--> call data and memory will only exist temporarily
+
+--> storage is permanent variable that can be modified
+
+--> calldata and memory exists temporarily  during only the respective function called, where as storage variables exists outside of the function
+
+--> if there is any data change or reassign is there we need to use call data, to make it mutable we can use storage
+
+--> all normal variables we define are by default storage variables                   
+
+--> calldata variables are the temp variables that cannot be changed
+
+--> in all EVM compatible blockchains we can deploy our solidity code
+
+--> view and pure functions don't modify the state of the blockchain
+
+--> Pure function declares that no state variable will be changed or read. the view tells us that by running the function, no data will be saved/changed.
+ pure tells us that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain
+
+--> for functions we need to specify view to make not able to change state , for public variables there is default getter function
+
+--> the ability for the contracts to seamlessly interact with each other is known as composability
+
+--> inorder for u to interact with any contract we need two -- Address , ABI ( Application binary Interface )
+
+--> inorder for a function to be overridable , we need to specify it with virtual ( like as in our simpleStorage.sol )
+
+--> Reverting -- undo any action before , and send remaining gas back
+
+--> https://data.chain.link/ethereum/mainnet/crypto-usd/eth-usd
+
+--> libraries cant have the state variables and also they cant send ether and also all the functions in the libraries are internal
+
+--> receive() will trigger any time when we send a transaction to the contract 
+
+--> the size of each chunks in the merkle , must be cosntant
+
+--> in merkle tree ( binary tree ) we need to have even number of nodes , if there is odd num of nodes then the last node will be replicated
+
+--> There is no concept of "undefined" or "null" in solidity
+
+--> Solidity variable names are case-sensitive. For example, Name and name are two different variables.
+
+--> Enums restrict a variable to have one of only a few predefined values
+
+--> Mapping can only have type of storage and are generally used for state variables
+
+--> Mapping can be marked public. Solidity automatically create getter for it
+
+--> We can explicitly convert a data type to another using constructor syntax.
+
+--> ethers.Contractfactory ( abi , binary , wallet )
+
+--> Actually, interacting with any function that costs Gas will generate a txn receipt
+
+--> when we call the function on the contract we will get transactionResponse
+
+--> when we wait for the transaction response to finish we will get transactionReceipt
+
+--> history -c to clear the history
+
+--> all the new multiple accounts that we created in metamask shares same mnemonic or seed Phrase ,
+ but can have different private keys respective to that multiple account . Only the importing ones has newer seed Phrase
+
+--> README.md  here md means mark down 
+
+--> abi -- application binary interface
+
+--> window.ethereum and window.solana will only exists when there like metamask and phanstom extentions
+
+--> require doesnt work in the frontend javascript , it only works with nodejs
+
+--> array.push() returns a uint of the new length of the array 
+
+--> A blockchain is a shared, distributed, and permanent database shared among multiple nodes on a computer network
+
+--> external functions are cheaper than public functions
+
+--> virtual in a function means its expecting to be override
+
+--> yarn dev in nextjs , just like as npm start in react
+
+--> yarn add react react-dom moralis react-moralis
+
+
+
+
+LINKS
+
+--> https://www.youtube.com/watch?v=gyMwXuJrbJQ
+
+--> Ethereun data feeds ( link ) -- https://docs.chain.link/docs/ethereum-addresses/#:~:text=Data%20feeds%20reside%20in%20the,stability%20of%20the%20broader%20ecosystem
+
+--> https://learnweb3.io/courses/9a3fafe4-b5eb-4329-bdef-97b2aa6aacc1/lessons/aceca450-119b-4ba5-b086-f1d0bcec010b
+
+--> https://docs.ethers.io/v5/single-page/
+
+--> https://hardhat.org/
+
+--> https://www.youtube.com/watch?v=pdsYCkUWrgQ
+
+--> by default , the visibility for variables is internal and default values for all is 0
+
+------------------------------------------ End of solidity basics ----------------------------
+
+=================================== Start of account abstraction ==================================
+
+------------------------------------- EIP-4337 - ACCOUNT ABSTRACTION -----------------------------------------
+
+-> use cases - dead man swith - we can add something like if after 50 years transfer this owernship to the new 
+    owner ( family) . this can be transferred after one year of account inactive
+-> pay gas with any ERC20 token
+-> wihtrawing tokens from tornado cash with a new account we can pay gas with the withdrawng token , instead of 
+    sending token to the new account for gas
+-> Multiple transactions at a time
+-> delayed operations
+-> Every single account on zksync is a smart contract account which follows DefaultAccount.sol era-contract
+-> UserOperations -> altmem pool -> handleOps( Entrypoint.sol) -> ValidateUserOp (AA.sol)
+
+
+
+--------------------------------------- EIP-7702 - smart EOAs -------------------------------------------------
+-> When a transaction is sent to the EOA, the logic at the designated smart contract is executed, while preserving the EOA as the msg.sender
+-> When the transaction executes, msg.sender is still the EOA's address, and tx.origin is also the EOA's address
+-> EOA will be the proxy and Delegation contract will be the logic contract
+-> https://decentralizedsecurity.es/eip-7702-ethereums-next-step-toward-a-more-flexible-account-model?utm_source=chatgpt.com
+
+
+
+
+--------------------------------------- NATIVE ACCOUNT ABSTRACTION ---------------------------------------------
+
+-> each operation will be sub divided into individual frame for faster execution
+-> Each block builder can run independently on the same state and the overall block execution will be done once 
+    all individaul transactions are completed to check any transactions are invalid 
+-> we need to send Transaction type as 113 for account abstraction in Zksync
+-> just like the Entrypoint contract in Ethereum , we have bootloader system contract in ZKsync for native AA
+
+================================================ End of account abstraction ================================
+
+-------------------- ADDRESSES -------------------------------
+-> privatekey - 32 bytes , publickey - 64 bytes , address - 20 bytes
+-> generating a public , private and address - https://kobl.one/blog/create-full-ethereum-keypair-and-address/#generating-the-ec-private-key
+-> The private key must be 32 bytes and not begin with 0x00 and the public one must be uncompressed and 64 bytes long or 65 with the constant 0x04 prefix. More on that in the next section
+-> # Generate the private and public keys
+->  openssl ecparam -name secp256k1 -genkey -noout | openssl ec -text -noout > Key
+
+    # Extract the public key and remove the EC prefix 0x04
+    > cat Key | grep pub -A 5 | tail -n +2 | tr -d '\n[:space:]:' | sed 's/^04//' > pub
+
+    # Extract the private key and remove the leading zero byte
+    > cat Key | grep priv -A 3 | tail -n +2 | tr -d '\n[:space:]:' | sed 's/^00//' > priv
+
+    # Generate the hash and take the address part
+    > cat pub | keccak-256sum -x -l | tr -d ' -' | tail -c 41 > address
+
+    # (Optional) import the private key to geth
+    > geth account import priv
+
+-> address for an empty public key  - 0xdcc703c0e500b653ca82273b7bfad8045d85a470
+-> 0x at the start of the address represents the address is in hexa decimal format
+
+
+
+--------------------------- GRAPH | QUERYING THE BLOCKCHAIN --------------------------
+-> Graph - Access the workd blockchain data
+-> https://miniscan.xyz/?network=ethereum
+-> https://api.studio.thegraph.com/query/99340/twitterclone/v0.0.1
+-> Problem #1: Indexing a Proxy Pattern Smart Contract
+
+
+====================================== Assenbly huff =======================================
+
+-> byteCode - huffc <FilenName> -b
+-> function dispatching - extracting the function selector from the calldata provided to the contract and dispatching our function call to the respective funtion 
+-> bytecode contains - contract creation byte code , runtime bytecode and metadata seperated with INVALID opcode - may be only runtime code stays on onchain
+-> PUSH1 optcode will push hex values into the stack , ADD optocde will pull those and add those and push the result back to the stack
+-> cast --to-base 0xF0102 bin -- will give 0b11110000000100000010
+-> hex , bin , dec 
+-> CALLDATALOAD - loads 32 bytes from the calldata by removing the number of bytes we provided as stack input ( EX : if we give zero it wold store
+    from the 0th byte of the calldata , and for 1 it would store from 1st byte of the calldata (removing first byte) )
+-> run time byteCode - huffc <FileLocaltion> --bin-runtime
+-> JUMPDEST is a marker for valid jump locations in EVM bytecode, ensuring safe and predictable control flow for smart contracts. Without it, 
+    arbitrary jumps could break contract logic or create security vulnerabilities
+-> dedaub - decompiler
+-> ls dependencies - will list all soldeer dependencies
+
+====================================== End of Assenbly huff =======================================
+
+======================================= EIP of ERC ===============================================
+
+   What Is ERC-20?
+-> ERC-20 is the technical standard for fungible tokens created using the Ethereum blockchain. A fungible token is one that is exchangeable 
+   with another token, whereas the well-known ERC-721 non-fungible tokens (NFTs) are not.
+-> The ERC-20 standard has a vital role within the blockchain; it defines a standard list of rules that Ethereum tokens using smart contracts 
+   must adhere to. Some of these rules include how the tokens can be transferred, how transactions are approved, how users can access data 
+   about a token, and the total supply of tokens
+
+   What is a Non-Fungible Token?
+-> A Non-Fungible Token (NFT) is used to identify something or someone in a unique way. This type of Token is perfect to be used on platforms 
+   that offer collectible items, access keys, lottery tickets, numbered seats for concerts and sports matches, etc. This special type of Token 
+   has amazing possibilities so it deserves a proper Standard, the ERC-721 came to solve that!
+
+   What is ERC-721?
+-> The ERC-721 introduces a standard for NFT, in other words, this type of Token is unique and can have different value than another Token 
+   from the same Smart Contract, maybe due to its age, rarity or even something else like its visual. Wait, visual?
+
+-> ERC-165 
+   Standarad Interface Detection
+
+-> EIP - 191 - Standardizing Signatures , 712 - Making Signatures Readable - https://www.cyfrin.io/blog/understanding-ethereum-signature-standards-eip-191-eip-712
+
+-> ERC - 4334 - Account Abstraction
+
+-> EIP - 4844 - proto dank sharding
+
+-> EIP - 2535 - Diamond proxy pattern
+
+-> EIP - 1967 - Proxy storage slots
+
+-> ERC - 7201: Namespaced Storage Layout -  /// @custom:storage-location <FORMULA_ID>:<NAMESPACE_ID>
+
+-> ERC - 5792 - Wallet Call Api Methods ( APPS calls to the Wallets to know Info about what our Account is capable of )
+
+-> ERC - 7677 Pay master web service capabilities
+
+-> ERC - 7579 Minimal Modular Smart Accounts
+
+-> Wallet Prepare Calls API
+
+-> ERC - 7715 Grant permissions for Wallets
+
+-> erc-1155 -  what are semi fungible token
+      - A single ERC-1155 contract can manage multiple token types, including fungible, non-fungible, and semi-fungible tokens
+      - ERC-1155 can represent semi-fungible tokens, which are essentially fungible tokens that can be converted into non-fungible tokens under certain conditions
+
+-> EIP-3529: Reduction in refunds
+
+-> EIP-4444: Bound Historical Data in Execution Clients
+
+-> RIP - L1SLOAD - relying the state root from L1 to L2 in a verifiable way
+
+-> ERC-3156: Flash Loans
+
+-> ERC-4626 : Vaults ( ERC7540 advancement of ERC4626 )
+
+-> EIP-4788 :  is an Ethereum Improvement Proposal introducing a mechanism for the
+   execution layer of Ethereum mainnet to access the beacon roots of the consensus layer
+
+-> EIP-7863 proposes block-level warming
+
+-> EIP-2930 : Pre-warming with Access Lists ( cold and warm access)
+      - An Ethereum access list transaction enables saving gas on cross-contract calls by declaring in advance which contract and storage slots will be accessed. Up to 100 gas can be saved per accessed storage slot
+      - Making a cross contract call normally incurs an additional 2600 gas, but using an access list transaction costs 2400 and prewarms the contract access so that it only charges 100 gas, meaning the net cost goes from 2600 to 2500.
+
+-> EIP-1822 : Universal Upgradeable Proxy Standard (UUPS)
+
+-> EIP-2612: Gasless Transactions (Permit) 
+
+======================================= End of EIP of ERC ==================================
+
+======================================= Ethereu Theory ===============================================
+
+-> multisig wallets , counterfactual accounts , gnoysis safe , tornado cash ( exclusion list in proof of innocence )
+-> privacy for the weak and transperancy for the powerful
+-> Peer scoring algorithms
+-> Pos is not just a block driven but also a time driven network
+-> Beacon nodes ( consensus ) database was 50-Gb and the execution client has between 500-700 GB
+-> We need to run separate consensus and execution clients, which has their own p2p nodes and data will come through consensus to execution 
+    through Engine API
+-> Putting ur wallet ( private key ) inside the execution client for those key management APIs was dumb
+-> What are archive nodes
+-> 1Ether = 10^18 wei , 1Ether = 10^9 Gwei
+-> The state root hash is the hash of the root node of the state trie after the execution of all the transactions included in the block.
+-> When a light client needs to verify a specific part of the state (e.g., the balance of an account or the result of a transaction), it can 
+    request a Merkle proof from a full node
+-> A Merkle proof is a path in the Merkle Patricia Trie from a particular leaf (the account or storage data) up to the state root hash
+-> Ethereum 2.0 divides time into periods called epochs (each epoch consists of 32 slots, with each slot lasting 12 seconds) 
+    - Assume there are 100,000 active validators. For a block to be justified, at least 66,667 validators (⅔) need to attest to it in an epoch
+-> A bug in a consensus client with over 33% of the Ethereum nodes could prevent the consensus layer from finalizing
+-> Epochs are units of 32 slots - each slot lasts 12 seconds - Slots and epochs set the pace of the blockchain 
+    - In each epoch, the block in the first slot is a checkpoint. These checkpoints are important because they are used to make sections 
+      of the blockchain permanent and irreversible ( justified Epochs and Finalized Epochs )
+-> a validator will participate in a sync committee. A sync committee is a group of 512 randomly chosen validators that sign block headers 
+    so that light clients can retrieve validated blocks without having to access the full historical chain or the full validator set
+-> the validator is slashed. This means that 1/64th of their staked ether (up to a maximum of 0.5 ether) is immediately burned, then a 36 day 
+    removal period begins
+-> Execution Client is not responsible for block building, block gossiping or handling consensus logic
+-> Execution Client - home to the Ethereum Virtual Machine, Ethereum's state and transaction pool
+-> The consensus client does not participate in attesting to or proposing blocks - this is done by a validator, an optional add-on to a consensus client
+-> Node operators can add a validator to their consensus clients by depositing 32 ETH in the deposit contract. The validator client comes bundled with the consensus client and can be added to a node at any time
+-> Randomly selecting a subset of 512 validators every 1.1 days to act as a sync committee - The sync committee signs the header of recent blocks which is helpful for Light clients - This means a light client can quickly see that the sync committee has signed off on the data they receive, and they can also check that the sync committee is the genuine one by comparing the one they receive from the one they were told to expect in the previous block -- checked against block headers that they know have been signed by at least 2/3 of a random set of 512 Ethereum validators
+-> Currently, light clients rely on RPC requests to full nodes using a client/server model, but in the future the data could be requested in a more decentralized way using a dedicated network such as the Portal Network(opens in a new tab) that could serve the data to light clients using a peer-to-peer gossip protocol
+-> Ethereum Networking Protocols - Both stacks work in parallel. The discovery stack feeds new network participants into the network, and the DevP2P stack enables their interactions
+-> A successful PING-PONG "bonds" the new node to a bootnode
+-> start client --> connect to bootnode --> bond to bootnode --> find neighbours --> bond to neighbours
+-> storage optimisations and categorises them into replication-based, redaction-based, and content-based optimisations. Replication-based optimisations focus on reducing duplication of blockchain data shared among participants after committing data on the blockchain ledger. Redaction-based optimisations allow users to modify or delete data already committed on the ledger in various ways, while content-based optimisations compress data before or after committing it to the ledger
+-> base64 -i example.svg --> data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII
+-> . In a function call, what is the difference between 'call' and 'staticcall'?
+-> On Ethereum there are a few different types of transactions:
+    -> Regular transactions: a transaction from one account to another.
+    -> Contract deployment transactions: a transaction without a 'to' address, where the data field is used for the contract code.
+    -> Execution of a contract: a transaction that interacts with a deployed smart contract. In this case, 'to' address is the smart contract address.
+-> light clients by helios ?
+-> upcoming features
+    verkle tree 
+    portal network for light clients
+-> The Ethereum blockchain consists of: Whole ( 600 GB )
+   State Trie (accounts, storage, balances) → ~250GB
+   Transaction History (including logs in receipts) → ~350GB
+   Blocks, Headers, and Other Data → Remaining size
+   Logs are stored in the transaction history but are not part of the state trie.
+   Pruned nodes (like archive nodes vs. full nodes) may discard older logs to save space. 
+-> user case and problem : we have created a smart contract wallet with social recovery and we have initialized smart 
+    contract account in both ethereum and zksync and you have lost your EOA which you used to initialize the smart contract accounts
+    and some one sent you money on optimism and you can't initialize the smart contract account with same address in optimism because
+    you have used create2 and lost EOA adddress to initialize and generate the address of smart contract account
+-> Why Gas Exist in the first place : Ethereum is a Turing-complete system. Turing-complete systems face the challenge 
+    of the halting problem i.e. given an arbitrary program and its input, it is not solvable to determine whether the
+    program will eventually stop running. So Ethereum cannot predict if a smart contract will terminate, or how long it
+    will run. Therefore, to constrain the resources used by a smart contract, Ethereum introduces a metering mechanism 
+    called gas. So, gas is the unit used in Ethereum for measuring and limiting computations per block.
+    - https://coinsbench.com/advanced-gas-optimizations-tips-for-solidity-85c47f413dc5
+-> verge 
+    - decreasing node sync time from a couple of days to 10 minutes
+    - restart or resynsc can go  from 2 days to 10 minutes 
+    - and decrease the hardware requirements
+    - verfying the blocks with snarks
+-> The Purge
+    - which involves removing outdated data and simplifying the protocol
+    - History Expiration: Nodes might not be required to store all previous blocks, reducing storage requirements
+-> Splurge
+    - 
+-> scurge
+-> selfdestruct will let you kill the contract even if the conctract has arbitrary large numner of storage slots 
+    - this means there is not upper bound on the amount of state within in that could change within in a single block
+    - if a contract has a million object and if we selfdestruct this contract then this million objects will go away ( handling this edge case is complex and for this we need to add large amount of extra code on the client developers)
+    - hardlimit on number of the storage slots that can change within in a single block
+-> Turing machine - https://grok.com/share/bGVnYWN5_c9eaca24-3cb6-4863-8577-ecded478336f
+    - A Turing machine can perform any computation that can be described by an algorithm, given enough time and resources
+-> The base transaction cost (21,000 gas)
+-> Etherem accounts have a state consisting of four key fields: 
+    Nonce: A counter that tracks the number of transactions sent from the account, preventing replay attacks.
+    Balance: The amount of ETH the account holds.
+    Storage Hash: A Merkle root representing the account's storage.
+    Code Hash: A hash of the account's associated code (empty for EOAs).
+-> shamir backup - social recovery wallet
+-> An SRP ( Seed Recovery Phrase ) restores the entire wallet with all its derived accounts, while a Private Key only restores one specific account.
+-> Hybrid smart contracts - These smart contract has a combination of on chain and off chain data and logic
+-> BFT (Byzantine Fault Tolerance) consensus is a class of consensus algorithms designed to allow a blockchain network to reach agreement (consensus) even if some of the nodes (participants) are malicious, faulty, or acting arbitrarily
+    - a Byzantine Fault Tolerant system can continue to function correctly if up to 1/3 of nodes are faulty or malicious
+    - RTT - Round Trip Time
+
+    ======================================= Ethereu Theory ===============================================
+
+====================================== Noir basics ===============================================
+
+-> In Noir (just like in Rust), the presence or absence of a trailing semicolon turns an expression into either a value‑producing expression (no semicolon) or a statement that returns () (with a semicolon)
+-> Field :: It is an integer type whose maximum value is determined by the field modulus of the underlying proving system.
+-> How are test functions identified and utilized in the Noir programming language? - By using the `#[test]` attribute above a function definition, to verify circuit logic with specific inputs.
+-> In cryptographic systems that utilize proofs of computation, what is the fundamental role of a 'verification key'? - It allows an entity to validate a submitted proof for a specific computation without needing access to the secret inputs or the full circuit.
+-> Arrays must be statically sized, meaning their length is known at compile time.
+
+
+======================================== openzeppelin ===============================================
+
+-> The EnumerableSet library from OpenZeppelin provides a powerful tool for managing collections of unique values in Solidity. It offers 
+    efficient ways to store, retrieve, and enumerate over sets of data, making it perfect for use cases like access control, governance, and 
+    token management.
+-> As of now EnumerableSet supports  - Bytes32Set , AddressSet and UintSet
+-> About _disableInitializers() - https://grok.com/share/bGVnYWN5_29c70810-f989-40ad-98bc-0f2199e815cc
+-> reinitializer() - https://grok.com/share/bGVnYWN5_752bc8fd-3875-4f15-96ff-2f22ccaf6911
+    - You've upgraded the contract: You've deployed a new implementation (e.g., MyTokenV2) and the proxy now points to it.
+-> onlyInitializing - Restricts a function to be called only during an ongoing initialization ( when initializer modifier in parent contract triggers )
+    - Checks that an initialization is already in progress (via the flag set by initializer) before allowing execution
+    - It doesn't start the initialization process itself but works within it
+    - Usually internal, as it's meant for use within the contract's inheritance hierarchy
+-> Difference between EnumerableSet and EnumerableMap - https://grok.com/share/bGVnYWN5_42cab544-afaf-4ae3-983b-bb738810d04d
+-> keyvalue paris of EnumerableMap - https://grok.com/share/bGVnYWN5_afffd22d-1c05-4d8b-aa27-47d379f3d898
+->  ERC-7201: Namespaced Storage Layout
+    - keccak256(abi.encode(uint256(keccak256(abi.encodePacked(namespace))) - 1)) & ~bytes32(uint256(0xff)) (Performing the AND NOT 0xff operation transforms the rightmost byte of the location to 00. This prepares for a future upgrade when Ethereum switches its storage data structure to Verkle Trees and 256 adjacent slots can be warmed at once)
+    - @custom:storage-location <FORMULA_ID>:<NAMESPACE_ID>
+    - @custom:storage-location erc7201:pareto.storage.EmergencyUtils
+    - Computes the slot via keccak256("pareto.storage.EmergencyUtils")
+-> ERC-1967 (EIP-1967) defines unstructured proxy storage slots
+    - If you're deploying or interacting with an upgradeable proxy (Transparent or UUPS), you rely on ERC-1967 to manage the proxy's own slots safely 
+    - If your logic contract has a complex state spanning multiple facets or contracts, and you want to namespace those state variables to avoid layout drift, adopt ERC-7201 alongside your proxy setup
+-> Always use ERC-1967 for proxy deployments to isolate implementation/admin pointers — this is non-negotiable for Transparent or UUPS proxies 
+    Opt-in to ERC-7201 when your implementation contract comprises multiple independent modules, mixins, or facets that each define their own 
+    state—this prevents internal collisions and eases maintenance
+-> Despite ERC-1967 providing a robust solution for segregating proxy metadata (implementation, admin, beacon pointers) from a logic contract's 
+    state, it does not address storage collisions within the logic contract itself when that contract spans multiple modules or facets. 
+    ERC-7201 fills this gap by introducing a namespaced storage layout: each module declares its own struct annotated with a unique identifier, 
+    and the slot is derived via keccak256(namespace), guaranteeing isolation between modules at upgrade time . Together, ERC-1967 and 
+    ERC-7201 enable end-to-end collision safety across both proxy and application storage in upgradeable systems
+-> verkle trees - ~bytes32(uint256(0xff)) - (https://grok.com/share/bGVnYWN5_b1e677c5-cf2c-493e-b157-d45ff866acc6)
+    - (https://grok.com/share/bGVnYWN5_4a8e6bde-5001-4989-a4d2-c7d07c1363be)
+-> Revoke is an action taken by an authority or a party with the power to cancel something. Renounce is a voluntary act of giving up or rejecting something
+-> Enumerate (iterate over)
+-> function as parameter - function sort( uint256[] memory array,function(uint256, uint256) pure returns (bool) comp) internal pure returns (uint256[] memory)
+-> Question - As we are going to store all the state in a proxy contract and what there is not effect if anyone calls the 
+    implementation contract initializer as calling the initializer function directly sets the state in the implementation 
+    where no one cares about that data and we can still initialize the initializer by callling the initializer using proxy contract
+    - https://forum.openzeppelin.com/t/uupsupgradeable-vulnerability-post-mortem/15680 (SelfDestruct the impl contract)
+-> One of the original motivations for UUPS was to deploy many smart contract wallets on the mainnet, where the logic could be deployed once 
+   and the proxy could be deployed multiple times for each new wallet, saving gas
+
+============================================ End of openzeppelin ===========================================
+
+============================================ Roll up or Layer 2 =========================================
+
+--> Roll ups 
+  - executes the transactions, compress the data and rolls it up to the Main chain in a single batch  
+  - https://www.youtube.com/watch?v=7pWxCklcNsU 
+    1) optimistic rollups ( they use dispute resolution system for  fraud proofs ) - Ex: arbitrum and optimism
+      - half of the penalized money will be burned and other half will be given to who have challenged and found the frad blocks
+    2) zero knowledge rollups ( validity proofs ) - Ex: zksync and polygon zk evm , loopring
+    3) how does the state be consistant when we are running transactions in off chain and what if the user tries to do the transaction
+       at two places the at same time - user cant able to do as the tokens are in L2 he cant double spend thos in L1 ?
+    4) what is zkporter
+    5) EIP-4844 introduces new kind of transaction which accepts blobs of data to be persisted in the beacon node for a short amount of time
+       -> BLOB is represented as Binary Large Objects
+       -> blobs are 4096 fields elements of 32 bytes each
+       -> what is proto danksharding ? - scalable data , availability data
+       -> initially , Dencun is targeting 6 blobs per block 4096*32*6 = 0.75Mb per block
+       -> blobs are short lived and pruned after around 2 weeks
+       -> unlike calldata blobs are not available in EVM
+       -> blobs are persistant on the beacon nodes ( consensus layer ) but not on the execution layer
+       -> if we have a smart contract function that is deployed to onchain , if we want to try to access the blob data , we cannot access it directly 
+         , but we can access the hash of the data with the new BLOBHASH code
+       -> whar are kzg commitments ? - hash of the blob data
+       -> blocks contains Regular transactions and Data transactions ( does everything a regular transaction does ) , Data transaction may contains the hash of the blobs too as an extra than Regular
+       -> blobs are breaked into tiny pieces to stored as distrubuted with the help of the bittorrent like architecture
+
+--> possible scalability solutions  - sharding , roll ups , proto Danksharding , lightening network , Plasma and state channels
+--> MEV is not possible in layer2 as we dont have mempool here and the sequencer will be deciding the transactions ordering
+--> Decentralizing rollups - removing security councils fully or make them only active in cases where the code has clearly has a bug 
+    because it is disaggreing with itself
+--> 
+======================================= End of Rollup or layer2 ==========================================
+
+=====================================Start of smart contract security ====================================
+
+# https://github.com/Cyfrin/security-and-auditing-full-course-s23
+# https://github.com/bkrem/awesome-solidity
+-> static analysis ( Automatically checking code for issiues without executing ) - slither , aderyn and mythril
+-> formal verification - symbolic execution is one of the type of formal verification
+    - tools ( certora and halmos )
+    - imagine its the code , basicaly solidity code or cairto code doesn't matter. and for every function or like even functionality
+    - we will make some kind of mathematical equation that represents this function and then we use this mathematical 
+    - equation in order to prove something right or wrong ( and after this we will test this math formula instead of code itself)
+    - key goal : Align mental model (how we thought the expected output could be) with the machine model
+-> cloc - to calculate the no of lines of code
+    - cloc ./src/campaign ( scanning only specific path)
+    - nSLOC - numner of source lines of code
+    - cloc --csv --csv-delimiter=";" --by-file --include-ext=sol --report-file=scope.csv --exclude-dir=test,lib,mocks .
+-> solidity-code-metrics (Extention) - Analyse the whole smart contract code
+-> Notes - Vs Notes
+-> Security audit Firms - Cyfrin , Openzeppelin and trail of bits
+-> Post deployment best practices - Bug bounty , Disaster recovery drills and Monitoring
+-> Persons - Tincho 
+-> USDT contract doesn't return a boolean for their transferFrom function , where as other normal ERC20 contracts do
+-> Use Docker containers to run the code in in isolated environments - https://github.com/Cyfrin/web3-dev-containers
+-> To Generate a PDF - pandoc report-example.md -o report.pdf --from markdown --template=eisvogel --listings
+-> DOS attack -  Causing a function or a transaction not be able to execte 
+-> Infinite for loop DOS attacks can be caused by making the transaction to cost more than the block gas limit by having that number of loopings
+-> when refunding the gas used to interact with the contract , we need to be aware of attack throught 63/64 gas rule 
+-> As an auditor, your primary goal is to catch security issues. Solhint has built-in rules (like avoid-low-level-calls, 
+    avoid-suicide/avoid-selfdestruct, etc.) that highlight potential security problems
+-> if we are using a try catch , and if that external call fails , the state that has been updated in that external call will be reverted and 
+    in catch it will all be like the state how it was before
+-> selector signature hash collision
+-> In Erc20 approve function of openzeppelin , it was not checking whether the allowed balace user owns or not
+-> Low-level calls in Solidity, such as .call(), .delegatecall(), and .staticcall(), do not automatically revert the transaction when they fail. 
+    Instead, they return a boolean value indicating success or failure. It is up to the developer to handle the failure case appropriately. 
+    Not testing explicitly for the return value could lead to unexpected behavior in the caller contract
+-> not having a withdraw method for the contracts receiving ether is main drawback
+-> parallel data structures will always have problem at some point , like when deleting we may miss to update in the other data structure that 
+    we store related data (https://grok.com/share/bGVnYWN5_725858ab-9a70-4b57-836f-bf5ccafdab8c)
+-> Mstore in yul does not update the free memory pointer (https://www.youtube.com/watch?v=8fNNVQv4-oY&ab_channel=OwenThurm)
+-> do not use msg.value inside a loop , it can cause unexpected behaviour like - The value of msg.value is set once when the function is 
+    invoked and does not update after each iteration or external call
+-> Decoding arbitrary bytes that comes from the random address can be dangerous
+-> stepwise jumps - we can always find some Bugs with this ( user can deposit the assets before the price appreciation and then withdraw after that )
+    - Reward compounds , redeeming rewards ( sandwich attacks , front running )
+    - Interest rate updates , reward rate updates ( usually updated by the trusted protocol admins)
+    - Inflaction Attacks (depending on the balanceOf)
+
+
+============================================== End of smart contract security ===========================================
+
+=================================================== Solidity language ==========================================
+
+-> Variables , Types ( value and referene types , complex type (string), user defined ) , Functions , 
+   Visibility , Modifiers , Custom Modifiers , constructors , global variables , operators , conditionals , Arrays , Mappings , Structs 
+   , Events , Ether , Errors , Inheritance , calling other functions , interface
+-> receive , fallback , call , send , transfer , payable , enums
+—> stack is the local variable ( cheapest of all variables )
+—> calldata was the temp variable that can't be modified, memory was the temp variable that can be modified in the function execution 
+-> Data location can only be specified for arrays ,structs or mappings ( a string is an array or bytes )
+   - public and external functions cannot accept parameters marked storage; 
+      - When an external caller invokes a function, the parameters come from outside the contract — there's no way to directly pass a pointer to on-chain storage
+   - they must use memory or calldata instead. storage parameters can only be used with internal (or private) functions
+—> new address[](size) - dynamic arrays in Solidity are initialised with default values ( here zero addresses )
+-> safemath librarie , what are checked and unchecked ( overflow or underflow checks are default in over 0.8 version , unchecked can 
+   be used to reduce the gas by explicitily specifying do not check for any overflow or underflow for a specific expression )
+-> in Solidity in order to send native blockchain tokens like ethereum , you can only work with payable address to do that (when using call 
+   this was not needed and when using transfer and send payable is needed)
+-> try catch , function selectors , abi encode and decode , hashing and assembly --> The try keyword has to be followed by an expression 
+   representing an external function call or a contract creation (new ContractName())
+--> Public: Accessible everywhere; includes an automatic getter for variables. 
+    Private: Accessible only within the contract where it is defined; not visible to derived contracts. (by default if we wont specify visability)
+    Internal: Accessible within the contract and by derived contracts; not visible externally.
+    External: Functions accessible only from outside the contract; variables cannot have external visibility.
+-> Enums in Solidity are a simply way to give names to a set of integer values, and these names are internally mapped to unsigned integers starting from 0.
+-> enum: User-defined types for creating a set of named constants
+-> different Data types : value types - uint, int, bool ,address ,enum, bytes , and reference types - strings, arrays, mappings, structs
+-> address: Holds a 20 byte value (size of an Ethereum address).
+-> function (<parameter types>) {internal|external|public|private} [pure|view|payable] [returns (<return types>)]
+-> Data location : memory (whose lifetime is limited to an external function call), storage (the location where the state variables are stored,
+    where the lifetime is limited to the lifetime of a contract) or calldata (special data location that contains the function arguments).
+-> type(int256).min , InterfaceIdentifier - type(<InterfaceName>).interfaceId , bytes1 a = 0xb5; //  [10110101]
+-> EIP-165 is a standard that enables smart contracts to declare the interfaces they implement. The interface identifier for an interface like 
+   IERC20 is derived by XORing all of the function selectors in that interface. This identifier is stored as type(IERC20).interfaceId and helps
+    other contracts verify that a given contract implements IERC20 without needing to know the implementation details
+-> This EIP-165 standards was decided by the developer whether they are accepting or not , but it does not really checks and compare all 
+   of the functions init to the ERC20 functions
+-> For example, if a function is defined as function transfer(address to, uint256 amount), its signature is "transfer(address,uint256)". 
+   The function selector is then the first 4 bytes of the Keccak-256 hash of this signature
+-> In Solidity, when you define a public state variable of a struct type, the compiler automatically generates a "getter" function for you. 
+   However, if your struct contains dynamic arrays (such as address[], uint256[], etc.) and mappings, the default getter cannot provide a 
+   complete representation of the struct - why we have this exception in solidity as reading data from blockchain is free --> Dynamic arrays 
+   can be arbitrarily large. For example, if you store a struct with a dynamic array containing thousands of elements, returning the entire 
+   array in one call would consume a significant amount of gas during the computation of the response.
+-> Mappings are not iterable because keys are not stored in a specific order or as a list
+-> mappings are implemented in Solidity—they are not iterable or copyable since their data structure resides only in storage and not in memory.
+-> Member "push" is not available in address[] memory outside of storage ? - In Solidity, the push method is only available for dynamic storage 
+   arrays. It is not available for arrays declared in memory because memory arrays are fixed in size when they are created, even if they are 
+   declared as dynamic. This is a key design of Solidity to optimize performance and avoid dynamic memory allocation during execution
+-> uint256 test = uint256(1) / uint256(37); --> return value is zero why 
+     - Solidity uses integer arithmetic, so division always truncates toward zero.
+     - To retain precision, scale values before performing the division.
+-> When a transaction reverts:
+     - All state changes made during the transaction are undone.
+     - Events emitted during the transaction are also discarded.
+     - The transaction is effectively as if it never happened.
+-> in Upgradable smart contracts ( in implementation contracts we can add new varialbles but can't reorder the existing storage variables)
+-> EIP - 2535 Diamond proxy pattern ( static router (less expensive) , dynamic router ( more expensive))
+   - (static) Hard-coded Jump Table and (dynamic) Storage Mapping Lookup
+   - https://www.rareskills.io/post/diamond-proxy
+   - https://blessingemah.medium.com/a-beginners-guide-to-the-diamond-standard-proxy-b57076365403#:~:text=The%20Diamond%20Standard%20also%20known%20as%20an,Pattern%20which%20was%20created%20by%20Nick%20Mudge.
+   - https://github.com/code-423n4/2022-10-zksync/blob/main/ethereum/contracts/zksync/libraries/Diamond.sol#L285-L288
+   - https://gist.github.com/mudgen/7d50e3d0aca93b9cc321dfa0dbded373
+-> Proxy patterns (https://docs.openzeppelin.com/upgrades-plugins/proxies)
+     - Unstructured Storage Proxies
+     - Beacon contract address in EIP-1967 ( Beacon Proxy pattern ) - It simplifies the upgrade process for multiple proxies by centralizing the management of the implementation contract address
+     - Storage Collisions between Proxy and Implementation Contracts - above EIP is the solution
+     - Storage Collisions Between Implementation Versions - need to adapt to previos implementation Contracts
+-> for stack too deep error in solidity , try to add variables into a struct
+-> Multiply first and then do division with this there will be no precesion loss
+-> Bitmask for storing boolean storage variables - packing of variables ( with this we can only use less storage space)
+-> central logging mechanism like logs needs to be emitted by only one main contract
+-> we can write custom erros and free functions outside of the smart contract too
+-> with call function we can able to call functions in other smart contracts
+-> Generating Bytecode of a contract 
+   bytes memory bytecode = abi.encodePacked(
+    type(ContractName).creationCode,
+    abi.encode(<constructor arguments>)) // <-- encode immutable / constructor argument
+   );
+-> witht the help of create2 deployment method we can precompile the address of the smart contract as we are the person who is going to 
+   provide salt bytes to create a contract
+-> abi.encodeWithSignature('functionName(uint256)',200)       -- signature - functionName(uint256)
+   abi.encodeWithSelector(this.functionName.selector,200)     -- selector  - this.functionName.selector
+   abi.encodeWithSelector(bytes4(keccak256(bytes('functionName(uint256)'))), 200) - encoding manually
+   - this.get.selector means: Get the selector of the public or external function get in this contract, as seen via the external ABI.”
+-> this.functionName is the function pointer
+-> multi call - we can do it with call or staticCall
+-> staticcall - Invoking a view or pure function in another contract to read state or perform computations without modifying the blockchain 
+   state , where as call function is used when we want to change the state of the blockchain 
+-> abi.encodePacked("hello") and bytes("hello") gives the same output
+   - bytes(string) costs roughly 445 less Gas -  The first is copying the memory, the second is just casting the pointer type.
+-> (complicated) to decode an encodePacked we need to seperate all the different data types and need to type cast with that respective data 
+   type and there is no other decoding strategy for this 
+-> For these reference types ( Dynamic array, mappings ): delete resets the reference itself but retains the data in storage for arrays and mappings
+-> the hex code data which we send from our wallet ( metamask ) is calldata which contains function selector at the first four bytes
+-> difference between vyper and solidity is free memory pointer ( dynamic memory allocation ) , vyper does not have this feature
+-> for every function written in lowlevel language we must have stop optcode at the end of the function ( if we have return which halts the execution RETURN optcode will be there )
+   - STOP (0x00) just ends execution with no return data
+   - RETURN (0xF3) ends execution and returns data to the caller
+-> byte offset refers to the starting from nth byte in the memory or storage or stack
+-> transparent proxy pattern - A transparent proxy will decide which calls are delegated to the underlying logic contract based on the caller address
+-> need to have a grip on type conversions and type casting
+-> Solidity does not allow explicit widening or narrowing between signed and unsigned types unless the bit-widths match exactly ( EX: Conversion from uint160 to int184 )
+   - These are allowed only if you cast explicitly (int256(a) or uint256(x))
+-> typeconvertions from string to bytes and bytes to string will work , but not between string and bytes32 as there is a possibility of data loss
+-> When defining array literals ([1,2]) inside a function, Solidity infers the type of the array based on the smallest data type needed to represent the values in the array 
+   - uint256[] memory tempArr = [1,2];  --> TypeError: Type uint8[2] memory is not implicitly convertible to expected type uint256[] memory.
+-> Limitations for memory arrays that we usually define inside of a function 
+-> bytes memory empty = hex"";
+-> Ethereum uses RLP encoding ( v , R and S values) of signatures and Bitcoin uses DER encoding ( R and S values) 
+   - https://ethereum.stackexchange.com/questions/64380/understanding-ethereum-signatures/64398#64398
+-> why when creating a signature we need to send values as r,s and v instead of v , r and s - due to historical conventions and how 
+   cryptographic libraries (like elliptic and secp256k1) and Ethereum itself have chosen to serialize and handle signatures and bitcoin 
+   itself doesnot have a v which is only used by ethereum
+-> type of privatekey when using in tests - uint256  , its real format is hex
+-> in Solidity, any executable statements must be placed inside functions, constructors or modifiers — not directly in the contract body
+-> In a function we need to follow these for best practices - Checks , Effects and Intereactions ( CEI pattern)
+-> soldeer - solidity package manager build along with foundry ( In Rust )
+-> Member "push" is not available in struct TokenPool.ChainUpdate[] memory outside of storage.solidity(4994)
+   - memory arrays in Solidity are fixed size and do not support push()
+-> Only constants of value type and byte array type (bytes32 , bytes4...) are implemented.solidity(9259) - using constant for bytes32[] is not allowed
+   - Dynamic types cannot be constant because they require runtime memory allocation
+-> However, there is no way to stop an attacker from sending ether to a contract by self destroying. Hence, it is important to not count 
+   on the invariant address(this).balance == 0 for any contract logic.
+-> we can read Private variables data using off chain - await web3.eth.getStorageAt(contractAddress, 0);
+-> storage Calculation for element location in arrays
+   - Fixed-Size Arrays: Use data.slot + index directly.
+   - Dynamic Arrays: Use keccak256(data.slot, 0x20) + index (due to Solidity's storage rules for dynamic types).
+-> address to bytes8 conversion - bytes8(uint64(uint160(address)))
+-> tx.origin - Represents the externally owned account (EOA) that initiated the entire transaction chain.
+-> in an hex code , 2 letters represent 1 byte
+-> if we call another contract in a contructor , current contracts codesize is zero when the constructor transaction is executing in the 
+   another contract , because the current contract is still not deployed
+-> s ^ key = max ( we will get below by applying xor with s on both the sides and a ^ a ^ b = b)
+   key = s ^ max 
+-> assert(condition) -  Consumes all remaining gas if the condition fails (unlike require and revert) - for below 0.8 versions of solidity
+-> assembly { invalid() } - Consumes all of the gas
+-> Always specify a fixed gas stipend for low-level calls to prevent denial-of-service (DoS) attacks
+   - A gas stipend is a fixed amount of gas that you allocate to a low-level call. This ensures that the external contract being called does not consume excessive gas and potentially disrupt execution
+-> When making an external call in Solidity using call, delegatecall, or staticcall, the EVM enforces a 63/64 gas forwarding rule
+-> EIP-161 (State Trie Clearing) introduced a rule that contract created accounts are initialized with nonce = 1, instead of nonce = 0
+   - new contract accounts (created by CREATE or CREATE2) are initialized with nonce = 1 instead of 0
+   - Externally Owned Accounts (EOAs) are NOT affected , their nonce still starts at 0.
+-> if we deploy AA code in one chain , we need to deploy in all other chains like L2s to achieve this in that specific chain
+-> Solidity Optimizer - runs is not how many times the optimizer will run but how many times you expect to call functions in that smart contract. 
+   If the smart contract is only of one-time use as a smart contract for vesting or locking of tokens, you can set the runs value to 1.
+   the compiler will produce the smallest possible bytecode but it may cost slightly more gas to call the function(s). If you are deploying 
+   a contract that will be used a lot (like an ERC20 token), you should set the runs to a high number like 1337 so that initial bytecode 
+   will be slightly larger but calls made to that contract will be cheaper. Commonly used functions like transfer will be cheaper
+   - for Lower deployment cost runs is 1 and for lower execution cost runs is 200 or much higher ( 200 is the default optimizer for solidity)
+-> Zero-knowledge proofs (ZKPs) are cryptographic protocols that allow one party (the prover) to convince another party (the verifier) 
+   that a statement is true without revealing any information beyond the validity of the statement itself
+   - Groth 16
+-> How to create a smart contract using another smart contract - using new ( standard deployment), using create and create2 ( low level deployment )
+-> if L2 breaks how user can easily escape the funds from L2 to L1 ( withdrawsls in escape hatch mode)
+-> selfdestruct removes contract's bytecode and storage but does not erase its address , but after dencun update it wont remove the 
+   bytecode if we wont call the selfdestruct in the same transaction
+   - Even if a contract's code does not contain a call to selfdestruct, it can still perform that operation using delegatecall or callcode.
+   - selfdestruct is deprecated now - but previously it has a capability to force send the Ehter if the caller contract does not have any payable fallback function which is capable of receiving ether
+-> Why optocodes deals with storage has more gas cost than memory or stack , what does it actually do or how does it differs internally
+  -- Changing a value in storage requires:
+    Fetching the existing value from the Ethereum State Trie (SLOAD).
+    Computing the new value.
+    Updating the trie structure, which may involve multiple hash computations (Keccak256).
+    Propagating the changes across allfull nodes.
+    Compare this with stack operations, which are just pushing/popping values within a single transaction's execution (cheap and immediate).
+-> 1) When you create a new wallet:
+   2) MetaMask generates a 12/24-word seed phrase (BIP-39).
+   It derives the master private key using the BIP-32 standard.
+   From this master key, it generates child keys (Ethereum private keys).
+   MetaMask encrypts the private key with a key derived from your password.
+   3) The encrypted data is stored in IndexedDB.
+     - windows -   C:\Users\USER_NAME\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings\nkbihfbeogaeaoehlefnkodbefgpgknn
+     - mac os -                  ~/Library/Application Support/Google/Chrome/Default/Local Extension Settings/nkbihfbeogaeaoehlefnkodbefgpgknn
+-> data location applies only to reference types (e.g., arrays, structs, strings) why ? 
+   - For value types like uint256, int, bool, and address, does not require a data location because they are always stored in memory and passed by value
+-> CREATE2 allows deploying a contract at a predictable address, even before it's deployed.
+-> Self-Destruct & Contract Resurrection - Deleting a contract and deploying a new version at the same address
+-> CMD + E - to get into the end of the Line in Remix inputs
+-> Refunds cannot exceed 1/5 (20%) of the gas used in a transaction, due to the EIP-3529 update
+-> New Storage slot - 20k gas , Overwrite a storage slot - 5k , delete a variable in a storage slot 5k and 4.8k gas refund
+-> Why Gas Token Exploits Existed and How They Worked - Before EIP-3529, Ethereum allowed unlimited gas refunds, which enabled gas token exploits. 
+   Gas tokens like Chi Gas Token (Chi) and GasToken (GST2) were created to abuse storage refunds and store cheap data during low gas prices, then 
+   delete it when gas prices were high to reduce costs
+-> Before - EIP-3529 : Users stored garbage data cheaply when gas prices were low and deleted it to artificially reduce transaction costs when 
+   gas prices were high
+-> Try can only be used with external function calls and contract creation calls
+-> If multiple parent contracts define the same function, you must specify all parent contracts using override(A, B)
+-> which factors of overriding things can be changed (inheritance) - Research suggests visibility can change from external to public, but 
+   otherwise must stay the same; mutability can be made more restrictive, like from view to pure -- An unexpected detail is that changing 
+   visibility from external to public makes the function more accessible, allowing internal calls, which might not align with the base 
+   contract's intent but is explicitly allowed
+-> (add view and pure as extra) if we have function in an interface with only external and no mutability like view or pure , we can add 
+   those, as those are more restrictive and we will adding these based on our needs and requirement suitablity
+-> Public mappings don't return structs directly - they return individual components.You must destructure the return values into separate 
+   variables.If you want to use it as a struct, you must manually reconstruct it.
+-> a base contract with a virtual function and a derived contract that overrides it
+-> In the provided function, abi.encode("Hello ", "World!") encodes the strings with additional type information like lengths 
+   and offsets, following the ABI standard. When cast to a string, this gives you the encoded data as bytes, not the 
+   concatenated string "Hello World!". This is because abi.encode is designed for encoding function arguments, not for 
+   string concatenation
+   - Example demonstration of a single string Hello if it is encoded as abi.enocde("Hello")
+      0x
+      0000000000000000000000000000000000000000000000000000000000000020  // Offset = 32 bytes (0x20)
+      0000000000000000000000000000000000000000000000000000000000000005  // Length = 5 bytes
+      48656c6c6f000000000000000000000000000000000000000000000000000000  // "Hello" (0x48 65 6c 6c 6f) padded to 32 bytes
+
+      [HEAD]
+      0000000000000000000000000000000000000000000000000000000000000040  ← offset for "Hello "
+      0000000000000000000000000000000000000000000000000000000000000080  ← offset for "World!"
+      [TAIL - "Hello "]
+      0000000000000000000000000000000000000000000000000000000000000006  ← length = 6
+      48656c6c6f200000000000000000000000000000000000000000000000000000  ← "Hello " padded
+      [TAIL - "World!"]
+      0000000000000000000000000000000000000000000000000000000000000006  ← length = 6
+      576f726c64210000000000000000000000000000000000000000000000000000  ← "World!" padded
+
+   - String concatenation - string(abi.encodePacked("Hello ", "World!")) 
+                          - string.concat("Hello ", "World!")
+-> abi.encodePacked: No padding, no offsets, just raw concatenation
+-> while the EVM's behavior is fully specified by the Ethereum protocol, its implementations are written in multiple programming languages 
+   depending on the client. (Ethereum client)
+-> Data field in a transaction for a function call will be the calldata along with function selector and for the contract 
+   deployment it will be the bytecode ( initcode of the contract )
+-> The caret (^) in the version pragma indicates that the contract is compatible with the specified version and any newer minor version up to the next major version
+-> pragma solidity ^0.7.6 --it means the contract can be compiled with any compiler version starting at 0.7.6 up to, but not including, 0.8.0. This follows the semantic versioning rules.
+-> npm packages - ((~8.1.1 - >=8.1.1 <8.2.0 (patch updates only)))  , (^8.1.1 -	>=8.1.1 <9.0.0 (patch and major updates only ))
+-> Index range access is only supported for dynamic calldata arrays. - numbers[1:3] -- uint[] calldata numbers
+-> Array slicing is not supported for - Fixed-Size Arrays , Storage Arrays and Memory Arrays
+-> Reasoning: Slicing in calldata leverages its read-only, pre-allocated nature, avoiding the need to allocate new memory or modify storage, 
+   which would increase gas costs significantly.
+-> Transient Storage - Apart from being an alternative to contract storage in cases where persistence is not required (like reentrancy locks), 
+   transient storage allows developers to easily create global singletons on-chain. These singletons are useful since information about a 
+   transaction can be accessed by any contract, independent of the stack depth
+-> code size of the currect contract in the constructor is zero , by the time of construtor executing current contract is still not deployed
+-> Every account has an associated nonce: for regular accounts it is increased on every transaction, while for contract accounts it is increased 
+   on every contract creation. Nonces cannot be reused, and they must be sequential.
+-> create optcode uses - keccak256(rlp.encode(deployingAddress, nonce))[12:]
+-> create2 optcode users - keccak256(0xff ++ deployingAddr ++ salt ++ keccak256(bytecode))[12:]
+   - to calulate address - address addr = address(uint160(uint256(keccak256(abi.encodePacked(bytes1(0xff),address(this),salt,keccak256(fullBytecode))))));
+   - assembly { newContract := create2(0, add(bytecode, 32), mload(bytecode), salt) }
+   - bytes memory bytecode = type(NudgeCampaign).creationCode;
+   - CREATE2(amount, offset, size , salt)
+   - add is an EVM opcode (0x01) that performs addition. bytecode is a pointer to the start of the bytes array. add(bytecode, 32) shifts the pointer past the first 32 bytes (which store the length), directly to the actual bytecode
+   - CREATE2 makes the deployed contract's address depend on the deployer's address, so: If a different contract deploys using the same salt and bytecode, the address would be different because the deployer is different
+   - CREATE2 automatically uses the deployer's address (i.e., address(this)) as part of its address calculation.
+   - https://grok.com/share/bGVnYWN5_c440c4ff-539b-45fb-91e0-9881d55a7194
+-> using <LibraryName> for <Type> , if we use Type as * , then that library function will be used by all types
+-> stack too deep error is only for if we have more than 14 variables in one single function if we can split to two functions then there wont be issue
+-> Unlike traditional (legacy) EVM bytecode, which is a single, flat sequence of instructions, EOF uses a container format that organizes code 
+   and data into distinct sections
+-> slither-check-erc 0xdac17f958d2ee523a2206206994597c13d831ec7 TetherToken --erc erc20 (checks for ERC's conformance)
+-> To use console in remix - import "https://github.com/foundry-rs/forge-std/blob/master/src/console.sol";
+-> if we have any send or trasfer or call in the contructor and we are triggering someother function which is going to send ether to us , 
+   then it will treat as EOA because at that point of time in constructor the contract itself is not there in the blockchain state
+-> if we are using a try catch , and if that external call fails , the state that has been updated in that external call will be reverted and 
+   in catch it will all be like the state how it was before the external call in the try is triggered
+-> when we are using mload , for arrays the first location will be the length of the array and we need to load by shifting 32 bytes
+    (add(pointer,32)) after it , as there only we will get the first element of the array
+-> when we call any function it will have calldata -  calldataload(4) loads 32 bytes from the call data starting at byte offset 4. Why 
+   offset 4? Because the first 4 bytes of the call data contain the function selector.
+-> How calldata of a function works - https://docs.soliditylang.org/en/v0.8.19/abi-spec.html#examples
+-> If we do normal function calls it follows the formation ( <ContractName>.<functionName>) of the call data specified in Solidity docs and 
+   if we want to modify the selector in the calldata then we can pass something like this - address(ContractName).call(<bytesDataInHexFormat>)
+-> Function Overloading - A contract can have multiple functions of the same name but with different parameter types. This process is 
+   called “overloading” and also applies to inherited functions
+-> String Literal "Hello" :- This literal is 5 bytes long (one byte per character for simple ASCII characters).
+-> combining two bytes based on our length requirements of that bytes 
+   - bytes memory data = abi.encodePacked(switchh.flipSwitch.selector,abi.encode(uint32(96),uint32(0),bytes4(switchh.turnSwitchOff.selector),uint32(4),bytes4(switchh.turnSwitchOn.selector)));
+-> for two dimentional array in function parameters , the calldata will be - selector + location for multi 
+   dimentional array + length of the multi dimentional array + location of first array + location of second array 
+   (( This Applies same for the array of strings too - string[])) - https://docs.soliditylang.org/en/v0.8.19/abi-spec.html#use-of-dynamic-types
+-> Assuming positions in CALLDATA with dynamic types can be erroneous, especially when using hard-coded CALLDATA positions. 
+   - https://ethernaut.openzeppelin.com/level/0xb2aBa0e156C905a9FAEc24805a009d99193E3E53
+-> assigning values to variables dynamically - require((shares = previewDeposit(assets)) != 0, "ZERO_SHARES");
+-> you can append curly-brace options (like {value: amount} or even {value: amount, gas: someGas}) to any function call. This syntax tells 
+   the EVM to send the specified Ether along with the call. Just make sure that the function you're calling is declared as payable; otherwise, 
+   the transaction will revert
+-> Meta-transactions are a mechanism that allows users to interact with a blockchain without needing to hold the native cryptocurrency
+    (like ETH on Ethereum) to pay for gas. Instead, users sign a transaction off-chain, and a third party (often called a relayer) submits 
+    that transaction on-chain on their behalf. The relayer pays the gas fee, and later may be compensated by the user or by the
+    protocol - userful for gasless transactions
+-> An abstract contract in Solidity doesn't need to have unimplemented functions to be considered abstract. It can be marked as abstract 
+   to indicate that it's intended only as a base contract and not for direct instantiation
+   - Abstract contracts serve as base contracts that provide a partial implementation, leaving some functions to be implemented by inheriting contracts
+   - They can have a mix of implemented functions (with bodies) and unimplemented functions (declared with the virtual keyword and no body). If at least one function is unimplemented, the contract is marked abstract and cannot be deployed directly
+   - Abstract contracts can have state variables, which can be inherited by derived contracts
+   - They can inherit from other contracts and interfaces, making them more flexible for code reuse
+   - When a contract inherits from an interface, it must implement all the functions, or it becomes abstract
+   - https://grok.com/share/bGVnYWN5_82ea619e-afd7-4f0c-9ce9-0f168d7f2ec9
+   - Functions in interfaces must be declared external.
+-> abi.encodeCall(function pointer , (tuple arguments)) performs a type check where as the abi.encodeWithSelector(function selector , .... ) does not perform a type check
+-> Reading Nested mapping - token.allowance(address(pool),recovery);  mapping(address => mapping(address => uint256)) public allowance;
+-> There are a number of common techniques which help avoid potential re-entrancy vulnerabilities in smart contracts. The first is 
+   to ( whenever possible) use the built-in transfer() function when sending ether to external contracts. The transfer function only 
+   sends 2300 gas with the external call, which isn't enough for the destination address/contract to call another contract (i.e. re-enter the sending contract)
+   - but it has its drawback too
+-> The DELEGATECALL opcode is identical to the standard message call, except that the code executed at the targeted address is run in the 
+   context of the calling contract along with the fact that msg.sender and msg.value remain unchanged. This feature enables the implementation 
+   of libraries whereby developers can create reusable code for future contracts.
+-> Deleting structs does not delete containing mappings - (https://www.youtube.com/watch?v=8fNNVQv4-oY&ab_channel=OwenThurm)
+-> TypeError: Built-in unary operator delete cannot be applied to type mapping(uint256 => uint256). - we can't delete the inner mapping in below numbers mapping
+   mapping(uint256 => mapping(uint256 => uint256))  numbers
+-> mapping(string name => Person) people; (https://grok.com/share/bGVnYWN5_73760cbd-c1bc-40c6-a978-55195b4b5b24)
+   struct Person { mapping(uint256 id => uint256 age) details; uint256 favoriteNumber; }
+   favoriteNumber - will be stored at location - keccak256(abi.encode(_name, 0)) + 1 (https://grok.com/share/bGVnYWN5_9f91ee8f-392e-489a-9b84-db09359755a7)
+   people[_name].details[_id] - will be stored at location - keccak256(abi.encode(_id, keccak256(abi.encode(_name, 0))))
+-> The value for a key in a mapping is stored at a slot calculated as keccak256(abi.encode(key, slot))
+-> deleting Arrays 
+   Dynamic Arrays: delete resets them to an empty array ([]) with length 0.
+   Static Arrays: delete resets all elements to 0, but the array keeps its original fixed length.
+-> Downcasting can still overflow or underflow ( uint256 to uint8 or uint8 to uint256 )
+-> if we have multiple contracts inherited , the super keyword will be the last inherited contract
+   - here B will the super(contract Child is ParentA, ParentB ) :: This applies same in override(A,B)
+-> if we have two parents with same function overridden then we have to Explicitly call each parent's version functions in the current contract
+-> when using Two libraries for one type - If two libraries define the same function name for the same type, the compiler will bind the last using directive for unqualified calls
+-> In Solidity, an interface can inherit another interface and even re-declare the very same function signature without error 
+   - Identical declarations are merged, not duplicated
+-> Interface functions are implicitly virtual and don't need override in derived contract if there's only one base
+      - One base → implement the function normally; no override needed.
+      - Two (or more) bases with the same signature → you must write : override(Base1, Base2)
+-> solidity supports negative numbers -     int8   public smallNeg = -128;  // min of int8
+-> singed integers wont revert -   int256 public a = 10-20; ( Ragnge of int8 is from -128 through 127)
+-> transfering zero ether can also triggers the fallback functions
+-> Mappings default to zero-initialized structs. Fetching games[_gameId] when no game exists yields a Game where every field is
+    “zero” (numeric fields → 0; addresses → 0x0; bytes → 0x00…; enums → first member (https://codehawks.cyfrin.io/c/2025-04-rock-paper-scissors)
+-> Enums - When you fetch a struct from a mapping that has never been written to, Solidity returns the “zero-state” for that struct: every field 
+   is set to its type's default value. For enums, the default is the first member (the one with index 0)
+-> Mappings always return a value for any key, even if never set. All fields are their type's defaults (numbers → 0; addresses → 0x0; enums → first member)
+-> Gas efficiency: Transient storage ops (TSTORE/TLOAD) cost ~100 gas each vs. 20 000 gas for SSTORE, reducing approval costs by an order of magnitude
+-> Currently, Temporary Approve cannot be used by externally owned accounts (EOAs), as EOAs cannot currently make multiple calls within a single transaction.
+-> Solidity's C3 linearization algorithm ensures that in a multiple-inheritance scenario each base contract (like ERC20Upgradeable) is included 
+   only once in the storage layout, preventing duplicate state slots even if it appears in two inheritance paths
+   - contract ParetoDollarStaking is ERC20Upgradeable, ERC4626Upgradeable ( here ERC4626Upgradeable is already inheriting the ERC20 )
+-> The contract Inherited was the derived contract (ParetoDollarStaking) and the contracts that we are inheriting was the base contract (ERC20Upgradeable)
+-> __ERC20_init_unchained (having onlyInitializer modifier): This is a more focused initializer. It only sets up the ERC20-specific initialization 
+   state and doesn't call the parent's initializer, giving you control when the parent's initialization needs to happen separately or not
+-> msg.sig refers to the first four bytes of the transaction data, which acts as a function selector, determining which function to call within
+    a contract. It's a global variable that remains constant throughout a transaction, even if other functions are called within it
+-> Function name match checking from the call data of the transaction 
+   - Each selector == X comparison (and the associated branch, JUMPI) has a constant gas cost—approximately 22 gas for the comparison plus the jump logic 
+-> As you can imagine, this is because different op-codes are needed for each one of this different functions (which all achieve the exact same result)
+   - num += 1 ; (26429 gas) ,  num = num +1 (26416 gas) ,  num++ (26368 gas) ,  ++num (26362 gas)
+-> Memory expansion cost 
+   - When a contract call needs to use more than 32 kilobytes of memory storage in a single transaction, the memory cost will enter into a quadratic section
+   - compare 1,000 , 10,000 and 20,000 arrays with sizes
+   - will this applicable to dynamic sized arrays too ?  yes
+   - The cost to expand memory increases quadratically with size:
+   - memory expansion cost = ( new memory size**2 - previous memory size**2 )/ 512
+-> 1 hexadecimal character represents 4 bits. 2 hexadecimal characters represent 1 byte
+-> in assembly, every variable is essentially treated as a bytes32 type. Outside of the assembly scope, the variable will resume its original type and format the data accordingly
+-> Sstore and Sload dont perform any type checks , sstore and sload operate on lengths of 32 bytes
+-> we do not have an opcode to directly modify or read from their byte sequence in storage ( for storage-packed variables , where multiple data type packed in a single 32 byte slot )
+-> Nested mapping storage slot - keccak256(abi.encode(key2, keccak256(abi.encode(key1, <storage slot>))))
+-> The storage variable slot (base slot) stores the string together with information about its length for short strings (<= 31 characters ) or only information about its length for long strings
+   - https://www.rareskills.io/post/solidity-dynamic
+   - String type in Solidity does not have length property , To use the length property on a string, you need to convert the string to bytes and use bytes(<string>).length
+-> Solidity does not support switch at the high-level language, but it does support it inside assembly blocks
+
+============================================== End of solidity language =========================================
+
+=========================================== Test cases in solidity ============================================
+
+-> Event logs in Foundry tests are stored as - topics[0] will be the selector and topics[1...n] will be the index params ( where n is the numner of indexed variables and n <=3 )
+    - https://book.getfoundry.sh/cheatcodes/get-recorded-logs
+        //         struct Log {
+        //          bytes32[] topics;
+        //          bytes     data;   // we need to decode all the non indexed variables using these
+        //          address   emitter;
+        //         }
+-> Stateless (Fuzz) Fuzz Testing : Where the state of the previous run is discarded for every new run.
+-> Stateful (Invarient) Fuzz Testing : Where the final state of the previous run is the starting state of the next run
+-> In an individaul test follow these steps -> Arrange , Act and Assert
+-> (Stateless) Fuzz test - random data for a single function
+-> (Stateful) Invarient tests - Random data and random function calls to many functions ( function name should be invariant_* )
+-> Linearization of inheritance graph impossible in solidity -- Solidity expects the list to be from most base-like to most derived
+    - https://grok.com/share/bGVnYWN5_73c3a28c-1d6c-4188-b931-cae873a8d599
+-> usage of beforeTestSetup --   function beforeTestSetup(bytes4 testSelector) public returns (bytes[] memory beforeTestCalldata) {}
+    - This is helpful when we have want to call certain tests (testA which has state changes needed by testC ) every time before calling another test ( testC)
+    - Think of this a modifier perspective , there we check for conditions here we wait for state updation
+-> if you add logs in beforeTestSetup function it wont log because that was used for how to sequence the tests
+-> Invarient - the property of the system that should always hold true
+-> Formal verification 
+    - types ( symbolic execution , abstract intrepretation , Model checking )
+    - This process often involves the time-consuming task of manually writing the specifications using a specialized language (that many developers will need to learn first).
+    - Halmos is a formal verification tool designed for symbolic testing. Instead of requiring separate specifications or learning a new language, Halmos uses existing tests as formal specifications
+-> Branches in forge coverage - shows the percentage of conditional branches (like if/else or ternary operators) that were execute
+-> % Statements in forge coverage 
+    - The distinction is significant because achieving 100% line coverage doesn't necessarily mean that all statements have been tested. If multiple statements exist on a single line, some might be executed while others are not, leading to discrepancies between line and statement coverage percentages
+    - Ex : uint256 a = 5; uint256 b = 10;  Here, one line contains two statements
+-> To run Echidna in mac - docker run --platform linux/amd64 -it --rm -v $PWD:/code trailofbits/eth-security-toolbox
+    - echidna testEchidna.sol --contract TestEchidna        --limit-times 500 --config time.yaml
+    - A Fast Smart Contract Fuzzer
+-> Testing the properties with fuzzing - Echidna and Medusa
+-> seed varaible in Fuzz - Reproducibility is critical for debugging. By setting a specific seed, you can rerun the exact same sequence of inputs 
+    to investigate a failure or verify a fix. Without a seed, the inputs would be different each time, making it harder to replicate issues
+-> (Open invariant Testing) fail_on_revert = true: The test fails immediately if any transaction reverts.
+-> (Handler Invariant Testing) fail_on_revert = false: The test continues even if transactions revert, failing only if an invariant is violated
+-> Mutation testing is like testing how good your testing framework by changing the code and see what happens
+-> 
+
+=============================================== End of test cases in solidity =======================================
+
+============================================ Tech stack ============================================
+
+chainlink - decentralized oracle network
+graph protocol - indexing protocol for querying data for networks like Ethereum and IPFS
+IPFS -> File coin - pinata (API provider)
+zksync -> layer 2 scaling solution
+Foundry - framework for building decentralized applications
+solidity - smart contract language
+openzepplin - smart contract library
+slither ->  security tool
+tenderly - to monitor the smart contract actions
+huff , yul - low level languages
+remix - IDE for solidity
+
+Example projects
+    - https://github.com/Cyfrin/ts-tsender-ui-cu ( Frontend focused )
+    - https://github.com/Cyfrin/ts-nft-marketplace-cu ( Backend focused )
+
+--------------------------------- FRONTEND ----------------------------------------------------
+
+-> viem (replacement of ethers) , Low-level Ethereum toolkit
+   wagmi → React hooks wrapper built on viem
+
+-> pnpm create next-app@latest
+
+-> Testing
+    - unit test   - vitest for testing framework
+    - e2e testing 
+        - playwright
+        - synpress ( combination of playwright and cypress with metamask support) , build by synthetix team
+
+-> Tech stack - https://chatgpt.com/c/681866c5-61c4-8010-98e1-d0762ff1d110
+
+-> rainbowkit - wallet library for frontend
+
+-> compliance engine - circle console
+
+-> server side backend call - next js
+
+-------------------------------------- BACKEND -------------------------------------------------
+-> Indexing 
+    - rindexer ( uses postgress db) - building database, indexes, exposing GraphQL APIs - ( Alternatives , The graph protocol )
+    - Docker Compose is a tool for running and managing multi-container Docker applications using a simple YAML file (docker-compose.yml)
+    - graphql
+
+
+---------------------------------------- ALL ------------------------------------------------------
+-> Nx allows you to manage all of these in a single monorepo, with each as a separate project (app/lib)
+    - Smart contracts (e.g., Solidity using Foundry or Hardhat)
+    - Frontend (React/Next.js)
+    - Backend (APIs, indexers)
+    - Scripts (deployment, testing, interactions)
+    - Vissual Dependency Graph
+        - Updating a smart contract => only test affected frontend apps
+        - Modifying ABI => re-generate only relevant services
+
+apps/
+  frontend/         (React + Wagmi + RainbowKit + Nextjs)
+  backend/          (Node.js API with Ethers.js)
+  indexer/          (Subgraph or GraphQL API)
+libs/
+  contracts/        (Solidity / Foundry )
+  utils/            (shared utils)
+  abi-types/        (generated ABI typings)
+tools/
+  deploy/           (deployment scripts, Hardhat tasks)
+
+-> Monitoring Tool - Newrelic
+
+================================================ End of Tech stack =======================================
+
+================================================ zk sync , layer2 =======================================
+
+-> System contracts - Difference between Zksync and Ethereum Mainnet 
+   - System contracts are a specialized set of contracts in virtual machines (VM) that enhance the Ethereum Virtual Machine (EVM) by supporting opcodes not available by default
+   - https://docs.zksync.io/zksync-protocol/contracts/system-contracts
+-> system contract call - SystemContractsCaller.systemCallWithPropagatedRevert
+-> foundryup-zksync
+-> forge build --zksync
+-> Contracts with a large number of instructions will not compile on ZKsync due to the 65535 addressable space limitation imposed by zksolc
+-> The zksolc compiler enforces a limit on the number of instructions a contract can have, capped at 2^16 instructions. If a contract 
+     exceeds this limit, the compilation will fail.
+-> Sequencer responsibilities
+     - Accept user transactions. 
+     - Reads user transactions from an L2 mempool
+     - Order and execute transactions. 
+     - Batch transactions for submission to Ethereum L1.
+     - Provide fast but non-final confirmations.
+-> zero knowledge proofs - the ability to prove honest computation without revealing the inputs 
+-> circum and snarkjs - DSL for zksnarks
+-> when we have 4 inputs in a merkle tree - Proof 1 = Hash 2 , Proof 2 = Hash 3-4 ( These are the proofs that we are going to provide 
+     for the first input as an aarray of proofs)
+->                                            Merkle Root
+                                               H0
+                            ___________________|___________________
+                           |                                       |
+                          H1                                       H2
+                ___________|__________                  ___________|__________
+               |                      |                |                      |
+              H3                     H4              H5                     H6
+         ______|______         ______|______     ______|______         ______|______
+        |             |       |             |   |             |       |             |
+       H7            H8      H9           H10  H11          H12      H13          H14
+      / \           / \     / \          / \   / \          / \      / \          / \
+    L0  L1       L2  L3   L4  L5      L6  L7 L8  L9     L10  L11  L12  L13    L14  L15
+     |___ Single Node Layer for Remaining Nodes |      L16   L17  L18   L19
+
+-> Leaf Node to Verify: L0
+   Merkle Proof: The following sibling hashes are required to reconstruct the path to the root:
+   L1
+   H8 (sibling of H7)
+   H4 (sibling of H3)
+   H2 (sibling of H1)
+-> zkSync uses two nonces: a deployment nonce (for create calls) and a transaction nonce (for replay protection). This affects contract 
+     address calculation, so tweak your Foundry scripts accordingly
+-> STARKs (succinct zero-knowledge proofs without trusted setup)
+-> Validium's mechanism is very similar to a zkRollup, the only difference being that data-availability in a zkRollup is on-chain, while 
+   Validium keeps it off-chain. This permits Validium to achieve considerably higher throughput
+-> what is validium ? ( exchange validiums or exhchange proof of solvency) - exchanges can able to prove each and every coin 
+   of the deposits they got and they have that corresponding coins and ther are not being fractional reserves
+   - https://www.youtube.com/watch?v=5GvoJhwhv8E
+   - Funds belonging to validium users are controlled by a smart contract on Ethereum
+   - However, validium users can have their funds frozen and withdrawals restricted. This can happen if data availability managers (Data Availability Committee (DAC)) on the validium chain withhold offchain state data from users. Without access to transaction data, users cannot compute the Merkle proof required to prove ownership of funds and execute withdrawals
+   - https://ethereum.org/en/developers/docs/scaling/validium/
+   - In zkSync 2.0, the L2 state will be divided into 2 sides: zkRollup with on-chain data availability and zkPorter with off-chain data availability.
+   - zkPorter accounts can make thousands of swaps on the Uniswap contract, but only a single update needs to be published to Ethereum
+   - Volition
+-> The rollup's state is available to the zkRollup users as long as at least one Ethereum full node is online
+-> what is zero knowledge proof of transaction history ?
+->  ZK-SNARKs (Zero-Knowledge Succinct Non-Interactive Argument of Knowledge)
+    ZK-STARKs (Zero-Knowledge Scalable Transparent ARgument of Knowledge)
+-> SNARKS cost to verify on ETH (SNARK verifiers) ( 270k gas for plonk proof and 11 million gas for a STARK proof)
+-> PLONK 
+      - Plonk utilizes the KZG (Kate, Zaverucha, Goldberg) scheme for verification
+      - It has three phases : Setup phase , Commit phase and Reveal phase
+      - The prover calculates a commitment to the polynomial P(τ) using the Common Reference String obtained from the trusted setup, and sends this commitment, which is a point on an elliptic curve, to the verifier
+
+--------------------------------------------------------- Fundamentals for Zero knowledge proofs ---------------------------------------------------------
+
+-> Zero knowledge proofs (ZKPs) - A cryptographic method that allows one party ( the prover ) to convince another party ( the verifier ) that they know something without revealing the actual information itself
+-> In order for a Zero knowledge to be valid , It must need to satisy three fundamental properties
+   - Completeness    - if the statement is true, an honest prover must convince the verifier if they have the knowledge of the witness
+   - Soundness       - if the statement if false, no dishonest prover can convince an honest verifier with an invaid witness
+                     - If the conditions don't hold (e.g., computed_root != root), no valid proof can be generated to trick the verifier
+   - Zero Knowledge  - The verifier must learn nothing except that the prover's statement is true
+-> ZKPs sytems comprises of two components
+   - front-end - the frontend is the constraint system it is where the problem is defined mathematically
+         - Arthmetization and constraint systems
+   - back-end - proving system - Takes the compiled circuits and generates the proof or verifies the proof
+         - proof generation , Takes the ACIR and generates proof of execution
+         - verification , checks the proof againt constraints
+-> Type of zero knowledge proofs
+   - Interactive zero knowledge proofs (IZKPs)
+      - In interactive ZKPs, the prover and verifier engage in a back-and-forth conversation. The verifier sends random challenges, and the prover responds to each one in real-time.
+   - non-interactive zero knowledge proofs
+         - Non-interactive proofs require no back-and-forth communication. The prover generates a single proof that the verifier can check independently.
+         - SNARKs ( needs trusted setup ) 
+            - trusted setup - A trusted setup ceremony is a procedure that is done once to generate some data that must be used every time some cryptographic (ZK in this instance) protocol is run
+                           - The trusted setup is a one-time ceremony that generates public parameters — special cryptographic data that both the prover and verifier will use
+                           - The system is designed to be secure as long as at least one participant is honest and destroys their secret
+                - toxic waste - during initial setup some random numbers will be generated and these needs to be securely destroyed, if an attacker knows these values he can forge an invalid proofs and that will pass the verification
+                - CRS (common reference string) - A set of public parameters that both the prover and verifier use in the proof generation and verification processes
+                    - SRS ( Structure reference string ) - data is specific format, EX: elliptic curve points
+                - Multi party computation (MPC)  - https://grok.com/chat/a02ae464-9842-4ac6-885f-f6659211d5dc
+                - polynomial commitment - This is a cryptographic method that allow you to commit to a specific polynomial , while keeping the coefficient of this polynomial secret
+                     -  EX : KZG commitment (KZG (Kate, Zaverucha, Goldberg))
+                - Examples 1) Circuit specific (Groth16) - The cryptographic parameters need to be regenerated for every circuit
+                        -  2) universal (plonk) - The cryptographic parametes can be reused ( for circuits upto a certain size )
+                              -  PLONK offers advantages such as a universal and updatable trusted setup , The term 'updatable' refers to the ability for anyone to add randomness to the setup, reinforcing trust in its integrity
+                              - This reduces the need for repeated trusted setups and enables easier addition of new programs or circuits without redoing the entire setup
+                              - a downside of PLONK is that it results in larger proof sizes, which can impact gas costs on the Ethereum network
+            - PLONK (Permutation Argument over Lagrange bases for Oecumenical Noninteractive Arguments of Knowledge)
+               - https://medium.com/coinmonks/under-the-hood-of-zksnarks-plonk-protocol-part-1-34bc406d8303
+            - groth16
+            - powers of TAU ??
+         - STARKs
+            - Starks does not require trusted setup , Instead, zk-STARKs use hash functions and publicly known randomness to construct proofs, which enhances their security and scalability
+            - STARKs rely on hash functions, such as SHA-256
+         - bulletproofs
+   - https://grok.com/share/bGVnYWN5_b9d43569-2ffa-46b3-9432-573d66b96f10
+-> Terminology 
+   - claim or statement - A claim is an assertion that something is true. In the context of the Zero knowledge proofs it refers to the property being proven wihtout revealing the addition information 
+         - It is the 'claim' that prover is making about the 'witness'
+   - Constraint - Mathematical condition which must be satisfied in order for the claim to be valid
+      - constraints define the rules, the inputs ( private (only prover knows), public (both prover and verifier know) inputs ) must follow to be valid
+      - written using Circom or NOA
+   - Circuit - A system of constraints makes up the circuit
+        - The circuit defines how the constraints work together 
+        - A series of mathematical relations and operations
+   - Witness - The set of private values that allow a prover to demonstrate that their claim or statement is valid/true
+         - THe witness must satisfy the constraints of the circuit
+         - include the private inputs , but also can include the intermediate calculations
+   - prover - The prover is the entity that generates the proof of computation to demonstate the knowledge of witness while satisying the circut constraints
+-> Proof of web2 data ( private web data to onchain ) ( DECO - Data Enabled Computation Oracle)
+-> HighLevel Overview - In practise ZKPs involve arithmeticizing the problem into a circuit using languages like noir , cirum or cairo , then using a backend to generate a proof and then verifies that proof , either onchain or offchain using a generated verifier smart contract
+-> ZKRollup :- Transactions are actually batched offchain and then this data is bundled together. And then this bundle of data is then submitted to L1 for verification 
+      - What this does is generate a ZK proof that proove that state chages for these bundle of transactions . So instead of submitting all of the transaction data to the L1 only the proof and the transaction bundle are submitted which drastically decrease the gas fees
+-> Depth of the merkle tree - It is the number of HOPS ( Hash operations ) from leaf node to the root
+-> How many cached subtrees we need - “We only need to cache the roots of the smallest set of non-overlapping subtrees that fully represent the current state of the tree.”
+   - In our on-chain incremental Merkle tree, each time you insert a leaf you only recompute hashes along its insertion path, and you store (“cache”) certain subtree roots so future inserts can use them without re-walking the entire tree.
+   - But you don't need to cache every node you ever computed—just a minimal set of subtree roots that, taken together, let you reconstruct the entire tree state by filling in the gaps with your pre-computed “zero” values
+      
+
+------------------------------------------------------------- noir-programming-and-zk-circuits ----------------------------------------------------
+
+-> Noir is an open-source Domain-Specific Language for safe and seamless construction of privacy-preserving Zero-Knowledge programs, requiring no previous knowledge on the underlying mathematics or cryptography
+-> Noir - noir --help  , noirup
+   Barretenberg proving backend  - bbup 
+      - inorder to use barraetenberg we need to install jq
+-> when we are creating the proofs we need to provide public and private inputs and when we are verifying the proofs on chain we need to specify public inputs along with proofs
+-> When an integer is defined in Noir without a specific type, it will default to Field.
+   The one exception is for loop indices which default to u32 since comparisons on Fields are not possible
+-> nargo execute :: it will compile the circuit into ACIR and it will execute our compiled circuits using the provided inputs in the Prover.toml and then compute a witness and then we will use this witness to create proof
+-> creating Proof :: bb prove -b <compileCircuitLocation> -w <witnessLocation> -o <outputProofLocation>
+-> Verification key :: is basically a cryptographic object that allows the verifier to check the validity of the proof without having to rerun the full computation 
+   - if we change something in the circuit we again need to regenerate the proof and the verification key
+   - kind of digital finger print for the circuit
+   - bb write_vk -b <compileCircuitLocation> -o <verificationKeyLocation>
+   - verifier would be creating this verification key from the byte code and then using it to verify the proof
+   - bb verify -k <verificationKeyLocation> -p <proofLocation> 
+->  In the context of developing Zero-Knowledge proofs with Noir, what does a 'Witness' represent?
+   - A complete set of all intermediate values and assignments that satisfy the circuit's constraints for a specific input
+-> In General signature is of 65 bytes - ( r is of 32 bytes , s is of 32 bytes , v is of 1 byte )
+-> To execute a shell script first we need to convert it to executable - chmod +x script.sh ( change mode executable)
+-> To generate VK for onchain :: bb write_vk --oracle_hash keccak -b <CompiledByteCodeOrACIR> -o <verificationKeyLocation>
+-> To generate Solidity contract verifier :: bb write_solidity_verifier -b <CompiledByteCodeOrACIR> -k <verificationKeyLocation> -o <verificationKeyLocation>
+-> Field Max value is less than the max value of keccak256
+   - range for Field is based on prime number which is 0 to 21888242871839275222246405745257275088548364400416034343698204186575808495616
+-> To run arbitary scripts in Foundry tests -  vm.ffi(inputs) - string[] memory inputs 
+-> To get the circuit path in JS :: 
+   - __dirName is the current working directory which is available only in NodeJs , we cant use this in the frontend inside of the browsers
+   - To get Dirname 
+      import { dirname } from 'path';
+      import { fileURLToPath } from 'url';
+      const __filename = fileURLToPath(import.meta.url);
+      const __dirname = dirname(__filename);
+-> Tornado has fixed denomination :: the prover only needs to show “I know a secret note whose commitment is in the Merkle tree for the 1 ETH pool,” rather than proving a relation on arbitrary numeric balances
+-> what is a Commitment :: Commitment schemes allow a user to commit to a chosen value ( or values ) while keeping it hidden, with the ability to reveal the value later
+      - The on-chain "locked box" that hides the secret and represents the deposit.
+   - properties of commitment scheme
+      - Binding : The committor cannot change the committed value(s) after the fact
+      - Hiding : The commitment reveals nothing about the original value(s) being commited to 
+         - Pedersen Commitment which is used by tornado cash
+            - Information theoretic hiding :: Even with unlimited computational power one cannot determine the original value 
+            - Computational binding :: they are secure as long as computational hardness assumptions , like the discrete logarithm problem, hold
+            - General Formulae : commitment = value * G + randomness * H
+            - Tornado Formulae : commitment = secret * G + nullifier * H
+         - Modern commitment scheme : poseidon commitment
+   - secret Note Formation :: tornado-[network]-[denomination]-[nullifier]-[secret]
+   - Tornado uses MIMC sponge hash function in for merkle tree , but we will use the latest poseidon hash function
+-> when withdrawing we need to provide a zeroknowlegde proof which is generated offchain using circom
+-> Tornado cash uses incremental merkle tree
+-> Relayer in Tornado cash :: When you deposit, you receive an encrypted “note” that proves membership in a pool. To withdraw privately, you generate a zk-SNARK proof and encrypt your recipient address into a payload.You send that encrypted payload to a relayer rather than broadcasting it yourself.Because the relayer's address—not yours—is what interacts with the on-chain withdraw function, the link between deposit and withdrawal addresses is broken
+   - That payload is Posted to a relayer's HTTP API endpoint (you can choose from public relayers or run your own)
+   - Custom Relayer :: https://github.com/tornadocash/relayer.git
+-> FontRunning :: If receipient address is not included in the circuit , mempool observer who sees the transaction can able to frontrun by taking the proofs and adding their address and submit the transaction just before the real user transaction executes
+-> Incremental Merkle Trees 
+   - has fixed depth/height (size)
+   - leaves are initially populated with 'zero' values
+       - This zero is actually not zero , it is the hash of hash("tornado") , kind of constant value 
+   - Every single node in the tree can be considered as the root of its own "subtree"
+   - This tree fills from left most node to right most node
+   - caching of filled subtrees - with this we will do less computation onchain
+      - filled subtrees does not need to be recomputed
+   - hasing was done from left to right ( hash (0 th node and 1 st node))
+      - if we are going to update the even index node ( left leaf node ) , then it needs to be hashed with precalculated zero substree
+      - if we are going to update the odd index node ( right leaf node ) , then it needs to be hashed with cached sub tree
+   - poseideon max hash value is less than the max value of keccak256
+   - if we are going to insert at position 13 , the number of cached subtrees will be 3 ( 13 in binary 1101)
+      - 1 depth 3 subtree , 1 depth 2 subtree , 0 depth 1 subtrees , 1 depth 0 subtree
+   - The IMT is currently used by TornadoCash to anonymize the depositors; by Semaphore to store group membership commitments; and by the Beaconchain deposit smart contract to maintain the list of Ethereum validators
+-> Tornado Cash doesn't use keccak256 in its proof circuits because it's not designed for arithmetic circuits.Instead, it uses zk-SNARK-friendly hashes like Poseidon to keep proving times fast and circuits small
+   - These circuits: Do well with operations like addition, multiplication. But do very poorly with bitwise operations, which keccak256 uses heavily
+   - A single keccak256 inside a zk-SNARK circuit may require tens of thousands of constraints
+   - A zk-friendly hash like Poseidon or MiMC may need under 1,000 constraints for the same operation
+-> In this mixer , we will check the most recent n number of roots because of
+   - If someone generated a proof off chain and in the meanwhile if some one deposits , then the root hash will change , thats why we will check the current root we are supplying for the withdraw by checking if it was present in the most recent root hashes
+-> bb.js will run our code in a separate service worker
+   - worker_threads - This is useful for CPU-intensive tasks (e.g. hashing, proof generation, parsing large data) so that the main event loop isn't blocked
+-> import { Noir } from "@noir-lang/noir_js"; -  await noir.execute(input);
+   - with the help of this noir package , we can execute the circuits and generate witness
+->  import { UltraHonkBackend } from "@aztec/bb.js"; - await honk.generateProof(witness, { keccak: true });
+   - with the help of this package , we can create proof which is keccack compatible , using the witness and verify proof
+-> Depth fo Tornado is 20 so per instance , there will be only 2**20 which is around 1 million transactions 
+   - Upgradation of this will be the Tornado Nova , which uses - Tree of trees ( Hirerarchical Merkle Trees , meta merkle trees)
+-> When withdrawing if one removes the commitment , then we can know the link between the depositor and the withdrawer
+   - but what if we remove some random commitment that has been already used to withdraw the funds , with this we dont knwow the linkage and also we can decrease the size of the merkle tree , so that we can overcome that only 1 million transactions can occur in the same denomination
+-> Why we have both nullifer and the secret ?
+   - actually to prevent the double spending we need some marking , if we mark the commitment then at withdrawing we need to pass that commitment , then there will be link between depositor and the witdrawer , thats wher nulllifer has came to add another layer of security for the secrets and also can be used to prevent double spending
+-> If Alice deposits and generates a proof locally to withdraw , then 50 new deposits has happened , then Alice can't able to withdraw with the proof she generated previously , she again need to generate a new proof where root includes in the most 30 recent roots
+-> Proof Verification:
+   - The Solidity verifier contract does not re-execute the circuit or compute commitment or computed_root.
+   - Instead, it uses the proof and the public inputs to perform a mathematical check (specific to the ZKP scheme, like Groth16 or PLONK) that confirms the prover's computations were valid.
+   - The proof essentially “certifies” that there exist private inputs that satisfy the circuit's conditions (e.g., the Merkle root matches root), and the verifier contract confirms this without needing to see or compute those private inputs.
+-> This is why it's called incremental: you incrementally update the Merkle tree on each insert, without rebuilding it
+-> when sending public inputs to the Solidity verifier smart contract generated using the Barretenberg backend, you must send the exact same public inputs that were used when the prover created the proof. If you send different public inputs, the verification will fail
+   - If the public inputs sent to the verifier match those used during proof generation, the verification can succeed (assuming the proof is valid). However, if they differ, the verification fails because the proof is cryptographically tied to the original public inputs.
+   - If you change recipient, it disrupts the statement being verified (though recipient isn't directly checked in your circuit, it's still part of the public input set)
+-> The "superpower" of a merkle tree is that if the tree holds 2**n leaves, it only takes n pieces of data to prove that some piece of data is a leaf of the tree
+-> Sparse Merkle Tree - A sparse Merkle tree is like a standard Merkle tree, except the contained data is indexed, and each datapoint is placed at the leaf that corresponds to that datapoint's index.
+   - extra features than merkle trees - able to provide non-inlcusion proofs efficiently
+-> Cartesian Merkle Tree (CMT) is an elegant synergy of three data structures: the binary search tree, the heap, and the Merkle tree
+   - The CMT nodes store three values: the key, the priority, and the merkleHash
+   - https://medium.com/distributed-lab/cartesian-merkle-tree-the-new-breed-a30b005ecf27
+->  What is the primary purpose of a library (`"lib"`) crate in Noir? - To create reusable Noir code that can be shared across different projects.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Resources ::
+-> https://github.com/matter-labs/awesome-zero-knowledge-proofs?tab=readme-ov-file#comparison-of-the-most-popular-zkp-systems
+-> https://dev.to/spalladino/a-beginners-intro-to-coding-zero-knowledge-proofs-c56
+-> Example for Trusted setup ceremony - https://github.com/tornadocash/phase2-bn254
+-> https://github.com/nkrishang/tornado-cash-rebuilt
+-> https://docs.ipfs.tech/how-to/pin-files/#three-kinds-of-x
+-> Tornado Trusted setup - Trusted setup for Groth16 SNARKS is done in 2 steps. The first step is universal for all SNARKs and is called Powers of Tau. The second step is called Phase 2 and is circuit-specific, so it should be done separately for each different SNARK
+
+
+
+Question ::
+??
+-> what is R1CS system ( DSL is Circum) ?
+-> what is power of tau ?
+-> DSL ( Domain Specific Language ) compile to  ACIR (Abstract Circuit Intermediate Representation) or R1CS (circum) ( intermediate representation of circuit )
+-> Do we use snarks or starks in zkrollup ?
+-> DECO ( Data Enabled Computation Oracle ) - If we want to prove something like private web data on chain ( proof of web2 data )
+   - EX: bank balance , phonepay transaction amount
+-> What is the significance of an Intermediate Representation (IR) like ACIR (Abstract Circuit Intermediate Representation) in ZKP systems
+   - It serves as a standardized bridge between different front-end circuit languages and back-end proving systems
+-> Where in this course we have gone through the trusted setup when creating circuits and proving them
+-> Why are we using the poseidon hash instead of the normal keccak256 hash ?
+-> why do we actually need to check the recent roots in tornado instead of the main root
+-> https://github.com/semaphore-protocol ?
+
+
+============================================ End of zksyncOrlayer2OrRollup.txt ================================
+
+
+
+
+========================================= AMM or uniswap ==============================================
+
+
+----------------------------------- Uniswap v2 -----------------------------------------
+-> the bigger the curve , the better price you will get when we do a trade ( more liquidity)
+-> Three main contracts - Factory , Router and pair contracts
+    - Factory is used to deploy the pair contract
+    - Router is the intermediate contract between the user and the pair contract
+    - users can still directly interact with the pair contract but suggested to use the router contract so it will automate some functionalities and checks
+-> swap fee was charged on the incoming token into the pool
+-> swapExactTokensForTokens - I want to spend exactly X tokens, give me at least Y tokens out
+-> swapTokensForExactTokens - I want to receive exactly Y tokens, and I'm willing to spend up to X tokens to get it
+-> Uniswap uses TWAP - Time weighted average price
+-> Uniswap provides flash swaps using the pair contracts just like the flash loans
+
+
+
+
+-------------------------------- Constant Product AMM -----------------------------------
+-> AMM - x * y = k ( x = Asset A , y = Asset B , k = Constant value ) 
+-> price of Asset x = x / y
+-> price of Asset y = y / x
+From the above equations we can get the below two equations
+-> reserve of x**2 = K / price of x
+-> reserve of y**2 = K * price of y
+-> Our share in the liquidity is = liquidity of ours / current total liquidity ( LP tokens )
+-> When liquidity is added, K changes because the total pool size has increased—but each liquidity provider's share is then calculated as a fraction of the new total liquidity
+-> x*y = (x + deltax) * (y - deltay)
+
+Below Example was from LP token holder perspective
+-> At a price of 4000 USDT/ETH: ( added 1 eth at 2000 price into the pool ( 1 eth , 2000 usdt ) )
+Pool Reserves: Approximately 0.7071 ETH and 2828.43 USDT. ( x * y = ~2000)
+Total Value upon Removal: ~5656.86 USDT.
+Impermanent Loss: ~343.14 USDT compared to simply holding.
+
+At a price of 5000 USDT/ETH:
+Pool Reserves: Approximately 0.6325 ETH and 3162.28 USDT. ( x * y = ~2000)
+Total Value upon Removal: ~6324.78 USDT.
+Impermanent Loss: ~675.22 USDT compared to holding.
+
+At 1000 USDT/ETH:
+Pool Reserves: ≈ 1.4142 ETH and ≈ 1414.21 USDT ( x * y = ~2000)
+Total Value: ≈ 2828.42 USDT
+If Held: 3000 USDT
+Impermanent Loss: ≈ 171.58 USDT
+
+At 500 USDT/ETH:
+Pool Reserves: 2 ETH and 1000 USDT ( x * y = ~2000)
+Total Value: 2000 USDT
+If Held: 2500 USDT
+Impermanent Loss: 500 USDT
+
+For a Price Drop to 0.1 USDT/ETH: ( TODO: this is red flag for liquidity providers )
+The pool rebalances to roughly 141.42 ETH and 14.14 USDT. The total value becomes a meager 28.28 USDT. 
+In contrast, holding your original tokens would be worth about 2000.1 USDT. This demonstrates an extreme 
+impermanent loss where the vast majority of value is lost.
+
+------------------------------ Concentrated liquidity ---------------------------------------------------------
+
+-> Total liquidity fees Percentage -  ( his LP tokens / Total number of LP tokens ) *100
+For CONCENTRATED LIQUIDITY ( user enters at 2000 Eth price with LP range was 1500 to 2000)
+user provided liquidy - 1 ether and 2540 usdt
+------ Decrease in price ------------------
+At 1800 USDT/ETH (within range):
+Approximately 1.511 ETH and 1564.27 USDT
+Total value ≈ 4284.07 USDT.
+
+At 1000 USDT/ETH (below range):
+Approximately 2.463 ETH and 0 USDT
+Total value ≈ 2463 USDT.
+
+At 0.1 USDT/ETH (extremely below range):
+Approximately 2.463 ETH and 0 USDT
+Total value ≈ 0.2463 USDT.
+-------- Increase in Price ------------------
+At 2300 USDT/ETH (Within Range):
+Approximately 0.360 ETH and 3910 USDT.
+Total value ≈ 4738 USDT.
+
+At 3000 USDT/ETH (Above Range):
+Entirely in USDT: approximately 4773 USDT.
+
+At 5000 USDT/ETH (Far Above Range):
+Still entirely in USDT: approximately 4773 USDT.
+---------- Token to provide for LP ranges ----------------
+For a 1000-3000 range:
+Deposit: ~1 ETH and ~3193 USDC.
+
+For a 1000-2100 range:
+Deposit: ~1 ETH and ~24,648 USDC.
+
+For a 1900-2100 range:
+Deposit: ~1 ETH and ~2130 USDC.
+
+Range [1999, 2001]:
+Approximate Deposit: ~1 ETH and ~1960 USDC
+
+Range [1999, 3000]:
+Approximate Deposit: ~1 ETH and ~2.44 USDC
+
+Range [1000, 5000]:
+Approximate Deposit: ~1 ETH and ~1595 USDC
+​
+
+================================================= End of AMM or uniswap ================================
+
+
+=============================================== Liquid stacking ======================================
+
+-> liquid staking builds upon existing staking systems by unlocking liquidity for staked tokens ( like getting stETH for ETH for staking )
+-> Liquid staking provides all of the benefits of traditional staking services while unlocking the value of staked assets for use as collateral across the DeFi ecosystem
+-> validators in liquid staking - (https://grok.com/share/bGVnYWN5_8052d314-ca39-419f-9579-9ff3537f964b)
+-> In short, Lido stakes the ETH on the beacon chain (consensus layer) using keys from trusted operators, but the ETH stays within Lido's control, not in the operators' hands
+-> The withdrawal credentials in the deposit transaction point to Lido's smart contract, not the node operator's address as the depositor was the Lido contract
+-> validators keys sharing mechanism -(https://grok.com/share/bGVnYWN5_036e057e-0c0b-422c-af88-608a61f67774)
+-> when we stake eth under validator , these staked ether linked to the withdrawl address and only they can able to withdraw the staked ether and rewards
+-> oracles in lido - https://grok.com/share/bGVnYWN5_03b8d0a8-09a5-4d78-aa9f-e350bc1eee6f
+-> Lido use DVT ( Distributed validator technology )
+-> https://oxor.io/blog/2024-05-24-lido-explained-deposit-oracles/
+-> validator metrics - (https://explorer.rated.network/o/0x798cf8fc6f212da30b10cac6e05b4bf275c34bff?network=mainnet&timeWindow=1d&idType=depositAddress)
+-> strategy refers to in DEFI ( we will be putting some collateral and in return with the help of the strategy the protocol will give us the rewards)
+-> Type of liquidity tokens
+   - rebasing tokens ( exchange rate will aways be 1:1 , token(stETH) quantity increases )
+   - non rebasing token ( exchange rate will icrease over time , token(stETH) quantity is constant )
+-> Rewards for an validator 
+   - consensus layer ( Newly Minted ETH ) - we cant able to withdraw immediately
+   - executin layer ( Priority fees and MEV fees) - immediate withdrawal
+
+
+============================================= End of liquid stacking ================================
+
+
+=================================================== Rust from cyfrin ==================================================
+
+Resource :: https://github.com/18121A05L2/rust-crash-course
+
+-> Functions that end with an exclamation mark are called macros in Rust. They are used to define custom code that can be reused across the project.
+-> Type annotations for all function parameters are mandatory in Rust.
+-> use scalar::*;
+    - use = bring names into scope.
+    - scalar = a module (a file, or a mod scalar { ... } block, or a dependency crate).
+    - * = glob import (means “everything that's public inside scalar).
+-> we have overflow / underflow issues in rust
+    - in general overflow/underflow panics, but doesn't panic when compiled with --release
+    - x.wrapping_add(y)	   -  Always wraps (like release mode)
+    - x.checked_add(y)	   -  Returns Option<T> (None on overflow)
+    - x.saturating_add(y)  -  Clamps to max/min value
+    - x.overflowing_add(y) -  Returns a tuple (value, did_overflow)
+-> What characteristic primarily defines the size (in bits) of the `usize` and `isize` integer types in Rust?
+    - The pointer size of the target system's architecture (e.g., 32-bit or 64-bit).
+-> char in Rust is always 4 bytes and can represent any Unicode scalar value.
+-> Slicing an array let s = &nums[3..7]; -  Why do we need & in &nums[3..7]
+    - So you must borrow it with & to get a slice reference (&[i32], &str, etc)
+-> In Rust, what is the primary role of a slice type like `&[i32]`?
+    - To provide a borrowed, dynamically-sized view into a contiguous sequence of elements (like an array or part of a `Vec`).
+-> String interpolation - format!
+-> &str - string slice , string literal
+-> #![...] means the attribute applies to the whole crate/module.
+   #[...] (single #) means it applies to the next item only.
+-> enum (enumeration) - To define a custom data type by listing all its possible distinct values, known as variants.
+    - Option<T> = Some(T) | None          [value might or might not be there.]
+        - it designed to handle situations where a value might be absent, thereby helping to prevent null reference errors
+    - Result<T, E> = Ok(T) | Error(E)     [operation might succeed or fail.]
+-> A vector is just like an array except that it can grow or shrink in size.
+-> Some(1).as_ref() converts Option<u32> into Option<&u32>
+    - i.e. Some(1) → Some(&1).
+-> Rust does not allow "null" values like other languages (Java, C#, etc.) because they cause runtime errors (NullPointerException).
+    - Instead, Option<T> forces you to handle the case where the value may not exist
+-> You need to use * whenever you want to directly read or write the value behind a reference
+    - helpful when updating hashmap values
+    - Deref Coercion (Auto Dereferencing) - &String is automatically deref'd to &str
+-> std::any::type_name_of_val(&x) -  To know the type of a datatype
+-> the type for the length for arrays and vecors are usize
+-> if a `loop` is used as an expression (e.g., assigned to a variable), how is a value typically returned from it
+    - By providing the value after the `break` keyword (e.g., `break my_value;`).
+-> Which scenario is most suitable for using an `if let` expression in Rust?
+    - When you need to execute code for only one specific variant of an enum and ignore the rest.
+-> stack
+    - stores data of fixed size known at compile time 
+    - data accessibility and storing data is fast
+    - follow LIFO
+    - Example Datatypes :: u32 , i32
+   heap 
+    - stored data of unknown size at compile time 
+    - slower than stack
+    - memory safety is enforced through Rust's ownership and borrowing rules
+    - Example DataTypes :: strings and vectors
+    - let boxed = Box::new(20i32)  - to store stack data specifically on heap
+-> Box::new creates a smart pointer that allocates a value on the heap, and gives you ownership of that heap allocation
+-> for copy trade data types - ownership wont be transfered by assigning like the case for String::from("hello")
+    - Data types that implements Copy trait - Primitive, fixed-size, simple value types (stored entirely on the stack, no heap allocation):
+        - Compound types (if all members are Copy):
+            - Tuples, e.g. (i32, bool) is Copy (because both i32 and bool are Copy)
+    - Which types do NOT implement Copy - Types that own heap memory or manage resources cannot be copied by just bitwise duplication. They must move instead.
+    - Copy types      - Copied bit-by-bit; ownership is not moved
+    - Non-Copy types  - Ownership is moved; the source becomes invalid
+-> unwrap and expect are the two functions that you can call to get the inner values of a Option or Result
+    - Returns the inner value if it exists (Some or Ok).
+    - Panics (crashes the program) if it's None or Err.
+    - with expect we can have a custom error message
+-> The main purpose of the ? (question mark) operator in Rust is to make error handling with Result (or Option) more concise
+    - the ? operator can only be used in a function that returns Result or Option
+    - where we can use this ? - if any expression is an error or None, stop here and immediately return that error/None from the current function.
+-> cargo test -- --nocapture ( To see logs when the the test ran successfully )
+-> Modules are the way to oraganize code in Rust
+-> Super - means go one module level above and check for the module
+-> a generic type is a type parameter that allows you to write flexible, reusable code that works with multiple data types without duplicating logic
+-> Functions that operate on a type are called static methods also known as associated functions
+    - They're usually used as constructors (new) or utility functions
+-> the functions that operate on an instance of the type are called methods
+    - A method takes self, &self, or &mut self as its first parameter
+-> monomorphization is the process the compiler uses to turn generic code into specific, concrete code for each type that's actually used
+    - Advantages of monomorphization
+        - Zero cost abstraction: generic code runs just as fast as handwritten code for a specific type.
+        - Type-safety is preserved, since each instantiation is strongly typed.
+    - Downsides
+        - Code bloat: if you use a generic with many different types, the compiler generates multiple copies → larger binaries.
+        - Longer compile times, since the compiler has to generate and optimize multiple versions.
+-> Trait - A trait in Rust is a collection of methods that a type can implement, letting you write generic, reusable, polymorphic code
+    - A common interface for a group of types.
+    - A trait is like an interface that data types can implement. When a type implements a trait it can be treated abstractly as that trait using generics or trait objects
+    - It defines a set of methods that a type must implement if it wants to “have that trait.”
+-> Trait bound is a way to tell the rust compiler that a type(T) implements a trait. This becomes necessary when you work with generic functions
+    - vectors in Rust don't allow moving elements out by index
+        - That would leave a "hole" in the vector.
+        - Only Copy types (like integers) can be implicitly copied like this
+-> A lifetime in Rust is the scope during which a reference (&T) is valid
+    - this is to prevent dangling references
+        - A reference that points to a memory location that has been deallocated or is no longer valid.
+    - we only define lifetimes - When the compiler cannot infer the relationship between the lifetimes of input references and a returned reference.
+    - Lifetimes are required when your data type holds references
+    - What does the special lifetime `'static` indicate when applied to a reference in Rust
+        - The reference points to data that is valid for the entire duration of the program.
+    - Since Rust avoids garbage collection, it must ensure that: References never outlive the data they point to.
+    - fn longest<'a>(...) -> ...
+        - Here you introduce a lifetime parameter 'a.
+        - Think of 'a as a placeholder for “some lifetime that will be decided by the caller.”
+    - s1 and s2 are created inside main.
+        - They both live until the end of main.
+        - So, when calling longest(&s1, &s2), the compiler figures out:
+        - &s1 → lifetime 'a1 (valid until main ends).
+        - &s2 → lifetime 'a2 (valid until main ends).
+        - Rust unifies them into a common 'a = min('a1, 'a2).
+        - Thus, the returned reference is guaranteed to be valid at least until both s1 and s2 are still alive.
+        - My return value can live only as long as the shorter of my two inputs.
+    - Ellison rules 
+        - Each input reference gets its own lifetime parameter
+        - If there is exactly one input reference, that lifetime is assigned to all output references
+        - If there are multiple input references, but one of them is &self or &mut self, then the lifetime of self is assigned to all output references
+            - Ellison fail case scenario
+                - If multiple input references exist and none of them is self, the compiler won't know which lifetime the return value should be tied to:
+-> Iterators
+    - into_iter() : iterate over T ( transfers ownership )
+    - iter() : iterate over &T
+    - iter_mut() : iterate over &mut T
+-> Iterator Adaptors :: map , filter and collect
+    - iterator adapters are the functions that we can call on our iterator
+    - filter() always passes a reference &Item ( as an argument )
+    - map() gives you whatever Item is
+    - `collect()` is a generic method that can create many different kinds of collections, so the compiler needs the type annotation to know the specific target collection type.
+-> Async runtime - An async runtime is a specialized runtime that knows how to drive asynchronous tasks.It's what makes .await actually do something
+    - Rust's async/await is zero-cost at compile time — it just creates state machines that represent potentially paused tasks.
+    - But to actually run those tasks, you need an executor — and that executor lives inside the async runtime.
+        - A reactor: waits for I/O events (like sockets ready to read/write)
+        - An executor: polls async tasks until they finish
+        - Optionally: a scheduler: decides which task runs next on which thread
+-> join macro - Waits for all of them to complete
+   select macro -  Returns as soon as one of them completes
+
+-> cargo run only works when:There is a binary target (an executable), i.e. a file with a main() function
+
+============================================= Rust from cyfrin ====================================
+
+=============================================== start of  Rust basics =====================================
+
+Begginers tutorial - https://www.youtube.com/playlist?list=PLlrxD0HtieHjbTjrchBwOVks_sr8EVW1x
+          examples - https://github.com/microsoft/beginners-series-rust
+          practise - https://github.com/18121A05L2/rust-crash-course
+
+-> Rust is a systems programming languge that is fast and efficient, and it is also memory safe. It is a statically 
+   typed language, which means that the type of a variable is known at compile time.
+   EX : Operating systems , web browsers , databases , webservers , firmware
+   Firmware is software embedded directly into a hardware device to control its functions, acting as a bridge between the hardware and the operating system
+   Firmware is store in flash memory
+   Flash memory is a type of non-volatile computer storage that retains data even when the power is off, utilizing floating-gate transistors to store information electronically
+-> Rust is the language used to build the software that powers the underlying systems that other software runs on top of
+-> Rust , C , C++ does not require the use of garbage collection
+-> Rust provides memory safety gurantees ( below two are not possible in rust , which are hard to debug in c and c++ )
+    - user after free
+    - dangling pointer
+    - null pointer exceptions
+    - data races
+    - iterator invalidation
+-> Rust has built in :: integrated build tooling, Package manager , Opensource package repository , default testing framework , Auto generate documentation
+    - crates.io : official Rust package registry.
+    - Cargo : package manager and build system
+-> cargo is the rust build tool , dependency manager , test runner and project bootstrapper all rolled into one
+    - cargo new <ProjectName> , cargo run , cargo build
+-> Variables are immutable by default
+    - Mutalbe variable example - let mut variableName = value
+-> Default variable type will be :: in signed - i32 , in floating points - f64
+-> Scalar DataTypes -  bool , char , i32(signed) , u32(unsigned) , f32(floating point) , i128 , f64 
+    - A char in Rust represents exactly one Unicode scalar value (one character).
+    - use single quotes for char and use double quotes for string literal
+-> Type inference (like with let) is not allowed for const
+-> A const in Rust is computed entirely at compile time — no heap allocation, no runtime logic, no non-const function calls.
+-> constants can only set to be an expression, not the result of an function call or anything else with the value that is computed at program runtime
+-> Static - A single memory location that exists for the entire program (like a global variable).
+-> Rust is a compiled systems language, not a scripting language like Python or JavaScript.In Rust, code outside functions runs at compile time, not runtime
+-> Compound data types - Arrays , Tuples ( The word compound means “made up of two or more parts.”)
+-> Arrays
+    - fixed length (length known at compile time)
+    - homogenous type ( only contain items of same type )
+    - panics at run time if the index is out of bounds 
+-> Tuple
+    - unlike arrays tuples are heterogenous , the only difference betweeen arrays and tuples
+    - we call the empty tuple as unit
+-> function syntax - fun <funName>(input : String) -> String {}
+    - we must need to define the input type and must define return type of we return something
+    - if we dont return anything , return type is unit which is empty tuple
+-> Difference between   
+    - String and &str
+        - Use &str when: You only need to read a string
+            - A borrowed view into a string.
+            - Immutable, you can't change its contents
+            - a sticky note someone gave you (borrowed view, can't change it)
+            - &str has one part - pointer to data and length
+        - Use String when: You need an owned, growable string.You want to store or modify string data.
+            - More expensive (allocates on heap)
+            - your own notepad (heap-allocated, you can write/erase freely)
+            - String has threeparts - pointer to data , length and capacity
+    - array and tuple
+-> "{}" - Display , "{:?}"-  Debug , "{:#?}" - pretty debug
+-> enums - list all variations of some data
+-> loop keyword - Used to execute a block of code forever. Or until it is stopped Or the program quits
+-> match - it is kind of switch in other programming languages
+-> Structs is of three types - classic , tupple and unit
+-> panic! - used to throw an error
+-> rust stores data in two differently structures parts of memory ( just like other major programming languages )
+    - stack ( LIFO )
+        - vector - object stored on stack with pointer to heap
+        - variable - variable and value is stored on stack
+    - heap
+        - value of vecor is stored on heap
+-> dynamic variable data will be store in heap , where as the memory address of that variable will be stored in stack
+-> Dangling Pointer - two memory addresses are pointing to the same location in the heap
+    - the pointer on the stack that points towards the heap which is no longer available is known as a dangling pointer ( this is becuase we drop the one of the pointer which leads to data deletion on the heap which is pointing by two memory addresses on the stack)
+    - in C and C++ this depend on programmer to explicitily manange the memory with their code
+    - python, ruby and javascript have garbage collector which automatically manage the memory
+        - the garbage collector is a program that runs when our program runs and it constantly lookup for the memory that is no longer used and cleanup that memory
+    - rust prevents this with the help of the ownership 
+-> Rules of ownersip
+    - Each value in rust has a variable that's called its owner
+    - There can only be one owner at a time
+    - When the owner goes out of scope , the value will be dropped
+        - ownership prevents memory safety issues
+            - Double free ( trying to free memory that has already been freed )
+            - Memory leaks ( Not freeing memory that should have been freed )
+-> Rules of Borrowing ( using &)
+    - at any given point of time, you can have either :
+        - One mutable reference or 
+        - Any number of immutable references
+    - references must always be valid
+-> borrowing will not have ownership nor it wont copy the data to heap
+-> In Rust, &str and String both represent text, but they have important differences in ownership, mutability, and memory allocation
+-> Collections - vec (access by index) , hashmap (associate keys and values) , hashset (unique items and no access by index), vecdeque , linkedlist ( double linkedlist )
+    - vec - which is a global continuous stack of items of the same type
+-> You can use impl to define methods for a struct
+    - impl mean implementation block - It's where you implement methods, associated functions, or traits for a type (like a struct, enum, or trait)
+    - Associated function ( static methods ) - If a function inside impl does not take self, it's an associated function — like a static method in other languages.
+-> Clone - Copies data on both heap and stack
+-> Borrowing - if we dont want to create a full copy on both the stack and the heap , we can use a technique called borrowing
+    - borrowing create a reference to the value of that variable
+-> &String automatically coerces to &str - Rust allows something called "deref coercion", which is an automatic conversion that happens when you pass a reference of one type to a function expecting a reference of another (related) type
+
+
+================================================== End of rust basics ======================================
+
+
+================================================= Start of Anchor Framework ================================
+
+
+-> anchor is framework for quickly building secure solana programs
+    - It handles serialization and deserialization of Instruction data
+    - handles checks for us and generate an interface so that we can interact from frontend ( kind of ABI )
+        - IDL generation (Interface Description Language) for frontend integration
+-> we will get the declare_id!() using the this comand - solana-keygen pubkey target/deploy/<programName>-keypair.json
+    - Anchor generates a "program keypair" ahead of time
+-> #[program] is an Anchor macro that:
+    - Marks a module as containing all the program's entrypoints.
+    - Converts Rust functions into Solana instructions.
+-> we need to define one struct (which derives Accounts) for each of the instruction that we want to handle for our functions
+    - struct would inherit the Accounts trait
+-> Anchor in solana - A Domain-Specific Language is a small, specialized “mini-language” designed to make programming within a certain domain easier
+-> whenever we are writing and instruction for an anchor the very first parameter that needs to pass throgh the instruction is going to be context
+    - context macro is used to define a struct that encapsulates all the accounts that will be passed through a given instruction handler
+-> #[derive(Accounts)] - This is used on a Rust struct that defines the full list of accounts required for an instruction (handler) --- [Who’s coming to the function?]
+    - Context struct
+    - The derive keyword tells Rust: “Automatically generate the implementation of the Accounts trait for this struct.
+-> #[account] - This is used on a struct that defines the data layout stored inside an on-chain account  ----  [What’s inside this account?]
+-> #[derive(InitSpace)] is a helper macro that lets you automatically calculate the space needed for your account based on its fields
+    - Solana requires you to specify the exact number of bytes (space) when you call #[account(init, ...)]
+-> #[account] → “what’s inside my box?”
+   #[derive(InitSpace)] → “how big should my box be?”
+   #[derive(Accounts)] → “who’s allowed to handle this box?”
+-> to check if an account already present - ctx.accounts.my_account.to_account_info().data_is_empty()
+-> Each program in solana owns its own accounts
+-> anchor keys sync - To sync all the program ids in your anchor project
+
+============================================================ End of Anchor Framework ======================
+
+========================================================= Start of Solana Basics ===========================
+
+Resources::
+https://www.youtube.com/playlist?list=PL53JxaGwWUqCr3xm4qvqbgpJ4Xbs4lCs7
+
+
+-> A Program Derived Address (PDA) is a special type of account address that is controlled by a Solana program, not by a private key.
+    - Normally, Solana accounts (like user wallets) are derived from a private/public keypair.
+    - But a PDA is derived mathematically from a program ID + some seeds, using Solana's cryptographic functions.
+    - Since PDAs don't have a valid private key, only the program that owns them can sign for them
+        - When Solana generates a PDA, it tries different “bump seeds” (0-255) until it finds a derived address that is not a valid ed25519 public key
+    - Why PDAs Exist
+        - Programs can't hold private keys.
+        - But sometimes a program needs to own an account.
+        - So we create deterministic addresses using seeds and the program ID.
+        - These are guaranteed to always produce the same PDA for the same seeds.
+-> Transaction object 
+    - signatures
+    - Message
+        - Header ( metadata )
+        - Account addresses
+        - Recent blockhash
+        - Instructions
+            - Program ID ( the smart contract the transaction will interact with )
+            - Accounts ( Array of accounts, which contains the state information about the user )
+                - Signer
+                - Read only 
+                - Executable 
+                - Rent
+                - Data
+            - Data
+-> solana commands 
+    - solana config set --url http://127.0.0.1:8899
+    - solana config get
+    - solana account 7uG2yNwpT9t32nVLKPczfZymiivxDEcgHLFGvfBqyB65
+    - solana airdrop 5 9s1y1kZ7o6yYzcf2UJ4qG8MzJt2yMgxXCU2QoTvb8qgK
+    - solana-test-validator ( local Solana blockchain node )
+-> test account seed phrase - december master same song rhythm leave guide blossom quote animal always post
+    - pubkey: AJwyDJjckpRktGDHw9NniTe6fhkeZ33ETDVU5vnuR9Xt
+-> Serialization means converting structured data (Rust structs, enums, etc.) into raw bytes 
+-> Solana programns consist of a bunch of instructions and each instruction has specific logic based on that instruction and those instructions interact with accounts to be able to modify data
+    - solana programs are stateless , They dont store any data , instead everything lives inside accounts
+    - solana programs stores the program state in accounts
+    - an instruction is an single call to a program, its essentially a function call and it specifies operations to process on chain
+    - a transaction is a bundle of one or more instructions that is signed and it send to the network
+    - for a wallet account owner will be the system program
+    - owner is the account that has the permisssion to be able to change the sol balance in the account and also change the data in the account 
+    - all transactions are atomic - meaning that if one instruction fails, all of the instructions reverted and the transaction fails
+-> Account type
+pub struct Account {
+    pub lamports: u64,
+    pub owner : Pubkey,
+    pub data: Vec<u8>,
+    pub executable: bool,( if this is true , then the account contains a deployed solana program, meaning it store executable code and it can be invoked )
+}                        ( if it is false, then it was created by program to store and manage data)
+-> Address of an account is an 32 byte address , base58 encoded string 
+     - this address could be one of ed25519 public key or program derived address( which is off of the ed25519 curve)
+     - to be able to store data onchain account must also keep a lamport balance that is proportional to the amount of data stored in the account in bytes
+        - this balance is like a rent and works like a deposit and once the account is closed we can recover the full balance that you have paid in rent
+-> npx create-solana-dapp@latest -t gh:solana-foundation/templates/gill/gill-next-tailwind-basic
+-> to get the program id - solana address -k target/deploy/<program-name>-keypair.json
+-> About computational capacity :: Every time Nvidia doubles the number of SIMD lanes available, our network will double in computational capacity
+-> Firedancer 🔥 is an independent, high-performance validator client for Solana, being built by Jump Crypto
+-> An account essentially holds all of the state of a program. Because of this, all data is passed by reference from the outside
+    - Solana programs can't access accounts directly (for safety and parallelization),the runtime passes those accounts by reference to your program each time
+    - Solana programs are stateless functions that operate on external, persistent state objects called accounts, which the runtime passes in by reference.
+        - Why Pass by Reference? - Doesn't want programs to copy entire account data in memory (it can be huge)
+    - Each instruction runs in isolation - what if two instructions modify the same account at once?
+        - If two transactions don't overlap on any writable accounts, they can run in parallel.
+        - If they both write to the same account, one must wait until the other finishes.
+        - Solana achieves maximum parallelism only when different transactions touch different accounts
+        - When a transaction starts executing, the runtime locks the writable accounts it uses (like database row locks)
+        - This “account-based locking” model is what makes Solana extremely fast:
+-> findProgramAddressSync
+    - Client-side function to compute PDA + bump
+-> Leader rotation + pipelined blocks
+    - Solana doesn't have one block at a time.
+    - It has a continuous stream of blocks (entries), produced by a leader every ~400ms.
+    - The next leader starts preparing their block while the previous one is still being validated.
+    - So, block production and validation overlap in time.
+-> Sealevel — Parallel Transaction Runtime
+    - Solana's runtime (called Sealevel) executes transactions in parallel.
+    - It analyzes each transaction's read/write account set (i.e., which accounts it touches).
+    - If two transactions don't modify the same accounts, they can be executed concurrently.
+    - This means multiple CPU threads can modify disjoint parts of the state safely.
+-> Gulf Stream
+    - Solana's mempool replacement.
+    - Validators forward transactions to upcoming leaders early, so block producers already have a backlog of transactions ready to go.
+    - This reduces waiting time and enables concurrent pipeline stages.
+-> Turbine + QUIC + Firedancer
+    - The network layer (Turbine) splits blocks into small packets and distributes them in parallel (like BitTorrent).
+    - Firedancer, the new validator client (by Jump Crypto), is designed for massive parallelism at the network and execution level.
+-> Block production analogy 
+    - The current leader (Alice) is finalizing and broadcasting their block.
+    - The next leader (Bob) is collecting and organizing transactions for their slot.
+    - The next-next leader (Carol) might be validating previous blocks or preparing further entries.
+-> Solana's leader schedule is deterministically generated for an epoch, An epoch in Solana ≈ 432,000 slots (about 2-3 days)
+    - The leader schedule for the entire epoch is computed ahead of time, based on validator stakes and the random seed derived from the previous epoch's results.
+-> Solana does not currently have on-chain slashing for censorship or liveness failures
+    - So, if a validator: Goes offline, Drops transactions, Refuses to vote, orCensors users intentionally, they don't lose stake — they just miss rewards for those slots
+    - in firedancer , they are going to add slashing for these
+-> what if the next validation transaction updates the same account that was updated by the previous leader ?
+    - even if the next block touches the same account,it waits until the prior slot's updates are finalized before applying its own changes.
+-> If two transactions ( tx1 and tx2 ) toucing the same account A , then leader L1 only execute and commit tx1 , and tx2 is executed and commited by L2 ( as sequentional execution in L2 may slower the throughput and may exceed the 400ms timeslot )
+-> solana's principle - favor parallel throughput > sequential fairness
+-> Solana's runtime (written in Rust) uses multi-threading to run non-conflicting txs at the same time across CPU cores. This is why Solana is fast—unlike Ethereum's sequential EVM
+-> Solana doesn't run all transactions in parallel.
+    - It groups them into small batches called "entries" (One "mini-batch" = 4 to 24 transactions that are executed together in parallel).
+    - Within one entry: All txs run in parallel (on different CPU cores).
+    - But only if they don't touch the same accounts.
+    - If they do → conflict → they go into different entries (run one after another)
+    - A block contains many entries like pages in a book
+    - Sequential between entries
+    - Parallel within entry
+
+
+Questions 
+-> what does upgrade authority retained mean ( immutable contract )
+-> How solana can really process a maxium of 710k transactions per second 
+-> knowing about proof of history in depth
+-> what is hot account and cold account in solana
+-> Requires trust/robustness in forwarding logic — e.g., what if forwarded txs are withheld or mis-prioritized? 
+-> If they conflict, the scheduler serializes them or uses locking to ensure deterministic ordering - why the scheduler serializes , it only needed for leader slot schedule right ?
+-> Determinism must be preserved: every validator must arrive at the same post-state. - explain about this in detail , what is the getting in to post stage ?
+
+============================================= Solana - End of Context ====================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

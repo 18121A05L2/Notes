@@ -1,0 +1,137 @@
+Resource :: https://github.com/18121A05L2/rust-crash-course
+
+-> Functions that end with an exclamation mark are called macros in Rust. They are used to define custom code that can be reused across the project.
+-> Type annotations for all function parameters are mandatory in Rust.
+-> use scalar::*;
+    - use = bring names into scope.
+    - scalar = a module (a file, or a mod scalar { ... } block, or a dependency crate).
+    - * = glob import (means “everything that's public inside scalar).
+-> we have overflow / underflow issues in rust
+    - in general overflow/underflow panics, but doesn't panic when compiled with --release
+    - x.wrapping_add(y)	   -  Always wraps (like release mode)
+    - x.checked_add(y)	   -  Returns Option<T> (None on overflow)
+    - x.saturating_add(y)  -  Clamps to max/min value
+    - x.overflowing_add(y) -  Returns a tuple (value, did_overflow)
+-> What characteristic primarily defines the size (in bits) of the `usize` and `isize` integer types in Rust?
+    - The pointer size of the target system's architecture (e.g., 32-bit or 64-bit).
+-> char in Rust is always 4 bytes and can represent any Unicode scalar value.
+-> Slicing an array let s = &nums[3..7]; -  Why do we need & in &nums[3..7]
+    - So you must borrow it with & to get a slice reference (&[i32], &str, etc)
+-> In Rust, what is the primary role of a slice type like `&[i32]`?
+    - To provide a borrowed, dynamically-sized view into a contiguous sequence of elements (like an array or part of a `Vec`).
+-> String interpolation - format!
+-> &str - string slice , string literal
+-> #![...] means the attribute applies to the whole crate/module.
+   #[...] (single #) means it applies to the next item only.
+-> enum (enumeration) - To define a custom data type by listing all its possible distinct values, known as variants.
+    - Option<T> = Some(T) | None          [value might or might not be there.]
+        - it designed to handle situations where a value might be absent, thereby helping to prevent null reference errors
+    - Result<T, E> = Ok(T) | Error(E)     [operation might succeed or fail.]
+-> A vector is just like an array except that it can grow or shrink in size.
+-> Some(1).as_ref() converts Option<u32> into Option<&u32>
+    - i.e. Some(1) → Some(&1).
+-> Rust does not allow "null" values like other languages (Java, C#, etc.) because they cause runtime errors (NullPointerException).
+    - Instead, Option<T> forces you to handle the case where the value may not exist
+-> You need to use * whenever you want to directly read or write the value behind a reference
+    - helpful when updating hashmap values
+    - Deref Coercion (Auto Dereferencing) - &String is automatically deref'd to &str
+-> std::any::type_name_of_val(&x) -  To know the type of a datatype
+-> the type for the length for arrays and vecors are usize
+-> if a `loop` is used as an expression (e.g., assigned to a variable), how is a value typically returned from it
+    - By providing the value after the `break` keyword (e.g., `break my_value;`).
+-> Which scenario is most suitable for using an `if let` expression in Rust?
+    - When you need to execute code for only one specific variant of an enum and ignore the rest.
+-> stack
+    - stores data of fixed size known at compile time 
+    - data accessibility and storing data is fast
+    - follow LIFO
+    - Example Datatypes :: u32 , i32
+   heap 
+    - stored data of unknown size at compile time 
+    - slower than stack
+    - memory safety is enforced through Rust's ownership and borrowing rules
+    - Example DataTypes :: strings and vectors
+    - let boxed = Box::new(20i32)  - to store stack data specifically on heap
+-> Box::new creates a smart pointer that allocates a value on the heap, and gives you ownership of that heap allocation
+-> for copy trade data types - ownership wont be transfered by assigning like the case for String::from("hello")
+    - Data types that implements Copy trait - Primitive, fixed-size, simple value types (stored entirely on the stack, no heap allocation):
+        - Compound types (if all members are Copy):
+            - Tuples, e.g. (i32, bool) is Copy (because both i32 and bool are Copy)
+    - Which types do NOT implement Copy - Types that own heap memory or manage resources cannot be copied by just bitwise duplication. They must move instead.
+    - Copy types      - Copied bit-by-bit; ownership is not moved
+    - Non-Copy types  - Ownership is moved; the source becomes invalid
+-> unwrap and expect are the two functions that you can call to get the inner values of a Option or Result
+    - Returns the inner value if it exists (Some or Ok).
+    - Panics (crashes the program) if it's None or Err.
+    - with expect we can have a custom error message
+-> The main purpose of the ? (question mark) operator in Rust is to make error handling with Result (or Option) more concise
+    - the ? operator can only be used in a function that returns Result or Option
+    - where we can use this ? - if any expression is an error or None, stop here and immediately return that error/None from the current function.
+-> cargo test -- --nocapture ( To see logs when the the test ran successfully )
+-> Modules are the way to oraganize code in Rust
+-> Super - means go one module level above and check for the module
+-> a generic type is a type parameter that allows you to write flexible, reusable code that works with multiple data types without duplicating logic
+-> Functions that operate on a type are called static methods also known as associated functions
+    - They're usually used as constructors (new) or utility functions
+-> the functions that operate on an instance of the type are called methods
+    - A method takes self, &self, or &mut self as its first parameter
+-> monomorphization is the process the compiler uses to turn generic code into specific, concrete code for each type that's actually used
+    - Advantages of monomorphization
+        - Zero cost abstraction: generic code runs just as fast as handwritten code for a specific type.
+        - Type-safety is preserved, since each instantiation is strongly typed.
+    - Downsides
+        - Code bloat: if you use a generic with many different types, the compiler generates multiple copies → larger binaries.
+        - Longer compile times, since the compiler has to generate and optimize multiple versions.
+-> Trait - A trait in Rust is a collection of methods that a type can implement, letting you write generic, reusable, polymorphic code
+    - A common interface for a group of types.
+    - A trait is like an interface that data types can implement. When a type implements a trait it can be treated abstractly as that trait using generics or trait objects
+    - It defines a set of methods that a type must implement if it wants to “have that trait.”
+-> Trait bound is a way to tell the rust compiler that a type(T) implements a trait. This becomes necessary when you work with generic functions
+    - vectors in Rust don't allow moving elements out by index
+        - That would leave a "hole" in the vector.
+        - Only Copy types (like integers) can be implicitly copied like this
+-> A lifetime in Rust is the scope during which a reference (&T) is valid
+    - this is to prevent dangling references
+        - A reference that points to a memory location that has been deallocated or is no longer valid.
+    - we only define lifetimes - When the compiler cannot infer the relationship between the lifetimes of input references and a returned reference.
+    - Lifetimes are required when your data type holds references
+    - What does the special lifetime `'static` indicate when applied to a reference in Rust
+        - The reference points to data that is valid for the entire duration of the program.
+    - Since Rust avoids garbage collection, it must ensure that: References never outlive the data they point to.
+    - fn longest<'a>(...) -> ...
+        - Here you introduce a lifetime parameter 'a.
+        - Think of 'a as a placeholder for “some lifetime that will be decided by the caller.”
+    - s1 and s2 are created inside main.
+        - They both live until the end of main.
+        - So, when calling longest(&s1, &s2), the compiler figures out:
+        - &s1 → lifetime 'a1 (valid until main ends).
+        - &s2 → lifetime 'a2 (valid until main ends).
+        - Rust unifies them into a common 'a = min('a1, 'a2).
+        - Thus, the returned reference is guaranteed to be valid at least until both s1 and s2 are still alive.
+        - My return value can live only as long as the shorter of my two inputs.
+    - Ellison rules 
+        - Each input reference gets its own lifetime parameter
+        - If there is exactly one input reference, that lifetime is assigned to all output references
+        - If there are multiple input references, but one of them is &self or &mut self, then the lifetime of self is assigned to all output references
+            - Ellison fail case scenario
+                - If multiple input references exist and none of them is self, the compiler won't know which lifetime the return value should be tied to:
+-> Iterators
+    - into_iter() : iterate over T ( transfers ownership )
+    - iter() : iterate over &T
+    - iter_mut() : iterate over &mut T
+-> Iterator Adaptors :: map , filter and collect
+    - iterator adapters are the functions that we can call on our iterator
+    - filter() always passes a reference &Item ( as an argument )
+    - map() gives you whatever Item is
+    - `collect()` is a generic method that can create many different kinds of collections, so the compiler needs the type annotation to know the specific target collection type.
+-> Async runtime - An async runtime is a specialized runtime that knows how to drive asynchronous tasks.It's what makes .await actually do something
+    - Rust's async/await is zero-cost at compile time — it just creates state machines that represent potentially paused tasks.
+    - But to actually run those tasks, you need an executor — and that executor lives inside the async runtime.
+        - A reactor: waits for I/O events (like sockets ready to read/write)
+        - An executor: polls async tasks until they finish
+        - Optionally: a scheduler: decides which task runs next on which thread
+-> join macro - Waits for all of them to complete
+   select macro -  Returns as soon as one of them completes
+
+-> cargo run only works when:There is a binary target (an executable), i.e. a file with a main() function
+

@@ -5,6 +5,7 @@
 --> (storing private key) cast wallet import one_anvil --interactive
 --> cast wallet public-key --account one_anvil
 --> cast wallet sign --no-hash <HashedMessage> --account one_anvil
+--> cast keccak "hello"
 --> cast send 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9 "store(uint256)" 345 --account one_anvilca
 --> foundryup , foundryup-zksync
 --> forge fmt
@@ -22,7 +23,6 @@
 --> Generate a gas snapshot file - forge snapshot -m <testFunctionName>
 --> forge inspect FundMe storageLayout
 --> forge inspect <contractAddress> methods - will print all functions with its selectors
---> cast storage <contractAddress>
 --> cast code <contractAddress>
 --> cast storage <contractAddress> <slotnumber> --rpc-url $LOCAL_RPC_URL
 --> cast parse-bytes32-string <bytes32>
@@ -67,11 +67,15 @@
 --> EIP-7702 Delegator - cast send $(cast az) --private-key $alice_pk --auth $(cast wallet sign-auth $DelegateContractV0 --private-key $bob_pk )
     - Adding delegator for bob signature using alice
     - anvil --hardfork prague
---> Because of how Foundry’s vm.signAndAttachDelegation(...) works, the next time you send any transaction from that EOA, the VM will first process
-     the signed delegation (i.e. “swap in” delegateContract’s code as if Alice/Bob were their own contract wallets) and then execute the call
+--> Because of how Foundry's vm.signAndAttachDelegation(...) works, the next time you send any transaction from that EOA, the VM will first process
+     the signed delegation (i.e. “swap in” delegateContract's code as if Alice/Bob were their own contract wallets) and then execute the call
      - https://github.com/theredguild/7702-goat/blob/5626163a3ebbda450cb94df28735b8e09595a212/test/DelegateContractV1.t.sol#L39
 --> If we want to pass arguments to make file just like process.argv in node js , we need to assign those to variables and we can use those variables in the makefile
 --> To see the logs in the js file when we run vm.ffi
         bytes memory result = vm.ffi(cmds);
         string memory output = string(result);
         console.log("Script Output: %s", output);
+--> Foreign Function Interface (FFI) - To run arbitary cli scripts
+--> So Chisel is just showing you for : abi.encode("name") - output will be ( pointer + length + actual data)
+        Memory layout (how EVM stores it)
+        Tuple encoding layout (how ABI would serialize it for function calls / logs)

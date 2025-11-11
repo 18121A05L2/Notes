@@ -5,7 +5,7 @@
     - HEAD~2 = two commits before, etc.
     - git revert <commit to revert>
 -> command + w - to close the current working file in vs code 
--> ctrl + backtick(`) - to toggle the terminal in vscode
+-> Ctrl+J = toggle terminal - Jump down (to the bottom panel). - VS code terminal
 -> Minimize Current Window - ⌘ Command + M
 -> Maximize / Restore (Zoom) Current Window - Control + ⌘ Command + F
 -> Install baxh-completion for many auto completion features in bash
@@ -13,3 +13,10 @@
     - Use Bookmark Mnemonics for Speed - just hit Cmd + L, type cl, and press Enter
 -> Cmd + L - to focus the address bar , then hit tab repeatedly to until it focus on the bookmarks
 -> Cmd + tab - to shift to new opened apps
+-> Capture Chrome Screenshot without other tabs , bookmarks and extentions :: In Chrome : cmd + opt + i  and then cmd + shift + p and then search for capture screenshot
+-> Enable auto completetions ( npm , git )
+-> To edit file using cli
+    - nano ~/.bashrc
+    - after changing code , enter ctrl + O
+    - enter ctrl + X to save
+-> CTRL + -  -- to go back to the file where we are in vscode

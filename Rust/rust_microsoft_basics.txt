@@ -1,0 +1,99 @@
+Begginers tutorial - https://www.youtube.com/playlist?list=PLlrxD0HtieHjbTjrchBwOVks_sr8EVW1x
+          examples - https://github.com/microsoft/beginners-series-rust
+          practise - https://github.com/18121A05L2/rust-crash-course
+
+-> Rust is a systems programming languge that is fast and efficient, and it is also memory safe. It is a statically 
+   typed language, which means that the type of a variable is known at compile time.
+   EX : Operating systems , web browsers , databases , webservers , firmware
+   Firmware is software embedded directly into a hardware device to control its functions, acting as a bridge between the hardware and the operating system
+   Firmware is store in flash memory
+   Flash memory is a type of non-volatile computer storage that retains data even when the power is off, utilizing floating-gate transistors to store information electronically
+-> Rust is the language used to build the software that powers the underlying systems that other software runs on top of
+-> Rust , C , C++ does not require the use of garbage collection
+-> Rust provides memory safety gurantees ( below two are not possible in rust , which are hard to debug in c and c++ )
+    - user after free
+    - dangling pointer
+    - null pointer exceptions
+    - data races
+    - iterator invalidation
+-> Rust has built in :: integrated build tooling, Package manager , Opensource package repository , default testing framework , Auto generate documentation
+    - crates.io : official Rust package registry.
+    - Cargo : package manager and build system
+-> cargo is the rust build tool , dependency manager , test runner and project bootstrapper all rolled into one
+    - cargo new <ProjectName> , cargo run , cargo build
+-> Variables are immutable by default
+    - Mutalbe variable example - let mut variableName = value
+-> Default variable type will be :: in signed - i32 , in floating points - f64
+-> Scalar DataTypes -  bool , char , i32(signed) , u32(unsigned) , f32(floating point) , i128 , f64 
+    - A char in Rust represents exactly one Unicode scalar value (one character).
+    - use single quotes for char and use double quotes for string literal
+-> Type inference (like with let) is not allowed for const
+-> A const in Rust is computed entirely at compile time — no heap allocation, no runtime logic, no non-const function calls.
+-> constants can only set to be an expression, not the result of an function call or anything else with the value that is computed at program runtime
+-> Static - A single memory location that exists for the entire program (like a global variable).
+-> Rust is a compiled systems language, not a scripting language like Python or JavaScript.In Rust, code outside functions runs at compile time, not runtime
+-> Compound data types - Arrays , Tuples ( The word compound means “made up of two or more parts.”)
+-> Arrays
+    - fixed length (length known at compile time)
+    - homogenous type ( only contain items of same type )
+    - panics at run time if the index is out of bounds 
+-> Tuple
+    - unlike arrays tuples are heterogenous , the only difference betweeen arrays and tuples
+    - we call the empty tuple as unit
+-> function syntax - fun <funName>(input : String) -> String {}
+    - we must need to define the input type and must define return type of we return something
+    - if we dont return anything , return type is unit which is empty tuple
+-> Difference between   
+    - String and &str
+        - Use &str when: You only need to read a string
+            - A borrowed view into a string.
+            - Immutable, you can't change its contents
+            - a sticky note someone gave you (borrowed view, can't change it)
+            - &str has one part - pointer to data and length
+        - Use String when: You need an owned, growable string.You want to store or modify string data.
+            - More expensive (allocates on heap)
+            - your own notepad (heap-allocated, you can write/erase freely)
+            - String has threeparts - pointer to data , length and capacity
+    - array and tuple
+-> "{}" - Display , "{:?}"-  Debug , "{:#?}" - pretty debug
+-> enums - list all variations of some data
+-> loop keyword - Used to execute a block of code forever. Or until it is stopped Or the program quits
+-> match - it is kind of switch in other programming languages
+-> Structs is of three types - classic , tupple and unit
+-> panic! - used to throw an error
+-> rust stores data in two differently structures parts of memory ( just like other major programming languages )
+    - stack ( LIFO )
+        - vector - object stored on stack with pointer to heap
+        - variable - variable and value is stored on stack
+    - heap
+        - value of vecor is stored on heap
+-> dynamic variable data will be store in heap , where as the memory address of that variable will be stored in stack
+-> Dangling Pointer - two memory addresses are pointing to the same location in the heap
+    - the pointer on the stack that points towards the heap which is no longer available is known as a dangling pointer ( this is becuase we drop the one of the pointer which leads to data deletion on the heap which is pointing by two memory addresses on the stack)
+    - in C and C++ this depend on programmer to explicitily manange the memory with their code
+    - python, ruby and javascript have garbage collector which automatically manage the memory
+        - the garbage collector is a program that runs when our program runs and it constantly lookup for the memory that is no longer used and cleanup that memory
+    - rust prevents this with the help of the ownership 
+-> Rules of ownersip
+    - Each value in rust has a variable that's called its owner
+    - There can only be one owner at a time
+    - When the owner goes out of scope , the value will be dropped
+        - ownership prevents memory safety issues
+            - Double free ( trying to free memory that has already been freed )
+            - Memory leaks ( Not freeing memory that should have been freed )
+-> Rules of Borrowing ( using &)
+    - at any given point of time, you can have either :
+        - One mutable reference or 
+        - Any number of immutable references
+    - references must always be valid
+-> borrowing will not have ownership nor it wont copy the data to heap
+-> In Rust, &str and String both represent text, but they have important differences in ownership, mutability, and memory allocation
+-> Collections - vec (access by index) , hashmap (associate keys and values) , hashset (unique items and no access by index), vecdeque , linkedlist ( double linkedlist )
+    - vec - which is a global continuous stack of items of the same type
+-> You can use impl to define methods for a struct
+    - impl mean implementation block - It's where you implement methods, associated functions, or traits for a type (like a struct, enum, or trait)
+    - Associated function ( static methods ) - If a function inside impl does not take self, it's an associated function — like a static method in other languages.
+-> Clone - Copies data on both heap and stack
+-> Borrowing - if we dont want to create a full copy on both the stack and the heap , we can use a technique called borrowing
+    - borrowing create a reference to the value of that variable
+-> &String automatically coerces to &str - Rust allows something called "deref coercion", which is an automatic conversion that happens when you pass a reference of one type to a function expecting a reference of another (related) type
