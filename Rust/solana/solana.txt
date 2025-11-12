@@ -110,6 +110,16 @@ pub struct Account {
     - A block contains many entries like pages in a book
     - Sequential between entries
     - Parallel within entry
+-> The Nakamoto coefficient measures how decentralized a blockchain is, based on how many entities (validators, miners, or stake holders) need to collude to control or censor the network.
+    - The minimum number of independent entities required to compromise the system (e.g., halt consensus or control block production).
+    - Higher coefficient → More decentralized / secure
+    - Lower coefficient → More centralized / fragile
+-> clusters in solana 
+    - Mainnet Beta Cluster → the main live Solana blockchain
+    - Devnet Cluster → testing environment for developers
+    - Testnet Cluster → used for validator stress testing
+-> Who exactly runs leader schedule 
+    - Every validator can independently compute the same leader schedule locally, because all inputs (stake distribution + RNG seed(epoch hash)) are public and deterministic
 
 
 Questions 

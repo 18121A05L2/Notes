@@ -85,3 +85,13 @@
     - RTT - Round Trip Time
 -> Peer scoring algorithms are decentralized reputation systems for network nodes.They help maintain performance, resist spam, and encourage honest behavior —forming the social immune system of P2P protocols.
     - Ethereum (libp2p GossipSub) - for block/attestation gossip
+-> The straggler problem in Ethereum is when slow or late validators delay block finalization — not because of dishonesty, but due to timing and propagation lag.The network stays secure, but finality becomes slower until stragglers catch up
+
+
+
+
+
+questions
+How monad is parallyzing evm
+How megaeth does the tasks in a heterogeneous way , by doing singular task
+How railgun privacy works

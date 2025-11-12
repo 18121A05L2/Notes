@@ -1,0 +1,20 @@
+https://www.youtube.com/watch?v=VpfeJym-AIU
+https://www.youtube.com/watch?v=d2DyD8w5dYk
+https://www.youtube.com/watch?v=1iROgqwP3OE
+https://www.youtube.com/watch?v=KgnMJB01-iU
+https://www.youtube.com/watch?v=IYkAlMSF4tY
+https://www.youtube.com/watch?v=zo72TWXrc3Y
+https://www.youtube.com/watch?v=qtBsL90-J_4
+-> https://www.youtube.com/watch?v=CfxQzbow_TI ( short and long term focus goals)
+    - Block level access list - how can it provide parallel processing , will this parallel processing only for verification or for execution too 
+        - blocks will going to contain the information that says what are the things that happened as a result of every transaction then every node that verifies the block is able to process the every single transaction in parallel
+    - eip 4444 - will decrease the storage from 1.5TB to 500GB by not having the history
+    - trustless cross L2 asset transfer
+    - proof aggregation - so allowing like basic zero knowledge proofs that go on chain to all be combined together into one proof and so that saves gas
+    - L1SLOAD - Allowing L2s to read L1 state directly - currently how it is going and with this , how it is going to be
+    - issues with centralised RPC providers
+        - if we are making a trade on uniswap , like you are buying ETH for usdc , and the current price of eth is 4500 and what if the RPC provider lies to you that the price of eth is 5500 and if we dont think and if click on buy and that transaction has a minimum price of 5500 and then that RPC server grabs that transaction and it sandwitches that transaction and we will buy eth for 5500 instead of 4500 and that 1000 dollars gets immediately snapped up by the attacker that hacks your RPC
+        - solution for this is helios light client which will be a wrapper around our RPC
+        - TEE + ORAM - trusted hardware together with cryptographic primitive for encrypting the locations of the memory and what this lets you do is , lets you send a request to a server that basically says i want information about this address and the sever responds to that request and it does this without learning like what address it just gave you a response for ( this can only be done with trusted hardware ) 
+    - FOCIL - which is a proposal that basically means that you have about 16 different actors in parallel that are able to schedule transactions for inclusion in the next slot
+        - this is to tackle the centralized block builders will not going to have the ability to just say i dont like this set of transactions so i was going to delay them for a very long time 
