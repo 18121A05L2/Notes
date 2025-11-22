@@ -1,3 +1,4 @@
+-> Ethereum is a global open censorship resistant platform for building decentralized applications
 -> counterfactual accounts - A counterfactual account is an account that doesn't exist yet on-chain, but you already know its future address (via CREATE2)
 -> proof of innocence is kind of tornado cash but with exclustion list - https://github.com/chainwayxyz/proof-of-innocence
     - Prove they are not withdrawing funds linked to any address on a known “sanctions/exclusion list” — without revealing which deposit is theirs.
@@ -86,6 +87,36 @@
 -> Peer scoring algorithms are decentralized reputation systems for network nodes.They help maintain performance, resist spam, and encourage honest behavior —forming the social immune system of P2P protocols.
     - Ethereum (libp2p GossipSub) - for block/attestation gossip
 -> The straggler problem in Ethereum is when slow or late validators delay block finalization — not because of dishonesty, but due to timing and propagation lag.The network stays secure, but finality becomes slower until stragglers catch up
+-> ERC-20 Transfer           - 21000 gas   - Only updates sender/receiver balances
+   - DEX Swap (single hop)   - 110k-160k   - Two token transfers + reserve updates + swap math
+   - DEX Swap (multi-hop)    - 180k-230k+  - Each hop is another pair contract execution
+-> merkle trees , signatures 
+-> mass scaling strategy 
+    - snarks for execution layer
+    - Data Availability Sampling (DAS) or known as peer DAS for blobs
+        - Data Availability Sampling (DAS) in Ethereum is a technique that allows nodes to verify that all the data of a block is published without actually downloading the whole block ( with the helof of KZG commitmebts )
+-> with an end to end formal verification , there can be zero bugs in the system
+-> ZKEVMs change what current validators are doing like from execute everything to just verifying things
+    - prover will be the new actor with ZKEVMs
+    - proposers ( block builder validators ) are not sophisticated enough to build most economically valuable blocks possible and so instead they will deligate to most sophisticated that will do that on their behalf and this is called PBS ( Proposer Builder Separation )
+-> ACD = All Core Devs in Ethereum.
+    - It's the main technical governance process where client teams, researchers, and core contributors meet to coordinate protocol upgrades (hardforks)
+-> current finality time is 2 epochs which is 64 slots 
+-> Hardfork - A backward-incompatible upgrade
+   SoftFork - A backward-compatible upgrade
+   Temporary Fork (Uncle Fork) - This is not a protocol upgrade, but a naturally occurring fork when two miners/validators produce blocks at nearly the same time
+-> Fork-choice rule (LMD-GHOST) ( Latest Message Driven - Greediest Heaviest Observed SubTree ) decides the head
+-> All validators must submit one attestation per epoch, but committee members submit one per slot.
+-> EIP
+    ├─ Core (protocol rules, consensus changes)
+    ├─ Networking (peer-to-peer changes)
+    ├─ Interface (JSON-RPC, APIs)
+    └─ Standards Track
+       └─ ERC (application-level smart contract standards)
+       - ERC was a type of EIP
+-> type 1 transactions((introduced by EIP-2930)) introduces access list - An access list is a list of addresses and storage slots that your transaction promises it will touch during execution.
+    - Type-1 tx lets you pre-warm those provided address/storage → reducing total gas.
+-> max priority will be a bit more than the max fee that we are willing to pay ( this is becuase , we are saying that we are willing to pay this amount of eth and in the mean while if the base fee increases our transaction will revert )
 
 
 
@@ -95,3 +126,8 @@ questions
 How monad is parallyzing evm
 How megaeth does the tasks in a heterogeneous way , by doing singular task
 How railgun privacy works
+
+
+need to check zcash 
+    - once there was bug to mint arbitary number of tokens ( and we cant able to see becuase it is private)
+        - how can a blockchain be so private that we dont know the info too

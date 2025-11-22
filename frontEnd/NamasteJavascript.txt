@@ -1,4 +1,4 @@
-
+-> https://github.com/ishwarrimal/frontend-interview-preparation/tree/main
 -> Every thing in javascript run in the execution context
    - Memory component ( variable Enviroment )
       - Memory creation phase
@@ -10,7 +10,7 @@
 -> Call Stack - Bottom of every call stack we have Global Execution Context
 -> call stack maintains the order of execution of execution contexts
 
---> hoisting is a phenomenon is js by which we can access the variables and functions even before we have initialized it , without any error
+--> hoisting is a phenomenon in js by which we can access the variables and functions even before we have initialized it , without any error
 --> allocation of memory to variables and functions before assigning is called hoisting
 
 --> scope is directly depend on the lexical environment
@@ -37,11 +37,11 @@
         - A function expression assigns a function (anonymous or named) to a variable
         - A function statement declares a function with a name
 --> First Class Functions : the ability to use the functions as values  and can be passed as an argument to another function
-    and can be returned out of another a function is called First Class Functions
+    and can be returned out of another function is called First Class Functions
 
 --> event loop has one job , that too continuously check the callstack and call back queue , if it find call stack empty and callback queue with 
-  some calllback function then it simply moves it from callback queue to the call stack 
-    - callback functions like event listeners or settimeout will go to callback queue
+  some calllback functions then it simply moves it from callback queue to the call stack 
+    - callback functions like event listeners or setTimeout will go to callback queue
     - microtasks like promises or mutation observers will go to microtask queue
     - microtasks queue has higher priority than callback queue
     - the callback queue is also known as the macrotask queue
@@ -81,6 +81,7 @@
 --> every thing in js is object ,, when ever we create an object in js , all default functions will be creted as an object and jre adds it to our each and every  object
 --> to write a polyfill for a funcion , Function.prototype.methodName = function() {}
 
+--> Event Propagation determines in which order the elements receive the event. There are two ways to handle this event propagation order of HTML DOM is Event Bubbling and Event Capturing
 --> if we have nested events and if we dont define capture keywored , then by default event bubbling will happen , event capturing is the opposite order of the events execution of event bubbling , event trickling is nothing but event capturing
 --> if we have both event bubbling and capturing ,, irrespective of the origin first capturing occurs then , event bubbling occurs 
 --> e.stopPropagation() ,, this is to stop the event bubbling or capturing 
@@ -89,14 +90,21 @@
         - The idea is that you "delegate" the handling of an event to a different element (in this case, the div, which is a parent element) instead of the actual element (the button) that received the event
         - With event delegation, you create fewer event listeners and perform similar events-based logic in one place
         - instead of adding a event listener to each and every child , we can add a single event listener to the parent ,, and make that trigger for each child click
---> Event Propagation determines in which order the elements receive the event. There are two ways to handle this event propagation order of HTML DOM is Event Bubbling and Event Capturing
+        - Event delegation is particularly useful in scenarios where new elements are dynamically added to the DOM or when working with lists, tables, or other structures with repetitive elements
+--> Benefits of event delegation:
+    1) improves memory space
+    2) mitigates risk of performance bottle neck
+    3) Dom manipulation
+    Limitations:
+    1) All the events are not bubbled up, some events like blur, focus are not bubbled up
+    2) if e.stopPropogation is used in child, then events are not bubbled up
 
 --> if we do any normal function call ,, by default it assumes that there is window on the left side like window.fun() === fun()
 --> we can pass args to anonymous func despite if not having params and we can print it with console.log(arguments) ,, but with arrow functions it wont
 
 --> the dynamic nature of this keyword inside functions is one of the reasons we have reusability of code 
 
---> whenever we do a cors request , before this an preflight options call will be made , with the additional headers wer are going to use and if that gets error , we are now allowed to use those additional headers
+--> whenever we do a cors request , before this an preflight options call will be made , with the additional headers we are going to use and if that gets error , we are now allowed to use those additional headers
         - https://grok.com/chat/45979a62-40d7-4259-805e-0208084c7299
 
 --> Debounce: ignores intermediate events, runs once after activity stops. Ex: Search box , Auto-saving forms
@@ -105,7 +113,6 @@
 --> The rest and spread operators in JavaScript both use the ... (three dots) syntax, but they do opposite things depending on where they're used
     - Rest Operator (... in function parameter or destructuring) - Collects multiple values into a single array.
     - Used in object or array destructuring - const [first, ...rest] = [1, 2, 3, 4];
-    - Expands an array (or object) into individual a.
     - Syntax location	Left side of = or params ( Rest )	Right side of = or args ( Spread )
 
 --> callback hell : Pyramid of doom 
@@ -146,6 +153,10 @@
     - That means the this keyword inside an arrow function is the same as this keyword outside it — unlike normal functions, which bind this keyword dynamically depending on how they're called
     - if we define a this inside of a function in an object , if that fuction is arrow function , then 'this' keyword refers to the Window and if we use normal function then this keyword refers to the object
     - Explicit binding , Function borrowing
+
+-> For a syntax error , it wont even run a single line of code and it will thorw error upfront
+-> Map is a key value pair just like Object, where the key can be of any type.
+-> Difference between async await and promise :: With async wait, the execution of a function stops when it witnesses the await statement and moves out of the function until the async process is completed. Whereas with promise, the execution continues in the same function, it just skips the promise statement until the async process is completed.
 
 
 
@@ -220,27 +231,6 @@ Thank you so much for asking all these questions, Shruti. You're a gem
 6. Too many micro tasks generated can cause Starvation (nit giving time to callback tasks to execute)
 
 
-
---> Benefits of event delegation:
-1) improves memory space
-2) mitigates risk of performance bottle neck
-3) Dom manipulation
-Limitations:
-1) All the events are not bubbled up, some events like blur, focus are not bubbled up
-2) if e.stopPropogation is used in child, then events are not bubbled up
-
-
-
-
-
-
-
-
-
-
-
-
---> CONSTRUCTOR FUNCTIONS , PROMISES , MICROSTACK QUEUE , THIS IN ARROW FUNCTION , 
 
 
 

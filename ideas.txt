@@ -16,3 +16,5 @@
         - process in sequential order only those modifies the same global state
         - and parallel processing for the rest of the transactions
 -> why cant the nodes index the blocchain data
+-> when doing AMM swap function , we are updating many storage variables , but if the pool is worth of 1 million and if we are doing a 100 dollars transaction , can we do something like decrease the storage data modificatin less like we will update all small value transactions after certain time frame like 5-10 minutes ( aim with this is to provide a cheaper transactions fee )
+-> do we have something like timer attached to a storage data which deletes when the timer reaches zero

@@ -1,34 +1,22 @@
 -> React is a library for building user interfaces , it was not a framework
--> Hooks - state , context , Ref , effect and performance 
+-> Hooks - state , context , useRef , forwardRef , effect and performance 
 -> npx - npm package runner
     - Does not install globally: npx downloads and runs the latest version of create-react-app temporarily.
 -> Peer dependencies need to be specified in the libraries ( like whoever are publishing packages to npm )
 -> useCallback hook memoizes the function itself, not its return value. useMemo caches the functions return value so that the function need not execute again
--> useCallback is used to cache a function to avoid re-creating it on every re-render
--> componentDidMount
-    Hook: useEffect(() => { ... }, []) — Runs after the first render.
-
-    componentDidUpdate
-    Hook: useEffect(() => { ... }, [deps]) — Runs when dependencies change.
-
-    componentWillUnmount
-    Hook: useEffect(() => { return () => {...} }, []) — Cleanup before component unmounts.
-
+-> useCallback - if we have a function in a component and it will create each time when a component is rendered , with this it wont recreate until unless dependencies of it are changed
 -> Portals - Render children into a DOM node outside the parent hierarchy (e.g., for modals).
     - Event bubbling in portal works just like the normal child components in the parent hierarchy.
 -> Streaming allows you to break down the page's HTML into smaller chunks and progressively send those chunks from the server to the client.
 -> Context API - we will provide the state and dispatch when wrapping contextProvider and use those using useContext
--> useCallback - if we have a function in a component and it will create each time when a component is rendered , with this it wont recreate until unless dependencies of it are changed
--> useRef -  To persist a mutable value across renders without triggering re-renders , for mutable persistent values that don’t cause re-renders
+-> useRef -  To persist a mutable value across renders without triggering re-renders 
+    - Accessing DOM elements
 -> Rendering - The commit phase is usually fast but the render phase can be slow.
     - same value after rerenders , react will render one more time for that component and bails out from any subsequest renders
     - In React, the rendering process is divided into two main phases: the “render phase” and the “commit phase
     - React looks for any useEffect hooks declared in the component in the commit phase and executes their effect functions
     - (non primitive data types) same array and object references does not queue up for re-renders
-    # - (if parent re-renders) the child components would went through the render phase but not commit phase
--> Parent and child and parent and children props ( <><Child/></>) , differs in rendering 
-    - in first case child renders whenever the parent renders but not in the second case
-    - if parent for both these renders , then at that time these two will render
+    - (if parent re-renders) the child components would went through the render phase but not commit phase
 -> React.memo comes with an extra cost
 -> Noraml Script - Html parsing (and if it encounter any script tag) + fetch the script tag resources + execute the script tag js and then continue HTML parsing
 -> Async Script - Html parsing (and if it encounter any script tag) + execute the script tag js and then continue HTML parsing
@@ -37,10 +25,9 @@
                     + fetch scripts resources in parallel
 -> Async does not guarantee the order of execution but defer does
 -> Transitive dependency: A module that you didn't install directly, but one of your direct dependencies did
-
 -> useEffects runs after the rendering of the page
--> strings , boolean and numbers are primitive
-    objects and arrays are non-primitive
-    In short, useEffect is a tool that lets us interact with the outside world but not affect the rendering or performance of the component that it's in
+-> In short, useEffect is a tool that lets us interact with the outside world but not affect the rendering or performance of the component that it's in
 -> Packages : React Router DOM 
 -> MERN STACK  --  https://www.mongodb.com/languages/mern-stack-tutorial
+-> differences  
+   - mount and unmount

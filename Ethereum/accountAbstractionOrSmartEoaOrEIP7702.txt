@@ -9,7 +9,13 @@
 -> Multiple transactions at a time
 -> delayed operations
 -> Every single account on zksync is a smart contract account which follows DefaultAccount.sol era-contract
--> UserOperations -> altmem pool -> handleOps( Entrypoint.sol) -> ValidateUserOp (AA.sol)
+-> UserOperations -> altmem pool -> bundlers -> handleOps( Entrypoint.sol) -> ValidateUserOp (AA.sol)
+-> smart contract wallets 
+    - can be programmed ,which can have code which is not possible in EOA
+    - can initiate a transaction just like EOA
+    - does not need funds in this like an EOA ( paymasters will pay gas fees for you )
+    - can able to sign transactions in batches
+
 
 
 
