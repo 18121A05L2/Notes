@@ -5,6 +5,7 @@
    - null vs undefined
       - undefined -  A variable that has been declared but not assigned.
       - null - You, the developer, explicitly assign it to say “nothing here”.
+             - absence of value
    - splice and slice
       - Splice (start, deleteCount, ...itemsToAdd) modifies the original array
       - Slice (start, end) returns a new array and Does NOT modify the original array
@@ -85,6 +86,9 @@
    - stale-while-revalidate → zero latency even after expiry
    - public Can be cached by browser + CDN.
    - private Only browser can cache it. ( Used for personal data: /api/user/profile)
+
+-> What is polyfill :: Polyfills in JavaScript are code snippets or scripts that provide modern functionalities to older browsers or environments that lack support for those features. Some new features doesn't work on older browser, we write polyfill of such functionality to provide support in older browser
     
+-> In JavaScript's native Array.prototype.map, you can optionally pass a second argument called thisArg. This value becomes the this inside your callback function :: map(callback,thisArg)
 
      

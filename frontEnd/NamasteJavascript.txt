@@ -146,6 +146,8 @@
     - this keyword in DOM elements represents the referece of the HTMLElement itself
     - strict js doesnt allow window inside a function ,, instead we can use this which was same 
     - 'this' keyword in arrow function is same like as it in the outside 
+    - if used inside an object: this refers to the object
+    - In an event listener, this refers to the DOM element
 
 --> JavaScript provides three methods for manipulating the 'this' keyword in functions: call(), apply(), and bind(). These methods allow you to change the context of the 'this' keyword, which can be useful for controlling the behaviour of functions
     - DEFINATION : call, apply, and bind are methods used to manipulate the this context of a function and control how arguments are passed. call and apply immediately invoke the function, while bind creates a new function with a specified this context that can be invoked later
@@ -157,7 +159,7 @@
 -> For a syntax error , it wont even run a single line of code and it will thorw error upfront
 -> Map is a key value pair just like Object, where the key can be of any type.
 -> Difference between async await and promise :: With async wait, the execution of a function stops when it witnesses the await statement and moves out of the function until the async process is completed. Whereas with promise, the execution continues in the same function, it just skips the promise statement until the async process is completed.
-
+-> Pure functions :: Output deterministic , No sideeffects , caching benefits and maintainable code
 
 
 

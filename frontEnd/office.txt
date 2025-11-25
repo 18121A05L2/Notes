@@ -1,3 +1,4 @@
+-> How single SPA like bootstrap works and what are all required to build one
 -> Learn Newrelic commands
 -> How nx works and helpful for monorepo ( to build fullstack blockchain apps )
 -> https://github.com/ishwarrimal/frontend-interview-preparation

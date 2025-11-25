@@ -1,0 +1,11 @@
+-> Example for debounce :: func.apply(context, args) is equivalent to func(...args) with this = context
+
+-> Palindrome using recursion
+
+-> custom build to deepclone an object
+
+-> How do you optimize a React component to improve performance?
+
+-> Explain the Virtual DOM and how it works in React.
+
+-> what are generators in js

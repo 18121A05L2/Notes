@@ -12,7 +12,7 @@
 
    What is ERC-721?
 -> The ERC-721 introduces a standard for NFT, in other words, this type of Token is unique and can have different value than another Token 
-   from the same Smart Contract, maybe due to its age, rarity or even something else like its visual. Wait, visual?
+   from the same Smart Contract, maybe due to its age, rarity or even something else like its visual.
 
 -> ERC-165 
    Standarad Interface Detection
@@ -42,6 +42,10 @@
 -> erc-1155 -  what are semi fungible token
       - A single ERC-1155 contract can manage multiple token types, including fungible, non-fungible, and semi-fungible tokens
       - ERC-1155 can represent semi-fungible tokens, which are essentially fungible tokens that can be converted into non-fungible tokens under certain conditions
+      - Fungible → Many identical units of the same ID
+      - Non-fungible → Only 1 unit exists for an ID
+      - Semi-fungible → Many identical units initially, but may become unique after being used, redeemed, or transformed
+      - Semi-fungible = Starts fungible → ends non-fungible after redemption
 
 -> EIP-3529: Reduction in refunds
 

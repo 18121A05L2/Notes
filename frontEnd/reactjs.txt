@@ -31,3 +31,4 @@
 -> MERN STACK  --  https://www.mongodb.com/languages/mern-stack-tutorial
 -> differences  
    - mount and unmount
+-> useLayoutEffect runs BEFORE the browser updates the screen (the "paint").Use it when your code needs to change the layout or measure a DOM element before the user sees it. This prevents an annoying visual "flicker" or "flash." Think of adjusting scroll position or element sizes right after a state update

@@ -1,4 +1,5 @@
 -> Ethereum is a global open censorship resistant platform for building decentralized applications
+-> Ethereum is the Worlds first verifiable computer
 -> counterfactual accounts - A counterfactual account is an account that doesn't exist yet on-chain, but you already know its future address (via CREATE2)
 -> proof of innocence is kind of tornado cash but with exclustion list - https://github.com/chainwayxyz/proof-of-innocence
     - Prove they are not withdrawing funds linked to any address on a known “sanctions/exclusion list” — without revealing which deposit is theirs.
