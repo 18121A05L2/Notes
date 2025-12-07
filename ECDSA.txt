@@ -1,6 +1,11 @@
 -> The specific curve used in ECDSA is secp256k1curve curve
 -> All elliptic curves are symmetrical about their x axis
 -> Precompiled contracts are a set of core routines integral to Ethereum's cryptographic functionalities and ECDSA is one of them
+-> So the protocol includes precompiled contracts for expensive cryptography:
+   The EVM cannot run elliptic-curve math natively — it would be too slow/expensive.
+    - Precompile Address	Purpose
+    - 0x01	                ECDSA signature recovery
+    - 0x02	                SHA256
 -> The EIP-191 Signed Data Standard proposed the following format for signed data: 0x19 <1 byte version> <version specific data> <data to sign>
 -> EIP 712 - 0x19 0x01 <domainSeparator> <hashStruct(message)> - Meta transactions , forwarder contracts
 -> https://www.cyfrin.io/blog/understanding-ethereum-signature-standards-eip-191-eip-712

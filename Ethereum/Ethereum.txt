@@ -108,19 +108,30 @@
    Temporary Fork (Uncle Fork) - This is not a protocol upgrade, but a naturally occurring fork when two miners/validators produce blocks at nearly the same time
 -> Fork-choice rule (LMD-GHOST) ( Latest Message Driven - Greediest Heaviest Observed SubTree ) decides the head
 -> All validators must submit one attestation per epoch, but committee members submit one per slot.
--> EIP
+-> EIP ( difference between EIP and ERC )
     ├─ Core (protocol rules, consensus changes)
     ├─ Networking (peer-to-peer changes)
     ├─ Interface (JSON-RPC, APIs)
     └─ Standards Track
        └─ ERC (application-level smart contract standards)
        - ERC was a type of EIP
--> type 1 transactions((introduced by EIP-2930)) introduces access list - An access list is a list of addresses and storage slots that your transaction promises it will touch during execution.
-    - Type-1 tx lets you pre-warm those provided address/storage → reducing total gas.
+-> Transaction Types :: 
+    - type 0 legacy transactions
+    - type 1 transactions((introduced by EIP-2930)) introduces access list - An access list is a list of addresses and storage slots that your transaction promises it will touch during execution.
+        - Type-1 tx lets you pre-warm those provided address/storage → reducing total gas.
+    - type 2 - Added better gas fee hanhdling
+    - type 3 - blob transactions
+    - type 4 - EIP 7702 transactions ( for account abstraction our wallet will create this type of transaction )
 -> max priority will be a bit more than the max fee that we are willing to pay ( this is becuase , we are saying that we are willing to pay this amount of eth and in the mean while if the base fee increases our transaction will revert )
-
-
-
+-> DID :: Decentralized Identities
+-> SBTs ( Soul Bound Tokens ) :: A token that cannot be transferred, only minted to and bound to a wallet.
+-> how does ethereum knows when to complete and finalize that block as block limit is not reached
+    - A validator is assigned a slot (12 seconds long) to propose a block.
+    - When its turn arrives, it includes as many transactions as it can (or wants), up to the 30M gas limit.
+    - It publishes the block when the 12-second slot ends, even if only 1M gas was used.
+-> For Mev protection we can use Flash bots
+->  In the context of decentralized finance, what is the main purpose of a DEX aggregator like 1inch or Matcha ?
+    - To search across multiple decentralized exchanges to find the best possible price and most efficient route for a token swap.
 
 
 questions
