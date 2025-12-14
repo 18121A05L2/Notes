@@ -1,1 +1,0 @@
--> MongoDb :: A NoSQL, document-oriented database storing data in BSON (binary JSON) format.

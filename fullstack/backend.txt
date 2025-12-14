@@ -1,0 +1,16 @@
+-> MongoDb :: A NoSQL, document-oriented database storing data in BSON (binary JSON) format.
+-> Swagger is an opensource API documentation framework
+    - swagger is a set of rules or a specification for a format describing REST APIs
+-> Having express and socket on the same socket solves - If backend + socket share the same domain and port, cookies automatically flow to socket.io.
+-> app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+    - This parses data from HTML forms (URL-encoded format).
+-> A middleware is a function that runs before the main controller of a route.
+    - Middleware performs essential filters like: Authentication , Authorization (your case) , Validation ,Rate limiting , Logging , Sanitization
+    - we can stack any number of middle wares
+    - Difference between Global Middleware and Route Middleware
+-> Services folder purpose - Business logic that should NOT be tied to Express.
+-> Winston is the most popular logging library for Node.js.
+-> Redis cache is an opensource tool that runs as a service in the background that allows you to store data in memory for high performance data retrival and storage purposes
+    - cache hit will get data from redis whereas the cache miss will get the data from db and then store it in redis
+    - cache worker :: This will monitor the database for any data change and if something changes then cache worker will populate that data in redic cache ( so with this we dont have any stale data in cache )
+    - Remote Dictionary Server

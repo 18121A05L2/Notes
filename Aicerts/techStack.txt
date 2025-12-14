@@ -1,0 +1,4 @@
+-> SCSS (Sassy CSS) is a superset of CSS provided by Sass.
+    - SCSS improves readability, reuse, and scalability
+-> State management - zustand
+-> frontend with nextjs

@@ -1,0 +1,56 @@
+Full Stack Blockchain Developer — Job Description
+
+About the Company
+We are building next-generation blockchain-based credentialing and verification platforms,
+empowering organizations to issue verifiable, tamper-proof, and trustless digital certificates.
+Our ecosystem spans issuance platforms, verification portals, admin consoles, and mobile
+DApps, all powered by decentralized ledger technology and secure smart contracts.
+Key Responsibilities
+As a Full Stack Blockchain Developer, you will design, develop, and deploy
+blockchain-integrated web applications and APIs that bring trust, transparency, and automation
+to digital verification processes.
+
+Blockchain Development
+• Design, develop, test, and deploy smart contracts (ERC20, ERC721, ERC1155).
+• Build blockchain-based modules for issuance, verification, and metadata storage.
+• Use Solidity, Hardhat, Truffle, or Foundry for development.
+• Integrate blockchain operations using ethers.js, web3.js, and IPFS.
+• Maintain interoperability across Ethereum, Polygon, BNB, and Hyperledger Fabric.
+
+Full Stack Web & API Development
+• Develop scalable front-end interfaces with React.js/Next.js.
+• Implement backends using Node.js, Express.js, or NestJS.
+• Design RESTful and GraphQL APIs for issuance, verification, and wallet management.
+• Manage databases (PostgreSQL, MongoDB) and implement caching.
+• Develop admin dashboards, portals, and RBAC-based modules.
+
+Infrastructure & DevOps
+• Manage deployments via Docker, CI/CD, and cloud setups.
+• Implement containerized environments and monitor uptime.
+• Develop transaction queueing, error recovery, and async processing.
+
+Security & Testing
+• Conduct smart contract security audits and gas optimizations.
+• Implement fail-safes for transaction errors.
+• Perform unit and end-to-end testing.
+• Maintain documentation for APIs and architecture.
+
+Required Technical Skills
+Blockchain: Solidity, Hardhat, ethers.js, web3.js, ERC20/721/1155, IPFS
+Full Stack: React.js, Next.js, Node.js, Express.js, NestJS, PostgreSQL, MongoDB, Redis
+Infra: Docker, AWS, GCP, CI/CD, Nginx, Git
+Tools: Postman, Infura, Alchemy, Pinata
+
+Preferred Qualifications
+• DApp, NFT, or tokenized platform experience.
+• Hyperledger Fabric or permissioned blockchain knowledge.
+• Layer 2 scaling (Polygon, Arbitrum) familiarity.
+• Understanding of verifiable credentials, DIDs, SBTs, and tokenomics.
+
+Soft Skills
+• Strong problem-solving and analytical skills.
+• Ownership mindset, attention to detail, and agile adaptability.
+• Excellent communication and teamwork abilities.
+
+What We Offer
+• Competitive salary and performance-based incentives.

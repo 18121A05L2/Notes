@@ -1,0 +1,22 @@
+-> we have english and arabic
+-> crypto payments are handling with - https://commerce.coinbase.com/pay
+-> supported chains : polygon , optimism , Hyperledger and solana coming soon
+-> well structured code for backend
+-> storing data in local storage , user and token
+-> Charts & Visualization , PDF, Excel & Files , Canvas
+
+
+
+
+
+-> why do we have cetificate issuance for past 
+-> why even if i was not modifying any data , was able to click save design all the times
+-> why we are doing  the wole component reloading , if we have some update on the designer badge
+-> need to add .nvm files in both repos
+-> need to write a eslint file that matches the current formatting that differs from prettier
+-> need to find and delete unused npm packages
+-> need to add enter button features linking with inputs
+-> why some of the code was in js , are we in the phase of moving all from js to ts
+-> why toggle was tab specific instead of window specific
+-> what is the difference between userdev and admindev
+-> was testverify and bot code was entirely on different repos
