@@ -54,3 +54,9 @@ Soft Skills
 
 What We Offer
 • Competitive salary and performance-based incentives.
+
+
+
+Things to check:
+Different types of fees in ethereum
+if gas price spikes suddently .What can go wrong and how your DAP must handle it gracefully

@@ -36,3 +36,4 @@
     - The useEffect doesn't get executed as there is no DOM in the server and there is no commit happening in SSR.
     - It does run, but only on the client after hydration, even if SSR was used.
     - SSR never commits because commit only happens in the browser
+-> onClickCapture runs during the capture phase (top-down), while onClick runs during the bubble phase (bottom-up)
