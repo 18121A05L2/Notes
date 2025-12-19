@@ -6,23 +6,24 @@ Different types of Bitcoin L2s use different methods.
 
 3. Rollups (e.g., Merlin) gather thousands of transactions, generate cryptographic proofs, and submit a single summary back to Bitcoin, making the process faster, cheaper, and more scalable.
 
-| Chain           | L2 Type        | Design            | Fee / Tx (₹)   | Native Token | Languages | Security (/10) | Finality    | Age    | Certificate Fit |
-| --------------- | -------------- | ----------------- | -------------- | ------------ | --------- | -------------- | ----------- | ------ | --------------- |
-| Lightning       | State Channel  | HTLC              | 0.05 - 0.50    | BTC          | Go, Rust  | 9.5            | Instant     | 7y 9m  | No              |
-| Ark Protocol    | Off-chain L2   | Virtual UTXO      | 0.50 - 3.00    | BTC          | Rust      | 8.5            | BTC-settled | ~2m    | No              |
-| RGB             | Client-side L2 | Client validation | 0.50 - 2.00    | BTC          | Rust      | 9.0            | BTC-anchor  | 2y 8m  | Partial         |
-| Merlin Chain    | Rollup         | ZK Rollup         | 1.00 - 5.00    | MERL         | Solidity  | 7.5            | 2-5s        | 1y 11m | Yes             |
-| Bitlayer        | Rollup         | BitVM + ZK        | 1.00 - 4.00    | BTR          | Solidity  | 7.5            | 2-5s        | 1y 8m  | Yes             |
-| B² Network      | Rollup         | ZK Rollup         | 1.00 - 4.50    | B²           | Solidity  | 7.5            | 2-5s        | 1y 8m  | Yes             |
-| Citrea          | Rollup         | ZK + BTC DA       | 2.00 - 7.00    | BTC          | Solidity  | 8.0            | ~5s         | <2m    | Early           |
-| BEVM            | Rollup         | Taproot EVM       | 3.00 - 10.00   | BTC          | Solidity  | 7.5            | 5-10s       | 1y 9m  | Yes             |
-| Core DAO        | Hybrid L2      | Satoshi Plus      | 3.00 - 10.00   | CORE         | Solidity  | 8.5            | 5-10s       | 2y 11m | Yes             |
-| BOB             | Hybrid Rollup  | Optimistic        | 4.00 - 12.00   | BTC          | Solidity  | 8.0            | ~5s         | 1y 7m  | Yes             |
-| BounceBit       | Rollup         | Optimistic        | 5.00 - 15.00   | BB           | Solidity  | 7.0            | ~5s         | 1y 7m  | Partial         |
-| Mintlayer       | Sidechain      | UTXO              | 6.00 - 20.00   | ML           | Rust      | 7.5            | ~10s        | 1y 11m | Partial         |
-| Stacks          | Bitcoin L1.5   | Nakamoto          | 15.00 - 50.00  | STX          | Clarity   | 8.0            | 10-15m      | 4y 11m | Partial         |
-| Rootstock (RSK) | Sidechain      | Merge-mined       | 20.00 - 70.00  | rBTC         | Solidity  | 8.0            | ~30s        | 7y 11m | Yes             |
-| Liquid          | Sidechain      | Federated         | 30.00 - 100.00 | L-BTC        | C++ / RPC | 7.0            | ~60s        | 7y 3m  | No              |
+| Chain           | L2 Type        | Design            | Fee / Tx (₹)   | Native Token | Languages | Security (/10) | Finality    | Age    | Certificate Fit | TVL (Approx)      | Daily Volume (Approx) |
+| --------------- | -------------- | ----------------- | -------------- | ------------ | --------- | -------------- | ----------- | ------ | --------------- | ----------------- | --------------------- |
+| Lightning       | State Channel  | HTLC              | 0.05 - 0.50    | BTC          | Go, Rust  | 9.5            | Instant     | 7y 9m  | No              | ~$0.30B           | ~$20M – $40M          |
+| Ark Protocol    | Off-chain L2   | Virtual UTXO      | 0.50 - 3.00    | BTC          | Rust      | 8.5            | BTC-settled | ~2m    | No              | ~$0 (not tracked) | ~$0 (early)           |
+| RGB             | Client-side L2 | Client validation | 0.50 - 2.00    | BTC          | Rust      | 9.0            | BTC-anchor  | 2y 8m  | Partial         | ~$0 (not tracked) | ~$0 (off-chain)       |
+| Merlin Chain    | Rollup         | ZK Rollup         | 1.00 - 5.00    | MERL         | Solidity  | 7.5            | 2-5s        | 1y 11m | Yes             | ~$0.16B           | ~$10M – $30M          |
+| Bitlayer        | Rollup         | BitVM + ZK        | 1.00 - 4.00    | BTR          | Solidity  | 7.5            | 2-5s        | 1y 8m  | Yes             | ~$0.40B           | ~$5M – $20M           |
+| B² Network      | Rollup         | ZK Rollup         | 1.00 - 4.50    | B²           | Solidity  | 7.5            | 2-5s        | 1y 8m  | Yes             | ~$0.37B           | ~$5M – $20M           |
+| Citrea          | Rollup         | ZK + BTC DA       | 2.00 - 7.00    | BTC          | Solidity  | 8.0            | ~5s         | <2m    | Early           | ~$0 (testnet)     | ~$0                   |
+| BEVM            | Rollup         | Taproot EVM       | 3.00 - 10.00   | BTC          | Solidity  | 7.5            | 5-10s       | 1y 9m  | Yes             | ~$0 (not indexed) | ~$0 (low activity)    |
+| Core DAO        | Hybrid L2      | Satoshi Plus      | 3.00 - 10.00   | CORE         | Solidity  | 8.5            | 5-10s       | 2y 11m | Yes             | ~$0.67B           | ~$10M – $40M          |
+| BOB             | Hybrid Rollup  | Optimistic        | 4.00 - 12.00   | BTC          | Solidity  | 8.0            | ~5s         | 1y 7m  | Yes             | ~$0.25B           | ~$5M – $15M           |
+| BounceBit       | Rollup         | Optimistic        | 5.00 - 15.00   | BB           | Solidity  | 7.0            | ~5s         | 1y 7m  | Partial         | ~$0.06B           | ~$1M – $5M            |
+| Mintlayer       | Sidechain      | UTXO              | 6.00 - 20.00   | ML           | Rust      | 7.5            | ~10s        | 1y 11m | Partial         | ~$0.05B           | ~$2M – $10M           |
+| Stacks          | Bitcoin L1.5   | Nakamoto          | 15.00 - 50.00  | STX          | Clarity   | 8.0            | 10-15m      | 4y 11m | Partial         | ~$0.18B           | ~$10M – $25M          |
+| Rootstock (RSK) | Sidechain      | Merge-mined       | 20.00 - 70.00  | rBTC         | Solidity  | 8.0            | ~30s        | 7y 11m | Yes             | ~$0.23B           | ~$5M – $15M           |
+| Liquid          | Sidechain      | Federated         | 30.00 - 100.00 | L-BTC        | C++ / RPC | 7.0            | ~60s        | 7y 3m  | No              | ~$3.0B            | ~$2M – $8M            |
+
 
 ## RGB and ARk protocol ( Not Suitable)
 
