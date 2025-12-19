@@ -24,11 +24,15 @@ Different types of Bitcoin L2s use different methods.
 | Rootstock (RSK) | Sidechain      | Merge-mined       | 20.00 - 70.00  | rBTC         | Solidity  | 8.0            | ~30s        | ~6y   | Yes             |
 | Liquid          | Sidechain      | Federated         | 30.00 - 100.00 | L-BTC        | C++ / RPC | 7.0            | ~60s        | ~5y   | No              |
 
--> RGB and ARk protocol - [100-200 rupees] :: The cost is only the Bitcoin network transaction fee for the anchoring transaction on L1. There's no extra RGB-specific fee
+## RGB and ARk protocol ( Not Suitable)
 
--> Lightning Network (TapRoot) - To start, you will need to pay roughly ₹1,500( 500 - 2000) in on-chain fees to set up your infrastructure (opening channels/minting). After that, sending individual certificates to users will cost you less than ₹1 per transaction - If we issue a single certificate or batch of certificates (using merkle root) it consts us that 1500 to 2000 - we dont have transfer features where we cant use lightning which is best for transfers , we just store data on the blockchain and verify - The issuance starts on Bitcoin Layer-1 for security, but sets up for Lightning transfers
+- [100-200 rupees] :: The cost is only the Bitcoin network transaction fee for the anchoring transaction on L1. There's no extra RGB-specific fee
 
-### Overview of Merlin Chain
+## Lightning Network using TapRoot ( Not Suitable)
+
+- To start, you will need to pay roughly ₹1,500( 500 - 2000) in on-chain fees to set up your infrastructure (opening channels/minting). After that, sending individual certificates to users will cost you less than ₹1 per transaction - If we issue a single certificate or batch of certificates (using merkle root) it consts us that 1500 to 2000 - we dont have transfer features where we cant use lightning which is best for transfers , we just store data on the blockchain and verify - The issuance starts on Bitcoin Layer-1 for security, but sets up for Lightning transfers
+
+# Overview of Merlin Chain ( Final Selected chain )
 
 Merlin Chain is a Bitcoin Layer 2 (L2) solution that uses ZK-Rollups, a decentralized oracle network, and on-chain BTC fraud proofs. It's EVM-compatible, meaning you can deploy Solidity smart contracts on it just like on Ethereum or other EVM chains. This allows seamless use of Ethereum tools, EIPs, precompiles, and opcodes in a Bitcoin ecosystem. The native currency is BTC (wrapped or bridged forms), and it supports low fees with high scalability.
 
@@ -118,7 +122,6 @@ If you run into issues, check the Medium guide for visuals: https://medium.com/@
 | `updateCertificateInBatchStatus` |          ~130,000 |    0.006 Gwei |      ~0.00078 MERL |          ~₹0.02 |
 | `updateCertificateMetadata`      |          ~200,000 |    0.006 Gwei |       ~0.0012 MERL |         ~₹0.035 |
 | `reissueWithMetadata`            |          ~240,000 |    0.006 Gwei |      ~0.00144 MERL |          ~₹0.04 |
-
 
 # Other Considerations
 
