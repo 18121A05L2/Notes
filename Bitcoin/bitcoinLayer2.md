@@ -109,19 +109,56 @@ If you run into issues, check the Medium guide for visuals: https://medium.com/@
 
 # 📊 Estimated Write Functions (Gas / MERL / ₹)
 
-| **Function**                     | **Est. Gas Used** | **Gas Price** | **Gas Fee (MERL)** | **Est Fee (₹)** |
-| -------------------------------- | ----------------: | ------------: | -----------------: | --------------: |
-| **Deployment (contract)**        |         5,000,000 |    0.006 Gwei |    ~0.03–0.04 MERL |      ~₹0.9–₹1.2 |
-| `issueCertificate`               |          ~220,000 |    0.006 Gwei |      ~0.00132 MERL |          ~₹0.04 |
-| `renewCertificate`               |          ~300,000 |    0.006 Gwei |       ~0.0018 MERL |          ~₹0.06 |
-| `updateSingleCertificateStatus`  |          ~130,000 |    0.006 Gwei |      ~0.00078 MERL |          ~₹0.02 |
-| `issueBatchOfCertificates`       |          ~180,000 |    0.006 Gwei |      ~0.00108 MERL |          ~₹0.03 |
-| `renewBatchOfCertificates`       |          ~250,000 |    0.006 Gwei |       ~0.0015 MERL |         ~₹0.045 |
-| `renewCertificateInBatch`        |          ~350,000 |    0.006 Gwei |       ~0.0021 MERL |          ~₹0.06 |
-| `updateBatchCertificateStatus`   |          ~130,000 |    0.006 Gwei |      ~0.00078 MERL |          ~₹0.02 |
-| `updateCertificateInBatchStatus` |          ~130,000 |    0.006 Gwei |      ~0.00078 MERL |          ~₹0.02 |
-| `updateCertificateMetadata`      |          ~200,000 |    0.006 Gwei |       ~0.0012 MERL |         ~₹0.035 |
-| `reissueWithMetadata`            |          ~240,000 |    0.006 Gwei |      ~0.00144 MERL |          ~₹0.04 |
+## Assumptions (explicit & important)
+
+- **Merlin avg gas price**: `0.15 Gwei`
+- **Merlin token price**: `$0.382`
+- **USD → INR**: `1 USD ≈ ₹83`
+- **1 Gwei = 1e-9 MERLIN**
+
+## Conversion Reference (used everywhere)
+
+```
+Gas Cost (MERLIN) = gasUsed × 0.15 × 10⁻⁹
+Cost (USD)        = MERLIN × 0.382
+Cost (INR)        = USD × 83
+```
+
+---
+
+## 🧾 WRITE FUNCTIONS – TRANSACTION COST ESTIMATION
+
+### 🔹 Single Certificate Operations
+
+| Function                        | Estimated Gas | Gas (Gwei) | Cost (₹) |
+| ------------------------------- | ------------- | ---------- | -------- |
+| `issueCertificate`              | ~180,000      | 27,000     | ₹0.86    |
+| `renewCertificate`              | ~210,000      | 31,500     | ₹1.00    |
+| `reissueCertificate`            | ~170,000      | 25,500     | ₹0.81    |
+| `reissueWithMetadata`           | ~200,000      | 30,000     | ₹0.95    |
+| `updateSingleCertificateStatus` | ~70,000       | 10,500     | ₹0.33    |
+| `updateCertificateMetadata`     | ~90,000       | 13,500     | ₹0.43    |
+
+---
+
+### 🔹 Batch Certificate Operations
+
+| Function                         | Estimated Gas | Gas (Gwei) | Cost (₹) |
+| -------------------------------- | ------------- | ---------- | -------- |
+| `issueBatchOfCertificates`       | ~120,000      | 18,000     | ₹0.57    |
+| `renewBatchOfCertificates`       | ~140,000      | 21,000     | ₹0.67    |
+| `renewCertificateInBatch`        | ~110,000      | 16,500     | ₹0.52    |
+| `updateBatchCertificateStatus`   | ~80,000       | 12,000     | ₹0.38    |
+| `updateCertificateInBatchStatus` | ~60,000       | 9,000      | ₹0.29    |
+
+---
+
+### 🔹 Admin / Control Operations
+
+| Function  | Estimated Gas | Gas (Gwei) | Cost (₹) |
+| --------- | ------------- | ---------- | -------- |
+| `pause`   | ~35,000       | 5,250      | ₹0.17    |
+| `unpause` | ~35,000       | 5,250      | ₹0.17    |
 
 # Other Considerations
 
