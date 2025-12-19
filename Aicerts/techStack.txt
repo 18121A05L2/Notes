@@ -2,3 +2,4 @@
     - SCSS improves readability, reuse, and scalability
 -> State management - zustand
 -> frontend with nextjs
+-> webhooks for external party integrations

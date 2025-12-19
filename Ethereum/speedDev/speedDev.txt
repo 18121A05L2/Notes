@@ -20,3 +20,4 @@
     - after changing code , enter ctrl + O
     - enter ctrl + X to save
 -> CTRL + -  -- to go back to the file where we are in vscode
+-> Alt + Tab - to shift between opened applications

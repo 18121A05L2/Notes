@@ -20,3 +20,4 @@
 -> why toggle was tab specific instead of window specific
 -> what is the difference between userdev and admindev
 -> was testverify and bot code was entirely on different repos
+-> when issuing a certificate , why we dont have a feature to be able to transfer that certificate to the user wallet
