@@ -1,0 +1,18 @@
+-> https://www.youtube.com/watch?v=GGaDSAMeopo
+-> Hardware -> Host OS -> Virtual Machine(HyperVisor) -> Guest OS -> we will run our Application here
+   - with the the help of docker we can pack this Guest OS and ship it to the services
+-> Containers was same as HyperVisor , only difference is in containers we dont install new OS , all the containers will share the same OS Kernal
+-> Hardware -> Host OS -> Docker -> we will run our Application inside the conainter
+-> Play with docker - https://labs.play-with-docker.com/p/d53q97c69qi000cflsd0
+-> Commands
+   - docker run hello-world
+   - docker ps -a ( ps: process status , a: all )
+   - docker image ls ( list all the images )
+   - docker rmi <ImageId> ( rmi : remove image )
+   - docker rm <ContainerId> ( remove container )
+   - docker image pull ubuntu:latest
+-> We can get all public images here - https://hub.docker.com/
+-> Difference between container and image
+    - Image = blueprint (read-only) :: House blueprint 
+    - Container = running (or stopped) instance of that blueprint :: Built house :: You can stop, restart, or destroy it
+-> Docker daemon (dockerd) is the background service that actually does all the work in Docker. Docker daemon is the boss — the CLI just asks it to do things.

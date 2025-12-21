@@ -1,0 +1,14 @@
+-> Fabric is a private blockchain and it has this feature called creating subnets and we call them as channels
+-> MSP ( Membership Service Provider ) - if we want to request to be a member of this private blockchain network we need to request or enroll throught this
+-> we can write smart contracts on this using chaincode
+-> Leader has two parts 
+    - world state
+    - transaction logs
+-> byfn ( build your first network ) - creates channels and multiple oraganizations , and these orgaizations have multiple peers
+-> Terms :: orgaization , network config , certificate authority , orderer , consortium , channel , channelconfig , peer , Ledger , smart contracts
+-> Order is responsible for ordering the transaction and publishing it to other nodes
+-> Difference between CFT ( Crash Fault Tolerance ) and BFT ( Byzantine Fault Tolerance )
+-> Application 1 will endorse the transaction to Peer1 and all the Peers on that need to sign it, then it will send the transaction to the Orderer and the Orderer will send it to all the Peers
+-> Project - https://www.youtube.com/playlist?list=PLSBNVhWU6KjWR1Ry6Ubue2uqQQNdIRGFs
+
+

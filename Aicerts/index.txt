@@ -4,6 +4,7 @@
 -> well structured code for backend
 -> storing data in local storage , user and token
 -> Charts & Visualization , PDF, Excel & Files , Canvas
+-> ubuntu creds lakshmi_sanikommu // Lucky@123
 
 
 

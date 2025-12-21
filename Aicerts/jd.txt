@@ -58,5 +58,22 @@ What We Offer
 
 
 Things to check:
-Different types of fees in ethereum
-if gas price spikes suddently .What can go wrong and how your DAP must handle it gracefully
+-> Different types of fees in ethereum
+-> if gas price spikes suddently .What can go wrong and how your DAP must handle it gracefully
+-> what should be the db selection criteria every developer must know while working on any project db selection criteria it will be based on like
+ it will be based on like how many reads we are going to do from that db and like we
+-> nginx nodejs
+-> So, you have job process which send daily emails to 10,000 users.But consistently it keep 10 to 200 users.
+    So, how you will fix this concurrency issue, batching and idem potency.
+-> So, you have to 10,000 send different users but every day few like 100 to user getting skip they are not getting meals so okay how you will fix this
+ concurrency issues and batching and high depotency to send like 10k mails daily we will be using something like a queue system like a instead of AWS
+  will bam will bam queues right which has like some control currency level so that like we will able to send emails like once at a time we can make
+   that process idepotent by generating a unique key per user per day so duplicates don't occur we use something like retrace and backoffs and we'll
+    also do logging and there is no duplication let's
+-> suppose there is no duplication at all okay in that case how like but it is keeping few users like hundreds to hundred user it is keeping on
+ delivery So how you will fix this concurrency issue and batching process. So it will not skip those 200 users.
+-> Yeah. We'll use something like some cursor batch, uh, cursor based batch system which offers a limit and and we'll be doing something like a and we'll
+ increase our batching technique so that it will it will reach to her and we'll be doing something like a retrace if we like if that thing was failing
+  because like whenever that thing failed we'll get something like an error rate and we'll avoid offset because like will avoid offsets because it causes 
+  something like a skipping and duplications and instead we use like some cursor fetching user IDs and yeah yeah so Lakshmi I am good from mind so there 
+  is one more thing so we will share one task with you and
