@@ -21,8 +21,14 @@ Notes from here - https://www.youtube.com/playlist?list=PLSBNVhWU6KjW4qo1RlmR7cv
     - Committing peers validate and write transactions to the ledger
 
 
+
 --------------- Commands ------------------------------
 -> peer channel list - Which peers joined which channel
+-> docker exec peer0.org1.example.com peer channel list - Check from inside the peer container
+-> docker-compose down -v ( v to remove volumes which delete databases here) ( ledger wiped clean )
+-> docker-compose up -d ( -d to run in detached mode) ( Terminal is NOT attached )
+
+
 
 
 

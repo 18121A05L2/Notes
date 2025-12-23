@@ -3,3 +3,7 @@
     - q → Quit
     - w → Write (save)
     - ! → Force action
+    -  rm .envVar.sh.swp → remove the swap file ( This happens if we dont close the file properly )
+-> mv renames when source and destination are in the same directory.
+-> [ -d pathOfDirectory ] checks if the directory exists
+-> [ -f pathOfDirectory ] checks if the file exists
