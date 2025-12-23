@@ -8,7 +8,23 @@
 -> Terms :: orgaization , network config , certificate authority , orderer , consortium , channel , channelconfig , peer , Ledger , smart contracts
 -> Order is responsible for ordering the transaction and publishing it to other nodes
 -> Difference between CFT ( Crash Fault Tolerance ) and BFT ( Byzantine Fault Tolerance )
--> Application 1 will endorse the transaction to Peer1 and all the Peers on that need to sign it, then it will send the transaction to the Orderer and the Orderer will send it to all the Peers
+-> Application 1 will endorse the transaction to Peer1 and all the Peers on that need to sign it, then it will send the transaction to the Orderer and the Orderer will finalize it send it to all the Peers
 -> Project - https://www.youtube.com/playlist?list=PLSBNVhWU6KjWR1Ry6Ubue2uqQQNdIRGFs
 
+Notes from here - https://www.youtube.com/playlist?list=PLSBNVhWU6KjW4qo1RlmR7cvvV8XIILub6
+-> Two peers are required to avoid downtime and endorsement failures
+    - We need only one CA(Certificate Authority) for each organization
+-> peer lifecycle chaincode querycommitted   -C mychannel   -n basic 
+    - endorsement policy is stored on the channel as part of the committed chaincode definition.
+-> the same peer can play multiple roles
+    - Endorsing peers simulate and sign transactions
+    - Committing peers validate and write transactions to the ledger
+
+
+--------------- Commands ------------------------------
+-> peer channel list - Which peers joined which channel
+
+
+
+Why do we need multiple orderers ?
 

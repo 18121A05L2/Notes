@@ -8,3 +8,4 @@
 -> How to use google notebook llm
 -> create a merkle tree using with all functionalities in js
 -> tanstack query which is used in wagmi
+-> Hyper ledger fabric - https://www.youtube.com/watch?v=85XgeOJHky0

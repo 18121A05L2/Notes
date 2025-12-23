@@ -1,0 +1,5 @@
+-> To interact with vim 
+    - : → Command mode
+    - q → Quit
+    - w → Write (save)
+    - ! → Force action
