@@ -1,10 +1,14 @@
-set -o errexit
-set -o pipefail
-set -o nounset
-set -o xtrace
+set -o xtrace    # print commands before execution (good)
 
 # ------------------------------------- Basic checks before running the network ---------------------------------
-cd ~
+
+# Go to the root path only on the local machine , not doing this on the remote server as we may have many files in the root folder which we may accidentally delete
+ if [[ -n "${SSH_CONNECTION:-}" ]]; then
+        echo "Running on remote server (via SSH)"
+    else
+        echo "Running locally"
+        cd ~
+    fi
 
 # Bring down Fabric test network (if exists)
 [ -d fabric/fabric-samples/test-network ] && (
@@ -35,9 +39,10 @@ cd fabric-samples/test-network/
 
 ./network.sh up
 
-./network.sh createChannel
+./network.sh createChannel -c mychannel
 
-./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go
+# ccn= chain code name , ccp= chain code path , ccl= chaincode langauge , c= channel
+./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go -c mychannel
 
 export PATH=${PWD}/../bin:$PATH
 export FABRIC_CFG_PATH=$PWD/../config/
@@ -61,7 +66,7 @@ peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.exa
 #Query the ledger
 peer chaincode query -C mychannel -n basic -c '{"Args":["GetAllAssets"]}'
 
-
+set +x
 #------------------------------------------------------ Explorer ----------------------------------------------------------
 cd ../../
 
@@ -82,3 +87,7 @@ docker-compose down -v
 
 # TODO : we need to set external = true
 docker-compose up -d
+
+--------------------------------------------------------- AFTER SETUP COMMANDS ----------------------------------------------------
+
+set o

@@ -28,7 +28,7 @@ docker pull hyperledger/explorer-db:2.0.0
 
 # Install Node.js (LTS) + npm
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && \
-sudo apt install -y nodejs && \
+sudo apt install -y nodejs 
 
 # ------------------------------------ Checking versions -------------------------------
 

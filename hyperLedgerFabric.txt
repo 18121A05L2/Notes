@@ -19,14 +19,29 @@ Notes from here - https://www.youtube.com/playlist?list=PLSBNVhWU6KjW4qo1RlmR7cv
 -> the same peer can play multiple roles
     - Endorsing peers simulate and sign transactions
     - Committing peers validate and write transactions to the ledger
+-> Difference between installed vs approved vs committed
+| Stage   | Scope   | Required by          | Purpose              |
+| ------- | ------- | -------------------- | -------------------- |
+| Install | Peer    | Every endorsing peer | Has the code         |
+| Approve | Org     | Every required org   | Agrees to definition |
+| Commit  | Channel | Once                 | Activates chaincode  |
+-> osnadmin is an Orderer System Network Admin tool ( OSN - Ordering Service Node )
+-> if we delete a channel from orderer and if that channel still prese on the peer node 
+   - This is a detached / orphaned channel on the peer. Peer cannot receive new blocks
+
 
 
 
 --------------- Commands ------------------------------
--> peer channel list - Which peers joined which channel
--> docker exec peer0.org1.example.com peer channel list - Check from inside the peer container
+-> peer channel list :: Which peers joined which channel
+-> docker exec peer0.org1.example.com peer channel list :: Check from inside the peer container
 -> docker-compose down -v ( v to remove volumes which delete databases here) ( ledger wiped clean )
 -> docker-compose up -d ( -d to run in detached mode) ( Terminal is NOT attached )
+-> peer lifecycle chaincode queryinstalled :: To check installed chaincodes on the current peer
+-> env | grep CORE_PEER :: To see the current organization and peer info
+-> source ./setOrgEnv.sh org2 :: Switch organization
+-> docker logs peer0.org1.example.com --tail 50 :: TO check current peer node logs
+
 
 
 

@@ -11,6 +11,7 @@
    - docker rmi <ImageId> ( rmi : remove image )
    - docker rm <ContainerId> ( remove container )
    - docker image pull ubuntu:latest
+   - docker exec -it peer0.org1.example.com bash :: This will navigate you directly to the peer bash terminal
 -> We can get all public images here - https://hub.docker.com/
 -> Difference between container and image
     - Image = blueprint (read-only) :: House blueprint 

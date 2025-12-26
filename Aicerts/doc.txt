@@ -1,0 +1,33 @@
+-> Debugging from orderer perspective 
+
+export ORDERER_CA=organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt
+export ORDERER_ADMIN_CERT=organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+export ORDERER_ADMIN_KEY=organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key
+export ORDERER_PEER_ADDRESS=localhost:7053
+
+# List all channels known to the orderer
+osnadmin channel list \
+  -o localhost:7053 \
+  --ca-file $ORDERER_CA \
+  --client-cert $ORDERER_ADMIN_CERT \
+  --client-key $ORDERER_ADMIN_KEY
+
+#Join an orderer to a channel
+osnadmin channel join \
+  -o localhost:7053 \
+  --channelID testchannel \
+  --config-block ./channel-artifacts/testchannel.block \
+  --ca-file $ORDERER_CA \
+  --client-cert $ORDERER_ADMIN_CERT \
+  --client-key $ORDERER_ADMIN_KEY
+
+#Remove an orderer from a channel  
+osnadmin channel remove \
+  -o localhost:7053 \
+  --channelID testchannel \
+  --ca-file $ORDERER_CA \
+  --client-cert $ORDERER_ADMIN_CERT \
+  --client-key $ORDERER_ADMIN_KEY
+
+
+
