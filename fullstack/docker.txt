@@ -1,7 +1,10 @@
 -> https://www.youtube.com/watch?v=GGaDSAMeopo
 -> Hardware -> Host OS -> Virtual Machine(HyperVisor) -> Guest OS -> we will run our Application here
    - with the the help of docker we can pack this Guest OS and ship it to the services
+   - Images bundle only user-space dependencies
+   - VMs bundle full OS + kernel
 -> Containers was same as HyperVisor , only difference is in containers we dont install new OS , all the containers will share the same OS Kernal
+   - Containers don't bring their own OS kernel — they share the host's kernel and only bundle the user-space dependencies they need.
 -> Hardware -> Host OS -> Docker -> we will run our Application inside the conainter
 -> Play with docker - https://labs.play-with-docker.com/p/d53q97c69qi000cflsd0
 -> Commands
@@ -12,8 +15,21 @@
    - docker rm <ContainerId> ( remove container )
    - docker image pull ubuntu:latest
    - docker exec -it peer0.org1.example.com bash :: This will navigate you directly to the peer bash terminal
+   - docker run -it <IMAGE> bash :: This will navigate you directly to the conainer bash terminal ( i : interactive , t : terminal )
+   - docker run -v <HOST_VOLUME_PATH>:<CONTAINER_VOLUME_PATH> 
+      - if we dont specify the Host path with -v , then the default path will be /var/lib/docker/volumes 
 -> We can get all public images here - https://hub.docker.com/
 -> Difference between container and image
     - Image = blueprint (read-only) :: House blueprint 
     - Container = running (or stopped) instance of that blueprint :: Built house :: You can stop, restart, or destroy it
 -> Docker daemon (dockerd) is the background service that actually does all the work in Docker. Docker daemon is the boss — the CLI just asks it to do things.
+-> Docker Compose is needed to define, start, and manage multiple interdependent containers as a single application.
+   - Docker alone runs one container.
+   - Real systems (like Fabric) are many containers that must agree on networks, volumes, ports, and startup order.
+-> Docker volumes are used for data persitence for stateful applications.
+   - when we are using volumes for any container , the database path in container will be replaced by the path of the host machine
+-> Dockerfile - Think of dockerfile as a set of instructions , a blueprint that tells Docker how to build your custom image
+-> Docker Networking - Allows containers to communicate with each other
+-> Docker scout - Checks and detects that vulnerabilities in the docker image with a known vulnerability database
+
+

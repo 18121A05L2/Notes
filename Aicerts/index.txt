@@ -22,4 +22,7 @@
 -> what is the difference between userdev and admindev
 -> was testverify and bot code was entirely on different repos
 -> when issuing a certificate , why we dont have a feature to be able to transfer that certificate to the user wallet
--> If I login today and again if i revist the website tomorrow , why am i logged out state
+-> If I login today and again if i revist the website tomorrow , why am i in logged out state
+-> need to remove all unused variables
+-> instead of plain numbers , using constants to that numbers will explain what that constant is
+-> seems like we are just logging the data , do we have any monitoring system for live website for each operation ( kind of newrlic )

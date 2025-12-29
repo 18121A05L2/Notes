@@ -4,9 +4,9 @@
 -> Leader has two parts 
     - world state
     - transaction logs
--> byfn ( build your first network ) - creates channels and multiple oraganizations , and these orgaizations have multiple peers
+-> test-network from fabric samples - creates channels and multiple oraganizations , and these orgaizations have multiple peers
 -> Terms :: orgaization , network config , certificate authority , orderer , consortium , channel , channelconfig , peer , Ledger , smart contracts
--> Order is responsible for ordering the transaction and publishing it to other nodes
+-> Orderer is responsible for ordering the transaction and publishing it to other nodes
 -> Difference between CFT ( Crash Fault Tolerance ) and BFT ( Byzantine Fault Tolerance )
 -> Application 1 will endorse the transaction to Peer1 and all the Peers on that need to sign it, then it will send the transaction to the Orderer and the Orderer will finalize it send it to all the Peers
 -> Project - https://www.youtube.com/playlist?list=PLSBNVhWU6KjWR1Ry6Ubue2uqQQNdIRGFs
@@ -14,7 +14,7 @@
 Notes from here - https://www.youtube.com/playlist?list=PLSBNVhWU6KjW4qo1RlmR7cvvV8XIILub6
 -> Two peers are required to avoid downtime and endorsement failures
     - We need only one CA(Certificate Authority) for each organization
--> peer lifecycle chaincode querycommitted   -C mychannel   -n basic 
+-> peer lifecycle chaincode querycommitted -C mychannel -n basic 
     - endorsement policy is stored on the channel as part of the committed chaincode definition.
 -> the same peer can play multiple roles
     - Endorsing peers simulate and sign transactions
@@ -26,8 +26,19 @@ Notes from here - https://www.youtube.com/playlist?list=PLSBNVhWU6KjW4qo1RlmR7cv
 | Approve | Org     | Every required org   | Agrees to definition |
 | Commit  | Channel | Once                 | Activates chaincode  |
 -> osnadmin is an Orderer System Network Admin tool ( OSN - Ordering Service Node )
--> if we delete a channel from orderer and if that channel still prese on the peer node 
+-> if we delete a channel from orderer and if that channel still present on the peer node 
    - This is a detached / orphaned channel on the peer. Peer cannot receive new blocks
+-> Peer hosts chaincode, but chaincode runs separately 
+   - dev-peer0.org2.example.com-basic_1.0-<hash> :: Chaincode runtime container
+   - Fabric isolates chaincode execution
+   - Chaincode containers are created on first invoke, not on deploy
+-> Exploration Roadmap
+    - Network → Identity → Channel → Chaincode → Endorsement → Operations
+-> HFC ( HyperLedger Fabric Client SDK )
+-> Multiple orderers are needed for fault tolerance, high availability, and decentralized trust when creating blocks
+    - Majority must be alive
+    - For mutile orderers we need Raft ordering service cluster
+
 
 
 
@@ -41,6 +52,7 @@ Notes from here - https://www.youtube.com/playlist?list=PLSBNVhWU6KjW4qo1RlmR7cv
 -> env | grep CORE_PEER :: To see the current organization and peer info
 -> source ./setOrgEnv.sh org2 :: Switch organization
 -> docker logs peer0.org1.example.com --tail 50 :: TO check current peer node logs
+-> docker volume prune -a :: To delete all unused volumes ( If we dont delete this , we may see prvious state of channels , ledgers etc...)
 
 
 

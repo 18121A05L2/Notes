@@ -29,5 +29,6 @@ osnadmin channel remove \
   --client-cert $ORDERER_ADMIN_CERT \
   --client-key $ORDERER_ADMIN_KEY
 
+-> If we see Jenkins website for Explorer, then 8080 port was already in use
 
 

@@ -66,6 +66,7 @@ peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.exa
 #Query the ledger
 peer chaincode query -C mychannel -n basic -c '{"Args":["GetAllAssets"]}'
 
+# turn off print commands before execution
 set +x
 #------------------------------------------------------ Explorer ----------------------------------------------------------
 cd ../../
@@ -83,11 +84,24 @@ export EXPLORER_CONFIG_FILE_PATH=./config.json
 export EXPLORER_PROFILE_DIR_PATH=./connection-profile
 export FABRIC_CRYPTO_PATH=./organizations
 
-docker-compose down -v
+docker-compose down -v # v to remove volumes
 
 # TODO : we need to set external = true
-docker-compose up -d
+docker-compose up -d # d to run in detached mode
 
---------------------------------------------------------- AFTER SETUP COMMANDS ----------------------------------------------------
+#--------------------------------------------------------- AFTER SETUP COMMANDS ----------------------------------------------------
 
-set o
+# turn off print commands before execution
+set +x
+
+
+
+
+
+#----------------------------------------------------------- Extra commands ----------------------------------------------
+
+#Deploy another chain code 
+ ./network.sh deployCC -ccn testChainCode -ccp ../asset-transfer-sbe/chaincode-typescript/ -ccl typescript -c mychannel
+
+ #invoke
+ peer chaincode invoke -C mychannel -n testChainCode -c '{"function":"InitLedger","Args":[]}' --waitForEvent

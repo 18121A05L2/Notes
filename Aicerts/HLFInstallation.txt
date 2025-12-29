@@ -1,6 +1,3 @@
-# ----------- other installations ---------------
-nodejs and npm
-
 #------------------------------------ Installation -------------------------------------
 
 sudo apt update && sudo apt install -y \
@@ -57,9 +54,5 @@ OR explicitly enable your distro (e.g. Ubuntu-22.04)
 
 Click Apply & Restart
 
-# -------------------------- Other script executions inside ubuntu --------------------------
-
-git config --global core.autocrlf false
-git config --global core.longpaths true
 
 

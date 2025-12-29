@@ -1,0 +1,5 @@
+-> Kubernetes is a container orchestration system for automating the deployment, scaling, and management of containerized applications.
+    - EX: running 1000 containers across 100 servers
+    - it is the ultimate tool for running complex and distributed applications
+-> Kubernetes groups one or more docker containers into pods
+   - a pod is the smallest unit in kubernetes and it shares the same network and storage
