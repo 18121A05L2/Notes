@@ -1,0 +1,1 @@
+-> FallbackProvider is a read-only, fault-tolerant RPC provider from ethers.js. It lets you combine multiple JSON-RPC providers so your app keeps working even if one RPC is slow, down, or returns bad data

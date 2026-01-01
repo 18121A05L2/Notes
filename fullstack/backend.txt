@@ -14,3 +14,5 @@
     - cache hit will get data from redis whereas the cache miss will get the data from db and then store it in redis
     - cache worker :: This will monitor the database for any data change and if something changes then cache worker will populate that data in redic cache ( so with this we dont have any stale data in cache )
     - Remote Dictionary Server
+-> Multer is Express middleware used to handle: multipart/form-data , file uploads from forms
+    - multer.memoryStorage() -  This setup allows your backend to receive a single or multiple uploaded files, keep it temporarily in memory, and then process or upload it to cloud storage.
