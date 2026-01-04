@@ -1,3 +1,9 @@
+-> Express 
+    - Route → Middleware → Controller → Service → Repository → Database
+    - repositories are used to separate data access logic from business logic, making the codebase cleaner, testable, and easier to scale or change databases in the future
+    - Controllers :: Functions that handle actual request logic
+    - Services :: Business logic that should NOT be tied to Express
+    - Jobs :: Background tasks like cronjobs
 -> MongoDb :: A NoSQL, document-oriented database storing data in BSON (binary JSON) format.
 -> Swagger is an opensource API documentation framework
     - swagger is a set of rules or a specification for a format describing REST APIs
@@ -16,3 +22,5 @@
     - Remote Dictionary Server
 -> Multer is Express middleware used to handle: multipart/form-data , file uploads from forms
     - multer.memoryStorage() -  This setup allows your backend to receive a single or multiple uploaded files, keep it temporarily in memory, and then process or upload it to cloud storage.
+-> SMTP is only to send Emails and IMAP or POP3 is to receive Emails
+    - This uses TCP to send data

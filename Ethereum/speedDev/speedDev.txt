@@ -21,3 +21,4 @@
     - enter ctrl + X to save
 -> CTRL + -  -- to go back to the file where we are in vscode
 -> Alt + Tab - to shift between opened applications
+-> Vs code tabs visualization title can be updated in UI setting of VS code
