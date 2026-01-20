@@ -24,3 +24,4 @@
     - multer.memoryStorage() -  This setup allows your backend to receive a single or multiple uploaded files, keep it temporarily in memory, and then process or upload it to cloud storage.
 -> SMTP is only to send Emails and IMAP or POP3 is to receive Emails
     - This uses TCP to send data
+-> MongoDB string matching is case-sensitive by default.   

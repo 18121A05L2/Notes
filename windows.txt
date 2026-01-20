@@ -1,0 +1,5 @@
+-> copy a folder from windows to wsl 
+   -  cp -r /mnt/c/Users/SanikommuLakshmiRedd/Documents/repos/contracts ~/lucky/
+-> To find if something was running on the speciific port
+   - netstat -ano | findstr :8003
+-> right arrow to autocomplete in windows

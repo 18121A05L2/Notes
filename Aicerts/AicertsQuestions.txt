@@ -12,4 +12,6 @@
 
 -> was lms and netcom contracts are the old ones which we are just supporting for now
 
+-> what does it mean audit trial
+
 
