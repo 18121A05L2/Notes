@@ -22,3 +22,4 @@
 -> CTRL + -  -- to go back to the file where we are in vscode
 -> Alt + Tab - to shift between opened applications
 -> Vs code tabs visualization title can be updated in UI setting of VS code
+-> cl and then click tab to have the console.log() in js files

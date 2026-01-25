@@ -1,0 +1,45 @@
+Full Stack Blockchain Developer 
+
+Experience: 3+ Years Location: Remote Employment Type: Full-time 
+
+About the Role 
+
+We are looking for a Full Stack Blockchain Developer with 3+ years of experience to design, develop, and maintain scalable blockchain-enabled applications. The ideal candidate will work across smart contracts, backend services, and frontend interfaces, and collaborate closely with product, DevOps, and security teams. 
+
+Key Responsibilities 
+
+● Design, develop, and maintain full stack blockchain applications (WebApp / 
+DApp). 
+● Develop and deploy smart contracts and integrate them with frontend and backend systems. 
+● Build and maintain frontend interfaces using modern JavaScript frameworks. 
+● Develop backend services and APIs to support blockchain interactions. 
+● Integrate wallets, blockchain RPCs, and on-chain/off-chain data flows. 
+● Ensure application security, performance, and scalability. 
+● Participate in code reviews, architecture discussions, and technical documentation. 
+● Collaborate with DevOps teams to support deployment and monitoring workflows. 
+Required Skills & Qualifications 
+● 3+ years of professional experience as a Full Stack Developer. 
+● Strong proficiency in JavaScript / TypeScript. 
+● Experience with frontend frameworks such as React, Next.js, or similar. 
+● Experience building backend services using Node.js (or similar). 
+● Hands-on experience with blockchain development, including: 
+○ Smart contracts (Solidity) 
+○ Web3 libraries (ethers.js, web3.js, etc.) 
+○ Wallet integrations and transaction flows 
+● Solid understanding of REST APIs and/or GraphQL. 
+● Familiarity with databases (SQL and/or NoSQL). 
+● Strong understanding of security best practices, especially in blockchain applications. 
+Good to Have (Preferred Skills) 
+● Understanding of containerization using Docker. 
+● Exposure to Kubernetes or managed container platforms. 
+● Experience with CI/CD pipelines (GitHub Actions, GitLab CI, Jenkins, etc.). 
+● Experience with cloud platforms (AWS, GCP, or Azure). 
+● Familiarity with Ethereum node infrastructure, RPC providers, or indexing services. 
+● Prior experience working with DeFi, staking, or Web3 infrastructure projects. 
+● Knowledge of monitoring and logging tools. 
+What We Offer 
+● Opportunity to work on cutting-edge blockchain infrastructure and applications. 
+● Flexible working environment. 
+● Competitive compensation based on experience. 
+● Collaborative, engineering-driven culture. 
+● Exposure to production-grade blockchain systems and real-world use cases. 
