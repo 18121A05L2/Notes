@@ -1,4 +1,4 @@
--> anchor is framework for quickly building secure solana programs
+-> anchor is a framework for quickly building secure solana programs
     - It handles serialization and deserialization of Instruction data
     - handles checks for us and generate an interface so that we can interact from frontend ( kind of ABI )
         - IDL generation (Interface Description Language) for frontend integration
@@ -10,7 +10,7 @@
 -> we need to define one struct (which derives Accounts) for each of the instruction that we want to handle for our functions
     - struct would inherit the Accounts trait
 -> Anchor in solana - A Domain-Specific Language is a small, specialized “mini-language” designed to make programming within a certain domain easier
--> whenever we are writing and instruction for an anchor the very first parameter that needs to pass throgh the instruction is going to be context
+-> whenever we are writing instruction for an anchor the very first parameter that needs to pass throgh the instruction is going to be context
     - context macro is used to define a struct that encapsulates all the accounts that will be passed through a given instruction handler
 -> #[derive(Accounts)] - This is used on a Rust struct that defines the full list of accounts required for an instruction (handler) --- [Who’s coming to the function?]
     - Context struct

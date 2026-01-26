@@ -1,0 +1,9 @@
+
+-> providing an example of the usage of the integration platforms with those platforms/applications
+
+-> For hub spot , once i have stared the integration and if i forgot to store the apikey and if i revist again i was facing issue
+
+-> docsign - https://userdev.certs365.io/documentation?platform=docusign - origin url in this was not working
+
+
+

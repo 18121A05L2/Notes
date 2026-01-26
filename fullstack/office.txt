@@ -1,3 +1,4 @@
+-> How single SPA like bootstrap works and what are all required to build one
 -> Learn Newrelic commands
 -> How nx works and helpful for monorepo ( to build fullstack blockchain apps )
 -> https://github.com/ishwarrimal/frontend-interview-preparation
@@ -7,3 +8,4 @@
 -> How to use google notebook llm
 -> create a merkle tree using with all functionalities in js
 -> tanstack query which is used in wagmi
+-> Hyper ledger fabric - https://www.youtube.com/watch?v=85XgeOJHky0

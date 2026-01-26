@@ -1,0 +1,58 @@
+#------------------------------------ Installation -------------------------------------
+
+sudo apt update && sudo apt install -y \
+  git curl jq ca-certificates gnupg lsb-release unzip && \
+curl -fsSL https://get.docker.com | sudo sh && \
+sudo usermod -aG docker $USER && \
+
+# Install Go 1.23.2
+curl -LO https://go.dev/dl/go1.23.2.linux-amd64.tar.gz && \
+sudo rm -rf /usr/local/go && \
+sudo tar -C /usr/local -xzf go1.23.2.linux-amd64.tar.gz && \
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && \
+
+# Install Hyperledger Fabric binaries & images
+curl -sSLO https://raw.githubusercontent.com/hyperledger/fabric/main/scripts/install-fabric.sh && \
+chmod +x install-fabric.sh && \
+./install-fabric.sh docker binary && \
+
+# Add Fabric binaries (peer, orderer) to PATH
+echo 'export PATH=$PATH:$HOME/fabric-samples/bin' >> ~/.bashrc && \
+
+# Pull Fabric Explorer images
+docker pull hyperledger/explorer:2.0.0 && \
+docker pull hyperledger/explorer-db:2.0.0
+
+# Install Node.js (LTS) + npm
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && \
+sudo apt install -y nodejs 
+
+# ------------------------------------ Checking versions -------------------------------
+
+git --version
+curl --version
+jq --version
+docker --version
+go version
+peer version
+node -v 
+npm -v
+
+#-------------------------- need to enable this in docker settings -----------------------
+
+Open Docker Desktop (Windows side)
+
+Start Docker Desktop
+
+Go to Settings → Resources → WSL Integration
+
+Enable:
+
+✅ Enable integration with my default WSL distro
+
+OR explicitly enable your distro (e.g. Ubuntu-22.04)
+
+Click Apply & Restart
+
+
+

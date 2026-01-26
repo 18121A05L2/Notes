@@ -1,0 +1,14 @@
+-> ceu , pdu , cpe - expalin these
+| Term | Full Form                         | Hour Conversion  | Common Users                        |
+| ---- | --------------------------------- | ---------------- | ----------------------------------- |
+| CEU  | Continuing Education Unit         | 1 CEU = 10 hours | Universities, regulated professions |
+| PDU  | Professional Development Unit     | 1 PDU = 1 hour   | PMI (PMP, Agile)                    |
+| CPE  | Continuing Professional Education | 1 CPE = 1 hour   | Cybersecurity, accounting           |
+
+-> | Platform | Focus               | Question it answers             |
+| -------- | ------------------- | ------------------------------- |
+| LMS      | Training delivery   | Did they finish the course?     |
+| LXP      | Learning experience | What should they learn next?    |
+| HRMS     | Workforce data      | Are they compliant & qualified? |
+
+-> canvas token - 7~GRzfwtXCEUw9z2D3DVHHMtnFwH2wNBfK9wJUZtQ49FttfKNErUBfynn6V8TFJUWy

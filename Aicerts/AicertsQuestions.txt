@@ -1,0 +1,17 @@
+-> do we have separate repo for Hyperledger fabric API end points ?
+ 
+-> if issuance on Hyperledger fabric or Solana fails , are we reissuing the same on public blockchains ?
+ 
+-> 2(HLF) and 3(Solana) , but how are we differentiating between optimism and polygon in code , I was not able find, we are defaulting to the contract address that was given in env  ?
+
+-> LMS contract seems to be minimal version of AI certs contracts , why do we need LMS contract when we have a better Implementation of AICerts contract
+
+-> LMS website link ?
+
+-> is aicerts_node_ts was the improved implementation of aicerts_node_js
+
+-> was lms and netcom contracts are the old ones which we are just supporting for now
+
+-> what does it mean audit trial
+
+

@@ -1,10 +1,8 @@
--> fix the zkmixer frontend to be able to withdraw
+-> Better UI for the projects overview
 
--> uniswap contracts exploration
+-> uniswap contracts exploration ( v1 , v2 , v3 , v4 )
 
 -> proof of innocense
-
--> complete Raisebox Faucet codehawks tomorrow
 
 -> need to go throgh all rust concepts and build a small project on solana
 
@@ -16,3 +14,5 @@
 # --------------------------- DONE ---------------------
 -> need to build zkmixer , by end of july 2025 
     - will all latest tech stack 
+
+-> fix the zkmixer frontend to be able to withdraw

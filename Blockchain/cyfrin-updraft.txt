@@ -19,3 +19,6 @@
 —> bridging mechanisms 1) locking and unlocking 2) burning and minting 
 -> algorithmic stablecoin : Dai , Frax and rai
 -> Curve - decentralized stablecoin exchange
+-> In the context of EVM-compatible transactions, what identifier typically represents the original, pre-EIP-1559 transaction format ? - '0x0'
+-> Which transaction type is primarily associated with the introduction of a base fee and priority fee mechanism aimed at improving gas price predictability? - EIP-1559 ( Type 2)
+-> What underlying standard provides a framework allowing EVM-compatible systems to recognize and process different transaction structures beyond the original format? - EIP-2718 (Typed Transaction Envelope)

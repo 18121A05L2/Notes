@@ -1,0 +1,9 @@
+→ Bitcoin Core requires a one-time download of about 600GB of data plus a further 5-10GB per month
+—> Every 2016 blocks, or roughly every two weeks, the Bitcoin protocol adjusts the target used in Bitcoin mining  
+    - if more blocks were created in that 2016 blocks - 2 weeks time frame , then the difficulty  is increased and if less 
+      blocks were created in 2 weeks time frame , then the difficulty is decreased
+—> Lightning Network and Rootstock aim to bring smart contract functionality to Bitcoin , how? - BITVM
+-> Because Bitcoin cuts the block reward in half every 210,000 blocks (~4 years)
+  - Dwindling issuance in Bitcoin refers to the fact that the amount of new BTC created per block keeps decreasing over time
+  - 99.5% of bitcoin revenue comes from new token issuances , only half a percent of revenue comes from transaction fees
+      - 3 bitcoins per day from fees

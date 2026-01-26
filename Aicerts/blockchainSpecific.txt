@@ -1,0 +1,10 @@
+-> implementation contract - https://polygonscan.com/address/0x594e2c1b3db8d2f4e50bd9cbc507eabd192825da#code
+    - https://vscode.blockscan.com/137/0x594e2c1b3db8d2f4e50bd9cbc507eabd192825da
+-> proxy contract - https://polygonscan.com/address/0xb63cd8616d922d157b3494adceb1a3578df9ecde#code
+
+-> Smart contracts
+    - LMS_CONTRACT=0xd780398aDd35411125dbC6662431EEea04fFDB32
+    - NETCOM_CONTRACT=0xd23dE7ABF5B6BB5Cda52d94914c0662e0Ca05f82
+    - CERTS365_CONTRACT=0xB63CD8616D922d157b3494AdcEB1A3578dF9eCdE
+    - Credits_365=0xc068bF8EEdA83Cc59E00F94d132d5C7F8fD264f4
+

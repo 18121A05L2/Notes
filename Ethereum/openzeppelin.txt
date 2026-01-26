@@ -1,3 +1,4 @@
+-> enumerable generally means the ability to iterate or loop through a collection of items one by one
 -> The EnumerableSet library from OpenZeppelin provides a powerful tool for managing collections of unique values in Solidity. It offers 
     efficient ways to store, retrieve, and enumerate over sets of data, making it perfect for use cases like access control, governance, and 
     token management.

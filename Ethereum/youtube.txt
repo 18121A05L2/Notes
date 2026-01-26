@@ -5,6 +5,8 @@ https://www.youtube.com/watch?v=KgnMJB01-iU
 https://www.youtube.com/watch?v=IYkAlMSF4tY
 https://www.youtube.com/watch?v=zo72TWXrc3Y
 https://www.youtube.com/watch?v=qtBsL90-J_4
+https://www.youtube.com/watch?v=gnfzpGLcrKc
+https://www.youtube.com/watch?v=Csul0kMjnQA
 -> https://www.youtube.com/watch?v=CfxQzbow_TI ( short and long term focus goals)
     - Block level access list - how can it provide parallel processing , will this parallel processing only for verification or for execution too 
         - blocks will going to contain the information that says what are the things that happened as a result of every transaction then every node that verifies the block is able to process the every single transaction in parallel

@@ -1,0 +1,1 @@
+-> add user in management portal was doing department call again as we already have departments api was triggering on page load

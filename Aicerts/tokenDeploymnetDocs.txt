@@ -1,0 +1,15 @@
+-> ( Quickswap V3 - Non fungible position manager ) https://polygonscan.com/address/0x8ef88e4c7cfbbac1c163f7eddd4b578792201de6
+   - Recently listed quick swap - https://polygonscan.com/address/0x391ef4487eedb9b0051c239cde097521418d169f#tokentxns
+       - https://dexscreener.com/polygon/0x03cD6D7bd50f1B5376FD122A975CbbDacC300095
+       - https://www.dextools.io/app/polygon/pair-explorer/0x391ef4487eedb9b0051c239cde097521418d169f
+-> Latest created pools on uniswp v3 - https://etherscan.io/advanced-filter?fadd=0xc36442b4a4522e871399cd717abdd847ab11fe88&tadd=0xc36442b4a4522e871399cd717abdd847ab11fe88&mtd=0x13ead562%7eCreate+And+Initialize+Pool+If+Necessary
+   latest created pools on quickswap - https://polygonscan.com/advanced-filter?fadd=0x8ef88e4c7cfbbac1c163f7eddd4b578792201de6&tadd=0x8ef88e4c7cfbbac1c163f7eddd4b578792201de6&mtd=0x51246d6e%7eCreate+And+Initialize+Pool+If+Necessary
+
+-> DexTools 
+    - Token update on dex tools - https://www.dextools.io/marketplace/en/create-socials ( It was asking for payment and some docs says initial requires does not require any payment)
+        - Do this with the company wallet address
+    - As soon as the first trade executes on that QuickSwap pool, DEXTools should detect and index the pair automatically.
+    - No strict minimum liquidity or volume is required for basic visibility, but very low-liquidity pools might take longer to appear or show lower in searches
+-> Dexscreener
+    - https://telegram.me/dexscreenerchat
+    - updating social urls was not free

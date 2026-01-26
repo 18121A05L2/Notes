@@ -78,3 +78,4 @@
 --> So Chisel is just showing you for : abi.encode("name") - output will be ( pointer + length + actual data)
         Memory layout (how EVM stores it)
         Tuple encoding layout (how ABI would serialize it for function calls / logs)
+-> Chisel is a fast, utilitarian, and verbose Solidity REPL (Read-Eval-Print Loop) that is part of the Foundry suite of Ethereum development tools

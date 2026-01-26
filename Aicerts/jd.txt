@@ -1,0 +1,79 @@
+Full Stack Blockchain Developer — Job Description
+
+About the Company
+We are building next-generation blockchain-based credentialing and verification platforms,
+empowering organizations to issue verifiable, tamper-proof, and trustless digital certificates.
+Our ecosystem spans issuance platforms, verification portals, admin consoles, and mobile
+DApps, all powered by decentralized ledger technology and secure smart contracts.
+Key Responsibilities
+As a Full Stack Blockchain Developer, you will design, develop, and deploy
+blockchain-integrated web applications and APIs that bring trust, transparency, and automation
+to digital verification processes.
+
+Blockchain Development
+• Design, develop, test, and deploy smart contracts (ERC20, ERC721, ERC1155).
+• Build blockchain-based modules for issuance, verification, and metadata storage.
+• Use Solidity, Hardhat, Truffle, or Foundry for development.
+• Integrate blockchain operations using ethers.js, web3.js, and IPFS.
+• Maintain interoperability across Ethereum, Polygon, BNB, and Hyperledger Fabric.
+
+Full Stack Web & API Development
+• Develop scalable front-end interfaces with React.js/Next.js.
+• Implement backends using Node.js, Express.js, or NestJS.
+• Design RESTful and GraphQL APIs for issuance, verification, and wallet management.
+• Manage databases (PostgreSQL, MongoDB) and implement caching.
+• Develop admin dashboards, portals, and RBAC-based modules.
+
+Infrastructure & DevOps
+• Manage deployments via Docker, CI/CD, and cloud setups.
+• Implement containerized environments and monitor uptime.
+• Develop transaction queueing, error recovery, and async processing.
+
+Security & Testing
+• Conduct smart contract security audits and gas optimizations.
+• Implement fail-safes for transaction errors.
+• Perform unit and end-to-end testing.
+• Maintain documentation for APIs and architecture.
+
+Required Technical Skills
+Blockchain: Solidity, Hardhat, ethers.js, web3.js, ERC20/721/1155, IPFS
+Full Stack: React.js, Next.js, Node.js, Express.js, NestJS, PostgreSQL, MongoDB, Redis
+Infra: Docker, AWS, GCP, CI/CD, Nginx, Git
+Tools: Postman, Infura, Alchemy, Pinata
+
+Preferred Qualifications
+• DApp, NFT, or tokenized platform experience.
+• Hyperledger Fabric or permissioned blockchain knowledge.
+• Layer 2 scaling (Polygon, Arbitrum) familiarity.
+• Understanding of verifiable credentials, DIDs, SBTs, and tokenomics.
+
+Soft Skills
+• Strong problem-solving and analytical skills.
+• Ownership mindset, attention to detail, and agile adaptability.
+• Excellent communication and teamwork abilities.
+
+What We Offer
+• Competitive salary and performance-based incentives.
+
+
+
+Things to check:
+-> Different types of fees in ethereum
+-> if gas price spikes suddently .What can go wrong and how your DAP must handle it gracefully
+-> what should be the db selection criteria every developer must know while working on any project db selection criteria it will be based on like
+ it will be based on like how many reads we are going to do from that db and like we
+-> nginx nodejs
+-> So, you have job process which send daily emails to 10,000 users.But consistently it keep 10 to 200 users.
+    So, how you will fix this concurrency issue, batching and idem potency.
+-> So, you have to 10,000 send different users but every day few like 100 to user getting skip they are not getting meals so okay how you will fix this
+ concurrency issues and batching and high depotency to send like 10k mails daily we will be using something like a queue system like a instead of AWS
+  will bam will bam queues right which has like some control currency level so that like we will able to send emails like once at a time we can make
+   that process idepotent by generating a unique key per user per day so duplicates don't occur we use something like retrace and backoffs and we'll
+    also do logging and there is no duplication let's
+-> suppose there is no duplication at all okay in that case how like but it is keeping few users like hundreds to hundred user it is keeping on
+ delivery So how you will fix this concurrency issue and batching process. So it will not skip those 200 users.
+-> Yeah. We'll use something like some cursor batch, uh, cursor based batch system which offers a limit and and we'll be doing something like a and we'll
+ increase our batching technique so that it will it will reach to her and we'll be doing something like a retrace if we like if that thing was failing
+  because like whenever that thing failed we'll get something like an error rate and we'll avoid offset because like will avoid offsets because it causes 
+  something like a skipping and duplications and instead we use like some cursor fetching user IDs and yeah yeah so Lakshmi I am good from mind so there 
+  is one more thing so we will share one task with you and

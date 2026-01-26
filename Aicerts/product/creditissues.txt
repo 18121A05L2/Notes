@@ -1,0 +1,42 @@
+-> In credit365 for super admin page , we are not able to sort list based on the onboraded datae
+
+-> we are not showing which organization we are deleting on the deletion confirmation popup
+
+-> i have created a admin user and deleted and then again tried to create the same user , but it was not able to create the user
+
+curl 'https://stage.credits365.ai/credits/api/superadmin/organization/create' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en' \
+  -H 'Access-Control-Allow-Methods: *' \
+  -H 'Access-Control-Allow-Origin: *' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbGF5QGFpY2VydHMuaW8iLCJhdXRoVHlwZSI6IlVzZXIiLCJpYXQiOjE3NjcyMTMwMDgsImV4cCI6MTc2NzI5OTQwOH0.G3aWspxv42QJKh0CnGZPRCtqc2pWaT7ZzfmBFrmyi2I' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryDnWDY7qsgo5dTMA6' \
+  -H 'DNT: 1' \
+  -H 'Origin: https://stage.credits365.ai' \
+  -H 'Referer: https://stage.credits365.ai/superadmin/dashboard/add' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Mobile Safari/537.36' \
+  -H 'sec-ch-ua: "Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?1' \
+  -H 'sec-ch-ua-platform: "Android"' \
+  --data-raw $'------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="institutionName"\r\n\r\nTest organizationn\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="description"\r\n\r\n\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="organizationType"\r\n\r\nUniversity\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="officialEmail"\r\n\r\nlucky2892000@gmail.com\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="contactPersonName"\r\n\r\nLakshmi Reddy Sanikommu\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="contactNumber"\r\n\r\n+91 6786543456\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="address"\r\n\r\nHyd\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="isLMSAdmin"\r\n\r\ntrue\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="logoFile"; filename="download (1).jfif"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="creditPolicy[creditType]"\r\n\r\nAcademic\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="creditPolicy[expiry]"\r\n\r\n20\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6\r\nContent-Disposition: form-data; name="creditPolicy[maxCreditsToUse]"\r\n\r\n100\r\n------WebKitFormBoundaryDnWDY7qsgo5dTMA6--\r\n'
+
+-> Add learner is not working when user created throught organization
+
+-> mail was not working when adding a new learner
+
+Questions 
+
+-> How do we show current looged in admin of credit365 of from which platform he came from
+
+-> https://stage.credits365.ai/superadmin/dashboard - how can we search for one specific user with email or name
+    - if any user has raised issue that he is facing some weird issue with his account , then we can able to debug better by getting his user info in a fater way
+
+-> will we use this api end point - api/connector/canvas/learners when we are onboarding a new instructor to our platform to issue
+
+-> what if a user was using two lms platforms , how will we handle that ?
+
+-> If i add an account in canvas after how much of time do i need to wait for that account to show up in our platform
