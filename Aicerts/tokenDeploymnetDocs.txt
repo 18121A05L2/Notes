@@ -1,7 +1,10 @@
--> ( Quickswap V3 - Non fungible position manager ) https://polygonscan.com/address/0x8ef88e4c7cfbbac1c163f7eddd4b578792201de6
-   - Recently listed quick swap - https://polygonscan.com/address/0x391ef4487eedb9b0051c239cde097521418d169f#tokentxns
-       - https://dexscreener.com/polygon/0x03cD6D7bd50f1B5376FD122A975CbbDacC300095
+-> Quick Swap 
+    - How to add liquidity -  https://docs.quickswap.exchange/how-to-guides/lp-liquidity-providing
+    - ( Quickswap V3 - Non fungible position manager ) https://polygonscan.com/address/0x8ef88e4c7cfbbac1c163f7eddd4b578792201de6
+   - Recently listed quick swap pair - https://polygonscan.com/address/0x391ef4487eedb9b0051c239cde097521418d169f#tokentxns
+       - https://dexscreener.com/polygon/0x391Ef4487EEDB9b0051c239cdE097521418D169f
        - https://www.dextools.io/app/polygon/pair-explorer/0x391ef4487eedb9b0051c239cde097521418d169f
+       - https://dex.coinmarketcap.com/token/polygon/0x03cD6D7bd50f1B5376FD122A975CbbDacC300095/
 -> Latest created pools on uniswp v3 - https://etherscan.io/advanced-filter?fadd=0xc36442b4a4522e871399cd717abdd847ab11fe88&tadd=0xc36442b4a4522e871399cd717abdd847ab11fe88&mtd=0x13ead562%7eCreate+And+Initialize+Pool+If+Necessary
    latest created pools on quickswap - https://polygonscan.com/advanced-filter?fadd=0x8ef88e4c7cfbbac1c163f7eddd4b578792201de6&tadd=0x8ef88e4c7cfbbac1c163f7eddd4b578792201de6&mtd=0x51246d6e%7eCreate+And+Initialize+Pool+If+Necessary
 
@@ -11,5 +14,63 @@
     - As soon as the first trade executes on that QuickSwap pool, DEXTools should detect and index the pair automatically.
     - No strict minimum liquidity or volume is required for basic visibility, but very low-liquidity pools might take longer to appear or show lower in searches
 -> Dexscreener
-    - https://telegram.me/dexscreenerchat
+    - (we can post here if we get any issue or if we have questions ) https://telegram.me/dexscreenerchat
     - updating social urls was not free
+-> CoinGecko 
+    - How to list on coingecko - https://support.coingecko.com/hc/en-us/articles/7291312302617-How-to-list-new-cryptocurrencies-on-CoinGecko
+    - Public verification post -  https://support.coingecko.com/hc/en-us/articles/23725417857817-Verification-Guide-for-Listing-Update-Requests-on-CoinGecko
+        - This needs for coinmarketcap
+    - Rejection chances - https://support.coingecko.com/hc/en-us/articles/4498809321369-Why-is-my-token-not-listed-on-CoinGecko
+-> Whitepaper 
+    - we need to provide this link when listing on coingecko and coinmarketcap
+    - need Distribution Schedule in it 
+-> Automatic Price Appearance Platforms (DexTools, Dexscreener, Gecko Terminal , dex coinmarketcap)
+
+-> Bare minimum To get listed on CoingGeco and coinmarketcap 
+| Metric         | CoinGecko   | CoinMarketCap |
+| -------------- | ----------- | ------------- |
+| Liquidity      | $10k (min)  | $50k (min)    |
+| Safe liquidity | $25k - $50k | $100k - $250k |
+| 24h volume     | $5k         | $25k          |
+| Safe volume    | $10k - $25k | $50k - $150k  |
+| Trades/day     | 20 - 30     | 100+          | - Trading needs to come from differt wallets
+| Token age      | 3 - 7 days  | 7 - 14 days   |
+
+-> How and Where to Lock liquidity
+-> Which liquidity mananger to use ( https://defillama.com/protocols/Liquidity%20manager )
+    - Most locked liquidity mananger - Steer Protocol
+    - Most Polygon liquidity mananger - Gama Protocol
+        - Better first impression on QuickSwap
+
+-> Sniper Bots Mitigation strategies
+    - The "Trap" Tax (High Initial Taxes):
+       - How it works: You code the contract to have adjustable taxes. At launch, you set the Buy/Sell tax to 99%.
+       - The Strategy: 1. Add Liquidity. 2. Bots snipe immediately. 3. The 99% tax means they pay for the tokens but receive almost nothing (or the tax goes to the LP/Marketing wallet). 4. After 5–10 minutes (or a specific block count), you manually lower the tax to your normal rate (e.g., 5%).
+    - Trading Enable Switch:
+       - How it works: Pause trading by default (tradingEnabled = false). You can add liquidity freely while trading is paused.
+       - The Launch: Once liquidity is added and stable, you call a function enableTrading()
+    - Launch Strategy (Process Flow)
+        - If you are managing the launch yourself, follow this sequence to confuse basic bots:
+        - Deploy Contract: Ensure tradingEnabled is set to false.
+        - Mint Tokens: Send tokens to your deployer wallet.
+        - Create the Pair: Create the Token/MATIC pair on QuickSwap manually without adding full liquidity yet (or add a tiny amount of test liquidity if needed, but be careful).
+        - Add Full Liquidity: Add your MATIC and Tokens to the pool. Since tradingEnabled is false, bots will see the liquidity but the transaction will fail if they try to buy.
+        - Enable with High Tax: Set tax to 99%. Call enableTrading().
+        - Wait: Let the aggressive snipers fail or get taxed 99%.
+        - Normalize: Lower tax to normal levels and announce to your community that trading is live.
+
+-> 20 tokens + 2 dollars usd ( 0.1 dollar price )
+
+-> Sandwitch attacks mitigation ( Not Recommended as it increases gas fee)
+    - Cooldown Timers (Anti-MEV):
+        - Add a requirement that a single wallet cannot buy and sell in the same block.
+        - Why it works: A sandwich attack requires a Buy-UserBuy-Sell sequence all in one block. By forcing a 1-block or 30-second delay between trades, the bot is forced to hold the tokens, exposing them to market risk.
+
+        function _update(address from, address to, uint256 value) internal virtual override {
+            if (cooldownEnabled) {
+                // Prevents buying and selling in the same block
+                require(_lastTradeBlock[tx.origin] < block.number, "Cooldown: One trade per blockm per address");
+                _lastTradeBlock[tx.origin] = block.number;
+            }
+            super._update(from, to, value);
+        }
