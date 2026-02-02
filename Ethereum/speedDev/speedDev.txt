@@ -23,3 +23,10 @@
 -> Alt + Tab - to shift between opened applications
 -> Vs code tabs visualization title can be updated in UI setting of VS code
 -> cl and then click tab to have the console.log() in js files
+-> Kill any specific port 
+    - lsof -i :3000
+    - kill -9 80312
+    - One liner :: kill -9 $(lsof -ti :3000)
+
+
+

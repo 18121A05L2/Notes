@@ -1,9 +1,9 @@
 -> https://www.youtube.com/watch?v=GGaDSAMeopo
 -> Hardware -> Host OS -> Virtual Machine(HyperVisor) -> Guest OS -> we will run our Application here
    - with the the help of docker we can pack this Guest OS and ship it to the services
-   - Images bundle only user-space dependencies
+   - docker Images bundle only user-space dependencies
    - VMs bundle full OS + kernel
--> Containers was same as HyperVisor , only difference is in containers we dont install new OS , all the containers will share the same OS Kernal
+-> Containers was same as HyperVisor , only difference is, in containers we dont install new OS , all the containers will share the same OS Kernal
    - Containers don't bring their own OS kernel — they share the host's kernel and only bundle the user-space dependencies they need.
 -> Hardware -> Host OS -> Docker -> we will run our Application inside the conainter
 -> Play with docker - https://labs.play-with-docker.com/p/d53q97c69qi000cflsd0
