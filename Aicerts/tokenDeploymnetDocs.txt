@@ -37,27 +37,34 @@
 | Token age      | 3 - 7 days  | 7 - 14 days   |
 
 -> How and Where to Lock liquidity
--> Which liquidity mananger to use ( https://defillama.com/protocols/Liquidity%20manager )
+-> liquidity mananger  ( https://defillama.com/protocols/Liquidity%20manager )
     - Most locked liquidity mananger - Steer Protocol
     - Most Polygon liquidity mananger - Gama Protocol
         - Better first impression on QuickSwap
+    - Who owns LP tokens if i use liquidity manager - The V3 LP NFT is owned by the liquidity manager vault , liquidity manager manages it on your behalf
+        - instead we will get liquidity manager ERC20 token This token represents: Your proportional share
+    - You give up LP control in exchange for automated range management.
+    - Gamma rebalances by fully exiting and re-entering positions, not sliding them.
+    - does this liquidity mananger have any cooling period to withdraw our lp ?
+        - does it have any withdrawl delay , temporary pause ?
+    - what are the percentages from the custom range price for the position rebalancing for narrow range and wide range and which one to choose ?
 
--> Sniper Bots Mitigation strategies
-    - The "Trap" Tax (High Initial Taxes):
-       - How it works: You code the contract to have adjustable taxes. At launch, you set the Buy/Sell tax to 99%.
-       - The Strategy: 1. Add Liquidity. 2. Bots snipe immediately. 3. The 99% tax means they pay for the tokens but receive almost nothing (or the tax goes to the LP/Marketing wallet). 4. After 5–10 minutes (or a specific block count), you manually lower the tax to your normal rate (e.g., 5%).
-    - Trading Enable Switch:
+-> Sniper Bots 
+    - Explanation ::  Sniper bots quickly buy newly listed tokens on decentralized exchanges (DEX) before human traders can react. These bots monitor the blockchain for new token listings and execute purchases almost instantly.
+    - Mitigation Strategies: ( These needs to be implemented in the contract )
+        - Cooldown Timers :: you could disable transfers for anyone that isn't the owner for a few hours/days and then activate it again. Thus the bots hoepfully wont hit up your token as it's already older.
+        - Initial High tax ::  Program a temporary buyTax and sellTax (e.g., 90%) for the first 1-5 blocks.
+    - Trading Enable Switch: ( exception owner from this by coding it in the contract )
        - How it works: Pause trading by default (tradingEnabled = false). You can add liquidity freely while trading is paused.
        - The Launch: Once liquidity is added and stable, you call a function enableTrading()
-    - Launch Strategy (Process Flow)
-        - If you are managing the launch yourself, follow this sequence to confuse basic bots:
-        - Deploy Contract: Ensure tradingEnabled is set to false.
-        - Mint Tokens: Send tokens to your deployer wallet.
-        - Create the Pair: Create the Token/MATIC pair on QuickSwap manually without adding full liquidity yet (or add a tiny amount of test liquidity if needed, but be careful).
-        - Add Full Liquidity: Add your MATIC and Tokens to the pool. Since tradingEnabled is false, bots will see the liquidity but the transaction will fail if they try to buy.
-        - Enable with High Tax: Set tax to 99%. Call enableTrading().
-        - Wait: Let the aggressive snipers fail or get taxed 99%.
-        - Normalize: Lower tax to normal levels and announce to your community that trading is live.
+
+-> Flash bots ( private RPC ) (  one way to decrease the chances from sniper bots , but cant totally stop them )
+    - Mainnet	https://rpc.flashbots.net/fast
+    - Sepolia	https://rpc-sepolia.flashbots.net/
+    - How to add - https://docs.flashbots.net/flashbots-protect/quick-start
+    - does flash bot rpc charges us more ? NO
+
+-> snipers on scenario of locked liquidity  vs unlocked liquidity ? - Sniper aggression will be medium instead of high , Not much difference it will still do 
 
 -> 20 tokens + 2 dollars usd ( 0.1 dollar price )
 
@@ -74,3 +81,4 @@
             }
             super._update(from, to, value);
         }
+

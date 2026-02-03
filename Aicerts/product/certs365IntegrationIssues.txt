@@ -1,9 +1,41 @@
 
+-------------------------------------------- integration ---------------------------------------------------
+
 -> providing an example of the usage of the integration platforms with those platforms/applications
 
 -> For hub spot , once i have stared the integration and if i forgot to store the apikey and if i revist again i was facing issue
 
 -> docsign - https://userdev.certs365.io/documentation?platform=docusign - origin url in this was not working
 
+----------------------------------------- Issues when designing template --------------------------------
 
+-> When deleting a design , wont we ask something like are you sure you want to delete this design ?
 
+-> ordering attributes in alpabetical order as attributes are user specific instead of tempate specific
+
+-> current working design need to persist if i refresh the page
+
+-> can we have a search feature for attributes
+
+-> can we have copy pasting feature for the color and the border color ( as these were defaulting to black)
+
+-> long press on font size
+
+-> whenever i select a specific design something like shape or text or image , that specific side panel was not opening
+
+-> increase token expiry for the refresh access token if user chooses remember me
+
+-> not able to unselect qr design
+
+-> Handling padding effectively instead of trying to make the left and right of the certificate alignments preciesly
+
+-> future features
+       -> ability to preview image when uploading
+       -> able to copy paste background color for QR ( currently we need to convert hex code to rgb and can able to add )
+
+-> QR code
+    - designing options was not working as accordion , expecting - needs to be there for opened design pattern
+    - margin was set to zero , but still we have some initial margin applying to the qr code
+    - How to edit an already designed qr code
+
+-> is it possible and is it okay to add custom fonts
