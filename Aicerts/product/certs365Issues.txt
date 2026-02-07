@@ -30,7 +30,7 @@
 -> Handling padding effectively instead of trying to make the left and right of the certificate alignments preciesly
 
 -> future features
-       -> ability to preview image when uploading
+       -> ability to preview image when uploading ( not able to see svg image when uploading)
        -> able to copy paste background color for QR ( currently we need to convert hex code to rgb and can able to add )
 
 -> QR code
@@ -39,3 +39,14 @@
     - How to edit an already designed qr code
 
 -> is it possible and is it okay to add custom fonts
+
+-> Loader was not provided and button and button was not disabled when loading ( user may create duplicate attibutes )
+
+-> instead of having fontstyles for each text that we create , can we have global ( If we are going to implement dynamic adjustment of text then we wont face this issuse)
+
+-> not able to add newly designed qr code to the certificate
+
+-> how do we have something like , letter spacing and word spacing in this
+
+-> scroll was missing on the create new signate with type
+    - text color was mising for create new type

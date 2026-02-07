@@ -21,6 +21,8 @@
     - Public verification post -  https://support.coingecko.com/hc/en-us/articles/23725417857817-Verification-Guide-for-Listing-Update-Requests-on-CoinGecko
         - This needs for coinmarketcap
     - Rejection chances - https://support.coingecko.com/hc/en-us/articles/4498809321369-Why-is-my-token-not-listed-on-CoinGecko
+-> coinmarketcap 
+    - https://docs.google.com/spreadsheets/d/1zQogmOSlRt9P7zRMhhhiO8trB54yr6Z-n2n95ChcjGs/edit?gid=1181839735#gid=1181839735
 -> Whitepaper 
     - we need to provide this link when listing on coingecko and coinmarketcap
     - need Distribution Schedule in it 

@@ -1,0 +1,15 @@
+-> Address - https://polygonscan.com/token/0xD8a00Eca878A753Ee314A4F46C1272E1f4e2E794
+-> Charts 
+    - https://www.dextools.io/app/polygon/pair-explorer/0xddb2f2b3dd450758f58952ceec58bf54b1f5d3ee
+    - https://dexscreener.com/polygon/0xddb2f2b3dd450758f58952ceec58bf54b1f5d3ee
+    - https://dex.coinmarketcap.com/token/polygon/0xd8a00eca878a753ee314a4f46c1272e1f4e2e794/
+    - https://www.geckoterminal.com/polygon_pos/pools/0xddb2f2b3dd450758f58952ceec58bf54b1f5d3ee
+-> scoring 
+    - https://dapp.webacy.com/dyor/address/0xD8a00Eca878A753Ee314A4F46C1272E1f4e2E794?chain=pol
+
+-> social links 
+    - Twitter :: https://x.com/Certs365aicerts
+    - Website :: https://app.certs365.io/
+    - About - Beta CERTS Token is an ERC-20 utility token deployed on the Polygon PoS network. It supports digital certification, verification, and credential-based services within the Beta CERTS ecosystem.
+    - Image - https://github.com/akshay-aicerts/assets/blob/e4e79a0b555759bfdc27a628782b9085aed81e78/blockchains/polygon/assets/0xD8a00Eca878A753Ee314A4F46C1272E1f4e2E794/logo.png
+        - https://aicertswpcdn.blob.core.windows.net/certs365-live/main_issues/1770308657767_logo.svg
