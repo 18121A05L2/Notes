@@ -1,0 +1,2 @@
+------------------------- Issues ----------------------------------------------
+-> remove s3 in the backend for create content

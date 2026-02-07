@@ -1,0 +1,11 @@
+-> Authentication - identify a user based on user credentials
+    - once authentication is done it will issue refresh token and access token
+-> Authorization - Ensuring the user is permitted to access the resource/operation they are trying to access
+-> JWT contains Header.payload.signature
+-> Where to store Refresh Token 
+    - HttpOnly Cookies (Most Secure for Web)
+        - This is the industry standard for web applications.
+        - How it works: When you log in, the backend sends the Refresh Token in a Set-Cookie header. It includes a flag called HttpOnly.
+        - Why it's better: When a cookie is HttpOnly, JavaScript cannot read it. If a hacker runs an XSS script, they can't "see" the token in the dev tools console or code.
+        - The Journey: When the Access Token expires, the frontend makes a request to /refresh. The browser automatically attaches the Refresh Token cookie to that request without the frontend code ever touching the sensitive string.
+

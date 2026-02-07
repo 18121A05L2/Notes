@@ -1,0 +1,86 @@
+-> Quick Swap 
+    - How to add liquidity -  https://docs.quickswap.exchange/how-to-guides/lp-liquidity-providing
+    - ( Quickswap V3 - Non fungible position manager ) https://polygonscan.com/address/0x8ef88e4c7cfbbac1c163f7eddd4b578792201de6
+   - Recently listed quick swap pair - https://polygonscan.com/address/0x391ef4487eedb9b0051c239cde097521418d169f#tokentxns
+       - https://dexscreener.com/polygon/0x391Ef4487EEDB9b0051c239cdE097521418D169f
+       - https://www.dextools.io/app/polygon/pair-explorer/0x391ef4487eedb9b0051c239cde097521418d169f
+       - https://dex.coinmarketcap.com/token/polygon/0x03cD6D7bd50f1B5376FD122A975CbbDacC300095/
+-> Latest created pools on uniswp v3 - https://etherscan.io/advanced-filter?fadd=0xc36442b4a4522e871399cd717abdd847ab11fe88&tadd=0xc36442b4a4522e871399cd717abdd847ab11fe88&mtd=0x13ead562%7eCreate+And+Initialize+Pool+If+Necessary
+   latest created pools on quickswap - https://polygonscan.com/advanced-filter?fadd=0x8ef88e4c7cfbbac1c163f7eddd4b578792201de6&tadd=0x8ef88e4c7cfbbac1c163f7eddd4b578792201de6&mtd=0x51246d6e%7eCreate+And+Initialize+Pool+If+Necessary
+
+-> DexTools 
+    - Token update on dex tools - https://www.dextools.io/marketplace/en/create-socials ( It was asking for payment and some docs says initial requires does not require any payment)
+        - Do this with the company wallet address
+    - As soon as the first trade executes on that QuickSwap pool, DEXTools should detect and index the pair automatically.
+    - No strict minimum liquidity or volume is required for basic visibility, but very low-liquidity pools might take longer to appear or show lower in searches
+-> Dexscreener
+    - (we can post here if we get any issue or if we have questions ) https://telegram.me/dexscreenerchat
+    - updating social urls was not free
+-> CoinGecko 
+    - How to list on coingecko - https://support.coingecko.com/hc/en-us/articles/7291312302617-How-to-list-new-cryptocurrencies-on-CoinGecko
+    - Public verification post -  https://support.coingecko.com/hc/en-us/articles/23725417857817-Verification-Guide-for-Listing-Update-Requests-on-CoinGecko
+        - This needs for coinmarketcap
+    - Rejection chances - https://support.coingecko.com/hc/en-us/articles/4498809321369-Why-is-my-token-not-listed-on-CoinGecko
+-> coinmarketcap 
+    - https://docs.google.com/spreadsheets/d/1zQogmOSlRt9P7zRMhhhiO8trB54yr6Z-n2n95ChcjGs/edit?gid=1181839735#gid=1181839735
+-> Whitepaper 
+    - we need to provide this link when listing on coingecko and coinmarketcap
+    - need Distribution Schedule in it 
+-> Automatic Price Appearance Platforms (DexTools, Dexscreener, Gecko Terminal , dex coinmarketcap)
+
+-> Bare minimum To get listed on CoingGeco and coinmarketcap 
+| Metric         | CoinGecko   | CoinMarketCap |
+| -------------- | ----------- | ------------- |
+| Liquidity      | $10k (min)  | $50k (min)    |
+| Safe liquidity | $25k - $50k | $100k - $250k |
+| 24h volume     | $5k         | $25k          |
+| Safe volume    | $10k - $25k | $50k - $150k  |
+| Trades/day     | 20 - 30     | 100+          | - Trading needs to come from differt wallets
+| Token age      | 3 - 7 days  | 7 - 14 days   |
+
+-> How and Where to Lock liquidity
+-> liquidity mananger  ( https://defillama.com/protocols/Liquidity%20manager )
+    - Most locked liquidity mananger - Steer Protocol
+    - Most Polygon liquidity mananger - Gama Protocol
+        - Better first impression on QuickSwap
+    - Who owns LP tokens if i use liquidity manager - The V3 LP NFT is owned by the liquidity manager vault , liquidity manager manages it on your behalf
+        - instead we will get liquidity manager ERC20 token This token represents: Your proportional share
+    - You give up LP control in exchange for automated range management.
+    - Gamma rebalances by fully exiting and re-entering positions, not sliding them.
+    - does this liquidity mananger have any cooling period to withdraw our lp ?
+        - does it have any withdrawl delay , temporary pause ?
+    - what are the percentages from the custom range price for the position rebalancing for narrow range and wide range and which one to choose ?
+
+-> Sniper Bots 
+    - Explanation ::  Sniper bots quickly buy newly listed tokens on decentralized exchanges (DEX) before human traders can react. These bots monitor the blockchain for new token listings and execute purchases almost instantly.
+    - Mitigation Strategies: ( These needs to be implemented in the contract )
+        - Cooldown Timers :: you could disable transfers for anyone that isn't the owner for a few hours/days and then activate it again. Thus the bots hoepfully wont hit up your token as it's already older.
+        - Initial High tax ::  Program a temporary buyTax and sellTax (e.g., 90%) for the first 1-5 blocks.
+    - Trading Enable Switch: ( exception owner from this by coding it in the contract )
+       - How it works: Pause trading by default (tradingEnabled = false). You can add liquidity freely while trading is paused.
+       - The Launch: Once liquidity is added and stable, you call a function enableTrading()
+
+-> Flash bots ( private RPC ) (  one way to decrease the chances from sniper bots , but cant totally stop them )
+    - Mainnet	https://rpc.flashbots.net/fast
+    - Sepolia	https://rpc-sepolia.flashbots.net/
+    - How to add - https://docs.flashbots.net/flashbots-protect/quick-start
+    - does flash bot rpc charges us more ? NO
+
+-> snipers on scenario of locked liquidity  vs unlocked liquidity ? - Sniper aggression will be medium instead of high , Not much difference it will still do 
+
+-> 20 tokens + 2 dollars usd ( 0.1 dollar price )
+
+-> Sandwitch attacks mitigation ( Not Recommended as it increases gas fee)
+    - Cooldown Timers (Anti-MEV):
+        - Add a requirement that a single wallet cannot buy and sell in the same block.
+        - Why it works: A sandwich attack requires a Buy-UserBuy-Sell sequence all in one block. By forcing a 1-block or 30-second delay between trades, the bot is forced to hold the tokens, exposing them to market risk.
+
+        function _update(address from, address to, uint256 value) internal virtual override {
+            if (cooldownEnabled) {
+                // Prevents buying and selling in the same block
+                require(_lastTradeBlock[tx.origin] < block.number, "Cooldown: One trade per blockm per address");
+                _lastTradeBlock[tx.origin] = block.number;
+            }
+            super._update(from, to, value);
+        }
+
