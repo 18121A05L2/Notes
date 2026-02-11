@@ -26,6 +26,7 @@
 -> Whitepaper 
     - we need to provide this link when listing on coingecko and coinmarketcap
     - need Distribution Schedule in it 
+    - https://support.coinmarketcap.com/hc/en-us/articles/360043659351-Listings-Criteria
 -> Automatic Price Appearance Platforms (DexTools, Dexscreener, Gecko Terminal , dex coinmarketcap)
 
 -> Bare minimum To get listed on CoingGeco and coinmarketcap 
@@ -83,4 +84,7 @@
             }
             super._update(from, to, value);
         }
+
+-> Liquidity Lock 
+    - 
 

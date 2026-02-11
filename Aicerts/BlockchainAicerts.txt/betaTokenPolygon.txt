@@ -1,9 +1,11 @@
 -> Address - https://polygonscan.com/token/0xD8a00Eca878A753Ee314A4F46C1272E1f4e2E794
 -> Charts 
-    - https://www.dextools.io/app/polygon/pair-explorer/0xddb2f2b3dd450758f58952ceec58bf54b1f5d3ee
+    - https://www.dextools.io/app/polygon/pair-explorer/xddb2f2b3dd450758f58952ceec58bf54b1f5d3ee0
     - https://dexscreener.com/polygon/0xddb2f2b3dd450758f58952ceec58bf54b1f5d3ee
     - https://dex.coinmarketcap.com/token/polygon/0xd8a00eca878a753ee314a4f46c1272e1f4e2e794/
     - https://www.geckoterminal.com/polygon_pos/pools/0xddb2f2b3dd450758f58952ceec58bf54b1f5d3ee
+    - https://zapper.xyz/token/polygon/0xd8a00eca878a753ee314a4f46c1272e1f4e2e794/BETA/details
+    - https://www.defined.fi/matic/0xddb2f2b3dd450758f58952ceec58bf54b1f5d3ee?quoteToken=token1&cache=677cc
 -> scoring 
     - https://dapp.webacy.com/dyor/address/0xD8a00Eca878A753Ee314A4F46C1272E1f4e2E794?chain=pol
 
