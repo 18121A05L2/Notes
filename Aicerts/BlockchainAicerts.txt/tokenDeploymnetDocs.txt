@@ -88,3 +88,91 @@
 -> Liquidity Lock 
     - 
 
+---------------------------------------------------- DOC Start ----------------------------------------------------
+
+-> v3 Range vs. v2 Capital Requirement ( General Example)
+(Centered around current market price)
+v3 Price Range	Efficiency Multiplier	Capital Needed in v2 to Match $10k in v3
+5% Range	    ~40x	                $400,000
+10% Range	    ~20x	                $200,000
+20% Range	    ~10.1x	                $101,000
+50% Range	    ~4.2x	                $42,000
+100% Range	    ~2.4x	                $24,000
+Full Range(v2 style) 1.16x	            $11,600
+
+-> v3 Range vs. v2 Capital Requirement ( Certs Token)
+
+Base Configuration (Your Token)
+Price: $0.10
+Liquidity: 500,000 CERTS + $50,000 USDC
+Total Pool Value: $100,000
+Fee Tier: 0.3%
+With and without Gamma auto-management
+
+V3 Example Range Used: $0.08  -  $0.12 (±20%)
+
+Reference AMM design: Uniswap (same math model used by QuickSwap)
+| Category                             | V2 (Full Range)         | V3 (0.08 - 0.12 Range)                               |
+| ------------------------------------ | ----------------------- | ---------------------------------------------------- |
+| Total Capital Deposited              | $100,000                | $100,000                                             |
+| Effective Liquidity Depth Near $0.10 | $100,000                | ~$400,000 - $500,000 equivalent                      |
+| Capital Efficiency                   | 1x                      | ~4 - 5x                                              |
+| Liquidity Spread                     | $0 → ∞                  | Only $0.08 - $0.12                                   |
+| $5,000 Buy Price Impact              | ~21% jump               | ~4 - 6% jump                                         |
+| Price After $5k Buy                  | ~$0.121                 | ~$0.104 - $0.106                                     |
+| $20,000 Buy Price Impact             | Extreme spike (~60 - 80%) | ~15 - 20%                                          |
+| Whale Manipulation Risk              | High                    | Lower                                                |
+| Daily Volume $50k → Fees             | $150/day                | $150/day (but higher % of active liquidity captured) |
+| Fee Efficiency per $1                | Baseline                | ~3 - 5x higher (if price stays in range)             |
+| Impermanent Loss at 2x ($0.20)       | Moderate                | Position fully converts to USDC at $0.12             |
+| Impermanent Loss at 5x ($0.50)       | Large IL (~20%+)        | Already exited range early                           |
+| Fee Earnings After Big Pump          | Continues               | Stops (if out of range)                              |
+| Maintenance ( Without Gamma )        | None                    | Must rebalance                                       |
+| LP Token Type                        | ERC-20                  | NFT                                                  |
+| Professional Market Feel             | Weak (thin book)        | Strong (thick book near price)                       |
+
+-> Understanding About Slippage
+
+| USDC Trade | V2 – CERTS Received | V3 (±20%) – CERTS Received |
+| ---------- | ------------------- | -------------------------- |
+| $100       | 995 CERTS           | 998 CERTS                  |
+| $500       | 4,935 CERTS         | 4,975 CERTS                |
+| $1,000     | 9,775 CERTS         | 9,950 CERTS                |
+| $5,000     | 45,330 CERTS        | 48,900 CERTS               |
+| $10,000    | 83,125 CERTS        | 94,600 CERTS               |
+| $20,000    | 142,550 CERTS       | 181,200 CERTS              |
+
+->💰 USDC Required For Same Stability
+
+| Goal                           | V2 Needed                 | V3 Needed                        |
+| ------------------------------ | ------------------------- | -------------------------------- |
+| Keep $5k trade <5% impact      | ~$200k pool (~$100k USDC) | Your current $50k USDC is enough |
+| Handle $10k trade smoothly     | ~$400k pool               | ~$100k pool                      |
+| Professional low slippage feel | $300k - $500k pool        | $100k sufficient with range      |
+
+-> ⚖️ Practical Decision Matrix
+
+| If You Want                | Choose |
+| -------------------------- | ------ |
+| Simplicity                 | V2     |
+| Stability With Low Capital | V3     |
+| No Management              | V2     |
+| Professional Launch Look   | V3     |
+| Long-Term Passive LP       | V2     |
+| Early Launch Protection    | V3     |
+
+->  📊 V3 Manual vs Gamma Managed
+
+| Feature               | Manual V3    | Gamma Managed V3 |
+| --------------------- | ------------ | ---------------- |
+| Rebalancing           | You do it    | Automated        |
+| Fee Compounding       | Manual claim | Auto compounded  |
+| Out-of-Range Downtime | Possible     | Reduced          |
+| Gas Cost              | Lower        | Slightly higher  |
+| Passive Friendly      | No           | Yes              |
+| Fee Efficiency        | High         | Very High        |
+| Management Effort     | High         | Low              |
+
+-> Dynamic range ( wide / narrow ) strategy - https://docs.gamma.xyz/gamma/lp-vaults/strategies/dual-position-strategies-base-limit
+
+---------------------------------------------------- DOC End ----------------------------------------------------

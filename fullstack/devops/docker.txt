@@ -18,6 +18,8 @@
    - docker run -it <IMAGE> bash :: This will navigate you directly to the conainer bash terminal ( i : interactive , t : terminal )
    - docker run -v <HOST_VOLUME_PATH>:<CONTAINER_VOLUME_PATH> 
       - if we dont specify the Host path with -v , then the default path will be /var/lib/docker/volumes 
+   - docker system prune -a --volumes
+      - free disk space by removing containers, images, networks, and build cache that are not being used. along with volumes
 -> We can get all public images here - https://hub.docker.com/
 -> Difference between container and image
     - Image = blueprint (read-only) :: House blueprint 
