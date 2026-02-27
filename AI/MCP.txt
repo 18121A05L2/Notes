@@ -1,0 +1,9 @@
+-> MCP - The USB port of AI
+    - MCP handle agent to tool collaboration
+    - MCP (Model Context Protocol) is an open standard for integrating large language models (LLMs) with external tools and data sources.
+         - https://www.youtube.com/watch?v=_d0duu3dED4
+-> MCP Architecture
+    - MCP consists of three main components: the MCP Server, the MCP Client, and the MCP Protocol.
+        - The MCP Server is responsible for managing the communication between the LLM and the external tools. It receives requests from the LLM, processes them, and sends responses back to the LLM.
+        - The MCP Client is a library that developers can use to integrate their tools with the MCP Server. It provides a simple interface for sending requests to the MCP Server and receiving responses. ( EX: chatgpt , gemini)
+        - The MCP Protocol defines the format of the messages exchanged between the LLM and the external tools. It specifies how requests and responses should be structured, as well as how to handle errors and other edge cases.
