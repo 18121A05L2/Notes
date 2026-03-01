@@ -7,3 +7,6 @@
                 }
         }
     }
+-> Key headers associated with CORS are:
+    - Acess-Control-Allow-Origin, Access-Control-Allow-Methods, Access-Control-Allow-Headers and Access-Control-Max-Age
+

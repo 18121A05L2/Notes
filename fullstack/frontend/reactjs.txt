@@ -37,3 +37,11 @@
     - It does run, but only on the client after hydration, even if SSR was used.
     - SSR never commits because commit only happens in the browser
 -> onClickCapture runs during the capture phase (top-down), while onClick runs during the bubble phase (bottom-up)
+-> history.pushState() - Navigate Without Reload
+-> history.replaceState() - Update URL Without Adding History Entry
+-> dotenv-webpack: Injects variables into your frontend React code so the browser can read them.
+-> dotenv: Injects variables into your backend Node.js scripts (like Webpack config files) so Node can read them while setting up the dev server.
+-> localstorage and session storage capacity is 5mb
+-> localStorage is limited (~5 - 10MB) and synchronous.IndexedDB supports much larger storage and is asynchronous.
+-> Synchronous :: Any work that stops the execution of the code and waits for it to get completed before moving to the next line of code can be called sync work.
+-> Asynchronous :: Whereas in the case of async work, the execution is initiated and then set aside for later, meanwhile the remaining code is executed. Once the async work is completed the execution moves back to that work

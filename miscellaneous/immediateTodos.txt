@@ -1,6 +1,18 @@
+-> What is cover letter for ?
+
+-> Prepare Blockchain , Frontend , Fullstack resumes
+
 -> Better UI for the projects overview
 
+-> Auto Apply for Jobs using AI Agents
+
+-> Create and test a small project on NestJs as it would be good for interviews
+
+-> Exploring Antigravity + clawdbot
+
 -> uniswap contracts exploration ( v1 , v2 , v3 , v4 )
+
+-> https://dotenvx.com/as2/
 
 -> proof of innocense
 
