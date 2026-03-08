@@ -9,3 +9,15 @@
 -> Explain the Virtual DOM and how it works in React.
 
 -> what are generators in js
+
+-> Caching in frontend for apis
+
+-> Authentication types
+
+-> Authentication methods apart jwt
+
+-> pust and post difference
+
+-> How to mitigate Idempotent in backend
+
+-> caching techniques in frontend

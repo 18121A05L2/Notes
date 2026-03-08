@@ -1,10 +1,11 @@
 -> Cross Site Request Forgery (CSRF)
     - CSRF is an attack that tricks the victim into submitting a malicious request
 -> Cross-site Scripting (XSS)
-    - Same Origin Policy (SOP)
+    - one of the prevention step was Same Origin Policy (SOP)
         - It checks for protocol, host, port 
 -> Cross Site History Manipulation (XSHM)
 -> HttpOnly Cookies: These cookies are set and read only by the servers and clients have no control over them. This is mostly used to prevent XSS attacks.
 -> Cookies 
+    - Cookies are needed to: Maintain sessions , Identify users , Store preferences , Enable personalization and Improve security
     - HTTP is stateless, meaning each request is independent and the server does not automatically remember users. Cookies solve this by storing small pieces of data in the browser that are sent with requests, allowing the server to identify users, maintain login sessions, and remember preferences
     - Server Side Cookies Also known as HttpOnly cookies, these are set by the server using the response header. A client-side script can not access this cookie though they are stored in the client's device. Server-side cookies are mostly used for storing authentication information.

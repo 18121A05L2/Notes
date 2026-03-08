@@ -1,4 +1,3 @@
--> npm ci stands for "clean install", and it's a command used to install dependencies exactly as specified in your package-lock.json
 -> Differences
    - primitive vs complex types
    - shallow copy vs deep copy
@@ -10,13 +9,12 @@
       - Splice (start, deleteCount, ...itemsToAdd) modifies the original array
       - Slice (start, end) returns a new array and Does NOT modify the original array
    - setTimeout and setInterval
--> need to go through
-   - template literals , default parameters , object literals , rest and spread operators , destructuring assignment , reduce
-   - in default params , if you send null when calling the function then it will take the null itself and for undefined it will be the default value
+-> in default params , if you send null when calling the function then it will take the null itself and for undefined it will be the default value
 -> function foo() { console.log(arguments); }
    foo(1,2,3); // logs [1,2,3], but no runtime problem
 --> using all possible multipe selectors in css
---> AJAX - asynchronous java script and xml - It allows web pages to be updated asynchronously by exchanging small amount of data with the server
+   - Child Selector (>) , Adjacent Sibling Selector (+) , General Sibling Selector (~)
+--> AJAX - asynchronous javascript and xml - It allows web pages to be updated asynchronously by exchanging small amount of data with the server
       - With out AJAX previously we had to refresh the page to get the new content ( or any piece of information we need in the current page ) from the server
       - Javascript talks to the server through a set of programming methods called API and uses whats called XHR or XML HTTPRequest
       - AJAX is not a programming language , it is what we called the framework for javascript
@@ -26,6 +24,8 @@
 
 --> const arr2 = [0, 1, [2, [3, [4, 5]]]];
     console.log(arr2.flat(Infinity));
+     - Use flat() → when you only need to flatten nested arrays by depth.
+     - Use flatMap() → when you need to transform + flatten in one step (more efficient and cleaner).
    
 --> splice is only for arrays , use substring for strings
    
@@ -37,13 +37,7 @@
    
 --> spread operator : makes the array to individuals  ,, Rest operator : takes the values and make up the array
    
---> because of the drawbacks of the waterfall model ,, agile came to the present tech
---> agile : 1) continuous delivery 2) collaboration  
---> Scrum is an Agile Development Methodology initially created to speed up software development
-   
 --> sort and fill actually changes the origianl array ,, map and filter will return array and reduce can return based on the acc initialization
-   
---> The Array.from() static method creates a new, shallow-copied Array instance from an iterable or array-like object
    
 --> Asynchronous generators
       - Each yield returns a Promise under the hood
@@ -65,7 +59,7 @@
       }
      })();
    
--> Array.from in js
+-> Array.from in js Creates a new array from: Array-like objects (e.g., arguments, NodeList) ,Iterable objects (e.g., Set, Map, String)
 
 -> The in operator returns true if the specified property is in the specified object or its prototype chain
    - const car = { make: "Honda", model: "Accord", year: 1998 };
@@ -82,6 +76,7 @@
     ]
 -> cache-control :: max-age=60, s-maxage=120, stale-while-revalidate=90
    - max-age → faster API for repeat browser requests
+      - Browser can use cached response for 60 seconds without calling the server.
    - s-maxage ( shared caches) → reduce backend server traffic using CDN cache
    - stale-while-revalidate → zero latency even after expiry
    - public Can be cached by browser + CDN.
@@ -90,5 +85,13 @@
 -> What is polyfill :: Polyfills in JavaScript are code snippets or scripts that provide modern functionalities to older browsers or environments that lack support for those features. Some new features doesn't work on older browser, we write polyfill of such functionality to provide support in older browser
     
 -> In JavaScript's native Array.prototype.map, you can optionally pass a second argument called thisArg. This value becomes the this inside your callback function :: map(callback,thisArg)
+
+-> Promise Methods
+| Method       | Resolves When  | Rejects When  | Output                          |
+| ------------ | -------------- | ------------- | ------------------------------- |
+| `all`        | All succeed    | One fails     | Array of values                 |
+| `allSettled` | All settle     | Never rejects | Array of status objects         |
+| `race`       | First settles  | First rejects | First result                    |
+| `any`        | First resolves | All reject    | First success or AggregateError |
 
      

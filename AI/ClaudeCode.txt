@@ -1,0 +1,47 @@
+-> we need to run claude /init command whenever we are going to run on a new project
+     - this will creates CLAUDE.md file , which will be included in every in every request to LLM
+     - CLAUDE.md - Commit to source control and can share with 
+     - CLAUDE.local.md - Intended for personal use and not committed to the repository. Contains personal instructions and customizations
+     - ~/.claude/CLAUDE.md - Global configuration file applied across all projects on the machine.
+-> we can mention files with @filename when instructing claude to read the file and include it in the prompt
+-> Use the # command to enter "memory mode" - this lets you edit your CLAUDE.md files intelligently
+-> Thinking modes
+    - "Think" - Basic reasoning
+    - "Think more" - Extended reasoning
+    - "Think a lot" - Comprehensive reasoning
+    - "Think longer" - Extended time reasoning
+    - "Ultrathink" - Maximum reasoning capability
+-> Need to understand how much tokens each will consume and how much it will cost
+-> How Developers Reduce Claude Code Token Usage
+    - Limit File Scope - Instead of scanning the whole repo
+    - Avoid Repeated Repo Reads - Ask for targeted edits by mentioning specific files or sections
+    - Use .claude/CLAUDE.md
+        - Store persistent instructions: Project uses: Express , Next.js , Prisma , JWT auth
+        - This avoids re-explaining architecture every time.
+-> /compact command will take all the messages in the current conversation and summarize them into a single message, which can help reduce token usage while retaining context.
+-> /clear dump the current conversation history
+-> Custom Commnads
+    - we can add it like this .claude/commands/my-command.md
+    - Custom commands can accept arguments using the $ARGUMENTS placeholder.
+    - Benefits : Automation , Consistency , Context and Flexibility
+-> inside .claude/settings.local.json - we can add permissions to preapprove , allow or deny
+-> Improving Context Generation with MCP Tools
+    - Claude will use the browser tools to interact with your app, examine the generated output, and then modify your prompt file to encourage more original and creative designs.
+    - The key advantage is that Claude can see the actual visual output, not just the code, which allows it to make much more informed decisions about styling improvements.
+-> /install-github-app - Setup claude Github Actions for a repository
+-> Hook - Run a command befor or after claude does something
+    - preToolUse and postToolUse hooks
+    - and we can restrict claude to ready any files with these if needed
+-> Hook Configuration
+     - Global - ~/.claude/settings.json (affects all projects)
+     - Project - .claude/settings.json (shared with team)
+     - Project (not committed) - .claude/settings.local.json (personal settings)
+-> In larger projects with many database queries, Claude sometimes creates duplicate functionality instead of reusing existing code. This is especially problematic when you give Claude complex, multi-step tasks that include database operations as just one component.
+-> Plan Mode handles breadth (multi-step tasks) while Thinking Mode handles depth (complex logic)
+
+
+
+CLI Claude Commands
+-> Hit ESC twice to go back to the conversation history
+-> ESC to interrupt the claude response
+-> claude mcp add playwright 

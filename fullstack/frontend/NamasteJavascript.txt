@@ -7,23 +7,27 @@
 -> javascript is a synchronous , single threaded programming language
 -> P: arameter = Placeholder (in the function definition)
    A: rgument = Actual Value (when calling the function)
--> Call Stack - Bottom of every call stack we have Global Execution Context
--> call stack maintains the order of execution of execution contexts
+-> Call Stack 
+    - Bottom of every call stack we have Global Execution Context
+    - call stack maintains the order of execution of execution contexts
 
---> hoisting is a phenomenon in js by which we can access the variables and functions even before we have initialized it , without any error
+--> Hoisting is a concept in JavaScript where variable and function declarations are moved to the top of their containing scope during the compilation phase, before the code is actually executed.
+    - hoisting is a phenomenon in js by which we can access the variables and functions even before we have initialized it 
 --> allocation of memory to variables and functions before assigning is called hoisting
 
 --> scope is directly depend on the lexical environment
 --> lexical environment is created when execution context is created
 --> lexical environment is the local memory along with the lexical environment of its parent
 --> lexical means heirarichy or sequence 
---> c() function is lexically sitting inside the a() function
 
 --> temporal dead zone - It is the time since when this let or const variable was hoisted and till it was assigned a value , the time between this is known as temoral dead zone
+    - If you try to access before initialization, you will see an error: cannot access 'a' before initialization
 --> for let and const hoisting , they are hoisted but not in the global scope ( they are hoisted in a different memory space , we can see as Script in chrome dev tools ) 
 
 --> Closures are functions bundled with their lexical environment
     - Ex: SetTimeout and passing functions as arguments
+    - A function remembers the variables from where it was created, even after that outer function has finished running.
+    - function + its remembered outer variables.
 --> currying in javascript is possible just because of closures
   - Currying is a functional-programming technique where you transform a function that takes multiple arguments into a sequence of functions, each taking a single argument
 
@@ -38,6 +42,7 @@
         - A function statement declares a function with a name
 --> First Class Functions : the ability to use the functions as values  and can be passed as an argument to another function
     and can be returned out of another function is called First Class Functions
+      - React → Hooks and callbacks rely heavily on first-class functions.
 
 --> event loop has one job , that too continuously check the callstack and call back queue , if it find call stack empty and callback queue with 
   some calllback functions then it simply moves it from callback queue to the call stack 
@@ -135,14 +140,15 @@
     - By default Async functions return a Promise
     - even if we return something like string in this async function , it will wrap this string in promise and it will return
     - whenever JS engine sees await keyword , it will suspend the execution of the function and will wait for the promise to settle , by moving that execution to microtask queue
+        - await does NOT block the entire program. It only pauses inside that async function.
     - Async and await is just a syntactical sugar over promise chaining , under the hood it uses promise chaining
 
 --> This will be undefined in strict mode
     - To use strict mode add "use strict" in the top of the js file
-    - ( this substitution ) - in non strict mode if this keyword is null or undefined , then it will be replaced with globalObject ( window in browser and global in nodejd)
+    - ( this substitution ) - in non strict mode if this keyword is null or undefined , then it will be replaced with globalObject ( window in browser and global in nodejs)
     - this keyword depends on how the function is called ( if this keyword was present inside function )
-    - if we make a function as part of an object then that will be called as method
-    - If this keyword was present inide a method then this keyword will represent that object
+    - if we make a function as part of an object then that function will be called as method
+        - If this keyword was present inside a method then this keyword will represent that object
     - this keyword in DOM elements represents the referece of the HTMLElement itself
     - strict js doesnt allow window inside a function ,, instead we can use this which was same 
     - 'this' keyword in arrow function is same like as it in the outside 
@@ -159,7 +165,9 @@
 -> For a syntax error , it wont even run a single line of code and it will thorw error upfront
 -> Map is a key value pair just like Object, where the key can be of any type.
 -> Difference between async await and promise :: With async wait, the execution of a function stops when it witnesses the await statement and moves out of the function until the async process is completed. Whereas with promise, the execution continues in the same function, it just skips the promise statement until the async process is completed.
--> Pure functions :: Output deterministic , No sideeffects , caching benefits and maintainable code
+-> Pure functions
+        - Defination :: Always returns the same output for the same input (deterministic).
+        - Has no side effects (does not modify external variables, DOM, API calls, etc.).
 
 
 

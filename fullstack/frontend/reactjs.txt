@@ -3,8 +3,8 @@
 -> npx - npm package runner
     - Does not install globally: npx downloads and runs the latest version of create-react-app temporarily.
 -> Peer dependencies need to be specified in the libraries ( like whoever are publishing packages to npm )
--> useCallback hook memoizes the function itself, not its return value. useMemo caches the functions return value so that the function need not execute again
--> useCallback - if we have a function in a component and it will create each time when a component is rendered , with this it wont recreate until unless dependencies of it are changed
+-> useCallback hook memoizes the function itself
+   useMemo caches the functions return value so that the function need not execute again
 -> Portals - Render children into a DOM node outside the parent hierarchy (e.g., for modals).
     - Event bubbling in portal works just like the normal child components in the parent hierarchy.
 -> Streaming allows you to break down the page's HTML into smaller chunks and progressively send those chunks from the server to the client.

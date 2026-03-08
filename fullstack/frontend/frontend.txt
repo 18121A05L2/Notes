@@ -7,6 +7,7 @@
                 }
         }
     }
--> Key headers associated with CORS are:
+-> Key headers associated with CORS are: ( we get all these from prefligh options call)
     - Acess-Control-Allow-Origin, Access-Control-Allow-Methods, Access-Control-Allow-Headers and Access-Control-Max-Age
+-> npm ci stands for "clean install", and it's a command used to install dependencies exactly as specified in your package-lock.json
 

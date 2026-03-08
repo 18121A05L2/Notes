@@ -1,0 +1,27 @@
+-> what is claude.md
+-> what are skills for claude ( install at global level )
+    - Skills provides procedural knowledge, instructions for how to complete specific tasks or workflows
+    - skills are oraganized collections of files that package composable procedural knowledge for agents
+--------------------------------- https://www.youtube.com/watch?v=ZaPbP9DwBOE ------------------------------------------------------------------
+-> Context Window
+    - functions like short term memory will help us to pass our tech corp (local) data documents to context window
+    - upper bound of tokens for xai and anthropic is around 200k but for gemini it is 1M
+    - nano mini and flash model can hold 2-4k tokens around 1.5-3k words 
+    - as we are not able to provide GBs of to context window becuuse of its max token limitation , Embedding comes into picture
+-> Embedding
+    - embedding is a technique used to convert high-dimensional data (like text or images) into a lower-dimensional representation (like a vector or matrix).
+    - In this we use vector DB instead of sql DB 
+-> LangChain 
+    - will be helpful when building chatbots
+    - it will abstract aweysome complex multistep workflows
+-> LangGraph
+    - this extends langchain to handle more complex multistep workflows that can go beyond simple question and answer interactions
+-> RAG 
+    - Retrival Augmented Generation
+        - Augumentaion refers to the process, where the retrieve data ( our corporate docs stored as vecotor db) is injected into the prompt at runtime
+    - RAG is a very powerful system that can instantly improve the depth of the knowledge beyond its training data
+
+----------------------------------------------------------------------------------------------------------------------
+-> prompting
+-> what is token
+-> How coding assistant works , is it through RAG
