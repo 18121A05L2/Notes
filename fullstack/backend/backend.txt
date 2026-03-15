@@ -31,3 +31,14 @@
     - POST and PATCH ( depending on the implementation ) are not idempotent
         - with Idempotency-Key in the requrest header, Same request is not processed twice
 -> PATCH modifies only the fields provided in the request body, instead of replacing the entire resource.
+
+
+
+
+
+
+
+
+
+--------------- Nedd to Learn -----------------------------
+-> PostgresSQL , MySQL , ORM 

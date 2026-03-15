@@ -18,10 +18,30 @@
     - this extends langchain to handle more complex multistep workflows that can go beyond simple question and answer interactions
 -> RAG 
     - Retrival Augmented Generation
+        - Retrieval Augmented Generation is an architecture where an LLM does not rely only on its training data. Instead, it retrieves relevant external documents at runtime and provides them to the model as context before generating an answer.
         - Augumentaion refers to the process, where the retrieve data ( our corporate docs stored as vecotor db) is injected into the prompt at runtime
     - RAG is a very powerful system that can instantly improve the depth of the knowledge beyond its training data
 
 ----------------------------------------------------------------------------------------------------------------------
+-> Context rot - https://research.trychroma.com/context-rot
+-> Git worktrees allow multiple working directories from the same repository. Each directory can check out a different branch. This is useful for isolated agents, parallel development, or running multiple tools (like AI agents) without branch conflicts.
+    - All share the same .git history, but have separate working directories.
+    - Since all worktrees share the same Git repository, changes are visible immediately after commits.
+    - git worktree add .worktrees/agent1 -b agent1
+    - git worktree add .worktrees/agent2 -b agent2
+    - git worktree add .worktrees/agent3 -b agent3
+-> Multi terminal session management using tmux
+-> Ask Question to Ai
+    - is any instructction ambigious ( system promp )
+    - why did you make this choice ( reasoning )
+    - what are the edge cases ( testing )
+-> Ai Developer Roadmap - https://files.codebasics.io/uploads/resources/ai-engineering-roadmap-for-software-engineers/AI_Engineering_SWE_Roadmap_2026.pdf?Expires=1773258810&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9maWxlcy5jb2RlYmFzaWNzLmlvL3VwbG9hZHMvcmVzb3VyY2VzL2FpLWVuZ2luZWVyaW5nLXJvYWRtYXAtZm9yLXNvZnR3YXJlLWVuZ2luZWVycy9BSV9FbmdpbmVlcmluZ19TV0VfUm9hZG1hcF8yMDI2LnBkZiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3MzI1ODgxMH19fV19&Signature=W4A5n4pX8R9NYp965V40GzsNm2h25cCx-1gAgjKCr9ZJk9GoAu6H7Bz85XjiuwL2pcr%7ERDOMMlbfyJeCvohSppeI8BGThnuXHf8QByKaCjj4vXKi6COhacSZL5Ql6k3i47oMSWemnFj0CMLFmWoRskHsHquPJ2Fw5Ue3lHpOTb1-79EMkB2tqyEkga9cooqNi2L8zqInk%7Exn4OPhMymSNuVe17edNMMExBfdOfJXrPXDWRhtKBhJYNxH7Ro9wjMYgIWr4A4nzxNMCV0umK23zVS63Xj3EF9ewQuzdMHzpFPshkiQ-FaZJJKRCgdqCxljEsiRlwR35zuKvjwyzjEvAA__&Key-Pair-Id=K2RNEYYX7N2F8M
+
+
+
+
+
 -> prompting
 -> what is token
 -> How coding assistant works , is it through RAG
+-> As context grows, important tokens lose influence. ( How to manage context effectively , by giving importance to specific tokens)

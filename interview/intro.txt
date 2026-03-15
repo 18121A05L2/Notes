@@ -1,0 +1,27 @@
+Hello Roger,
+My name is Lakshmi Reddy, and I've been working as a frontend developer at DAZN for the past three years. DAZN is a global OTT 
+platform focused on live and on-demand sports content, often referred to as the Netflix of sports, as we stream a wide range of 
+sports across multiple regions.
+
+In the early phase of my role, I worked extensively on landing and offer pages, where the primary goal was user acquisition and conversion. 
+I built and maintained highly engaging, reusable UI components that were managed through a CMS like Contentful, enabling us to reuse 
+the same components across different regions while supporting regional customisation. These pages played a key role in driving user 
+sign-ups and logins.
+
+Later, I moved on to working on the catalog experience, which is one of the core areas of the DAZN platform. The catalog allows users 
+to browse and discover sports content across multiple product groups, such as boxing, NFL, cricket, and other sports. I worked on building 
+a fully responsive and scalable UI for this experience, handling banners, promotions, offers, pop-ups, and content discovery flows that form
+the backbone of the DAZN application.
+
+After that, I was involved in authentication and subscription flows, including login, sign-up, and offer selection. This included displaying 
+different subscription plans, billing cycles, and handling various user journeys around plan selection and purchase.
+
+I also worked on the My Account section, where users can view their subscription details, upgrade or downgrade plans, purchase add-ons, 
+and cancel subscriptions. This area required close coordination with backend systems and careful handling of user state and entitlements.
+
+Most recently, I've worked on the News platform at DAZN, which plays an important role in user engagement and organic discovery. 
+Sports news and articles help DAZN stay visible when users search for teams, players, or events, and act as a strong entry point 
+that brings users back into the application.
+
+Overall, my experience at DAZN has given me strong exposure to building scalable, user-centric frontend systems across acquisition, 
+core product, subscriptions, and content discovery in a large, global product.

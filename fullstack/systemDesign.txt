@@ -1,3 +1,8 @@
 -> https://www.youtube.com/watch?v=s9Qh9fWeOAk
 -> blg.algomaster.io
 -> https://topmate.io/rajat_gajbhiye/1446625
+
+-> Austoscaling , Load Balancing , LoadShedding , Rate Limiting
+    - Autoscale before you shed
+    - noisy neighbour problem can be solved using Rate Limiting
+    - what is  Death spiral ?

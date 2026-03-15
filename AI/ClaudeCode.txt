@@ -31,6 +31,9 @@
 -> /install-github-app - Setup claude Github Actions for a repository
 -> Hook - Run a command befor or after claude does something
     - preToolUse and postToolUse hooks
+        - postToolUse - Since the tool call has already occurred, PostToolUse hooks can't block the operation. However, they can:
+            - Run follow-up operations (like formatting a file that was just edited)
+            - Provide additional feedback to Claude about the tool use
     - and we can restrict claude to ready any files with these if needed
 -> Hook Configuration
      - Global - ~/.claude/settings.json (affects all projects)
@@ -38,6 +41,30 @@
      - Project (not committed) - .claude/settings.local.json (personal settings)
 -> In larger projects with many database queries, Claude sometimes creates duplicate functionality instead of reusing existing code. This is especially problematic when you give Claude complex, multi-step tasks that include database operations as just one component.
 -> Plan Mode handles breadth (multi-step tasks) while Thinking Mode handles depth (complex logic)
+-> Skills priority 
+    - Priority for name conflicts: Enterprise → Personal → Project → Plugins
+    - Enterprise — managed settings, highest priority
+    - Personal — your home directory (~/.claude/skills)
+    - Project — the .claude/skills directory inside a repository
+    - Plugins — installed plugins, lowest priority
+-> keep SKILL.md under 500 lines and link to supporting files (references, scripts, assets) that Claude reads only when needed
+    - scripts/ — Executable code
+    - references/ — Additional documentation
+    - assets/ — Images, templates, or other data files
+-> we can add extra meta data fields in skills other than name and description which are mandatory
+-> Subagents run in a separate context. They receive a task, work on it independently, and return results. They're isolated from the main conversation.
+-> CLAUDE.md — always-on project standards ( How this project works. )
+   .claudecode.md - Tool configuration for Claude Code ( How the AI should operate. )
+   Skills — task-specific expertise that loads on demand
+   Hooks — automated operations triggered by events
+   Subagents — isolated execution contexts for delegated work
+   MCP servers — external tools and integrations
+   Plugins - let you distribute skills across repositories via marketplaces for broader community use
+   Enterprise managed settings - deploy skills organization-wide with the highest priority, ideal for mandatory standards and compliance
+   Subagents don't automatically see your skills — you must explicitly list skills in a custom agent's frontmatter skills field
+   Built-in agents (Explorer, Plan, Verify) can't access skills at all — only custom subagents defined in .claude/agents can
+-> Skills validator tool — it catches structural problems before you spend time debugging other things
+-> /context - context usage highlevel overview
 
 
 
@@ -45,3 +72,4 @@ CLI Claude Commands
 -> Hit ESC twice to go back to the conversation history
 -> ESC to interrupt the claude response
 -> claude mcp add playwright 
+-> claude --debug to diagnose loading issues

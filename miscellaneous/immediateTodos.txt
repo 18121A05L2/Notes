@@ -1,8 +1,6 @@
+-> Learn basic of Backend : postgressql for database , graphql for api
+
 -> What is cover letter for ?
-
--> Prepare Blockchain , Frontend , Fullstack resumes
-
--> Better UI for the projects overview
 
 -> Auto Apply for Jobs using AI Agents
 
@@ -19,12 +17,3 @@
 -> need to go throgh all rust concepts and build a small project on solana
 
 -> try for transaction verification before submitting and go through the safe wallet
-
-
-
-
-# --------------------------- DONE ---------------------
--> need to build zkmixer , by end of july 2025 
-    - will all latest tech stack 
-
--> fix the zkmixer frontend to be able to withdraw

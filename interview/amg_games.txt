@@ -1,0 +1,47 @@
+Frontend Developer – SaaS Platform
+
+
+Location: Hyderabad
+
+Type: Full Time
+
+Package  : upto 10lpa
+
+
+
+Role Overview
+We are onboarding a Frontend Developer to support and scale a live SaaS web platform. This role is execution-heavy and impact-driven. You will work directly on production code—maintaining, refactoring, and improving frontend systems to ensure performance, scalability, and clean UX delivery.
+
+This is not a tutorial internship. You will be expected to own modules, rewrite legacy code, and ship improvements.
+
+-> Key Responsibilities
+Maintain and enhance an existing SaaS frontend codebase
+Refactor and rewrite frontend components for performance, readability, and scalability
+Implement UI/UX improvements with precision
+Debug issues across browsers and devices
+Collaborate with backend, product, and design teams
+Ensure code quality, consistency, and deployment readiness
+Support feature rollouts and iterative product enhancements
+-> Required Skill Set
+Strong fundamentals in HTML, CSS, JavaScript
+Hands-on experience with React.js (or equivalent modern framework)
+Ability to understand, modify, and rewrite existing codebases
+Familiarity with SaaS architecture and component-based design
+Working knowledge of Git and version control workflows
+Solid grasp of responsive design and frontend performance optimization
+-> Nice to Have
+Experience with Next.js / Vite / Tailwind CSS
+Exposure to SaaS dashboards, admin panels, or subscription-based products
+Understanding of API integrations
+Eye for clean UI and scalable frontend systems
+-> What You Gain
+Real-world SaaS product experience
+Ownership of production-level code
+Direct mentorship from senior developers
+Opportunity for full-time conversion based on performance
+A portfolio that actually matters
+-> Ideal Candidate
+Proactive, detail-oriented, and execution-focused
+Comfortable navigating and improving imperfect code
+Willing to learn fast and ship faster
+Thinks in systems, not just screens

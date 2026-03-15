@@ -1,0 +1,13 @@
+{
+  "permissions": [
+    {
+      "command": "npm install",
+      "allow": false,
+      "reason": "Managed setting: Use pnpm for this project."
+    }
+  ],
+  "personal_preferences": {
+    "theme": "dark",
+    "compact_mode": true
+  }
+}

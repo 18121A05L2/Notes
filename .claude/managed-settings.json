@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "description": "Enterprise-managed settings for organization-wide standards and compliance.",
+  "priority": "enterprise",
+  "managed_skills": [
+    "blockchain-security-standard"
+  ],
+  "enforced_settings": {
+    "allow_untrusted_tools": false,
+    "require_thinking_mode": true
+  },
+  "preapproved_commands": [
+    "git status",
+    "ls -R"
+  ]
+}

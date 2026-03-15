@@ -45,3 +45,10 @@
 -> localStorage is limited (~5 - 10MB) and synchronous.IndexedDB supports much larger storage and is asynchronous.
 -> Synchronous :: Any work that stops the execution of the code and waits for it to get completed before moving to the next line of code can be called sync work.
 -> Asynchronous :: Whereas in the case of async work, the execution is initiated and then set aside for later, meanwhile the remaining code is executed. Once the async work is completed the execution moves back to that work
+-> What is react reconciler? React reconciler is a core process that React uses to efficiently update the UI when any change in state or props is encountered.
+    - React performs a process called “reconciliation,” where it compares the current Virtual DOM with the previous Virtual DOM to identify the differences (or “diffs”) using the diffing algorithm
+-> What is react fiber? In concrete terms, a fiber is a JavaScript object that contains information about a component, its input, and its output. This object is the internal representation of the Components, which contains of type, keys, child, sibling, etc, of the component. Using this, React can efficiently identify the change in DOM and achieve performance optimization.
+-> Execution of Hooks :: React executes hooks like useState, useMemo, useCallback, useRef, and any other custom hooks you may have defined in the order they appear in the component's function body.
+    -  Commit Phase (Execution of useEffect)
+-> redux-thunk allows dispatching functions instead of plain objects, so we can run async logic before reaching the reducer
+-> <Profiler> This is one of the most useful components for developers to measure the performance of a React tree programmatically.

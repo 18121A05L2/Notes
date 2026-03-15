@@ -1,0 +1,44 @@
+{
+  "permissions": [
+    {
+      "command": "npm test",
+      "allow": true
+    },
+    {
+      "command": "ls",
+      "allow": false
+    },
+    {
+      "tool": "mcp__playwright",
+      "allow": true
+    },
+    {
+      "command": "npx",
+      "allow": true
+    }
+  ],
+  "hooks": {
+    "preToolUse": [
+      {
+        "matcher": "read_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/read_hook.js"
+          }
+        ]
+      }
+    ],
+    "postToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/edit_hook.js"
+          }
+        ]
+      }
+    ]
+  }
+}
