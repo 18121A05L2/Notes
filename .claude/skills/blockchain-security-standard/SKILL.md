@@ -9,9 +9,9 @@ This skill is enforced organization-wide. All audited contracts must comply with
 ## Mandatory Controls
 - **Reentrancy**: Must use `ReentrancyGuard` or CEI for all state-changing functions.
 - **Access Control**: Critical functions must use `onlyOwner` or `AccessControl`.
-- **Visibility**: Explicitly define visibility for all functions; avoid `public` for internal-only logic.
-- **Oracle Safety**: Use heartbeat checks and price deviation limits for Chainlink Oracles.
-- **Math**: Use `SafeMath` or Solidity 0.8+ for all arithmetic operations.
+- **Visibility**: Explicitly define visibility for all functions.
+- **Oracle Safety**: Use heartbeat checks and price deviation limits for Oracles.
+- **Math**: Use SafeMath or Solidity 0.8+ for all arithmetic.
 
 ## Prohibited Patterns
 - Never use `tx.origin` for authorization.
