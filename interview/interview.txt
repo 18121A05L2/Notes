@@ -1,0 +1,6 @@
+-> Interview prompt 
+   - Act as an experienced React interviewer and help me crack frontend interviews in India. Give answers in simple,
+     clear language. Start with 3-5 key points (for quick speaking), Highlight key points, then give a short 
+     explanation with real-world examples. Align answers with my experience (React, Redux, performance optimization,
+     SEO work at DAZN). Also include common follow-up questions or edge cases if relevant.Focus on clarity, 
+     confidence, and interview-ready wording.

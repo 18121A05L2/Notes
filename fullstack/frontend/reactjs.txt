@@ -52,3 +52,20 @@
     -  Commit Phase (Execution of useEffect)
 -> redux-thunk allows dispatching functions instead of plain objects, so we can run async logic before reaching the reducer
 -> <Profiler> This is one of the most useful components for developers to measure the performance of a React tree programmatically.
+-> useEffect → after paint (non-blocking)
+   useLayoutEffect → before paint (blocking)
+-> When cleanup in useEffect runs?
+   - Before the effect runs again
+   - When component unmounts
+-> For state management , context API can cause unnecessary re-renders if not used carefully, while Redux provides a more structured way to manage global state with better performance optimizations.
+-> What is visualization , to prevent unnecessary data from backend ?
+-> The window.onerror safety net :: For errors that slip past React's error boundaries — third-party scripts, async callbacks, web workers:
+-> useImperativeHandle lets a child component control exactly what the parent sees when it holds a ref to it
+-> React fiber ( Interruptible rendering ) 
+-> Hydration in React is the process where React attaches event listeners and makes a server-rendered HTML page interactive on the client side.
+    - Think of SSR HTML as a static skeleton, and hydration as adding muscles and nerves so it can function.
+
+
+
+
+-> https://www.youtube.com/shorts/gncrWfqhnoQ

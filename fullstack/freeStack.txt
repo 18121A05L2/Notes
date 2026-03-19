@@ -1,0 +1,20 @@
+Startup stack in 2026.
+
+A laptop for building
+Claude /Cursor for coding — ~$20/mo
+Supabase for database + backend — free
+Vercel for deployment — free
+Namecheap for domain — ~$12/yr
+
+Stripe for payments — pay per transaction
+GitHub for version control — free
+Cloudflare for DNS + security — free
+Clerk for authentication — free
+Resend for emails — free
+
+PostHog for analytics — free
+Sentry for error monitoring — free
+Upstash for Redis — free
+Pinecone for vector search — free
+
+You can run an entire startup for ~$20/month.

@@ -1,0 +1,43 @@
+-> stale closure 
+    - A stale closure happens when a function inside a React component uses an old value of state or props because it was created earlier and does not know about the updated value.
+    - Occurs mostly in setTimeout, setInterval, event listeners, or useEffect.
+-> Race conditions in frontend
+    - A race condition in a frontend app happens when two or more asynchronous operations compete to update shared state, and the final outcome depends on which one finishes last — not which one was most recently requested.
+    - Race conditions crop up in search/autocomplete (most common), tab switching, paginated tables, user profile switching, and any wizard where steps load async data.
+-> Is Set interval risky for cooling an api ?
+    - Yes, instead of that we can use setTimeout recursively to create a polling mechanism that allows us to control the timing of each API call and handle any potential errors more effectively.
+-> State management
+    - Local state
+    - Global state ( Context API , Redux )
+    - Server state ( Server state refers to data coming from APIs. It needs to be fetched, cached, and updated. Libraries like React Query help manage server state efficiently.)
+-> Normalized state 
+    - Normalized state is a way of structuring your app's data in the Redux/frontend store so that each piece of data is stored exactly once, and everything else just references it by ID
+    - Trade off : The one downside: you have to join data back together in your selectors or components, rather than having it pre-assembled. For very simple apps this can feel like extra work. But for anything with shared entities (users appearing in posts, comments, notifications, profiles), normalization pays off quickly.
+-> Context rerenders
+    - Split Context
+    - Memoize Context Value
+-> Where should pages filter should live in app , is it in the frontend or backend 
+   - if data is too big , then definitely in the backend
+   - Filter state always lives in the URL. Shareable, bookmarkable, survives refresh
+-> Websocker Architecure for a large scale app
+   - WebSockets give you a persistent, full-duplex connection
+   - A single WS server works fine for small apps. The problem comes when you scale horizontally: Client A is connected to Server 1, Client B is on Server 2 — if A sends a message that B should receive, Server 1 has no direct line to B's connection.The fix is a **message broker** (Redis Pub/Sub is the most common)
+   - SSE ( Server-Sent Events) is unidirectional (server -> client); WebSockets are bidirectional (full-duplex).
+-> Architecture of a large scale of frontend apps :: Large scale frontend architecture is really about solving four problems: code organisation, state management, performance at scale, and team boundaries.
+    - Frontend folder structure: components, pages, hooks, utils, services, contexts, assets, app
+    - Webpack Module Federation for micro frontends
+-> Performance optimization strategies
+    - Reduce unnecessary re-renders
+    - Optimize bundle size
+    - Implement lazy loading
+    - Optimize API calls
+    - Use memoization
+    - Improve rendering efficiency
+    - modern formats (WebP) for images
+-> CSR ( Client Side Rendering )
+-> Production issue , debug strategies
+    - Detect -> triage -> isolate -> fix -> deploy -> prevent
+    - Error tracking : Sentry 
+    - Session replays : LogRocket , FullStory
+    - APM / traces : Datadog · New Relic
+    - Feature flags : featurevisor

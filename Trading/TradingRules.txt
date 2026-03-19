@@ -1,3 +1,4 @@
 -> Observability with LLMs - so that if something went wrong it will retrait it so that it wont happen again
 -> FinGPT -  https://github.com/AI4Finance-Foundation/FinGPT?tab=readme-ov-file
 -> https://ai4finance.org/#projects
+-> what is hidden markov models

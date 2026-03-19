@@ -65,6 +65,8 @@
    Built-in agents (Explorer, Plan, Verify) can't access skills at all — only custom subagents defined in .claude/agents can
 -> Skills validator tool — it catches structural problems before you spend time debugging other things
 -> /context - context usage highlevel overview
+-> Use Claude Code as the foundation for coding infrastructure, allowing you to decide how to interact with the model while enjoying updates from Anthropic -  https://github.com/musistudio/claude-code-router
+-> A minimal browser extension that shows token count, cache timer, and usage bars on claude.ai. -  https://github.com/she-llac/claude-counter
 
 
 
