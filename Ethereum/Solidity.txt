@@ -9,7 +9,7 @@
       - When an external caller invokes a function, the parameters come from outside the contract — there's no way to directly pass a pointer to on-chain storage
    - they must use memory or calldata instead. storage parameters can only be used with internal (or private) functions
 —> new address[](size) - dynamic arrays in Solidity are initialised with default values ( here zero addresses )
--> safemath librarie , what are checked and unchecked ( overflow or underflow checks are default in over 0.8 version , unchecked can 
+-> safemath library , what are checked and unchecked ( overflow or underflow checks are default in over 0.8 version , unchecked can 
    be used to reduce the gas by explicitily specifying do not check for any overflow or underflow for a specific expression )
 -> in Solidity in order to send native blockchain tokens like ethereum , you can only work with payable address to do that (when using call 
    this was not needed and when using transfer and send payable is needed)
@@ -153,7 +153,7 @@
 -> selfdestruct removes contract's bytecode and storage but does not erase its address , but after dencun update it wont remove the 
    bytecode if we wont call the selfdestruct in the same transaction
    - Even if a contract's code does not contain a call to selfdestruct, it can still perform that operation using delegatecall or callcode.
-   - selfdestruct is deprecated now - but previously it has a capability to force send the Ehter if the caller contract does not have any payable fallback function which is capable of receiving ether
+   - selfdestruct is deprecated now - but previously it has a capability to force send the Ether if the caller contract does not have any payable fallback function which is capable of receiving ether
 -> Why optocodes deals with storage has more gas cost than memory or stack , what does it actually do or how does it differs internally
   -- Changing a value in storage requires:
     Fetching the existing value from the Ethereum State Trie (SLOAD).
