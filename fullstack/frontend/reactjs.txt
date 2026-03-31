@@ -64,6 +64,9 @@
 -> React fiber ( Interruptible rendering ) 
 -> Hydration in React is the process where React attaches event listeners and makes a server-rendered HTML page interactive on the client side.
     - Think of SSR HTML as a static skeleton, and hydration as adding muscles and nerves so it can function.
+-> coding challenges :
+    - https://github.com/piyush-eon/frontend-interview-questions
+    - https://www.youtube.com/playlist?list=PLKhlp2qtUcSZiWKJTi5-5r6IRdHhxP9ZU
 
 
 

@@ -1,19 +1,42 @@
 -> O(1) refers to constant complexity, where the algorithm's performance is not affected by the input size, while O(n) refers to linear 
     complexity, where algorithm performance scales linearly with the input size.
-
-
 -> Complexity   Name                                	                                               Example
     O(1)        constant time	      Takes the same time regardless of input size                     Array lookup
-    O(n)	    linear time	          Time grows proportionally with input size                        Loop over array
     O(log n)	logarithmic time	  Reduces the problem size by half each time                       Binary search
+    O(n)	    linear time	          Time grows proportionally with input size                        Loop over array
     O(n log n)  linearithmic time	  Common in efficient sorting algorithms                           Merge sort / Quick sort
     O(n²)	    quadratic time	      Nested loops — time grows exponentially with input               Nested loops / Bubble sort
     O(2ⁿ)	    exponential time	  Time doubles with each added input — very slow for large input   Recursive Fibonacci, brute-force
 
+-> Space complexity
+    O(1) — you use a fixed number of variables regardless of input size (e.g. a counter, a max variable)
+    O(n) — you create a new array/object proportional to input (e.g. map(), filter(), storing results)
+    O(n²) — you create a 2D matrix (e.g. a grid for dynamic programming)
+-> https://www.youtube.com/playlist?list=PLKhlp2qtUcSZtJefDThsXcsAbRBCSTgW4
+-> File Explorer - Depth First Search (DFS) for Tree Traversal: The file explorer uses a DFS algorithm to navigate the nested folder structure. It starts at the root and recursively explores each branch (folder) to its full depth before moving to the next sibling. This is essential for finding a specific folder ID to insert a new file, as it allows the code to check every nested layer one by one.
+    - This approach follows DFS because it prioritizes going "deep" into a folder's children before moving to the next folder at the same level.
+    - Problem with the current code: Every time you add a file, the algorithm traverses the entire tree from the root until it finds the ID. In a massive tree (thousands of files), this is $O(N)$ time complexity.
+        - The DP Solution (Memoization/Mapping):Instead of traversing the tree every time, you could maintain a Flat Map (a simple JavaScript object or Map) where the keys are ids and the values are references to the actual folder objects in memory.
+        - Result: When you need to insert a file, you look up the folder in the Map ($O(1)$ time), add the item directly, and the UI updates because the reference is shared with the main tree. This effectively removes the need for recursive searching.
+-> DFS Defination :: DFS (Depth First Search) is a graph/tree traversal algorithm that explores nodes as deep as possible first, then backtracks. It uses a stack (or recursion).
+    - In DFS, you start from a node and keep visiting its first unvisited neighbor until you can’t go further. Then you backtrack and explore other paths.
+-> console.time and console.timeEnd are used to measure the time taken by a block of code to execute.
+-> Kadane's Algorithm is an efficient dynamic programming and greedy technique used to find the maximum sum of a contiguous subarray within a one-dimensional array of numbers
+    - The core idea is simple: at each element, decide whether to extend the current subarray or start fresh.
+    - https://www.youtube.com/watch?v=BlbCI5dY9Uc&list=PLKhlp2qtUcSZtJefDThsXcsAbRBCSTgW4&index=6
+-> Recursion 
+    - Every recursive problem needs to get SMALLER with each call, and must have a BASE CASE to stop.
+    -  Base Case - The condition where the function stops calling itself. Without this → infinite loop → stack overflow.
+-> Backtracking is an algorithmic technique for solving problems by exploring all possible options one by one and undoing ("backtracking") a choice if it leads to a dead end or violates specific constraints
+    - This **choose → explore → unchoose** pattern is the heart of backtracking.
+    - subset of array
+-> Linear data structures arrange elements sequentially — each element has exactly one predecessor and one successor (except the first and last).
+    - Examples: Arrays, Linked Lists, Stacks, Queues
+   Non-linear data structures arrange elements in a hierarchical or interconnected way — one element can connect to multiple others.
+    - Examples: Trees, Graphs, Heaps
+-> A deque (Double-Ended Queue, pronounced "deck") is a data structure where you can insert and remove from both ends 
+    - In JavaScript, there's no built-in Deque class, but an array gives you all four operations: push (add to end), pop (remove from end), unshift (add to front), shift (remove from front).
 
-
-
--> difference between O(n) and O(logn)
 -> You can prove inclusion (Merkle proof) of a leaf with a small log₂(n) proof. in Incremental Merkle tree
 
 

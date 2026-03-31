@@ -1,5 +1,0 @@
--> Auto job apply 
-https://github.com/feder-cr/Jobs_Applier_AI_Agent_AIHawk
-https://github.com/LakshmiSanikommu/jobber?tab=readme-ov-file
-https://github.com/GodsScion/Auto_job_applier_linkedIn
-https://github.com/Jacob1802/seek-automation

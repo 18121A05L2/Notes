@@ -6,3 +6,7 @@
     - Autoscale before you shed
     - noisy neighbour problem can be solved using Rate Limiting
     - what is  Death spiral ?
+-> HLD ( https://www.youtube.com/watch?v=v50uJDEFnqM&list=PLKhlp2qtUcSaSnNnNffRPIU3DRQ2xAdj8&index=2 )
+    - functional requirements
+    - non functional requirements ( performance , responsiveness, caching, accessability, compatabiility , scalability , reliability , security )
+    - costing limitations

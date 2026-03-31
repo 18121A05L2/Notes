@@ -93,5 +93,14 @@
 | `allSettled` | All settle     | Never rejects | Array of status objects         |
 | `race`       | First settles  | First rejects | First result                    |
 | `any`        | First resolves | All reject    | First success or AggregateError |
-
-     
+-> When you call .sort() with no argument, JavaScript converts every element to a string first, then sorts them alphabetically (by Unicode character code).
+    - for sorting numbers, you need to provide a compare function that tells sort how to order the elements. For example, (a, b) => a - b will sort numbers in ascending order.
+-> conver set to array :: const mySet = new Set([1, 2, 3]);
+   const myArray = Array.from(mySet);
+-> Number.NEGATIVE_INFINITY
+-> Command       What it does                               Enters functions?
+   Step Over     Run current line, go to next               ❌ No
+   Step Into     Go inside the function call                ✅ Yes
+   Step Out      Finish current function, return to caller  ↩️ Exits
+-> // Arrays/Objects ⚠️
+   [[1,2]].includes([1,2])    // false → compared by REFERENCE

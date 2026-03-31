@@ -41,3 +41,19 @@
     - Session replays : LogRocket , FullStory
     - APM / traces : Datadog · New Relic
     - Feature flags : featurevisor
+-> The Critical Rendering Path (CRP) is the sequence of steps the browser follows to convert HTML, CSS, and JavaScript into pixels on the screen.
+    - Critical Rendering Path is the set of browser steps required to render a page: parse HTML into DOM, parse CSS into CSSOM, combine them into a render tree, do layout, and then paint. CSS is render-blocking, and synchronous JavaScript can also block rendering. In frontend applications, especially React apps, we optimize CRP by reducing bundle size, deferring non-critical scripts, code splitting, lazy loading, and prioritizing above-the-fold content.
+-> The Performance tab in Chrome DevTools is used to analyze runtime performance of a webpage.
+    - where time is being spent
+    - why the page is slow
+    - what is blocking rendering or interaction
+-> FCP & CLS (Core Web Vitals) - These are performance metrics that measure user experience during page load.
+    - CLS measures how much the layout shifts unexpectedly while the page loads.
+-> Order of Event Flow :: When you click an element, the browser follows this order:
+    - Capturing Phase (Top → Down)
+    - Target Phase (Actual element clicked)
+    - Bubbling Phase (Bottom → Up)
+    - By default, event listeners run in bubbling phase
+    - Capturing only happens if you explicitly enable it:
+-> Nested comments Design implementation ( can have any number of nested comments )
+    - recursion + component design + state handling
