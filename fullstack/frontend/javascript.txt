@@ -104,3 +104,4 @@
    Step Out      Finish current function, return to caller  ↩️ Exits
 -> // Arrays/Objects ⚠️
    [[1,2]].includes([1,2])    // false → compared by REFERENCE
+-> CSS Grid is a two dimentional layout model making it simple to arrange items in rows and columns

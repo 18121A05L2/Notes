@@ -1,0 +1,30 @@
+-> JavaScript is like C# (the language).
+-> Node.js is similar to .NET (the runtime and platform used to execute applications, though they are different technologies).
+-> var is not a data type. It's an instruction for the compiler to infer the type.
+    - using too much of var might make your code less readable, so use it wisely.
+-> Notice that reference types like string can already be null. string name = null; So nullable types mainly solve this problem for value types.
+-> A delegate is a variable that stores a reference to a method.Think of it like a function pointer in C/C++, but type-safe.
+    - where are delegates used?
+        - Event handling, Callbacks, LINQ, Lambda expressions
+-> records compare their data, not just their memory addresses.
+    - Records were introduced to represent immutable data more conveniently
+    - That's why records are ideal for DTOs, API responses, configuration objects, and other data-centric models.
+-> A namespace is a way to organize related classes, interfaces, structs, enums, and other types. It also prevents naming conflicts between different parts of your code or between different libraries.
+-> Console.ReadLine() will always return a string
+-> By default, every decimal number (a number with a .) is considered a double in C#.
+-> Numeric formatting - string.Format(), {var}.ToString("C", CultureInfo.CurrentCulture))
+-> tryParse , varbatim string literal(@) , interpolated string literal ($) , string.isNullOrEmpty() 
+-> back slash (\) is used to escape characters in strings
+-> ASP.NET MVC ( Routing , viewmodels & MVVM , web api and api controllers)
+-> foreach , Array.Sort sorts the original array,List , Dictionary, 
+-> In day-to-day C# development, you'll use arrays when the size is known in advance (for example, the 12 months of the year) and List<T> when the number of elements can change.
+-> Getting a value directly from Dictionaly will cause an exception if the key does not exist. Use TryGetValue() to avoid exceptions.
+-> compile converts c# code into CIL ( Common Intermediate Language )
+-> ASP.NET ( for regular web applications ) , ASP.NET Core ( for cross-platform web applications ) , Blazor ( for client-side web applications using C# instead of JavaScript ), Entity Framework core (for database access and management), 
+-> in parameters -  Passes a value by reference but prevents modification
+-> out Parameters - Used when a method needs to return multiple values.
+-> ref Parameters - Passes a variable by reference so the method can modify the caller's variable.
+-> A static method belongs to the class itself, not to an object.
+-> named parametes in functions
+-> struct ( value type ) vs class ( reference type )
+-> for a struct constructor, you must initialize all fields before the constructor ends.

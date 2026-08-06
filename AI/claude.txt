@@ -1,0 +1,2 @@
+-> Context Bloat : Every connected MCP server loads all of its tool definations into the your context on every single message
+-> Using CLI will save 40% of token usage vs MCP servers ( use CLI if it exists for that specific MCP)
