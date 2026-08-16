@@ -24,7 +24,7 @@ Array.prototype.myMap = function (callback, thisArg) {
   return result;
 };
 
-// Exaple for debounce
+// Example for debounce
 function debounce(func, delay) {
   let timeoutId;
   return function (...args) {
@@ -35,6 +35,25 @@ function debounce(func, delay) {
     }, delay);
   };
 }
+
+//Flatten a nested array without built-in helpers
+function flattenArray(arr) {
+  const result = [];
+
+  for (const item of arr) {
+    if (Array.isArray(item)) {
+      result.push(...flattenArray(item));
+    } else {
+      result.push(item);
+    }
+  }
+
+  return result;
+}
+
+const arr = [4, 5, 1, 3, 6, [2, 7, [0, 8], 9]];
+
+console.log(flattenArray(arr));
 
 // --------------------------------- SLIDING WINDOW ALGORITHM ---------------------------------
 
@@ -91,3 +110,5 @@ pick 1 + permute([2,3]) → [1,2,3], [1,3,2]
 pick 2 + permute([1,3]) → [2,1,3], [2,3,1]
 pick 3 + permute([1,2]) → [3,1,2], [3,2,1]
 ```;
+
+// -------------------------------------------------------------------------------

@@ -1,0 +1,3 @@
+-> Specificity is essentially the weight of a selector.
+    - Specificity is calculated as (inline styles, IDs, classes/attributes/pseudo-classes, elements/pseudo-elements)
+    - The CSS cascade is the process the browser uses to determine which declarations apply when multiple CSS rules match an element. Specificity is one of the factors used to resolve conflicts between matching declarations. In general, IDs have higher specificity than classes, and classes have higher specificity than elements. If competing declarations have equal specificity and are otherwise in the same cascade context, the later declaration wins. The cascade also considers importance, origins, cascade layers, and other modern cascade rules.

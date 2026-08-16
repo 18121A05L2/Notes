@@ -1,0 +1,7 @@
+-> libuv is a c++ library that provides an event-driven, non-blocking I/O model for Node.js to handle asynchronous operations
+    - if event loop sees something like reading a file , making a database query , or making an HTTP request , it will offload that operation to the libuv thread pool using event demultiplexer
+    - by default we have 4 threads in the thread pool
+    - process.env.UV_THREADPOOL_SIZE - increasing the thread pool size can help with performance but is limited by the number of available CPU cores
+    - http.request is Network I/O and not a CPU bound operation and is handled by the OS kernel, so it doesn't use the thread pool
+-> every method in nodejs that has sync prefix always runs on the main thread and is blocking
+-> Essential core modules - fs , http , path , os , process

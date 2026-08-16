@@ -31,7 +31,6 @@
 --> currying in javascript is possible just because of closures
   - Currying is a functional-programming technique where you transform a function that takes multiple arguments into a sequence of functions, each taking a single argument
 
---> Data hiding is done in js with the help of closures ( which was done with functions )
 --> disadvantages of closures  - over consumption of memory
 --> if the child function is not using the parent function varibles , then those varibles are garbage collected
     - Mark and sweep algorithm is used to clean up the unused memory
@@ -82,7 +81,7 @@
 --> everything in javascript are objects
 --> each and every object in java script has a prototype
     - prototype chain - arr.__proto__ was from Array.prototype -> arr__proto__.__proto__ was from Object.prototype -> Object.prototype.__proto__ is null
---> when ever we create something in js , we get some default hidden properties and that is through protoype inheritance
+--> whenever we create something in js , we get some default hidden properties and that is through protoype inheritance
 --> every thing in js is object ,, when ever we create an object in js , all default functions will be creted as an object and jre adds it to our each and every  object
 --> to write a polyfill for a funcion , Function.prototype.methodName = function() {}
 
@@ -111,6 +110,8 @@
 
 --> whenever we do a cors request , before this an preflight options call will be made , with the additional headers we are going to use and if that gets error , we are now allowed to use those additional headers
         - https://grok.com/chat/45979a62-40d7-4259-805e-0208084c7299
+-> Key headers associated with CORS are: ( we get all these from prefligh options call)
+    - Acess-Control-Allow-Origin, Access-Control-Allow-Methods, Access-Control-Allow-Headers and Access-Control-Max-Age
 
 --> Debounce: ignores intermediate events, runs once after activity stops. Ex: Search box , Auto-saving forms
     Throttle: runs at most once every X ms, even if events continue to fire. Ex: Resize event handlers , Scroll-triggered animations and Button click spam protection
