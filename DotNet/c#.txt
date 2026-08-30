@@ -1,52 +1,101 @@
 -> https://www.youtube.com/watch?v=YrtFtdTTfv0
+-> https://www.youtube.com/watch?v=YbRe4iIVYJk
 -> JavaScript is like C# (the language).
 -> Node.js is similar to .NET (the runtime and platform used to execute applications, though they are different technologies).
 -> var is not a data type. It's an instruction for the compiler to infer the type.
     - using too much of var might make your code less readable, so use it wisely.
 -> Notice that reference types like string can already be null. string name = null; So nullable types mainly solve this problem for value types.
 -> A delegate is a variable that stores a reference to a method.Think of it like a function pointer in C/C++, but type-safe.
-    - where are delegates used?
+    - The main reason delegates exist is that C# is strongly typed, so when you pass a method as an argument, the compiler needs to know what kind of method is allowed
+    - where are delegates used? ( delegate void MyDelegate(); )
         - Event handling, Callbacks, LINQ, Lambda expressions
--> records compare their data, not just their memory addresses.
+-> records compare their data, not just their memory addresses. ( record User(string Name); )
     - Records were introduced to represent immutable data more conveniently
-    - That's why records are ideal for DTOs, API responses, configuration objects, and other data-centric models.
--> A namespace is a way to organize related classes, interfaces, structs, enums, and other types. It also prevents naming conflicts between different parts of your code or between different libraries.
+    - That's why records are ideal for DTOs (Data Transfer Objects), API responses, configuration objects, and other data-centric models.
+-> A namespace is a way to organize related classes, interfaces, structs, enums, and other types. It also prevents naming conflicts between 
+   different parts of your code or between different libraries.
 -> Console.ReadLine() will always return a string
 -> By default, every decimal number (a number with a .) is considered a double in C#.
--> Numeric formatting - string.Format(), {var}.ToString("C", CultureInfo.CurrentCulture))
+-> Numeric formatting - string.Format(), {var}.ToString("C", CultureInfo.CurrentCulture)
 -> tryParse , varbatim string literal(@) , interpolated string literal ($) , string.isNullOrEmpty() 
 -> back slash (\) is used to escape characters in strings
--> ASP.NET MVC ( Routing , viewmodels & MVVM , web api and api controllers)
 -> foreach , Array.Sort sorts the original array,List , Dictionary, 
--> In day-to-day C# development, you'll use arrays when the size is known in advance (for example, the 12 months of the year) and List<T> when the number of elements can change.
+-> In day-to-day C# development, you'll use arrays when the size is known in advance (for example, the 12 months of the year) and List<T> when 
+   the number of elements can change.
 -> Getting a value directly from Dictionaly will cause an exception if the key does not exist. Use TryGetValue() to avoid exceptions.
--> compile converts c# code into CIL ( Common Intermediate Language )
--> ASP.NET ( for regular web applications ) , ASP.NET Core ( for cross-platform web applications ) , Blazor ( for client-side web applications using C# instead of JavaScript ), Entity Framework core (for database access and management), 
+-> Instead of compiling code directly into machine instructions, .NET applications first compile into Common Intermediate Language (CIL).
+   The Common Language Runtime (CLR) then translates CIL into machine code at runtime, allowing cross-platform execution.
+-> ASP.NET ( for regular web applications ) , ASP.NET Core ( for cross-platform web applications ) , Blazor ( for client-side web applications 
+   using C# instead of JavaScript ), Entity Framework core (for database access and management), 
 -> in parameters -  Passes a value by reference but prevents modification
 -> out Parameters - Used when a method needs to return multiple values.
 -> ref Parameters - Passes a variable by reference so the method can modify the caller's variable.
 -> A static method belongs to the class itself, not to an object.
--> named parametes in functions
+-> named parametes in functions - CreateUser("Lakshmi", age: 30, country: "India") - But positional arguments generally need to come before named arguments.
 -> struct ( value type ) vs class ( reference type )
 -> for a struct constructor, you must initialize all fields before the constructor ends.
 -> getters and setters for class
 -> Boxing: Converting a value type to a reference type
+    - Boxing is the process of converting a value type into an object or another reference-type representation. The value is wrapped in an object.
+       - Unboxing extracts the value type from that object. Boxing can have performance and allocation overhead, which is one reason generic collections 
+       - like List<T> are preferred over non-generic collections like ArrayList.
 -> ASP.NET Core is a framework for building backend applications using C#.(ASP stands for Active Server Pages.)
--> API request -> Browser -> GET /api/users -> ASP.NET Core -> Controller -> Service -> Entity Framework Core -> SQL Server -> Return JSON -> Browser
+-> API request -> Browser -> GET /api/users -> ASP.NET Core -> Controller -> Service -> Repository -> Entity Framework Core -> SQL Server -> Return JSON -> Browser
 -> In Entity Framework (EF), an entity is a standard C# class that maps directly to a table in your relational database.
     - The Entity Class maps to a Database Table.
     - An Entity Instance (an object created using new) maps to a Table Row.
     - Entity Properties map to Table Columns.
--> The Repository Pattern abstracts data access logic from the rest of the application. It is responsible for performing CRUD operations against the database.
-->Entity Framework Core (EF Core) is Microsoft's Object Relational Mapper (ORM) for .NET. It allows developers to interact with relational databases using C# objects instead of writing raw SQL queries.
--> In an ASP.NET Core application, the Controller handles incoming HTTP requests and delegates the work to the Service Layer. The Service Layer contains the business logic and coordinates the application's operations. It interacts with the Repository, which is responsible for data access and CRUD operations. The Repository uses Entity Framework Core's DbContext to communicate with the database. Entity Framework Core is an ORM that maps C# objects to database tables and translates LINQ queries into SQL, allowing us to work with the database using strongly typed C# code instead of writing raw SQL.
--> Dependency Injection is a design pattern that provides the required dependencies of a class from an external container instead of creating them inside the class. It promotes loose coupling, improves maintainability, and makes unit testing easier. ASP.NET Core provides a built-in dependency injection container supporting Singleton, Scoped, and Transient lifetimes.
+-> Entity Framework Core (EF Core) is Microsoft's Object Relational Mapper (ORM) for .NET. It allows developers to interact with relational databases using C# objects instead of writing raw SQL queries.
+    - What is ORM? - A technique for converting data between a relational database and an object-oriented programming language.
+-> In an ASP.NET Core application, the Controller handles incoming HTTP requests and delegates the work to the Service Layer. The Service 
+   Layer contains the business logic and coordinates the application's operations. It interacts with the Repository, which is responsible for 
+   data access and CRUD operations. The Repository uses Entity Framework Core's DbContext to communicate with the database. Entity Framework 
+   Core is an ORM that maps C# objects to database tables and translates LINQ queries into SQL, allowing us to work with the database using 
+   strongly typed C# code instead of writing raw SQL.
+-> Dependency Injection is a design pattern that provides the required dependencies of a class from an external container instead of creating 
+   them inside the class. It promotes loose coupling, improves maintainability, and makes unit testing easier. ASP.NET Core provides a built-in 
+   dependency injection container supporting Singleton, Scoped, and Transient lifetimes.
+   - service lifetimes in DI ::
+      - Transient = new every time ( Use when: the service is lightweight and doesn't need to maintain state. )
+      - Scoped = one per request/scope ( Use when: the service should live for the duration of a request. )
+      - Singleton = one for the entire application ( Use when: you intentionally want shared application-wide state or an expensive-to-create, thread-safe service. )
+   - types of DI ::
+      - Constructor Injection = The most common and recommended approach. Dependencies are provided through the class constructor.
+      - Property Injection = Dependencies are set through public properties. Less common and can lead to partially constructed objects.
+      - Method Injection = Dependencies are passed as parameters to methods. Useful for optional dependencies or when a dependency is only needed for a specific method.
 -> EF core generates sql from LINQ queries
 -> LINQ is a C# language feature used to query data from various sources such as collections, XML, and databases using a consistent syntax
--> A common mistake is injecting a Scoped service into a Singleton, known as a captive dependency, because the Singleton can end up holding a reference to a request-scoped object after that request has finished
+-> A common mistake is injecting a Scoped service into a Singleton, known as a captive dependency, because the Singleton can end up holding a 
+   reference to a request-scoped object after that request has finished
+    - Detection: Add ValidateScopes and ValidateOnBuild in development:: ValidateScopes detects incorrect lifetime usage such as injecting a 
+    scoped service into a singleton. ValidateOnBuild validates service registrations when the container is built, so missing or unresolvable dependencies are detected during application startup instead of at runtime
 -> a longer-lived service should not directly depend on a shorter-lived service.
 -> A DbContext is not thread-safe and is designed to represent one unit of work (typically one HTTP request).
 -> Custom middleware is a user-defined component that can inspect or modify HTTP requests and responses before passing control to the next middleware.
+-> A DTO is a contract between the client and server since it represents a shared agreement about how data will be transferred and used.
+-> withName - The biggest benefit is that you can refer to an endpoint by its name instead of hard-coding its URL.
+-> Non-nullable property 'Name' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring 
+   the property as nullable.
+    - for reference types we will get this warning if we don't initialize them in the constructor or mark them as nullable.
+-> NuGet is the package manager for the .NET ecosystem. It allows developers to install and manage third-party or internal libraries as packages, 
+   including their versions and dependencies. Packages are typically referenced in the .csproj file using PackageReference
+-> models in a models folder refers to tables in a database.
+-> In Entity Framework Core, database migrations are a way to track changes to your C# models and apply those changes to the database schema.
+    - Database migrations in EF Core are a mechanism for versioning and synchronizing database schema changes with changes in the application's 
+       - models. When we modify a model, we create a migration that contains the required schema changes, and then apply it to the database. This
+       - allows database changes to be tracked and shared through source control.
+-> dotnet ef database update
+-> Database seeding means automatically inserting initial or predefined data into a database.
+-> $env: ConnectingString__GameStoreDB="Data Source=GameStore.db"
+-> Struct vs Classes :: A struct is a value type, so assigning it to another variable copies its value. A class is a reference type, so assigning
+   it copies the reference, meaning both variables can refer to the same object. Structs are generally used for small value-like data, while classes are used for objects with identity, state, and behavior.
+-> Controller :: A Controller is the entry point for handling incoming HTTP requests in an ASP.NET Core application. It receives client 
+   requests, validates input, invokes the business logic through services, and returns an HTTP response to the client.
+-> Service Layer :: The Service Layer contains the business logic of the application. It acts as an intermediary between the Controller and the Repository.
+-> Repository :: The Repository Pattern abstracts data access logic from the rest of the application. It is responsible for performing CRUD operations against the database.
+-> DBContext :: DbContext is the primary class in Entity Framework Core that manages the connection to the database, tracks entity changes, and translates LINQ queries into SQL queries.
+-> LINQ :: LINQ (Language Integrated Query) is a feature in C# that provides a consistent and type-safe way to query and manipulate data from different sources such as collections, databases, XML, and APIs.
+-> 
 
 
 -------------------- Keywords --------------------

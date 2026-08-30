@@ -1,0 +1,75 @@
+-> https://zerotomastery.io/blog/dot-NET-interview-questions/
+-> https://codewithmukesh.com/blog/dotnet-webapi-interview-questions/
+-> what are generations in garbage collection
+    - Objects that are newly created are more likely to become unreachable quickly, while objects that survive several collections are more likely to continue living.
+    - New objects generally start in Gen 0. Objects that survive collections can be promoted to older generations, with Gen 2 containing longer-lived objects.
+    - NET GC uses three generations: Gen 0, Gen 1, and Gen 2. New objects generally start in Gen 0. If they survive a collection, they can be promoted to Gen 1 and 
+        eventually Gen 2. Gen 0 is collected most frequently because most objects are short-lived, while Gen 2 is collected less frequently because it contains longer-lived 
+        objects. This generational approach reduces the amount of memory the GC has to examine and improves application performance. Large objects are placed on the Large 
+        Object Heap and are generally collected with Gen 2
+-> Task.Delay vs Thread.Sleep
+    - Task.Delay provides a non-blocking asynchronous delay, while Thread.Sleep blocks the current thread. In async server-side code, I would normally use Task.Delay
+-> what is Single Responsibility Principle
+    - An SRP states that a class should have only one responsibility or a class should have only one reason to change.
+    - when a class have one responsibility, it is easier to understand, maintain, and test. It also promotes code reusability and reduces the risk of introducing bugs when making changes.
+-> what is interface segregation principle
+    - ISP states that clients should not be forced to depend on interfaces they do not use. In other words, an interface should have only the methods that are relevant to the implementing class.
+-> types of classes in c# :: abstract, sealed, static, partial, record, and normal classes
+-> Difference between Abstraction and Encapsulation :: Abstraction focuses on hiding implementation complexity and exposing only the essential behavior, commonly using 
+   interfaces and abstract classes. Encapsulation focuses on protecting an object's internal state by restricting direct access and exposing controlled operations through methods or properties.
+-> Method overriding vs method hiding : Method overriding occurs when a derived class provides a new implementation for a virtual or abstract base method. The method is selected at runtime 
+   based on the actual object type. Method hiding uses the new keyword to define a method with the same name in the derived class, and the method selected depends on the reference type.
+-> Abstract class does not support multiple inheritance 
+    - A class cannot inherit from multiple classes, But it can implement multiple interfaces
+-> OOP in C# is based on four main concepts: encapsulation, abstraction, inheritance, and polymorphism. Encapsulation protects an object's internal state. Abstraction hides implementation 
+   details and exposes essential behavior. Inheritance allows a class to reuse or extend another class's functionality. Polymorphism allows the same interface or base reference to behave 
+   differently depending on the implementation, such as method overriding at runtime or method overloading at compile time.
+    - Encapsulation means bundling data and behavior together and controlling access to the internal state.
+    - Abstraction means exposing only the essential behavior while hiding implementation details.
+-> What are some best practices for working with Entity Framework Core?
+    - Use AsNoTracking() for Read-Only Queries
+    - Optimize Queries with Projection
+    - Avoid Lazy Loading in Performance-Sensitive Applications and use eager loading(Include()) or explicit loading instead.
+    - Use Transactions for Multiple Operations (DB) ( When modifying multiple records, transactions ensure data consistency and prevent partial updates. )
+    - Leverage Connection Pooling and Indexing :: Using a connection pool reduces the overhead of repeatedly opening and closing database connections. Proper indexing improves query performance by speeding up lookups.
+        - Connection pooling is a mechanism provided by the database provider where established database connections are maintained in a pool and reused across requests. When the application opens 
+          a connection, it can get an available connection from the pool. When we close or dispose the connection, it is normally returned to the pool rather than physically closed. This avoids the overhead of repeatedly 
+          establishing database connections and improves application performance and scalability
+-> .NET supports multiple authentication methods, including JWT (JSON Web Tokens), OAuth, OpenID Connect, and cookie-based authentication.
+-> .NET provides role-based authorization (RBAC) and policy-based authorization to restrict access based on user roles or custom conditions.
+-> Deferred Execution vs. Immediate Execution in LINQ
+    - Deferred execution: LINQ query executes when you actually enumerate the result.
+        - Where(),Select(),OrderBy(),ThenBy(),Skip(),Take() - Generally, these return another query rather than immediately materializing the results.
+        - Deferred execution can execute multiple times.The query can execute again during the second enumeration.If the underlying source is a database query with EF Core, this can potentially mean multiple database queries.
+            - we need to explicitly materialized using methods like ToList()
+    - Immediate execution: LINQ query executes immediately and produces a concrete result.
+        - Single(),Any(),All(),Max(),Min(),Sum(),Average() - 
+-> IEnumerable vs IQueryable
+    - IEnumerable<T> is mainly used for in-memory collections
+    - IQueryable → build a query that can be translated and executed by the data source, usually the database
+-> Finalize vs Dispose
+    - Dispose() → you explicitly release resources.
+    - Finalize() → the GC eventually gets a chance to release unmanaged resources.
+    - Dispose provides deterministic cleanup through IDisposable, and we normally use it with using or using var. A finalizer is non-deterministic 
+      and is invoked by the GC's finalization mechanism. It is mainly a safety net for unmanaged resources if deterministic cleanup wasn't 
+      performed. We generally avoid writing finalizers ourselves when possible and prefer SafeHandle. When Dispose successfully cleans up 
+      resources, GC.SuppressFinalize(this) prevents unnecessary finalization.
+-> async streams in C# allow asynchronous iteration over data sequences, making it easier to handle large datasets, real-time data processing, and 
+   streaming responses without blocking execution. They are useful when working with data that arrives gradually, such as reading from a database, consuming an API, or processing files.
+    - Normally, an IEnumerable<T> collection loads all elements at once before iteration begins. With async streams, an IAsyncEnumerable<T> allows 
+      data to be fetched piece by piece, preventing memory overload and keeping the application responsive.
+-> gRPC enables efficient, high-performance communication between microservices using a binary protocol.
+-> Message brokers such as RabbitMQ, Azure Service Bus, and Kafka support event-driven communication between services.
+-> How do you optimize performance in a .NET application?
+    - Performance optimization in .NET ensures that applications run efficiently by reducing resource consumption, improving execution speed, and maintaining scalability
+    - Caching reduces redundant database queries and improves response times. Using MemoryCache or HybridCache (newly introduced in .NET 9) for in-memory caching or Redis for distributed caching can speed up frequently accessed operations
+-> You Need Request Logging, Auth, Rate Limiting, CORS, and Exception Handling. What Order?
+app.UseExceptionHandler();    // 1. Catch everything - must be first
+app.UseHsts();                // 2. Security headers
+app.UseCors();                // 3. CORS - before auth so preflight doesn't get 401
+app.UseRateLimiter();         // 4. Rate limiting - before auth to block brute force
+app.UseAuthentication();      // 5. Who are you?
+app.UseAuthorization();       // 6. Are you allowed?
+// Request logging here       // 7. Log after auth so you have user identity
+app.MapControllers();         // 8. Endpoints
+-> 
