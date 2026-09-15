@@ -1,0 +1,5 @@
+-> Distributed caching in ASP.NET Core stores cached data in an external server (like Redis) that is shared across all application instances, 
+   ensuring consistent data regardless of which pod serves the request. Unlike in-memory caching where data lives in the application process, a 
+   distributed cache exists outside your application entirely. It does not need to be on the same server, and it survives application restarts and deployments.
+    - The trade-off is latency. Every cache operation involves a network round-trip to the Redis server plus serialization and deserialization of data
+-> Redis is an open-source, in-memory data store that serves as a database, cache, message broker, and streaming engine

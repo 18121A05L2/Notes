@@ -45,3 +45,10 @@
 -> what is token
 -> How coding assistant works , is it through RAG
 -> As context grows, important tokens lose influence. ( How to manage context effectively , by giving importance to specific tokens)
+
+
+
+
+
+
+-> Three developments made modern LLMs possible: the transformer architecture, vast training data, and massive compute.

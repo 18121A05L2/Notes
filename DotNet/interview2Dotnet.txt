@@ -72,4 +72,46 @@ app.UseAuthentication();      // 5. Who are you?
 app.UseAuthorization();       // 6. Are you allowed?
 // Request logging here       // 7. Log after auth so you have user identity
 app.MapControllers();         // 8. Endpoints
--> 
+-> How Would You Implement Rate Limiting in a .NET API?
+    - Rate limiting controls how many requests a client can make within a given period. In ASP.NET Core, I'd use the built-in Microsoft.AspNetCore.RateLimiting 
+      middleware, choose a policy such as Fixed Window, Sliding Window, Token Bucket, or Concurrency Limiter depending on the endpoint, and return HTTP 429 Too Many Requests when the limit is exceeded.
+    - So for a distributed environment, you may need a distributed rate limiter/state store, commonly something like Redis, depending on your architecture and consistency requirements
+    - Internet -> WAF / DDoS protection -> Load Balancer -> ASP.NET Core rate limiting -> API -> Database
+-> Two Users Submit Conflicting Price Updates Simultaneously. How Do You Handle This?
+    - For most CRUD APIs, I'd use optimistic concurrency :: EF Core includes RowVersion in the WHERE clause. If another user changed the row, it 
+      throws DbUpdateConcurrencyException, and I return 409 Conflict with a ProblemDetails response telling the client to refresh and retry
+    - This is a lost-update problem, so I'd use optimistic concurrency for a typical product API. I'd add a concurrency token such as SQL Server's 
+      rowversion to the Product entity. When the client reads the product, it also gets the current version. When it updates, EF Core includes 
+      that version in the update condition. If another user has already modified the row, the version no longer matches, so EF Core throws 
+      DbUpdateConcurrencyException. I'd catch that and return an appropriate conflict response, typically HTTP 409, so the client can refresh 
+      and let the user decide how to resolve the conflict.
+-> Your EF Core Query Works with 100 Records but Times Out with 100,000. How Do You Fix It?
+    - Inspect the generated SQL and execution plan first, then optimize filtering, indexing, projection, joins, pagination, tracking, and database access.
+    - 1. Reproduce the slow query -> 2. Inspect generated SQL -> 3. Run SQL directly against DB -> 4. Inspect execution plan -> 5. Check indexes
+      6. Check joins / N+1 -> 7. Check filtering & projection -> 8. Add pagination -> 9. Use AsNoTracking for read-only queries ->10. Check DB blocking/resources
+      11. Consider caching -> 12. Only then consider timeout adjustment
+-> Indexing : modelBuilder.Entity<Product>().HasIndex(p => new { p.CategoryId, p.IsActive });
+    - HasIndex creates a database index. Here I'm creating a composite index on CategoryId and IsActive because queries frequently filter products 
+      using both columns. This allows the database to locate matching rows more efficiently instead of scanning the entire table. The order of 
+      columns in a composite index matters, so I choose it based on the application's query patterns.
+-> Your JWT Is Valid for 15 Minutes. A User's Role Changes. The Old Token Still Has the Admin Claim. Now What?
+    - A JWT is self-contained. Once issued, changing the user's role in the database does not automatically change the claims inside an already-issued token.
+    - Validate authorization against the database :: Another approach is to treat the JWT primarily as an identity credential and check the current authorization state when necessary.
+    - Token version / security stamp :: For cases where role changes must invalidate existing tokens, you can maintain a version on the user.
+-> How Do You Prevent Mass Assignment (Over-Posting) Attacks
+    - I prevent mass assignment by never binding API requests directly to my EF Core entities. I use dedicated request DTOs that contain only the 
+      properties the client is allowed to modify, and explicitly map those properties to the entity. For sensitive fields like roles, admin status, 
+      or balances, I use separate authorized operations or policies. I also don't trust client-supplied IDs or security-sensitive properties.
+-> Q24. Your API Endpoint Takes 800ms. How Do You Diagnose and Fix It?
+-> Task.WhenAll is used when you have multiple asynchronous operations that can run concurrently, and you want to wait until all of them finish.
+    - Task.WhenAll is Asynchronous waiting.Task.WaitAll is Synchronous waiting.
+-> A Task is an object that represents an asynchronous operation and its eventual completion.
+-> A Task can go through states such as Created, WaitingForActivation, WaitingToRun, and Running, and eventually reaches a final state: RanToCompletion, 
+   Faulted, or Canceled. In async I/O scenarios, WaitingForActivation is commonly seen while the underlying operation is still pending
+-> What's Vertical Slice Architecture vs Clean Architecture ?
+    - Clean Architecture organizes an application around technical layers such as API, Application, Domain, and Infrastructure, with dependencies 
+       pointing toward the domain. Vertical Slice Architecture organizes the application around business features or use cases, so everything 
+       required for a particular feature is kept together. Vertical Slice generally reduces unnecessary abstractions and makes feature changes 
+       easier to isolate. They can also be combined—for example, using vertical slices for feature organization while still keeping domain and 
+       infrastructure boundaries.
+-> For modern ASP.NET Core applications, Vertical Slice + MediatR/CQRS + EF Core is a common combination, especially when the application has many independent business features.

@@ -82,6 +82,7 @@
     - Include() - Use when you actually need the related entities.
     - Projection - Use when you need data, particularly for read-only APIs.
     - lazy loading vs eager loading vs explicit loading, Include() vs Select(), and AsSplitQuery() vs AsSingleQuery()
+    - Include() loads related entities into the entity graph, while Select() projects the query into exactly the shape of data I need
 -> Unit of Work means :: Group multiple related database operations into one logical transaction/unit and commit them together.
 -> Explain Clean Architecture in a .NET application.
     - I generally separate the application into API, Application, Domain, and Infrastructure layers. The API layer handles HTTP concerns such as 
@@ -140,8 +141,7 @@
     - For communication, I enforce HTTPS using HTTPS redirection and HSTS in production. HTTPS is especially important when using JWT because 
         it prevents tokens and other sensitive data from being intercepted during transmission.
     - I would also consider secure password hashing, proper authorization policies, short-lived tokens, secure logging, and keeping dependencies updated. 
-
-
+-> CI/CD Plan ::  Developer -> Git -> Pull Request -> Build -> Unit Tests -> Integration Tests -> Security/Quality Checks -> Docker Build -> Container Registry -> Deploy to Staging -> Smoke Tests -> Production
 
 
 
@@ -176,3 +176,5 @@
 -> SQL injections
 -> Span<T> and Memory<T>
 -> How do you optimize performance in a .NET application
+-> Messaging queue
+-> Continuous Integration and Continuous Deployment (CI/CD)

@@ -1,6 +1,18 @@
 -> https://www.youtube.com/watch?v=s9Qh9fWeOAk
 -> blg.algomaster.io
 -> https://topmate.io/rajat_gajbhiye/1446625
+-> https://www.youtube.com/watch?v=C842vFY5kRo
+    - SQL is suitable for payments ( ACID stands for Atomicity, Consistency, Isolation, and Durability )
+    - When to use RDBMS ( when the data is well structured with clear relationships )
+    - When to use NoSQL ( Super low latency for rapid responses, when the data is unstructured or semi structured )
+    - Horizontal Scaling ( Scale out ) is better than Vertical Scaling ( Scale up )
+    - 7 strategies and algorithms that are used in Loadbalancer ( Round Robin, Least Connections, Least Response Time, Weighted Round Robin, Weighted Least Connections, IP Hash (consistantly connect the same server))
+        - nginx software for load balancing ( also used as web server)
+    - How to avoid single point of failure
+    - Core API styles( REST(Web and mobile apps) , GraphQl(Complex queries/UI), gRPC(Microservices))
+    - OAuth2 and OIDC
+    - managing authorization ( Role based and attribute access controls and Access conntrol list )
+    
 
 -> Austoscaling , Load Balancing , LoadShedding , Rate Limiting
     - Autoscale before you shed

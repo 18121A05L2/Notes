@@ -1,0 +1,7 @@
+-> Production Deployment Patterns
+    - deployment patterns that show you understand zero downtime, rollback, scalability, observability, and cloud/container deployments.
+   - Blue-Green Deployment
+   - Canary Deployment (Release the new version to a small percentage of users first.)
+   - Rolling Deployment ( Deploy the new version gradually across instances.)
+        - Good for Kubernetes and VM-based deployments
+-> Database Deployment

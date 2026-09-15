@@ -1,0 +1,8 @@
+-> What are AI agents ?
+    - Autonomous software systems that leverage AI(LLMs) to reason, plan and complete tasks on behalf of humans or systems
+    - Design patterns :: Reflection , Tool use ,planning  and Multi agent collaboration
+    - https://www.youtube.com/watch?v=MrD9tCNpOvU
+-> OWASP stands for the Open Worldwide Application Security Project
+    - https://www.youtube.com/watch?v=UftYcziWO3g
+    - Agent goal hijack, Tool misuse and exploitation , Identity and privilage misuse , supply chain and code execution 
+    - recommended controls :: Least privilage , short lived tokens ,separte agent identity , fast revocation and secure storage

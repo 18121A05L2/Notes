@@ -1,0 +1,4 @@
+-> Unit Tests ( Fast, Cheap, Many)
+-> Integration Tests ( Medium speed , some )
+-> E2E Test ( Slow , Expensive , Few )
+-> Smoke Tests , regression Tests , Security Tests , Performance Tests , Accessibility Tests

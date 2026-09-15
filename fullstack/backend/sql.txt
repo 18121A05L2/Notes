@@ -1,0 +1,35 @@
+
+-> SQL constraints are rules defined on a table/column to control what data can be inserted or updated.
+    - The main constraints are PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, and DEFAULT
+-> A View in SQL is a virtual table created from a SQL query.
+-> DDL ( Data Definition Language) :: changes the database structure (CREATE, DROP, ALTER)
+-> DML (Data Manipulation Language) :: changes the data inside that structure. (SELECT, INSERT, UPDATE, DELETE)
+-> difference between where and having clause 
+    - WHERE filters rows BEFORE aggregation (grouping). HAVING filters groups AFTER aggregation. 
+    - You can use aggregate functions only in HAVING, not in WHERE.
+-> A clustered index determines the order of the data rows in a table. Since the table's data can have only one such ordering, a table 
+   can have only one clustered index. It is particularly useful for primary-key lookups and range queries.
+-> Filter the second highest salary from emp table.
+    - SELECT salary 
+      FROM emp
+      ORDER BY salary DESC
+      LIMIT 1 OFFSET 1;
+    - SELECT MAX(salary)
+      FROM emp
+      WHERE salary < (SELECT MAX(salary) FROM emp);
+-> LIMIT 1 OFFSET 1 is used to control how many rows SQL returns(LIMIT) and where it starts(OFFSET) returning them.
+-> SQL injections
+   - FromSqlRaw() itself is not automatically unsafe. The danger comes when you construct the SQL string using untrusted input.
+   - EF Core normally protects against SQL injection by generating parameterized SQL when using LINQ. User input is passed as SQL parameters rather than being concatenated into the SQL command
+
+
+
+
+
+
+
+
+
+----------------------------------
+-> Data modeling , indexing
+normalization
