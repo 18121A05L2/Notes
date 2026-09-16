@@ -42,5 +42,6 @@
     - the compiler treats it roughly like: StringExtensions.ToUpperFirstLetter(name);
     - Notice that we're calling the method through the class, not through an object of StringExtensions.
     - That's why the method must be static.
+-> In ASP.NET Core, MVC can also refer to the controller architecture used for Web APIs, although API controllers typically return data rather than Views
 
 

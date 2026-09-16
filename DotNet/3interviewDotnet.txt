@@ -2,20 +2,39 @@
 -> https://codewithmukesh.com/blog/dotnet-webapi-interview-questions/
 -> what are generations in garbage collection
     - Objects that are newly created are more likely to become unreachable quickly, while objects that survive several collections are more likely to continue living.
-    - New objects generally start in Gen 0. Objects that survive collections can be promoted to older generations, with Gen 2 containing longer-lived objects.
-    - NET GC uses three generations: Gen 0, Gen 1, and Gen 2. New objects generally start in Gen 0. If they survive a collection, they can be promoted to Gen 1 and 
+    - In .NET, the Garbage Collector (GC) divides managed objects into generations based on how long they have survived
+    - Dot NET GC uses three generations: Gen 0, Gen 1, and Gen 2. New objects generally start in Gen 0. If they survive a collection, they can be promoted to Gen 1 and 
         eventually Gen 2. Gen 0 is collected most frequently because most objects are short-lived, while Gen 2 is collected less frequently because it contains longer-lived 
         objects. This generational approach reduces the amount of memory the GC has to examine and improves application performance. Large objects are placed on the Large 
         Object Heap and are generally collected with Gen 2
--> Task.Delay vs Thread.Sleep
+=> Task.Delay vs Thread.Sleep
     - Task.Delay provides a non-blocking asynchronous delay, while Thread.Sleep blocks the current thread. In async server-side code, I would normally use Task.Delay
--> what is Single Responsibility Principle
-    - An SRP states that a class should have only one responsibility or a class should have only one reason to change.
-    - when a class have one responsibility, it is easier to understand, maintain, and test. It also promotes code reusability and reduces the risk of introducing bugs when making changes.
--> what is interface segregation principle
-    - ISP states that clients should not be forced to depend on interfaces they do not use. In other words, an interface should have only the methods that are relevant to the implementing class.
+=> SOLID principes :: Principles are guidelines for how you should design code.They help you make better design decisions.
+    - what is Single Responsibility Principle
+        - An SRP states that a class should have only one responsibility or a class should have only one reason to change.
+        - when a class have one responsibility, it is easier to understand, maintain, and test. It also promotes code reusability and reduces the risk of introducing bugs when making changes.
+    - O — Open/Closed Principle
+        - Software should be open for extension but closed for modification.
+        - Instead of repeatedly modifying existing code for every new behavior, design it so new behavior can be added through abstractions.
+    - L — Liskov Substitution Principle
+        - A derived class should be usable wherever its base class is expected without breaking the expected behavior.
+        - LSP states that objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program
+        - If a child class needs to throw exceptions or behave unexpectedly for functionality promised by the parent, the inheritance hierarchy is probably wrong.
+        - LSP is not simply "inheritance should work"; it's about behavioral compatibility between the parent and child.
+    - I — interface segregation principle
+        - ISP states that clients should not be forced to depend on interfaces they do not use. In other words, an interface should have only the methods that are relevant to the implementing class.
+    - D — Dependency Inversion Principle
+        - High-level modules should not depend on low-level modules. Both should depend on abstractions.
+        - High-level module Contains business rules/use cases.Low-level module Contains implementation details
+        - For example, instead of an OrderService directly depending on SqlOrderRepository, I would define an IOrderRepository abstraction and inject it into OrderService
 -> types of classes in c# :: abstract, sealed, static, partial, record, and normal classes
--> Difference between Abstraction and Encapsulation :: Abstraction focuses on hiding implementation complexity and exposing only the essential behavior, commonly using 
+    - Abstract class
+        - A class that cannot be instantiated directly and is designed to be used as a base class.
+        - When you want to provide common functionality + force derived classes to implement certain behavior
+    - Sealed Class - A class that cannot be inherited.
+    - Static Class - A class that cannot be instantiated or inherited and contains only static members
+    - Partial Class - A class whose definition can be split across multiple .cs files
+=> Difference between Abstraction and Encapsulation :: Abstraction focuses on hiding implementation complexity and exposing only the essential behavior, commonly using 
    interfaces and abstract classes. Encapsulation focuses on protecting an object's internal state by restricting direct access and exposing controlled operations through methods or properties.
 -> Method overriding vs method hiding : Method overriding occurs when a derived class provides a new implementation for a virtual or abstract base method. The method is selected at runtime 
    based on the actual object type. Method hiding uses the new keyword to define a method with the same name in the derived class, and the method selected depends on the reference type.
@@ -29,7 +48,7 @@
 -> What are some best practices for working with Entity Framework Core?
     - Use AsNoTracking() for Read-Only Queries
     - Optimize Queries with Projection
-    - Avoid Lazy Loading in Performance-Sensitive Applications and use eager loading(Include()) or explicit loading instead.
+    - Avoid Lazy Loading(loadin all data into memory) in Performance-Sensitive Applications and use eager loading(Include()) or explicit loading instead.
     - Use Transactions for Multiple Operations (DB) ( When modifying multiple records, transactions ensure data consistency and prevent partial updates. )
     - Leverage Connection Pooling and Indexing :: Using a connection pool reduces the overhead of repeatedly opening and closing database connections. Proper indexing improves query performance by speeding up lookups.
         - Connection pooling is a mechanism provided by the database provider where established database connections are maintained in a pool and reused across requests. When the application opens 
@@ -90,7 +109,7 @@ app.MapControllers();         // 8. Endpoints
       that version in the update condition. If another user has already modified the row, the version no longer matches, so EF Core throws 
       DbUpdateConcurrencyException. I'd catch that and return an appropriate conflict response, typically HTTP 409, so the client can refresh 
       and let the user decide how to resolve the conflict.
--> Your EF Core Query Works with 100 Records but Times Out with 100,000. How Do You Fix It?
+=> Your EF Core Query Works with 100 Records but Times Out with 100,000. How Do You Fix It?
     - Inspect the generated SQL and execution plan first, then optimize filtering, indexing, projection, joins, pagination, tracking, and database access.
     - 1. Reproduce the slow query -> 2. Inspect generated SQL -> 3. Run SQL directly against DB -> 4. Inspect execution plan -> 5. Check indexes
       6. Check joins / N+1 -> 7. Check filtering & projection -> 8. Add pagination -> 9. Use AsNoTracking for read-only queries ->10. Check DB blocking/resources
@@ -120,3 +139,18 @@ app.MapControllers();         // 8. Endpoints
        easier to isolate. They can also be combined—for example, using vertical slices for feature organization while still keeping domain and 
        infrastructure boundaries.
 -> For modern ASP.NET Core applications, Vertical Slice + MediatR/CQRS + EF Core is a common combination, especially when the application has many independent business features.
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------- Keywords ----------------------------------------------
+Garbage collector
+Row version for conflicting updates

@@ -41,3 +41,51 @@
             ↑
             │
            API
+-> Software Design & Architecture
+│
+├── 1. Principles
+│   ├── SOLID
+│   ├── DRY
+│   ├── KISS
+│   ├── YAGNI
+│   ├── Separation of Concerns
+│   └── Composition over Inheritance
+│
+├── 2. Design Patterns
+│   ├── Creational
+│   ├── Structural
+│   └── Behavioral
+│
+├── 3. Application / Architectural Patterns
+│   ├── Layered Architecture
+│   ├── Clean Architecture
+│   ├── Hexagonal Architecture
+│   ├── Onion Architecture
+│   ├── Vertical Slice Architecture
+│   ├── MVC
+│   ├── CQRS
+│   └── Microservices
+│
+├── 4. Distributed-System Patterns
+│   ├── API Gateway
+│   ├── Circuit Breaker
+│   ├── Retry
+│   ├── Saga
+│   ├── Outbox
+│   ├── Event Sourcing
+│   └── Pub/Sub
+│
+└── 5. .NET / Application Practices
+    ├── Dependency Injection
+    ├── Repository
+    ├── Unit of Work
+    ├── Middleware
+    ├── Options Pattern
+    └── Specification Pattern
+-> DIP changes that relationship:
+
+High-level      Low-level
+     ↓             ↑
+      Abstraction
+
+So the low-level implementation now depends on the abstraction defined for the high-level business need.
