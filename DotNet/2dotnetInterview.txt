@@ -1,16 +1,29 @@
--> What is static class and how is it different from class
+-> What is static class and how is it different from a normal class
     - A normal class represents objects that can have their own state and behavior, while a static class represents class-level functionality 
        that doesn't require an object instance. Static classes cannot be instantiated, and all their members must be static. In ASP.NET Core, 
        normal classes are generally preferred for services because they work naturally with dependency injection, lifetimes, interfaces, and testing.
+    - A static class is mainly used for stateless functionality that doesn't require object creation or instance state. The most common use is 
+       utility/helper methods and extension-method containers. In an ASP.NET Core application, business services are generally normal classes managed 
+       by DI rather than static classes
+    - So extension method containers are another important use of static classes
 -> What is the difference between arraylist vs list and hashtable vs dictionary
--> Be ready to explain the difference between Use, Run, and Map
-    - Use() adds middleware to the request pipeline. It performs some work and then decides whether to call the next middleware.
+=> Be ready to explain the difference between Use, Run, and Map
+    - Thes are methods used to build the ASP.NET Core middleware/request pipeline
+    - Use() adds middleware to the request pipeline. It can execute logic before and after calling the next middleware using next()
+        - The important part is: await next(), It passes control to the next middleware.
     - Run() is terminal middleware. It handles the request and does not call the next middleware.
     - Map() branches the request pipeline based on the request path.
--> Custom middleware :: Custom middleware is a user-defined component that can inspect or modify HTTP requests and responses before passing control to the next middleware.
+    - MapWhen  → Branch based on condition
+-> middleware behaves like a nested call chain.
+=> Custom middleware :: Custom middleware is a user-defined component that can inspect or modify HTTP requests and responses before passing control to the next middleware.
     - InvokeAsync is the entry point of a custom middleware. ASP.NET Core automatically calls InvokeAsync when an HTTP request reaches that 
          middleware in the pipeline. Inside InvokeAsync, we can perform logic before and after calling _next(context), where _next represents 
          the next middleware in the pipeline. We don't normally call InvokeAsync ourselves
+    - A typical middleware has:
+        - A constructor that receives the next middleware
+        - An InvokeAsync() method that processes the request
+        - await _next(context) to pass control to the next middleware
+    - RequestDelegate is the type for _next which represents the next middleware in the HTTP request pipeline.
 -> IOptions -- "I just need the configuration."
    IOptionsSnapshot -- "I need a fresh configuration snapshot per request."
    IOptionsMonitor -- "I want to monitor configuration changes."
@@ -21,17 +34,18 @@
 -> ASP.NET Core MVC :: Browser -> Controller -> Model -> View -> HTML (Primarily used when your server is generating HTML pages.)
 -> ASP.NET Core Web API :: React / Mobile / Client -> Controller -> Service -> Database -> JSON (Primarily used for building HTTP APIs that return data such as JSON.)
 -> ASP.NET Core MVC is a web framework built on ASP.NET Core that follows the Model-View-Controller architectural pattern
--> (Minimal APIs vs Controller-based APIs) Controller-based APIs in ASP.NET Core use controller classes derived from ControllerBase to handle HTTP requests. We use attributes such as 
+=> (Minimal APIs vs Controller-based APIs) Controller-based APIs in ASP.NET Core use controller classes derived from ControllerBase to handle HTTP requests. We use attributes such as 
   [HttpGet], [HttpPost], and [HttpDelete] to map endpoints to controller actions. [ApiController] provides features such as automatic model 
   validation and parameter binding. Unlike traditional MVC, API controllers generally return data such as JSON rather than Views or HTML.
 -> Kestrel is the cross-platform web server used by ASP.NET Core to receive HTTP requests and run the application. In production, we can put a 
    reverse proxy such as IIS on Windows or Nginx on Linux in front of Kestrel. The reverse proxy receives the public request and forwards it 
    to Kestrel, which passes it through the ASP.NET Core middleware pipeline to the appropriate controller or endpoint. The reverse proxy can 
    also handle things such as TLS termination, static files, security, and load balancing
+   - A reverse proxy such as Nginx can efficiently serve static files and cache certain responses, reducing work for your ASP.NET Core application.
 -> 403 Forbidden :: The client is authenticated but doesn't have permission.
 -> (Idempotent) If you perform the same operation multiple times, the final result should be the same as performing it once.
     - Idempotent operations include GET, PUT, and DELETE. Non-idempotent operations include POST.
--> Model binding is the ASP.NET Core process of taking values from sources such as route parameters, query strings, headers, and request bodies 
+=> Model binding is the ASP.NET Core process of taking values from sources such as route parameters, query strings, headers, and request bodies 
    and converting them into C# parameters or objects. Model validation then checks those bound values against validation rules such as [Required] 
    or [Range]. The [ApiController] attribute adds API-specific behavior, most notably automatic model validation and automatic 400 Bad Request 
    responses when validation fails. It also provides attribute-routing conventions and binding-source inference
@@ -41,7 +55,8 @@
         abstraction with AddExceptionHandler and UseExceptionHandler. The handler can map known exceptions to appropriate status codes, such as 
         404 for a resource-not-found exception, and return a consistent error format such as ProblemDetails. Unexpected exceptions should generally
         return 500 without exposing internal details
--> .NET is multi-threaded. It has a ThreadPool that manages threads used by applications such as ASP.NET Core. Synchronous operations block the 
+    - We implement TryHandleAsync() to log exceptions inside IExceptionHandler, map different exception types to appropriate HTTP status codes, and return a consistent error response such as ProblemDetails
+=> .NET is multi-threaded. It has a ThreadPool that manages threads used by applications such as ASP.NET Core. Synchronous operations block the 
    executing thread until they complete. With asynchronous operations using async/await, when we reach an incomplete I/O operation such as a 
    database or HTTP call, the thread can be released instead of being blocked. Once the operation completes, the continuation is scheduled to 
    resume, potentially on another ThreadPool thread. Async doesn't necessarily mean creating another thread; it mainly helps avoid blocking 
@@ -49,7 +64,7 @@
 -> For ASP.NET Core, there is normally no SynchronizationContext that forces the continuation back to the original request thread.
 -> For I/O-bound asynchronous operations, no .NET thread needs to remain blocked while the operation is in progress. The OS and external 
    system handle the I/O, and once it completes, .NET schedules the continuation on an available ThreadPool thread.
--> avoid sync-over-async :: You're starting an asynchronous operation and then synchronously blocking the thread waiting for it.
+=> avoid sync-over-async; use async all the way. :: You're starting an asynchronous operation and then synchronously blocking the thread waiting for it.
     - I avoid sync-over-async such as .Result, .Wait(), or .GetAwaiter().GetResult(). I prefer propagating async/await through the call chain 
         so I don't block threads during I/O operations.
     - Sync-over-async means calling an asynchronous method and then synchronously blocking on it using .Result, .Wait(), or .GetAwaiter().GetResult(). 
@@ -67,13 +82,13 @@
    DbContext across multiple requests as a Singleton can cause concurrency, memory, and stale-tracking problems. Scoped lifetime also allows 
    different services within the same request to share the same DbContext and its change-tracking state.
 -> what change tracking states an entity can be in (Added, Modified, Deleted, Unchanged, Detached)
--> DbContext uses change tracking to keep track of entities retrieved from the database. If I modify a tracked entity and call SaveChanges(), 
+=> DbContext uses change tracking to keep track of entities retrieved from the database. If I modify a tracked entity and call SaveChanges(), 
    EF Core detects the changes and generates the appropriate SQL. For read-only queries, especially read-heavy or large queries, I can use 
    AsNoTracking() to avoid the change-tracking overhead and reduce memory usage. I wouldn't use AsNoTracking() when I intend to retrieve an 
    entity, modify it, and rely on EF Core's automatic change detection.
 -> why does EF core tracks for get request by default as we are anyways not going to modify it
     - Because EF Core does not know that your query is coming from an HTTP GET request or that you won't modify the entity.
--> The N+1 problem emerges from a mismatch between how we think about data and how ORMs (Object-Relational Mappers) fetch it
+=> The N+1 problem emerges from a mismatch between how we think about data and how ORMs (Object-Relational Mappers) fetch it
     - https://dev.to/vasughanta09/solving-the-n1-query-problem-a-developers-guide-to-database-performance-321c
     - The N+1 problem occurs when we first execute one query to retrieve N parent entities and then execute an additional query for each parent's 
         related data, resulting in N+1 database queries. This creates unnecessary database round trips and can significantly impact performance. 
@@ -81,10 +96,14 @@
         prefer projection with Select() to retrieve only the fields required by the DTO, which can be more efficient.
     - Include() - Use when you actually need the related entities.
     - Projection - Use when you need data, particularly for read-only APIs.
-    - lazy loading vs eager loading vs explicit loading, Include() vs Select(), and AsSplitQuery() vs AsSingleQuery()
+    - lazy loading(n+1 may appear) vs eager loading(include) vs explicit loading, Include() vs Select(), and AsSplitQuery() vs AsSingleQuery()
     - Include() loads related entities into the entity graph, while Select() projects the query into exactly the shape of data I need
+-> Include vs projection :: Include() is used to eagerly load related entities and is useful when we need the complete entity graph. Projection uses 
+   Select() to retrieve only the columns and related data required by the application, often directly into a DTO. For read-only API queries, 
+   projection is often more efficient because it avoids loading unnecessary entity data, while Include() is appropriate when we actually need 
+   the related entities themselves.
 -> Unit of Work means :: Group multiple related database operations into one logical transaction/unit and commit them together.
--> Explain Clean Architecture in a .NET application.
+?> Explain Clean Architecture in a .NET application.
     - I generally separate the application into API, Application, Domain, and Infrastructure layers. The API layer handles HTTP concerns such as 
         controllers, DTOs and validation. The Application layer contains use cases and orchestrates business operations. The Domain layer contains
         the core business entities and rules and should have minimal external dependencies. Infrastructure contains implementation details such 
@@ -97,17 +116,19 @@
        might have sophisticated command-side business rules while the read side needs highly optimized projections and caching.
     - MediatR is a library that implements the Mediator pattern.
         - It allows the controller to send a command/query without directly knowing which handler executes it.
--> Microservices Architecture
+=> Microservices Architecture
     - Each microservice should own a specific business capability and ideally its own data.
     - A microservice is an independently deployable service responsible for a bounded business capability.
     - Service Boundaries :: The difficult part of microservices isn't creating multiple ASP.NET Core projects.
         - It's deciding: Where should one service end and another begin?
--> Message Queues / Asynchronous Messaging
--> An extension method allows you to add a new method to an existing type without modifying the original type, inheriting from it, or creating a wrapper class.
+?> Message Queues / Asynchronous Messaging
+=> An extension method allows you to add a new method to an existing type without modifying the original type, inheriting from it, or creating a wrapper class.
      - Rules for creating an extension method :: Be inside a static class, Be a static method, Have this before the first parameter
+        - The this keyword before the first parameter tells C#: "Treat this method as an extension method for the string type."
      - Methods such as: Where() Select() OrderBy() FirstOrDefault() ToList() Any() are largely provided through LINQ extension methods on IEnumerable<T> / IQueryable<T>
      - we can have extension methods for interfaces
--> this keyword in C# is used to refer to the current instance of a class or struct. It can be used to access members, pass the current instance as a parameter, or call extension methods. 
+     - Instance methods have higher priority than extension methods.
+=> this keyword in C# is used to refer to the current instance of a class or struct. It can be used to access members, pass the current instance as a parameter, or call extension methods. 
 -> .NET Framework is Microsoft's older Windows-focused development platform. .NET Core was Microsoft's cross-platform, open-source successor to 
    .NET Framework, and starting with .NET 5 it was renamed simply .NET. ASP.NET is the older web framework built on .NET Framework, while ASP.NET 
    Core is the modern, cross-platform web framework used with modern .NET for building APIs, MVC applications, Razor Pages, Minimal APIs, and 
@@ -178,3 +199,8 @@
 -> How do you optimize performance in a .NET application
 -> Messaging queue
 -> Continuous Integration and Continuous Deployment (CI/CD)
+-> deferred vs immediate , IQueryable vs IEnumerable
+-> reverse proxy serving cache files
+-> synchronization context
+-> change tracking
+-> Portability Analyzer

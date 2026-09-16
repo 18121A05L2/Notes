@@ -1,0 +1,46 @@
+-> First  → I need one, any matching record is okay.
+   Single → I expect exactly one.
+-> Select vs SelectMany :: Select transforms a list into a new list of the same size, while SelectMany merges a list of lists into one single flat list
+-> LINQ performance pitfalls
+    - Pitfall 1 — Loading everything into memory
+    - Pitfall 2 — Selecting entire entities unnecessarily ( mitigate with projection )
+    - Pitfall 3 — Calling ToList() too early
+-> ASP.NET Core - Modern, cross-platform framework for building web applications, REST APIs, backend services, and web APIs using .NET.
+-> ASP.NET (classic) - Older web framework built on the .NET Framework, primarily for Windows-based applications. It includes technologies such as ASP.NET MVC, Web Forms, and older Web API implementations and is mainly relevant when maintaining legacy applications.
+-> Blazor - .NET web UI framework for building interactive web applications using C# and Razor components, reducing or eliminating the need for JavaScript for application logic. It supports both server-side and client-side/WebAssembly-based execution models.
+-> what is next() :: next() is a delegate provided to middleware that passes the HTTP request to the next middleware in the pipeline. Calling await next() allows downstream middleware to execute, and once it completes, execution returns to the current middleware, allowing us to perform response-related processing.
+-> is MVC still valid approach ? 
+    - Traditional MVC is mainly used to generate server-rendered UI using Views, whereas ASP.NET Core Web API is used to build APIs that return data, typically JSON, to clients such as React, Angular, or mobile applications.
+    - Yes, traditional MVC is still used in ASP.NET Core, especially for server-rendered applications using Razor Views. However, for modern applications with a separate frontend such as React or Angular, ASP.NET Core Web API is generally preferred because the backend returns data rather than rendering the UI.
+-> How to achieve SEO with ASP.NET core WEB API ?
+    - ASP.NET Core Web API itself doesn't provide SEO because it returns data rather than HTML. In a modern frontend-backend architecture, SEO is typically handled by the frontend using SSR, SSG, or ISR—for example, Next.js—while ASP.NET Core Web API provides the underlying data. Alternatively, if ASP.NET Core itself needs to render SEO-friendly HTML, we can use MVC with Razor Views or Blazor SSR.
+-> Difference between Razor and Blazor ?
+    - The important thing is that Razor and Blazor are not really competing technologies. Razor is a syntax/template technology, while Blazor is a web UI framework that uses Razor components.
+    - Blazor is Microsoft's framework for building interactive web UIs using C# instead of primarily JavaScript.
+    - Razor allows you to mix HTML and C#:
+    - If you want Microsoft/.NET full-stack.You can use C# across much of the stack instead of maintaining a separate JavaScript/TypeScript frontend. If you need traditional server-rendered pages
+    - Razor ≠ Blazor. Blazor uses Razor.
+-> Why is sync-over-async a problem?
+    public string GetProduct()
+    {
+        var product = GetProductAsync().Result;
+        return product;
+    }
+    GetProductAsync() starts an asynchronous operation, but .Result tells the current thread:
+    "Stop here and wait synchronously until the async operation finishes."
+-> Does await create a new thread?
+    - For I/O-bound operations, the OS/runtime can perform the I/O without occupying a .NET thread for the entire wait.
+-> Task.Run() doesn't magically make synchronous code async
+-> Don't expose your EF Core entities directly as your public API contract.
+-> Why do we use Extension Methods?
+    - Improve readability
+    - Add functionality to types we don't own
+    - Organize reusable functionality
+    - Reduce code duplication
+-> why it needs to be static class and static method ?
+    - When you call: name.ToUpperFirstLetter();
+    - the compiler treats it roughly like: StringExtensions.ToUpperFirstLetter(name);
+    - Notice that we're calling the method through the class, not through an object of StringExtensions.
+    - That's why the method must be static.
+
+

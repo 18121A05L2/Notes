@@ -1,0 +1,43 @@
+-> Clean Architecture               
+                    ┌──────────────────────┐
+                    │         API          │
+                    │ Controllers          │
+                    │ HTTP / DTOs          │
+                    │ Authentication       │
+                    └──────────┬───────────┘
+                               │
+                               ↓
+                    ┌──────────────────────┐
+                    │     Application      │
+                    │ Use Cases             │
+                    │ Services              │
+                    │ Interfaces            │
+                    │ DTOs                  │
+                    └──────────┬───────────┘
+                               │
+                               ↓
+                    ┌──────────────────────┐
+                    │        Domain        │
+                    │ Entities              │
+                    │ Value Objects         │
+                    │ Business Rules        │
+                    │ Domain Exceptions     │
+                    └──────────────────────┘
+                               ↑
+                               │
+                    ┌──────────┴───────────┐
+                    │    Infrastructure   │
+                    │ EF Core              │
+                    │ Database             │
+                    │ Repositories         │
+                    │ External APIs        │
+                    └──────────────────────┘
+
+-> Infrastructure depends on Application/Domain, while Application should not depend on Infrastructure.
+             Domain
+            ↑      ↑
+            │      │
+     Application  Infrastructure
+            ↑
+            │
+           API

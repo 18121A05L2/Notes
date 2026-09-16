@@ -1,0 +1,9 @@
+SOLID Design Principles
+MCP
+CI/CD
+CURSOR AI
+AGENTIC workflows
+Agentic AI development
+LINQ
+EF Core
+Agile methodologies

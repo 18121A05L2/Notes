@@ -38,15 +38,20 @@
 -> .NET supports multiple authentication methods, including JWT (JSON Web Tokens), OAuth, OpenID Connect, and cookie-based authentication.
 -> .NET provides role-based authorization (RBAC) and policy-based authorization to restrict access based on user roles or custom conditions.
 -> Deferred Execution vs. Immediate Execution in LINQ
+    - In .NET, deferred (lazy) execution and immediate execution define when a query is actually run, while IEnumerable and IQueryable define how and where that query is processed.
+    - The core link between them is that both IEnumerable and IQueryable default to deferred execution, but they handle immediate execution differently based on where the data lives.
+    - Because of deferred execution, you can keep appending filters (like .OrderBy() or .Take()) to both types without hitting the data source multiple times
     - Deferred execution: LINQ query executes when you actually enumerate the result.
         - Where(),Select(),OrderBy(),ThenBy(),Skip(),Take() - Generally, these return another query rather than immediately materializing the results.
         - Deferred execution can execute multiple times.The query can execute again during the second enumeration.If the underlying source is a database query with EF Core, this can potentially mean multiple database queries.
             - we need to explicitly materialized using methods like ToList()
     - Immediate execution: LINQ query executes immediately and produces a concrete result.
-        - Single(),Any(),All(),Max(),Min(),Sum(),Average() - 
+        - ToList(),ToArray(),Max(),Min(),Sum(),Average(),Single(),Any(),All() - 
 -> IEnumerable vs IQueryable
     - IEnumerable<T> is mainly used for in-memory collections
     - IQueryable → build a query that can be translated and executed by the data source, usually the database
+    - Why is IQueryable generally better for database queries?
+        - Because filtering, sorting, projection, etc. can be translated into SQL and executed by the database instead of loading unnecessary data into application memory.
 -> Finalize vs Dispose
     - Dispose() → you explicitly release resources.
     - Finalize() → the GC eventually gets a chance to release unmanaged resources.
