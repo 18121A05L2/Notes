@@ -21,6 +21,13 @@
 -> SQL injections
    - FromSqlRaw() itself is not automatically unsafe. The danger comes when you construct the SQL string using untrusted input.
    - EF Core normally protects against SQL injection by generating parameterized SQL when using LINQ. User input is passed as SQL parameters rather than being concatenated into the SQL command
+=> SQL Stored Procedure, a stored procedure is a predefined set of SQL statements stored inside the database that you can execute whenever needed
+   - A stored procedure is a named, precompiled/stored set of SQL statements and database logic that resides in the database and can be executed with parameters. It is commonly used to encapsulate reusable database operations, improve consistency, and centralize complex database logic.
+   - Instead of sending the entire SQL query from your application every time, your application can simply call the stored procedure.
+   - why  
+      - Reuse :: You can use the same database logic from multiple applications.
+      - Encapsulate database logic :: Instead of exposing complex SQL to the application
+      - Parameters :: Stored procedures can accept parameters
 
 
 

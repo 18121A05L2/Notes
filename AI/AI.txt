@@ -14,6 +14,8 @@
 -> LangChain 
     - will be helpful when building chatbots
     - it will abstract aweysome complex multistep workflows
+    - Framework for building LLM applications
+    - OpenAI provides the LLM; PostgreSQL/pgvector stores your knowledge; LangChain provides building blocks to connect these pieces into an AI application
 -> LangGraph
     - this extends langchain to handle more complex multistep workflows that can go beyond simple question and answer interactions
 -> RAG 
@@ -21,6 +23,7 @@
         - Retrieval Augmented Generation is an architecture where an LLM does not rely only on its training data. Instead, it retrieves relevant external documents at runtime and provides them to the model as context before generating an answer.
         - Augumentaion refers to the process, where the retrieve data ( our corporate docs stored as vecotor db) is injected into the prompt at runtime
     - RAG is a very powerful system that can instantly improve the depth of the knowledge beyond its training data
+    - Large Documents -> Document chunks -> Embedding -> Vector DB -> retrival -> generation
 
 ----------------------------------------------------------------------------------------------------------------------
 -> Context rot - https://research.trychroma.com/context-rot

@@ -139,7 +139,17 @@ app.MapControllers();         // 8. Endpoints
        easier to isolate. They can also be combined—for example, using vertical slices for feature organization while still keeping domain and 
        infrastructure boundaries.
 -> For modern ASP.NET Core applications, Vertical Slice + MediatR/CQRS + EF Core is a common combination, especially when the application has many independent business features.
-
+-> Factory Pattern :: The Factory Pattern is a creational design pattern focused on how objects are instantiated
+    - The Factory Pattern encapsulates complex object instantiation logic. Instead of using the new keyword directly across your codebase, you 
+       delegate the creation to a factory class. This is particularly useful when the exact type of object needs to be determined dynamically at runtime
+    - Centralize object creation so the caller doesn't need to know which concrete class to instantiate.
+-> Repository pattern :: The Repository Pattern is a structural/data pattern focused on how data is managed and retrieved.
+    - The Repository Pattern sits between your application logic and the data source. It isolates data access code (like SQL queries, Entity 
+      Framework, or NoSQL calls) from your business controllers or services. This makes the business logic easier to maintain and significantly 
+      easier to unit test by allowing you to mock the database layer.
+    - Abstract data-access logic from the business/application logic.
+-> Unit of work pattern 
+    - The Unit of Work (UoW) is a data-access/application pattern that coordinates multiple database operations as one logical transaction
 
 
 
@@ -154,3 +164,10 @@ app.MapControllers();         // 8. Endpoints
 ------------------------------------- Keywords ----------------------------------------------
 Garbage collector
 Row version for conflicting updates
+
+
+[6:20 pm, 16/9/2026] lakshmi reddy: Stored procedure
+[6:24 pm, 16/9/2026] lakshmi reddy: Lambda expression
+[6:25 pm, 16/9/2026] lakshmi reddy: Factory pattern and repository pattern
+[9:30 pm, 16/9/2026] lakshmi reddy: Stored procedure
+And filters

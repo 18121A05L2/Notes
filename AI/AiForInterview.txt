@@ -1,0 +1,99 @@
+-> Agent Orchestration is the architecture used to coordinate multiple AI agents, tools, workflows, and state to solve complex, multi-step problems that a single agent or single prompt cannot handle reliably.
+    - Instead of one agent doing everything in one giant context window (which leads to context rot, hallucinations, and token exhaustion), orchestration breaks work into modular agents with isolated contexts, scoped tools, and defined handoffs.
+-> There are two primary ways agent orchestration is set up in software projects:
+    - Repository-Level Setup (Declarative) — Configuring coding agents (like Claude Code, GitHub Copilot, Antigravity) inside a codebase.
+    - Application-Level Setup (Programmatic) — Writing custom multi-agent systems using frameworks like LangGraph, CrewAI, AutoGen, or the Antigravity SDK.
+-> VS Code custom agents support handoffs where one specialized agent can transition into another with relevant context and a predefined next prompt
+-> The orchestration comes from the relationships/workflow you define, not from naming one agent orchestrator
+    Orchestration
+      │
+      ├── Handoff
+      ├── Subagent delegation
+      ├── Sequential workflow
+      └── Parallel workflow
+-> Handoff Orchestration: One specialized agent completes its task and hands off the conversation and context to another agent with a predefined prompt.
+-> Subagent Delegation Orchestration: A parent agent delegates an isolated subtask to a specialist that runs in its own context window with specific skills, then reports back.
+-> Sequential Workflow Orchestration: Pre-scripted, deterministic step-by-step checklists where Step $N+1$ depends strictly on Step $N$
+-> Parallel Workflow Orchestration: Multiple specialist agents work concurrently on independent tracks against a shared contract without blocking each other.
+-> Lifecycle Hook Orchestration (Event-Driven): Automated middleware that intercepts agent actions before or after a tool executes to enforce security, logging, or linting.
+    - Ex : Settings.json , managed-setting.json
+-> Rag implementation
+Frontend       → React / Next.js
+Backend        → Node.js
+RAG framework  → LangChain.js
+LLM            → OpenAI API
+Embeddings     → OpenAI Embeddings
+Vector DB      → PostgreSQL + pgvector
+Documents      → S3 / company storage
+Authentication → Your company's SSO/JWT
+-> LangSmith :: It's primarily for observability, debugging, evaluation, and tracing of LLM applications.
+-> Difference between LangChain and LangGraph
+    - LangChain = building blocks for LLM applications
+    - LangGraph = orchestration framework for complex, stateful agent workflows
+    - LangChain provides reusable components for building LLM applications such as prompts, retrievers, tools, and model integrations. LangGraph is focused on orchestrating complex, stateful workflows and agents using a graph structure, making branching, loops, persistence, human-in-the-loop, and multi-step agent workflows easier to implement.
+
+
+-> Agent mode — autonomous implementation loop
+   Custom Agents (.agent.md) — specialized agents
+   Subagents — agents delegated by a parent agent
+   Handoffs — sequential agent workflows
+   MCP — external tools/data
+   Agent Skills — reusable capabilities
+   Agent Host — persistent agent sessions
+   Worktrees / cloud agents — isolated parallel development
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------- AI-agent development -----------------
+
+                         AI APPLICATION
+                               │
+                         ORCHESTRATOR
+                               │
+                    ┌──────────┴──────────┐
+                    │                     │
+                 AGENTS               WORKFLOWS
+                    │                     │
+             ┌──────┴──────┐       ┌─────┴─────┐
+             │             │       │           │
+          Subagents     Handoffs  Parallel   Sequential
+             │
+       ┌─────┴─────┐
+       │           │
+     Skills       MCP
+       │           │
+   Knowledge     Tools/Data
+       │           │
+       └─────┬─────┘
+             │
+           MODEL
+             │
+        Agent Loop
+             │
+    ┌────────┼────────┐
+    ▼        ▼        ▼
+  Reason   Tool     Observe
+             │
+             └──────► Iterate

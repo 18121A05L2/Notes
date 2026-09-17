@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "database": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://postgres:postgres@localhost:5432/app_db"
+      ],
+      "env": {
+        "DEBUG": "mcp:*"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@executeautomation/playwright-mcp-server"
+      ]
+    },
+    "fetch": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-fetch"
+      ]
+    }
+  }
+}

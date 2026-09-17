@@ -43,5 +43,6 @@
     - Notice that we're calling the method through the class, not through an object of StringExtensions.
     - That's why the method must be static.
 -> In ASP.NET Core, MVC can also refer to the controller architecture used for Web APIs, although API controllers typically return data rather than Views
-
+-> struct vs class vs record 
+    - A class is a reference type generally used for objects that have identity, state and behavior. A struct is a value type and is generally suitable for small value-oriented data types. A record is designed primarily for data-centric types and provides value-based equality and convenient immutable-style copying with with. A record is a reference type by default (record class), but C# also supports record struct, which is a value type.
 

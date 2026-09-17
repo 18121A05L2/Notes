@@ -34,7 +34,7 @@
         - postToolUse - Since the tool call has already occurred, PostToolUse hooks can't block the operation. However, they can:
             - Run follow-up operations (like formatting a file that was just edited)
             - Provide additional feedback to Claude about the tool use
-    - and we can restrict claude to ready any files with these if needed
+    - and we can restrict claude to read any files with these if needed
 -> Hook Configuration
      - Global - ~/.claude/settings.json (affects all projects)
      - Project - .claude/settings.json (shared with team)
