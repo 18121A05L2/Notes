@@ -1,0 +1,53 @@
+-> https://www.youtube.com/watch?v=ZDuRmhLSLOY
+-> SSO have buit on a concept called Federated Identity
+-> Federated identity is an authentication model where an application trusts an external Identity Provider to authenticate users. This allows 
+   users to access multiple applications using the same organizational identity, typically through SSO, without maintaining separate credentials 
+   in each application.
+-> DAZN bet SSO
+   - The user has one DAZN identity, and when they enter DAZN Bet, the betting platform trusts DAZN's authentication system instead of asking the user to create/login with a separate set of credentials.
+   - DAZN login → one-time code → DAZN Bet backend exchanges and validates it → link/create Bet user → issue DAZN Bet session -> Receive authorization code -> Exchange code for tokens -> Validate ID token -> Extract user identity -> Find/create DAZN Bet user -> Create application session -> Return authenticated state to frontend
+   - OAUTH2.0 :: An authorization framework that allows an application to access a user's resources on another service without sharing the user's password.
+   - OpenID Connect (OIDC) :: An authentication protocol built on top of OAuth 2.0 that allows an application to verify a user's identity and obtain basic user information.
+-> DAZN Bet SSO is essentially an OAuth2/OIDC authorization-code flow, with DAZN acting as the identity provider and DAZN Bet acts as Service provider and creating its own local session
+   - Dazn bet website(client) , User(resource owner) , DAZN backend ( Authorization server ) , DAZN bet backend ( resource server ) 
+   - Client ID is used to identify the client with the authorization server and there is client secret where client and authorization server knows.
+      - Client secret :: Generated/provisioned by DAZN when DAZN Bet is registered as an OAuth client.
+      - Used during the server-to-server authorization-code exchange to authenticate DAZN Bet.
+   - Authorization code is short lived temporary code the authorization server sends back to the client
+   - DAZN bet server then send that code and client secret to DAZN backend and DAZN backend gives access/ID token
+   - DAZN Bet backend creates its own session/access token for its frontend.
+   - the ID token is particularly important for authentication.It is typically a JWT. 
+      Example of an ID Token (JWT):
+      {
+        "sub": "123456",                            
+        "iss": "https://identity.dazn.com",
+        "aud": "dazn-bet",
+        "email": "user@example.com"
+      }
+   - Depending on jurisdiction and betting regulations, additional registration, age, identity, location, or responsible-gambling checks may still be required. SSO authenticates identity; it doesn't automatically satisfy every betting-specific eligibility requirement.
+   - If the user logs out from DAZN, depending on the architecture, the system may also need to terminate the DAZN Bet session through coordinated logout mechanisms.
+   - Token refresh :: When DAZN Bet backend needs a new access token, it calls DAZN's /oauth/token (grant_type=refresh_token) directly with the refresh token that was stored only in the backend
+
+-> Authentication - DAZN verifies your identity
+   Authorization - DAZN bet decides what you can access
+-> Access token is an important part of OAUTH Authorization framework
+    - It allow applications to access protected resources on behalf of the user without sharing the user's credentials.
+-> OAuth 2.0 (Authorization)
+   OpenID Connect (Authentication + Identity)
+-> Interview Ready Explanation 
+    - DAZN acted as the identity provider and DAZN Bet was the relying application. When an authenticated DAZN user selected DAZN Bet, we 
+      initiated an OpenID Connect authorization flow. The user was redirected through the DAZN identity service, and because they already had an 
+      authenticated DAZN session, they didn't need to enter their credentials again. The identity service returned an authorization code to the 
+      DAZN Bet callback endpoint. Our ASP.NET Core backend exchanged that code server-to-server for the required tokens and validated the ID token, 
+      including issuer, audience, signature, and expiry. We then used the stable user subject from the identity token to find or provision the 
+      corresponding DAZN Bet user. After successful authentication and any required betting-specific onboarding or eligibility checks, we established 
+      the DAZN Bet application session. Subsequent API requests were authenticated through ASP.NET Core middleware, and authorization policies 
+      determined what the user could access.
+-> ASP.NET Core
+     ├── Authentication Middleware
+     ├── OpenID Connect Handler
+     ├── HttpClient / HttpMessageHandler
+     ├── JWT validation
+     └── ClaimsPrincipal
+-> a refresh token is not normally something you put in the browser/localStorage. For a server-side application, keep it securely on the backend. Google explicitly recommends storing tokens in a secure, long-lived location
+-> Google access tokens are short-lived, typically around 1 hour. A refresh token is used by the backend to obtain a new access token when the old one expires, allowing the user to remain authenticated without signing in again.

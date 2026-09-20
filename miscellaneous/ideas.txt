@@ -21,3 +21,4 @@
 -> Storing enery just like how we save currency currently to survive
 -> Problem : for every order in all the apps , i cant keep track of them , i need to have a simple app where i can manage all the orders or redirections
    - but companies like amazon , myntra they wont provide user order, how to tackle this problem
+-> Try to analyze the companies trying to create artificial neurons , which will be way more cheap that data centers cost for compute

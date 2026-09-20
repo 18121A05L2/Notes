@@ -1,0 +1,9 @@
+-> In this code, clustering means running multiple Node.js processes (workers) of the same NestJS application, so the application can use multiple CPU cores.
+-> Node.js uses an event loop and JavaScript execution is generally confined to one CPU core per process.
+-> This is useful for a CPU-bound or high-throughput server because multiple worker processes can execute JavaScript concurrently across CPU cores
+-> ALB, or Application Load Balancer, is an AWS Layer 7 load balancer used to distribute HTTP/HTTPS traffic across healthy backend targets such as ECS/Fargate containers or EC2 instances. It performs health checks, supports path-based and host-based routing, and can terminate HTTPS connections. In our architecture, the ALB receives external traffic and routes it to healthy Fargate tasks, while Node.js clustering can further distribute requests among worker processes inside each task.
+-> strategies are different implementations of the same general business operation, selected depending on what type of SEO/article request you are processing
+-> This is an example of the Strategy Design Pattern implemented using NestJS dependency injection
+
+
+

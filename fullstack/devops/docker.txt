@@ -1,3 +1,6 @@
+-> Docker is an open-source platform that automates the deployment of software applications inside lightweight, isolated packages called containers
+   - Docker is a platform used to package, ship, and run applications inside lightweight, isolated environments called containers
+   - Docker is a containerization platform that packages an application and all its dependencies into a container, allowing it to run consistently across development, testing, and production environments.
 -> https://www.youtube.com/watch?v=GGaDSAMeopo
 -> Hardware -> Host OS -> Virtual Machine(HyperVisor) -> Guest OS -> we will run our Application here
    - with the the help of docker we can pack this Guest OS and ship it to the services

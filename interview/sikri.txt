@@ -1,3 +1,72 @@
+-> Node.js is a runtime, Express.js is a Node.js web framework, and NestJS is a structured Node.js backend framework
+    - Express.js is a lightweight web framework for Node.js that provides the basic features for building HTTP servers and APIs. NestJS is a 
+      more opinionated backend framework built on Node.js, typically using Express underneath, and provides a structured architecture with modules, 
+      dependency injection, controllers, services, guards, pipes, and other features.
+-> https://chatgpt.com/c/6aabe8a7-0024-83ee-a9c1-3229abaecd1c
+
+-> A typical Agile project can look like this end to end: - 
+   Business Idea -> Requirements / Product Backlog -> Epic → User Stories → Tasks -> Sprint Planning -> 
+   Development -> Code Review -> CI/CD + Testing -> QA / UAT -> Sprint Review -> Release -> Retrospective -> Next Sprint
+
+  - The Product Owner breaks the requirement into smaller pieces. Priority of the tickets decided by the product owner
+  - An Epic is a large business capability. A user story describes functionality from the user's perspective.. A Task is a technical step to complete a User Story.
+  - All the stories/features that need to be built go into the Product Backlog.
+  - Backlog Grooming :: Before a sprint, the team discusses upcoming stories.This is often called Backlog Refinement or Backlog Grooming.
+  - Estimation :: The development team estimates the complexity of stories. A common Agile technique is Story Points.
+  - For story point :: A team might use: 1, 2, 3, 5, 8, 13, 21. This is commonly based on the Fibonacci sequence. 
+  - Sprint Planning :: The team looks at the prioritized backlog and decides what can realistically be completed during the sprint.
+  - Sprint Review :: At the end of the sprint, the team demonstrates the completed functionality to stakeholders.
+  - Sprint Retrospective :: After the sprint, the team discusses how the team worked, rather than what product functionality was delivered.
+    - What went well? , What didn't go well? , What should we improve?
+  - Daily Scrum / Stand-up 
+    - What did I do yesterday? , What will I do today? , Do I have any blockers?
+-> Where developers fit into all of this
+    Backlog Refinement -> Understand requirements -> Estimate stories -> Sprint Planning -> Pick stories -> Technical design -> 
+    Development -> Unit testing -> Pull Request -> Code Review -> CI/CD -> QA support -> Bug fixes -> Sprint Demo -> Retrospective
+-> The important Agile roles (Scrum roles)
+    - Product Owner :: Responsible for product value and backlog prioritization.
+    - Scrum Master :: Helps the team follow Scrum practices and removes organizational/process impediments.
+    - Developers :: Responsible for building the product increment.
+    - Stakeholders :: Anyone with an interest in the product.
+=> Difference between Agile and scrum 
+    - Agile is a mindset based on iterative development, continuous feedback, customer collaboration, and responding to change. Scrum is a framework 
+      that implements Agile principles using defined roles, events, artifacts, and time-boxed sprints.
+=> You can explain an Agile project in one flow:
+    - Business requirements are converted into epics and user stories, which are prioritized in the product backlog. During refinement, the team 
+      clarifies requirements and estimates the stories. In sprint planning, the team selects stories for the sprint and breaks them into technical 
+      tasks. Developers implement the stories, write tests, create pull requests, and go through code review and CI/CD. QA validates the functionality 
+      against acceptance criteria. Completed work is demonstrated during the sprint review, and the team discusses process improvements during the 
+      retrospective. Feedback and new requirements go back into the backlog, and the cycle repeats until the product is delivered.
+-> A RESTful API is an API that follows the principles of REST (Representational State Transfer) to allow clients and servers to communicate over HTTP.
+-> Amazon CloudFront is AWS's Content Delivery Network (CDN). Its main job is to deliver websites, images, videos, APIs, and other content to users faster and with lower latency.
+-> Terraform is an Infrastructure as Code tool that allows us to define and manage cloud infrastructure such as servers, databases, networks, and storage using declarative configuration files.
+-> Which model to use for what
+   Planning / complex reasoning: Claude Opus 4.7
+   Implementation / general coding: Claude Sonnet 4.6
+   Fast/simple coding tasks: Claude Haiku 4.5
+-> When working with ai where we need human intervention to validate
+   - In an AI-assisted software development workflow, human intervention is needed at the points where AI makes decisions that can affect architecture, business logic, security, or production behavior.
+-> I use a human-in-the-loop approach. AI can analyze the codebase, create an implementation plan, and assist with execution, but I validate the 
+   plan with my team before implementation. During implementation, I review the generated code, validate business logic, security and edge cases, 
+   run tests, and finally review the changes before deployment. The AI accelerates the engineering process, but the final technical decisions 
+   remain with the developer and team.
+-> CLAUDE.md is a project instruction file that provides Claude Code with persistent context about the repository. We can define the project's 
+   architecture, technology stack, coding conventions, development commands, testing guidelines, business rules, and safety constraints. This helps 
+   the agent understand how the project should be modified instead of treating every task as an isolated request.
+-> widely used framework for agile is scrum
+-> Difference between SQL and postgress :: SQL is a standardized query language used to interact with relational databases, whereas PostgreSQL is an open-source relational database management system that implements SQL and provides additional features such as JSONB, extensions, advanced indexing, and stored procedures.
+   - SQL is the language used to interact with relational databases, while PostgreSQL, MySQL, and SQL Server are database management systems that implement SQL.
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------
 SOLID Design Principles
 MCP
 CI/CD
@@ -7,3 +76,7 @@ Agentic AI development
 LINQ
 EF Core
 Agile methodologies
+Working on existing applications how to build the knowledge Graph
+Graphify - for knowledge graph
+Backend to backend communication in microservices with .net backend
+screen readers
