@@ -45,7 +45,8 @@
    Implementation / general coding: Claude Sonnet 4.6
    Fast/simple coding tasks: Claude Haiku 4.5
 -> When working with ai where we need human intervention to validate
-   - In an AI-assisted software development workflow, human intervention is needed at the points where AI makes decisions that can affect architecture, business logic, security, or production behavior.
+   - In an AI-assisted software development workflow, human intervention is needed at the points where AI makes decisions that can affect 
+     architecture, business logic, security, or production behavior.
 -> I use a human-in-the-loop approach. AI can analyze the codebase, create an implementation plan, and assist with execution, but I validate the 
    plan with my team before implementation. During implementation, I review the generated code, validate business logic, security and edge cases, 
    run tests, and finally review the changes before deployment. The AI accelerates the engineering process, but the final technical decisions 
@@ -54,10 +55,28 @@
    architecture, technology stack, coding conventions, development commands, testing guidelines, business rules, and safety constraints. This helps 
    the agent understand how the project should be modified instead of treating every task as an isolated request.
 -> widely used framework for agile is scrum
--> Difference between SQL and postgress :: SQL is a standardized query language used to interact with relational databases, whereas PostgreSQL is an open-source relational database management system that implements SQL and provides additional features such as JSONB, extensions, advanced indexing, and stored procedures.
+-> Difference between SQL and postgress :: SQL is a standardized query language used to interact with relational databases, whereas PostgreSQL 
+   is an open-source relational database management system that implements SQL and provides additional features such as JSONB, extensions, 
+   advanced indexing, and stored procedures.
    - SQL is the language used to interact with relational databases, while PostgreSQL, MySQL, and SQL Server are database management systems that implement SQL.
-
-
+-> A/B testing is an experimentation technique where users are randomly divided into groups and exposed to different versions of a product or 
+   feature. We then compare a predefined metric, such as conversion rate, engagement, or retention, to determine whether the change produced a 
+   measurable difference
+-> The concepts you are learning in .NET transfer very well to NestJS:
+    ASP.NET Core                 NestJS
+────────────────────────────────────────
+Controller              →    Controller
+Service                 →    Injectable Service
+Dependency Injection    →    Dependency Injection
+Middleware              →    Middleware
+Exception Filter        →    Exception Filter
+Authorization Policy    →    Guards
+Model Validation        →    Pipes + DTOs
+EF Core                 →    Prisma / TypeORM
+DbContext               →    PrismaService / DataSource
+Module/DI registration  →    @Module()
+-> Build it features in NestJS
+  - GraphQL , websockets , microservices and Dependency Injection
 
 
 
