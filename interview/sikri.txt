@@ -1,13 +1,7 @@
--> Node.js is a runtime, Express.js is a Node.js web framework, and NestJS is a structured Node.js backend framework
-    - Express.js is a lightweight web framework for Node.js that provides the basic features for building HTTP servers and APIs. NestJS is a 
-      more opinionated backend framework built on Node.js, typically using Express underneath, and provides a structured architecture with modules, 
-      dependency injection, controllers, services, guards, pipes, and other features.
 -> https://chatgpt.com/c/6aabe8a7-0024-83ee-a9c1-3229abaecd1c
-
 -> A typical Agile project can look like this end to end: - 
    Business Idea -> Requirements / Product Backlog -> Epic → User Stories → Tasks -> Sprint Planning -> 
    Development -> Code Review -> CI/CD + Testing -> QA / UAT -> Sprint Review -> Release -> Retrospective -> Next Sprint
-
   - The Product Owner breaks the requirement into smaller pieces. Priority of the tickets decided by the product owner
   - An Epic is a large business capability. A user story describes functionality from the user's perspective.. A Task is a technical step to complete a User Story.
   - All the stories/features that need to be built go into the Product Backlog.
@@ -40,10 +34,6 @@
 -> A RESTful API is an API that follows the principles of REST (Representational State Transfer) to allow clients and servers to communicate over HTTP.
 -> Amazon CloudFront is AWS's Content Delivery Network (CDN). Its main job is to deliver websites, images, videos, APIs, and other content to users faster and with lower latency.
 -> Terraform is an Infrastructure as Code tool that allows us to define and manage cloud infrastructure such as servers, databases, networks, and storage using declarative configuration files.
--> Which model to use for what
-   Planning / complex reasoning: Claude Opus 4.7
-   Implementation / general coding: Claude Sonnet 4.6
-   Fast/simple coding tasks: Claude Haiku 4.5
 -> When working with ai where we need human intervention to validate
    - In an AI-assisted software development workflow, human intervention is needed at the points where AI makes decisions that can affect 
      architecture, business logic, security, or production behavior.
@@ -55,10 +45,6 @@
    architecture, technology stack, coding conventions, development commands, testing guidelines, business rules, and safety constraints. This helps 
    the agent understand how the project should be modified instead of treating every task as an isolated request.
 -> widely used framework for agile is scrum
--> Difference between SQL and postgress :: SQL is a standardized query language used to interact with relational databases, whereas PostgreSQL 
-   is an open-source relational database management system that implements SQL and provides additional features such as JSONB, extensions, 
-   advanced indexing, and stored procedures.
-   - SQL is the language used to interact with relational databases, while PostgreSQL, MySQL, and SQL Server are database management systems that implement SQL.
 -> A/B testing is an experimentation technique where users are randomly divided into groups and exposed to different versions of a product or 
    feature. We then compare a predefined metric, such as conversion rate, engagement, or retention, to determine whether the change produced a 
    measurable difference
@@ -75,8 +61,48 @@ Model Validation        →    Pipes + DTOs
 EF Core                 →    Prisma / TypeORM
 DbContext               →    PrismaService / DataSource
 Module/DI registration  →    @Module()
+-> what is your go to debug strategy for an dotnet full stack developer with react ?
+  - My go-to debugging strategy is to first reproduce the issue consistently, then identify which layer is causing it. I generally trace the 
+    request from the React UI through the API, business logic, database, and back to the UI.
+  - So my debugging approach is basically reproduce → isolate the layer → inspect logs and runtime state → trace the request end-to-end → identify 
+    the root cause → make a targeted fix → test and verify. I try not to assume that an issue is frontend or backend until I have evidence from the 
+    request flow
+-> RAG - Retrieve external knowledge for LLM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -> Build it features in NestJS
   - GraphQL , websockets , microservices and Dependency Injection
+-> Difference between SQL and postgress :: SQL is a standardized query language used to interact with relational databases, whereas PostgreSQL 
+   is an open-source relational database management system that implements SQL and provides additional features such as JSONB, extensions, 
+   advanced indexing, and stored procedures.
+   - SQL is the language used to interact with relational databases, while PostgreSQL, MySQL, and SQL Server are database management systems that implement SQL.
+-> Node.js is a runtime, Express.js is a Node.js web framework, and NestJS is a structured Node.js backend framework
+    - Express.js is a lightweight web framework for Node.js that provides the basic features for building HTTP servers and APIs. NestJS is a 
+      more opinionated backend framework built on Node.js, typically using Express underneath, and provides a structured architecture with modules, 
+      dependency injection, controllers, services, guards, pipes, and other features.
+
+
+
+
 
 
 
@@ -99,3 +125,90 @@ Working on existing applications how to build the knowledge Graph
 Graphify - for knowledge graph
 Backend to backend communication in microservices with .net backend
 screen readers
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------
+-> What is the difference between git merge and git rebase? When would you use each?
+  - Git merge combines branches preserving history; git rebase rewrites history by moving commits onto another base(main).
+-> What is the Docker command to create a network?
+  - docker network create my-network
+-> What is the difference between render props and props?
+  - A render prop is a prop whose value is a function, and the child calls that function to decide what UI to render. 
+  - The important part is that the parent provides the rendering logic, while the child/provider supplies the data.
+    function DataProvider({ render }) {
+      const data = "Hello";
+      return render(data);
+    }
+    <DataProvider render={(data) => <h1>{data}</h1>}/>
+-> Q. What is used for creating a JWT token, including the payload, header, and signature?
+  - A JSON Web Token (JWT) is created from three parts: a Header (specifies token type and signing algorithm, e.g., HS256 or RS256), a 
+    Payload (claims like sub, exp, roles), and a Signature (verifies integrity). The header and payload are Base64URL encoded and concatenated, 
+    then the signature is generated by signing that string with a secret (symmetric, e.g., HMAC SHA) or a private key (asymmetric, e.g., RSA or ECDSA).
+  - In practice you use a JWT library for your platform (e.g., jsonwebtoken for Node.js, jjwt for Java, PyJWT for Python) and provide: the claims, the 
+    chosen algorithm, and the secret/private key plus optional settings like expiration (exp) and issuer (iss). The library handles encoding and 
+    signing, producing the final token.
+-> Describe a time when you used your problem-solving skills to overcome a challenging situation in a real-life scenario.
+  - During a critical phase of a [X years, e.g., 3 years] project—[project name, e.g., Payment Platform]—we faced repeated production failures 
+    ausing transaction delays and customer complaints. I led a quick root-cause analysis, gathering logs, reproducing the issue in staging, and 
+    mapping dependencies. I identified a race condition between two services and a misconfigured retry policy that amplified the problem.
+  - I proposed a two-step solution: short-term mitigation (adjust retry policy and introduce a circuit breaker) and long-term fix (redesign the 
+    service interaction and add unit/integration tests). I coordinated with QA and DevOps, implemented monitoring alerts, and validated with 
+    load tests. Outcome: incident rate dropped by ~70%, mean time to recovery reduced, and customer impact was minimized—delivered within the 
+    tightened timeline and without rolling back features.
+-> What are chunking methods which we could use and how would you choose which chunking method would you use?
+  - A good chunk should contain enough context to answer a question, but be small enough that retrieval can identify it accurately
+  - Fixed-size chunking - Split the document based on a fixed number of characters or tokens.
+    - Good for: simple text, logs, large unstructured documents.
+  - Sentence-based chunking - Instead of cutting based on tokens, split around sentences.
+    - Good for: Articles, Documentation, General text, Knowledge bases
+  - Paragraph-based chunking - Split according to paragraphs.
+    - Good for: Technical documentation, Markdown, FAQs, Internal company documentation
+  - Recursive chunking - This is one of the most commonly used approaches in practical RAG systems.
+    - Recursive chunking is an AI text-splitting strategy that breaks large documents into smaller pieces by testing a prioritized list of 
+      natural separators—such as paragraphs, lines, words, and characters—until every chunk fits a target size
+    - Good default choice for general-purpose RAG.
+  - Semantic chunking - Semantic chunking tries to determine where the meaning/topic changes, rather than using fixed boundaries.
+  - Document-structure-based chunking - For structured documents, you should often use the document's structure rather than generic chunking.
+  - Code-aware chunking - For source code, normal text chunking is usually a bad idea.
+  - How do I choose the chunking method?
+                    What type of data?
+                       │
+        ┌──────────────┼───────────────┐
+        ↓              ↓               ↓
+      Text           Docs            Code
+        │              │               │
+        ↓              ↓               ↓
+ Recursive       Structure-based   Code-aware
+ chunking        chunking          chunking
+-> How can you build a very simple pipeline for it. Let's say you have a policy document, few hundered policy documents, with clauses, sub clauses, 
+   paragrpahs of texts and also images which can contain useful information. The usecase is to connect this RAG pipeline to a chatbot.
+    - https://chatgpt.com/c/399db44a-a840-8324-88db-43e9290069de
+    - Policy Documents -> Document Ingestion -> Parsing + OCR + Image Understanding -> Structure-aware Chunking -> Embedding Generation 
+      -> Vector DB + Metadata -> User Query -> Query Embedding -> Hybrid / Semantic Retrieval -> Reranking -> LLM -> Answer + Citations
+-> How meta data and vector db plus chunks are linked 
+{
+  "id": "chunk_123",
+
+  "vector": [0.021, -0.184, 0.763, 0.112, "..."],
+
+  "text": "Employees are entitled to 20 days of annual leave...",
+
+  "metadata": {
+    "document_id": "HR_Policy_2026",
+    "document_name": "HR_Policy.pdf",
+    "department": "HR",
+    "section": "Leave Policy",
+    "page": 12,
+    "document_type": "policy",
+    "version": "2026.1"
+  }
+}
+-> 

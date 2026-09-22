@@ -1,0 +1,36 @@
+https://www.youtube.com/watch?v=yb_W8f4mulk
+-> What is an agent 
+  - That dynamic decision-making loop is one of the defining characteristics of an agent.
+  - Achieve a goal using reasoning + tools + iteration
+  - Goal -> Reason -> Plan -> Choose tool -> Execute -> Observe result -> Update state -> Reason again -> Choose next action -> ... -> Finish
+  - An AI agent is essentially an AI system that can decide what actions to take, use tools, observe the results, and continue working toward a goal.
+    - With a normal API/prompt → you control the workflow
+    - With an agent → the AI can control the workflow within defined boundaries
+  - Agentic RAG
+  - Custom agents consist of a set of instructions and tools that are applied when you switch to that agent. For example, a "Plan" agent could 
+    include instructions for generating an implementation plan and only use read-only tools. By creating a custom agent, you can quickly switch 
+    to that specific configuration without having to manually select relevant tools and instructions each time.
+  - Handoffs are useful for orchestrating multi-step workflows that give developers control for reviewing and approving each step before moving to the next one
+  - the runtime needs some lightweight information about available agents so it can determine whether an agent should be selected. The name and 
+    description are generally metadata used to identify/discover the agent
+  - plan -> humal approval -> implement -> review -> approve -> deploy
+-> infact an custom agent is created by using skills
+-> Agent.md file
+  - disable-model-invocation: false :: The model is allowed to decide that this agent should be invoked when appropriate
+  - argument-hint ::When you invoke this agent, this is the type of information you should provide.
+-> Which model to use for what
+   Planning / complex reasoning: Claude Opus 4.7
+   Implementation / general coding: Claude Sonnet 4.6
+   Fast/simple coding tasks: Claude Haiku 4.5
+-> Agent structure
+├── Name                  → identity
+├── Description           → what it is for
+├── Instructions          → how it should behave
+├── Tools                 → what it can use
+└── Model                 → reasoning engine
+-> skill vs agent :: The key difference is that an agent is generally an execution/reasoning unit, whereas a skill is a reusable capability/instruction set.
+-> Differences
+  - Conversation = the session/history
+  - Prompt = one request inside the session (A prompt is simply the instruction you give the agent at a particular point in the conversation.)
+  - Skill = reusable task capability/instructions
+  - Custom Agent = a specialized agent configuration/persona with its own system prompt, tools, skills, permissions, and model settings
