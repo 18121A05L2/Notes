@@ -1,0 +1,59 @@
+https://www.youtube.com/watch?v=RxVZv-pj8Rk
+https://www.google.com/search?q=Caroline+Nesland+pronounciation&sca_esv=82d9c2a6357c8c74&rlz=1C5CHFA_enIN1026IN1026&sxsrf=APpeQnsQf8xL_ilEqnAcxkXVKAK98e5ROw%3A1790103078017&ei=Js6yaqtR-uPaug-GtfPgDA&ved=2ahUKEwir_M3Q7YKXAxX6sVYBHYbaHMwQ4dUDegQIBhAM&uact=5&oq=Caroline+Nesland+pronounciation&gs_lp=Egxnd3Mtd2l6LXNlcnAiH0Nhcm9saW5lIE5lc2xhbmQgcHJvbm91bmNpYXRpb24yDhAAGIAEGIoFGJECGLEDMg4QABiABBiKBRiRAhixAzIKEAAYgAQYigUYQzIOEAAYgAQYigUYkQIYsQMyChAAGIAEGIoFGEMyCxAAGIAEGIoFGJECMgsQABiABBiKBRiRAjIFEAAYgAQyCBAAGAcYHhgKMgYQABgHGB5I1AJQAFiVAnAAeACQAQCYAXugAXuqAQMwLjG4AQPIAQD4AQH4AQKYAgGgAoMBmAMAkgcDMC4xoAeWBrIHAzAuMbgHgwHCBwMyLTHIBwWACAE&sclient=gws-wiz-serp#fpstate=ive&vld=cid:1b636add,vid:-MCTchkrl7E,st:0
+-> How do you handle stress ?
+-> Suddenly if there is any new technology to learn and implement for a project , how do you handle it
+-> How you want to be after 5 years from now ?
+-> How do you use AI Models for development ?
+-> are you interested to work in complex or simple problems ?
+-> How do you handle the situation if the requirement changes at the end ?
+-> give me a little brief about optimizing in backedn with .net framework
+-> when it comes to speed and quality , which one do you prefer when working in a project ?
+-> 
+
+
+
+
+
+
+
+
+
+-> That's a good question. Let me think through it for a moment.
+-> Let me take a moment to structure my thoughts.
+-> If you suddenly forget something
+   - “I know the concept, but I'm blanking on the exact terminology at the moment. Let me think.”
+
+   
+-> If I were to join the team, what would you expect me to achieve in the first 3 to 6 months?
+-> What would success look like for this role in the first 3-6 months?
+-> What are the biggest challenges someone coming into this role should be prepared for?
+-> Are there opportunities for engineers to experiment with new AI technologies?
+------------------- End conversations -------------------
+-> Based on our conversation today, is there anything about my experience or background that you'd like me to clarify further?
+-> Roger, thank you for your time. I really enjoyed our conversation and learning more about the role and the team. It was a great 
+   discussion, and I really appreciate the opportunity to speak with you today.
+-> Roger, one random thing before we wrap up — whenever you introduced yourself as Roger, my brain immediately went to Steve Rogers, 
+   Captain America. So now I'm definitely going to remember this conversation.
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------
+
+
+
+-> in resume :: Contribute to performance optimization and new-user acquisition features, including signup journey improvements, 
+   for DAZN's FIFA World Cup coverage, while championing adoption of micro-frontend architecture (single-spa) and CI/CD pipelines 
+   for independent, scalable delivery. 
+   Question :: what are the performance optimizations you have made
+   - google lighthouse will provide metrics for Core web vitals
+   - Core web vitals :: LCP,CLS , or INP
+-> AI skills i have created :: claude convention bridge 
+-> AI agent i have created :: whenever any PR merged , it will review all the code changes and to inform QA team to test the changes we have
+    did and also what are all the other changes that are linked to this , kind of a sanity test to for other features which we thought
+    may break , kind of back testing

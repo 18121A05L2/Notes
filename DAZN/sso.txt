@@ -1,5 +1,5 @@
 -> https://www.youtube.com/watch?v=ZDuRmhLSLOY
--> SSO have buit on a concept called Federated Identity
+-> SSO have built on a concept called Federated Identity
 -> Federated identity is an authentication model where an application trusts an external Identity Provider to authenticate users. This allows 
    users to access multiple applications using the same organizational identity, typically through SSO, without maintaining separate credentials 
    in each application.

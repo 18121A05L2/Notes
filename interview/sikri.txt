@@ -99,6 +99,14 @@ Module/DI registration  →    @Module()
     - Express.js is a lightweight web framework for Node.js that provides the basic features for building HTTP servers and APIs. NestJS is a 
       more opinionated backend framework built on Node.js, typically using Express underneath, and provides a structured architecture with modules, 
       dependency injection, controllers, services, guards, pipes, and other features.
+-> Just like Jest acts as your test runner and assertion library in React, xUnit is the standard test frameworks used to write and 
+   execute unit and integration tests in C# / .NET.
+   - For .NET backend unit testing, I would typically use xUnit. We can use Moq for mocking dependencies such as services or repositories, 
+     and WebApplicationFactory for integration testing of ASP.NET Core APIs.
+-> i may keeep something like , if i enable a local storage variable in the browser , i can able to see the logs in the console itself
+   this will be helpful for debugging in production environment
+-> i have created monitoring dashboard using newrelic to monitor the performance of the application and also to monitor the errors in production environment
+-> 
 
 
 

@@ -1,4 +1,4 @@
--> Unit Tests ( Fast, Cheap, Many)
--> Integration Tests ( Medium speed , some )
--> E2E Test ( Slow , Expensive , Few )
+-> Unit Tests ( Fast, Cheap, Many) :: Test one small unit of code in isolation
+-> Integration Tests ( Medium speed , some ) :: Test whether multiple components work correctly together.
+-> E2E Test ( Slow , Expensive , Few ) :: Test the complete application from the user's perspective.
 -> Smoke Tests , regression Tests , Security Tests , Performance Tests , Accessibility Tests

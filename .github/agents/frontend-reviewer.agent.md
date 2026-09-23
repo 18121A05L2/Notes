@@ -20,6 +20,10 @@ disable-model-invocation: false
 agents:
   - frontend
   - code-reviewer
+hooks:
+  PostToolUse:
+    - type: command
+      command: "./scripts/format-changed-files.sh"
 handoffs:
   - label: "Implement Frontend Fixes"
     agent: "frontend"

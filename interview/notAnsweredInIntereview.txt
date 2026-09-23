@@ -52,8 +52,10 @@
     - where time is being spent
     - why the page is slow
     - what is blocking rendering or interaction
--> FCP & CLS (Core Web Vitals) - These are performance metrics that measure user experience during page load.
+-> LCP & CLS (Core Web Vitals) - These are performance metrics that measure user experience during page load.
     - CLS measures how much the layout shifts unexpectedly while the page loads.
+    - The Largest Contentful Paint refers to the biggest visual part of the page. It reports the render time for the largest visible element 
+      (often images) in the viewport before a user scrolls down or taps a button
 -> Order of Event Flow :: When you click an element, the browser follows this order:
     - Capturing Phase (Top → Down)
     - Target Phase (Actual element clicked)

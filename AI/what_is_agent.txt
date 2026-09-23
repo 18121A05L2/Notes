@@ -34,3 +34,8 @@ https://www.youtube.com/watch?v=yb_W8f4mulk
   - Prompt = one request inside the session (A prompt is simply the instruction you give the agent at a particular point in the conversation.)
   - Skill = reusable task capability/instructions
   - Custom Agent = a specialized agent configuration/persona with its own system prompt, tools, skills, permissions, and model settings
+-> a prompt file packages a repeatable task that i can explicitly run whenever i need it
+-> prompt file vs skill file vs instruction
+  - Prompt file - Tells the AI what you want it to do 
+  - Skill file - Teaches the AI how to perform a specific capability
+  - Instructions - How should copilot works when performing any actions
