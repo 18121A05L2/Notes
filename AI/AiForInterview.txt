@@ -1,5 +1,7 @@
--> Agent Orchestration is the architecture used to coordinate multiple AI agents, tools, workflows, and state to solve complex, multi-step problems that a single agent or single prompt cannot handle reliably.
-    - Instead of one agent doing everything in one giant context window (which leads to context rot, hallucinations, and token exhaustion), orchestration breaks work into modular agents with isolated contexts, scoped tools, and defined handoffs.
+=> Agent Orchestration is the architecture used to coordinate multiple AI agents, tools, workflows, and state to solve complex, multi-step
+   problems that a single agent or single prompt cannot handle reliably.
+    - Instead of one agent doing everything in one giant context window (which leads to context rot, hallucinations, and token exhaustion), 
+      orchestration breaks work into modular agents with isolated contexts, scoped tools, and defined handoffs.
 -> There are two primary ways agent orchestration is set up in software projects:
     - Repository-Level Setup (Declarative) — Configuring coding agents (like Claude Code, GitHub Copilot, Antigravity) inside a codebase.
     - Application-Level Setup (Programmatic) — Writing custom multi-agent systems using frameworks like LangGraph, CrewAI, AutoGen, or the Antigravity SDK.

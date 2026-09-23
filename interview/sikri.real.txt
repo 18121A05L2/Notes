@@ -8,6 +8,7 @@ https://www.google.com/search?q=Caroline+Nesland+pronounciation&sca_esv=82d9c2a6
 -> How do you handle the situation if the requirement changes at the end ?
 -> give me a little brief about optimizing in backedn with .net framework
 -> when it comes to speed and quality , which one do you prefer when working in a project ?
+-> if you are going to think in a way that , this day you have spent well or this was a good day
 -> 
 
 
@@ -32,8 +33,8 @@ https://www.google.com/search?q=Caroline+Nesland+pronounciation&sca_esv=82d9c2a6
 -> Based on our conversation today, is there anything about my experience or background that you'd like me to clarify further?
 -> Roger, thank you for your time. I really enjoyed our conversation and learning more about the role and the team. It was a great 
    discussion, and I really appreciate the opportunity to speak with you today.
--> Roger, one random thing before we wrap up — whenever you introduced yourself as Roger, my brain immediately went to Steve Rogers, 
-   Captain America. So now I'm definitely going to remember this conversation.
+-> Roger, one random thing before we wrap up — hearing your name immediately made me think of Steve Rogers, Captain America. So I guess 
+   I won't be forgetting this conversation anytime soon.
 
 
 
@@ -57,3 +58,4 @@ https://www.google.com/search?q=Caroline+Nesland+pronounciation&sca_esv=82d9c2a6
 -> AI agent i have created :: whenever any PR merged , it will review all the code changes and to inform QA team to test the changes we have
     did and also what are all the other changes that are linked to this , kind of a sanity test to for other features which we thought
     may break , kind of back testing
+-> Plan Mode handles breadth (multi-step tasks) while Thinking Mode handles depth (complex logic)

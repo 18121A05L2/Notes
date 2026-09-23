@@ -1,0 +1,40 @@
+Hello Roger,
+
+My name is Lakshmi Reddy, and I've been working as a Software Engineer at DAZN around four years. DAZN is a
+global OTT platform focused on live and on-demand sports content, often referred to as the Netflix of sports, as
+we stream a wide range of sports across multiple regions.
+
+I started my journey at DAZN working mainly on the frontend, where during my first year I worked extensively on
+landing and offer pages. The main focus there was user acquisition and conversion, so I built and maintained highly
+engaging and reusable React components that were managed through a CMS like Contentful, allowing us to reuse the same
+components across different regions while supporting regional customisation.
+
+After that initial phase, my role gradually evolved into a full-stack role, where I've been working across both the
+frontend and backend. I moved into areas such as the core catalog experience, authentication and subscription
+journeys, and My Account, working with React and TypeScript on the frontend while also developing and integrating
+RESTful APIs on the backend.
+
+On the frontend side, I've continued working extensively with React and TypeScript, including our Bootstrap
+micro-frontend, where I work with shared services, reusable utilities, application context, and the orchestration
+of downstream microfrontends. I've also worked on performance, SEO, and new-user acquisition initiatives across the
+platform.
+
+On the backend, I've been working with ASP.NET Core and C# to build RESTful APIs, using Entity Framework Core, LINQ,
+and SQL Server for data access and backend functionality. For example, I designed and built a Watch Next recommendation
+API for the Kayo Sports integration. I've also worked on authentication and authorization, including JWT-based access
+control, and have been involved in integrations such as the DAZN Bet platform and its backend SSO flow.
+
+Over the last year, I've also been extensively learning and adopting Agentic AI-assisted engineering practices.
+I've been working with tools such as Claude Code, GitHub Copilot, and Antigravity to understand how AI agents can be
+integrated into the software development lifecycle. For example, I use AI agents to help explore requirements and
+draft implementation plans, then review and refine those plans with the team, identify edge cases, and validate the
+approach before moving into development.
+
+I see Agentic AI mainly as an extension of the engineering workflow rather than a replacement for engineering
+decisions. I use it to improve development speed, reduce repetitive work, explore solutions, and assist with
+implementation, while keeping design decisions, validation, and code quality under human review.
+
+Overall, my experience at DAZN has evolved from starting as a frontend developer to working as a full-stack engineer
+across React, .NET, APIs, databases, and cloud-based systems. Alongside that, over the last year I've been actively
+learning and adopting Agentic AI workflows, which has expanded how I approach problem solving and software development
+end to end.

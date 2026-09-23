@@ -49,5 +49,7 @@
      ├── HttpClient / HttpMessageHandler
      ├── JWT validation
      └── ClaimsPrincipal
--> a refresh token is not normally something you put in the browser/localStorage. For a server-side application, keep it securely on the backend. Google explicitly recommends storing tokens in a secure, long-lived location
--> Google access tokens are short-lived, typically around 1 hour. A refresh token is used by the backend to obtain a new access token when the old one expires, allowing the user to remain authenticated without signing in again.
+-> a refresh token is not normally something you put in the browser/localStorage. For a server-side application, keep it securely on the backend. 
+  Google explicitly recommends storing tokens in a secure, long-lived location
+-> Google access tokens are short-lived, typically around 1 hour. A refresh token is used by the backend to obtain a new access token when the 
+  old one expires, allowing the user to remain authenticated without signing in again.
